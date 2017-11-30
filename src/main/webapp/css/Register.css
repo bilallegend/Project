@@ -1,0 +1,372 @@
+body,
+html {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px
+}
+input,
+button {
+	border: none;
+	outline: none
+}
+p,
+h1 {
+	margin: 0px
+}
+.whole {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	background-image: url("../images/landing.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: relative
+}
+#signup,
+#signin,
+#menu {
+	background: url("../images/bacground.jpg");
+	background-size: cover;
+	position: absolute;
+	left: 38%;
+	top: 11%;
+	display: none;
+	transform: scale(1, 1)
+}
+#signup {
+	width: 305px;
+	height: 540px;
+	padding: 10px 20px;
+	border-radius: 5px
+}
+#signup #rib,
+#signin > #rib {
+	width: 305px;
+	height: 48px;
+	font: bold 25px'Cinzel Decorative', cursive;
+	text-align: center;
+	padding-top: 10px;
+	color: maroon
+}
+#rib > img {
+	float: right;
+	height: 25px;
+	cursor: pointer
+}
+#nam .co {
+	width: 305px;
+	height: 130px
+}
+#nam .co:nth-child(1) {
+	width: 100px;
+	box-sizing: border-box;
+	padding-left: 10px
+}
+#nam .co:nth-child(2) {
+	width: 205px;
+}
+#contanier {
+	height: 70px;
+	width: 70px;
+	margin-top: 25px;
+	border-radius: 50%;
+	background: url(../images/camera.png);
+	background-size: cover;
+	position: relative;
+	overflow: hidden;
+	cursor: pointer
+}
+#contanier[type=file] {
+	opacity: 0;
+	position: absolute;
+	left: 0;
+	top: 35px
+}
+label {
+	display: block;
+	color: black;
+	font: 16px cursive
+}
+label+ .dv {
+	height: 30px;
+    display: flex
+}
+label + .dv .im {
+	width: 44px;
+	height: 30px;
+	padding-top: 10px
+}
+input {
+	color: maroon;
+	padding-left: 10px;
+	font: 13px cursive;
+	background: transparent;
+	width: 144px;
+	border-bottom: 1px solid maroon
+}
+#contanier > input{
+    visibility:hidden;
+}
+input:focus {
+	color: black;
+	border-bottom: 1px solid black
+}
+img {
+	height: 35px;
+	margin: -8px 0 0 -5px
+}
+i {
+	color: maroon;
+	padding: 5px
+}
+#sec-div {
+	width: 305px;
+	height: 260px;
+	padding-top: 30px
+}
+.in {
+	width: 234px
+}
+.i {
+	color: maroon;
+	padding-left: 13px
+}
+.pad-top {
+	padding-top: 3px
+}
+#ph {
+	font-size: 25px;
+	color: maroon;
+	padding: 2px 0 0 16px
+}
+.sub {
+	cursor: pointer;
+	width: 289px;
+	height: 35px;
+	border-radius: 3px;
+	margin: 20px 0 0 10px;
+	background: maroon;
+	color: white;
+	font: 16px cursive
+}
+#fileinput {
+	position: absolute;
+	top: 10px;
+	left: 10px
+}
+.pad-lef {
+	padding-left: 10px
+}
+.mar-lef {
+	margin-left: 10px
+}
+.sign {
+	font: bold 30px'Cinzel Decorative', cursive;
+	background-color: #875032;
+	color: transparent;
+	text-shadow: 2px 2px 0px #4a2618;
+	display: inline-block;
+	position: absolute;
+	right: 200px;
+	-webkit-background-clip: text;
+	background-clip: text;
+	margin: 20px 0 0 0;
+	cursor: pointer
+}
+.sgnin {
+	right: 50px
+}
+/*--------------------------------------------------------SIGN IN--------------------------------------------------*/
+
+#signin {
+	width: 310px;
+	height: 420px;
+	border-radius: 5px;
+	transform: scale(1, 1)
+}
+#signin > #rib {
+	padding-left: 21px;
+	width: 270px
+}
+#signin >#rib >.close {
+	margin: -2px -9px 0 0
+}
+.inp {
+	width: 200px
+}
+.pa {
+	padding-top: 10px
+}
+#login {
+	margin-top: 30px;
+	width: 260px;
+	margin-left: 24px
+}
+.fa-envelope-o {
+	padding-left: 11px
+}
+#sty {
+	padding: 4px 0 0 7px
+}
+.ale{
+    padding-left:10px
+}
+/*--------------------------------------------------------MENU PAGE--------------------------------------------------*/
+
+#menu {
+	width: 303px;
+	height: 470px;
+	border-radius: 5px;
+	position: absolute;
+	padding: 10px 20px;
+	display: block;
+	transform: scale(0, 0);
+}
+#menu > div {
+	height: 50px;
+	width: 268px;
+	margin: 50px 15px 0 17px;
+	border-radius: 5px;
+	cursor: pointer;
+	text-align: center;
+	box-shadow: 1px 1px 10px saddlebrown inset;
+}
+#menu > div:hover {
+	box-shadow: 4px 4px 20px saddlebrown
+}
+#menu > div > p {
+	font: bold 25px'Arial', sans-serif;
+	background-color: #4A2618;
+	color: transparent;
+	text-shadow: 1px 1px 3px rgba(244, 227, 181, 0.57);
+	display: inline-block;
+	-webkit-background-clip: text;
+	background-clip: text;
+	cursor: pointer;
+	line-height: 50px;
+	margin: 0px
+}
+a {
+	text-decoration: none;
+	color: transparent
+}
+/*------------------------------------------------ Profile div and menu div --------------------------------------------*/
+
+.profil {
+	position: absolute;
+	right: 35px;
+	top: 15px;
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	border: 1px solid white;
+	display: none;
+	cursor: pointer;
+	background-image: url("../images/pr.png");
+	background-size: 100% 100%
+}
+.menu {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	font-size: 25px !important;
+	color: white;
+	cursor: pointer;
+	display: none
+}
+.menu i {
+	color: white
+}
+/*---------------------------------------------------feed div --------------------------------------------------------*/
+
+.feed {
+	width: 200px;
+	height: 210px;
+	transition: 1s;
+	transform: translateX(-100%);
+	padding-left: 10px;
+	box-sizing: border-box;
+	background: rgba(0, 0, 0, 0.27);
+	font-size: 32px;
+	position: absolute;
+	top: 38%
+}
+.feed >i,
+.menu+i,
+.fa-caret-left {
+	color: #EEBD84
+}
+.feed>i span {
+	font: 22px cursive;
+	padding-left: 10px
+}
+.menu +i,
+.fa-caret-left {
+	top: 50%;
+	cursor: pointer;
+	position: absolute;
+	font-size: 35px !important
+}
+#leftaro {
+	left: 91%;
+	z-index: 12;
+	top:40%;
+}
+.feed #tour,span+p,#fed {
+    cursor:pointer
+}
+.feed>span {
+	color: #ddd;
+	font: 14px'Macondo Swash Caps', cursive
+}
+.feed>p:nth-child(2)>a,
+.feed>h1:nth-child(4),
+.feed>p:nth-child(2){
+	color: #ddd;
+	font: bold 35px'Macondo Swash Caps', cursive;
+	text-align: center
+}
+.feed>p:nth-child(3) {
+	font: bold 18px'Macondo Swash Caps', cursive;
+	padding-top: 8px;
+	color: bisque
+}
+.feed>h1:nth-child(4) {
+	font: 28px cursive
+}
+/*-------------------------------------------------Blur Div------------------------------------------------------------*/
+
+.blu {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+/*-----------------------------------------------Alert P tag----------------------------------------------------------*/
+.dv+p {
+    padding-top: 10px;
+    font: 14px lato;
+    color: red;
+    text-transform: capitalize
+} 
+/*------------------------------------------------Signout Option Div--------------------------------------------------*/
+.profil+div {
+    width: 115px;
+    height: 65px;
+    background: #fff;
+    position: absolute;
+    top: 70px;
+    right: 8px
+}
+.profil+div:before{
+    content: "";
+    position: absolute;
+    top: -26px;
+    right: 19px;
+    width: 0px !important;
+    height: 0px !important;
+    border: 13px solid;
+    border-color: transparent transparent rgba(230, 230, 250, 0.56) transparent;
+}
