@@ -39,4 +39,30 @@
     <servlet-name>sendMessage</servlet-name>
     <url-pattern>/message</url-pattern>
   </servlet-mapping>
+  
+  
+  
+  
+  
+  
+  <!--  Register page servlet -->
+  	<servlet-mapping>
+  		<servlet-name>Register_jsp</servlet-name>
+  		<url-pattern>/home</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Register_jsp</servlet-name>
+		<jsp-file>/jsp/Register.jsp</jsp-file>
+	</servlet>
+
+  <!--  Ajax signup servlet -->
+  	<servlet-mapping>
+  		<servlet-name>Ajax_servlet</servlet-name>
+  		<url-pattern>/ajax/*</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Ajax_servlet</servlet-name>
+		<servlet-class>Ajax</servlet-class>
+	</servlet>
+  
 </web-app>
