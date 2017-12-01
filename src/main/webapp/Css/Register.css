@@ -12,13 +12,14 @@ button {
 }
 p,
 h1 {
-	margin: 0px
+	margin: 0px;
+	color:black
 }
 .whole {
 	width: 100%;
 	height: 100%;
 	display: flex;
-	background-image: url("../images/landing.jpg");
+	background-image: url("../Images/landing.jpg");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	position: relative
@@ -26,7 +27,7 @@ h1 {
 #signup,
 #signin,
 #menu {
-	background: url("../images/bacground.jpg");
+	background: url("../Images/bacground.jpg");
 	background-size: cover;
 	position: absolute;
 	left: 38%;
@@ -71,7 +72,7 @@ h1 {
 	width: 70px;
 	margin-top: 25px;
 	border-radius: 50%;
-	background: url(../images/camera.png);
+	background: url(../Images/camera.png);
 	background-size: cover;
 	position: relative;
 	overflow: hidden;
@@ -263,7 +264,7 @@ a {
 	border: 1px solid white;
 	display: none;
 	cursor: pointer;
-	background-image: url("../images/pr.png");
+	background-image: url("../Images/pr.png");
 	background-size: 100% 100%
 }
 .menu {
@@ -352,15 +353,20 @@ a {
     text-transform: capitalize
 } 
 /*------------------------------------------------Signout Option Div--------------------------------------------------*/
-.profil+div {
-    width: 115px;
-    height: 65px;
-    background: #fff;
-    position: absolute;
-    top: 70px;
-    right: 8px
+.profilediv{
+    width:250px;
+    border-radius:5px;
+    display:none;
+    position:absolute;
+    top:80px;
+    right:18px;
+    height:auto;
+    text-align:center;
+    background-color:white;
+    font-family:'Lato',sans-serif;
+    padding-bottom:15px
 }
-.profil+div:before{
+.profilediv:before {
     content: "";
     position: absolute;
     top: -26px;
@@ -368,5 +374,72 @@ a {
     width: 0px !important;
     height: 0px !important;
     border: 13px solid;
-    border-color: transparent transparent rgba(230, 230, 250, 0.56) transparent;
+    border-color: transparent transparent #e8b77a transparent
+}
+.profilediv > div:first-child > div,.profilediv > div:first-child > div div{
+    height:75px;
+    width:75px;
+    margin:10px auto;
+    border-radius:50%;
+    background-image:url("http://profile.actionsprout.com/default.jpeg");
+    background-size:100% 100%;
+}
+.profilediv > div:first-child > div p{
+    color:black;
+    line-height:75px;
+    display:none;
+}
+.profilediv > div:first-child > div div{
+    height:100%;
+    width:100%;
+    margin:0
+}
+.profilediv > div > h5{
+    text-transform:uppercase;
+    line-height:25px;
+    color: #7a3c1a
+}
+.profilediv > div:first-child{
+    background-color: #e8b77a;
+    border: 1px solid transparent;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd
+}
+.profilediv > button{
+    padding: 15px;
+    display: block;
+    background: none;
+    border:none;
+    outline:none;
+    text-transform: uppercase;
+    border-radius: 5px;
+    margin: 10px auto
+}
+.profilediv > button:hover{
+    background-color:rgba(49, 48, 50, 0.1);
+    cursor:pointer
+}
+.profilediv > .edit{
+    padding:15px 38px
+}
+.profilediv > button:last-child{
+    margin-top:20px;
+    padding:10px 40px;
+    background-color:rgba(255, 234, 234, 0.35);
+    border:1px solid #FFEAEA;
+    border-top-left-radius:50px;
+    border-bottom-left-radius:50px;
+    border-top-right-radius:50px;
+    border-bottom-right-radius:50px;
+    color:#a51d8f
+}
+.profilediv > div:first-child > div:hover div{
+    background-color:rgba(0,0,0,0.3);
+    background-image:none;
+    cursor:pointer
+}
+.profilediv > div:first-child > div:hover p{
+    display:block
 }

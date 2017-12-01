@@ -1,0 +1,200 @@
+body,html,.whole-div{
+    height:100%;
+    width:100%;
+    margin:0px;
+    padding:0px
+}
+body{
+    background-image:url("../Images/texture.jpg");
+    background-size:cover
+}
+.whole-div{
+    position:relative;
+    overflow:hidden;
+    display:flex
+}
+.boardback{
+	height:500px;
+	width:500px;
+	margin:auto;
+	border:1px solid black;
+	background-image: url("http://www.psdgraphics.com/file/oak-wood-background.jpg");
+	background-size: cover;
+	display:flex
+}
+.boradinrdiv{
+	width: 95%;
+	margin:auto;
+	height:95%;
+	background-image:url("https://www.pixeden.com/media/k2/galleries/220/001-wood-melamine-subttle-pattern-background-pat.jpg");
+	background-size:cover
+}
+.inrdiv{
+    height:100%;
+    width:100%
+}
+.gete{
+	height: 58.39px;
+    width: 58.39px;
+    background: transparent;
+    float: left;
+    border-right:1px solid #4e1f01;
+    border-bottom:1px solid #4e1f01;
+    cursor:pointer
+}
+.one{
+    margin:0px;
+    height:100%;
+    width:100%
+}
+.coin{
+   	height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    text-align: center;
+    background: linear-gradient(0deg,#e6cca3,#fff);
+    box-shadow: 0px 0px 5px #e6cca3;
+    cursor: pointer;
+    position: relative;
+    border: 0;
+    margin: 5px
+}
+.coin::after{
+    content:"";
+   	height: 22.5px;
+    width: 22.5px;
+    background: linear-gradient(0deg,#fff,#e6cca3);
+    border-radius: 50%;
+    position:absolute;
+    top:11.5px;
+    left:11.3px
+}
+.coin1{
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    text-align: center;
+    background: linear-gradient(0deg,#7a3c1a,rgba(255, 255, 255, 0.27));
+    box-shadow: 0px 0px 5px #7a3c1a;
+    cursor: pointer;
+    position: relative;
+    border: 0;
+    margin: 5px
+
+}
+.coin1::after{
+    content: "";
+    height: 22.5px;
+    width: 22.5px;
+    background: linear-gradient(0deg,rgba(255, 255, 255, 0.23),#7a3c1a);
+    border-radius: 50%;
+    position: absolute;
+    top: 10.5px;
+    left: 11.3px	
+}
+/*.board:before{*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    height: 16px;*/
+/*    width: 613px;*/
+/*    background: #E2A56E;*/
+/*    left: -316px;*/
+/*    top: 247px;*/
+/*    transform: skew(-35deg) rotateZ(55deg)*/
+/*}*/
+/*.board:after{*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    height: 26px;*/
+/*    width: 507px;*/
+/*    background: #E2A56E;*/
+/*    left: -13px;*/
+/*    top: 492px;*/
+/*    transform: skew(-47deg) rotateX(64deg)*/
+/*}*/
+.coindiv,.coindivlft{
+    height: 100px;
+    width: 200px;
+    border: 1px solid #C3925A;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background-color: rgba(195, 146, 90, 0);
+    border-radius: 5px;
+    box-shadow: 1px 1px 155px #C3925A inset
+}
+.coindivlft{
+    left:20px;
+}
+.rightprfle,.lftprfle{
+    height: 60px;
+    width: 60px;
+    border: 1px solid #DECEA0;
+    border-radius: 50%;
+    margin: 18px 0 0 18px;
+    float: left
+}
+.point,.lftpoint{
+    height: 100%;
+    width: 120px;
+    float: left;
+    text-align: center;
+    font-size: 35px;
+    margin: 0px;
+    line-height: 100px;
+    color: #DECEA0;
+    font-family: 'Arial',sans-serif
+}
+.lftpoint{
+    color: #563C30;
+}
+.point p,.lftpoint p{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    font-size: 45px;
+    line-height: 100px;
+    margin: 0px;
+    padding: 0px
+}
+#setdiv {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -48px;
+    left: -37px;
+    background-color: #fff;
+    box-shadow: 1px 1px 155px #C3925A inset;
+    cursor:pointer
+}
+#setdiv img{
+    width: 45%;
+    padding-left: 40px;
+    transform: rotate(30deg)
+}
+#setshwdiv{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    bottom: -87px;
+    left: -76px;
+    background: rgba(255, 255, 255, 0.13);
+    border-radius: 50%;
+    box-shadow: 1px 1px 155px #C3925A inset;
+    opacity: 0;
+    border: 1px solid #C3925A
+}
+.hlpimg,.soundimg,.homeimg{
+    height: 35px;
+    margin: 11px 0 0 86px;
+    cursor: pointer;
+    box-shadow: 1px 2px 5px rgba(21, 1, 1, 0.59);
+    border-radius: 50%
+}
+.hlpimg{
+    margin: -17px 0 0 133px
+}
+.homeimg{
+    margin: 3px 0 0 155px
+}
