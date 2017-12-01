@@ -72,10 +72,10 @@
         authEndpoint: '/authorize',
         encrypted: true
     });
-
+	console.log(pusher);
     // Subscribe to the chat room presence channel, eg. "presence-my-room"
     var channel = pusher.subscribe(channel_name);
-
+    console.log(channel);
     // bind to successful Pusher connection
     pusher.connection.bind('connected', function () {
 
@@ -85,7 +85,9 @@
         // bind to successful subscription
         channel.bind('pusher:subscription_succeeded', function (members) {
             // receive list of members on this channel
+            console.log(" pusher:subscription_succeeded ");
             var whosonline_html = '';
+            console.log(members);
             members.each(function (member) {
                 whosonline_html += '<li class="chat_widget_member" id="chat_widget_member_'
                     +
@@ -96,6 +98,7 @@
         });
         // presence channel receive events when members are added / removed
         channel.bind('pusher:member_added', function (member) {
+        	console.log(" pusher:member_added ");
             // track member additions to channel
             $('#chat_widget_online_list').append('<li class="chat_widget_member" ' +
                 'id="chat_widget_member_' + member.id + '">'
@@ -103,6 +106,7 @@
             updateOnlineCount();
         });
         channel.bind('pusher:member_removed', function (member) {
+        	console.log(" pusher:member_removed ");
             // track member removals from channel
             $('#chat_widget_member_' + member.id).remove();
             updateOnlineCount();

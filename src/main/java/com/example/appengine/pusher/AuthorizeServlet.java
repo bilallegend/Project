@@ -47,19 +47,22 @@ public class AuthorizeServlet extends HttpServlet {
     Pusher pusher = PusherService.getDefaultInstance();
     // Get current logged in user credentials
     User user = UserServiceFactory.getUserService().getCurrentUser();
-
+    System.out.println(user+"  userInAuthorize");
     // redirect to homepage if user is not authorized
     if (user == null) {
       response.sendRedirect("/");
       return;
     }
     String currentUserId = user.getUserId();
+    
     String displayName = user.getNickname().replaceFirst("@.*", "");
 
     String query = CharStreams.toString(request.getReader());
+    System.out.println("currentUserId "+currentUserId+" displayName "+displayName+" query "+query);
     // socket_id, channel_name parameters are automatically set in the POST body of the request
     // eg.socket_id=1232.12&channel_name=presence-my-channel
     Map<String, String> data = splitQuery(query);
+    System.out.println("data Map "+data);
     String socketId = data.get("socket_id");
     String channelId = data.get("channel_name");
 
