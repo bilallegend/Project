@@ -16,26 +16,30 @@ public class Ajax extends HttpServlet{
 		 ConnectionDatabase psql = new ConnectionDatabase();
 		 Connection conn			=psql.createConnection("gamecenter");
 		if(request.getPathInfo().equals("/signup")) {
-			System.out.println(request.getParameterMap());
-			System.out.println("'"+request.getParameter("name")+"','"+request.getParameter("email")+"','"+request.getParameter("pass")+"',"+request.getParameter("num"));
 			
 			
 			String[] params= new String[]{"usrname,usrmail,usrpassword"};
-			try {
-				psql.insert(conn, "player_info", "username,email_id,password,number", "'"+request.getParameter("name")+"','"+request.getParameter("email")+"','"+request.getParameter("pass")+"',"+request.getParameter("num"));
-				CookieCreator one = new CookieCreator();
-                one.createContext("gc_account", request.getParameter("name"),request,response);
-				response.getWriter().write("'"+request.getParameter("name")+"','"+request.getParameter("email")+"','"+request.getParameter("pass")+"',"+request.getParameter("num"));
-			}catch(Exception e) {
-				System.out.println(e);
-				if ((e + "").contains("player_info_username_key")) {
+			
+				  String res=psql.insert(conn, "player_info", "username,email_id,password,number", "'"+request.getParameter("name")+"','"+request.getParameter("email")+"','"+request.getParameter("pass")+"',"+request.getParameter("num"));
+				  if(res.equals("Signup Successfull")) {
+				  CookieCreator one = new CookieCreator();
+                  one.createContext("gc_account", request.getParameter("name"),request,response);
+                  response.getWriter().write("Signup Successful");
+                  return;
+				  }
+				
+				  else {
+				if (res .contains("player_info_username_key")) {
 					response.getWriter().write("Name already Exist");
+					return;
 				}
-				if ((e + "").contains("player_info_email_id_key")) {
+				if (res.contains("player_info_email_id_key")) {
 					response.getWriter().write("Mail already Exist");
+					return;
 				}
 			}
-		  	
+				  
+			
 		}
 		
 		System.out.println(request.getPathInfo()+" "+request.getRequestURL());
