@@ -1,0 +1,219 @@
+body,html {
+    width:100%;
+    height:100%;
+    margin:0px;
+    padding:0px
+}
+button {
+    border: none;
+    outline: none;
+    cursor:pointer
+}
+ul,li,p {
+    padding:0px;
+    margin:0px
+}
+.whole {
+    width:100%;
+    height:100%;
+    display:flex
+}
+.whole >div,#scor,#scor>div>div:nth-child(1) >div {
+    margin:auto;
+    display:flex;
+}
+.whole >div {
+    width:800px;
+    height:603px;
+    background: linear-gradient(135deg,#fff799, #80ECAA);
+    position:relative
+}
+#scor {
+    width:720px;
+    height:460px;
+    background:#192D55;
+    border-radius:7px
+}
+#scor>div {
+    width:50%;
+    height:460px;
+    border-radius:7px
+}
+#scor>div:first-child {
+    background:#fff;
+}
+#scor>div>div:nth-child(1) {
+    width:100%;
+    height:50px;
+    background:#2B4372;
+    border-bottom-left-radius:20px;
+    border-bottom-right-radius:20px;
+    text-align: center;
+    font:20px cursive;
+    line-height: 50px
+ }
+ .scrdiv{
+    width: 95%;
+    height: 70px;
+    background: #FBBC29;
+    border-radius: 17px;
+    margin: 10px auto
+ }
+ .frst::-webkit-scrollbar {
+     width:0px
+}
+ #fir-ul li,#scor>#sec>div:nth-child(3)>li,#scor>div>div:nth-child(1){
+     color:#fff
+ }
+#fir-ul {
+    display:flex;
+    box-sizing: border-box;
+    height: 70px
+}
+ ul li,#scor>#sec>div:nth-child(3)>li {
+     list-style-type:none;
+     display:inline-block
+ }
+ #fir-ul li:first-child{
+     padding:10px;
+ }
+#fir-ul li:first-child>div,#fir-ul li:nth-child(4)>div {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #FEE09A;
+    border-radius: 50%;
+    box-sizing: border-box;
+} 
+#fir-ul li:nth-child(2) {
+    font:13px monospace;
+    line-height: 70px
+}
+#fir-ul li:nth-child(3) >img {
+    width: 45px;
+    padding: 12px 0 0 30px;
+   
+}
+#fir-ul li:nth-child(4){
+    padding: 4px 0 0 10px
+}
+#fir-ul li:nth-child(4)>div {
+    background:#fff;
+    width: 60px;
+    height: 60px
+}
+#fir-ul li:nth-child(4)>div >img {
+    width: 52px;
+    padding: 3px 0 0 3px
+}
+#fir-ul li:nth-child(3),#fir-ul li:nth-child(4),
+#scor>#sec>div:nth-child(3)>li,#scor>#sec>div:nth-child(3)>li:nth-child(2) {
+    position:relative; 
+}
+#fir-ul li:nth-child(3) >img +div {
+    width: 47px;
+    height: 21px;
+    background: #1DAAEC;
+    border-radius: 10px;
+    position: absolute;
+    top: 22px;
+    left: 29px
+}
+#fir-ul li:nth-child(3) >img +div,
+#fir-ul li:nth-child(4)>div >img+div {
+    font: 14px  cursive;
+    text-align: center;
+}
+#fir-ul li:nth-child(4)>div >img+div {
+    width: 20px;
+    height: 21px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background: #EF492E;
+    position:absolute;
+    top: 23px;
+    left:31px
+} 
+#scor>#sec>div:nth-child(1){
+    height: 75px;
+    width: 95%;
+    position:relative;
+    margin: 10px auto;
+    border-radius: 12px
+}
+ul+p{
+    position: absolute;
+    top: -16px;
+    left: 115px;
+    font-size: 12px;
+    color: #6483BE
+}
+#scor>#sec>div:nth-child(2){
+    width:230px;
+    height:230px;
+    border-radius:50%;
+    display:flex;
+    margin:auto;
+    background:url("http://i.trust.ua/files/photo/4/0000002350.png");
+    background-size:cover
+}
+#scor>#sec>div:nth-child(2)>div {
+    width: 80px;
+    height: 80px;
+    border-radius:50%;
+    border:2px solid #fff;
+    margin:auto
+}
+#scor>#sec>div:nth-child(3){
+    width:90%;
+    height:70px;
+    margin:auto
+}
+#scor > #sec > div:nth-child(3) > li > img {
+    width:75px;
+}
+#scor > #sec > div:nth-child(3) > li > img+div {
+    position: absolute;
+    top: 25px;
+    left: 13px;
+    font: 16px cursive;
+    background: #1DAAEC;
+    width: 50px;
+    height: 23px;
+    border-radius: 6px;
+    text-align: center;
+}
+#scor>#sec>div:nth-child(3)>li:nth-child(2)>div>img {
+    width:90px
+}
+#scor>#sec>div:nth-child(3)>li:nth-child(2)>div>img+div {
+    position: absolute;
+    width: 27px;
+    height: 27px;
+    background: #EF492E;
+    text-align: center;
+    border-radius: 50%;
+    top: 22px;
+    left: 31px;
+    font: 20px cursive
+}
+#scor > div:first-child > .frst{
+    height:calc(100% - 50px);
+    width:100%;
+    overflow:auto
+}
+#scor+button {
+    width: 150px;
+    height: 40px;
+    bottom: 14px;
+    right: 40px;
+    border-radius: 10px;
+    background: #2B4372;
+    color: #fff;
+    position: absolute;
+    font: 18px cursive
+}
+#scor+button:hover {
+    background:#192D55
+}
+
+

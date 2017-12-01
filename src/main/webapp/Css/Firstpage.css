@@ -1,0 +1,74 @@
+body,html,.whole-div,.main-div{
+    height:100%;
+    width:100%;
+    margin:0px;
+    padding:0px;
+    overflow:hidden
+}
+ul,li,p{
+    margin:0px;
+    padding:0px;
+}
+#main{
+    height:100%;
+    width:100%;
+    position:relative;
+}
+video{
+    height:auto;
+    width:100%;
+    position:fixed;
+}
+.main-div > div > div:nth-child(2){
+    height: 200px;
+    width: 460px;
+    right: -600px;
+    animation: move 6s linear;
+    position:absolute;
+}
+.main-div > div > div:nth-child(2) > p{
+    font-family: 'UnifrakturCook', cursive;
+    font-size: 150px;
+    color: lightgray;
+    margin: 0px;
+    text-shadow: 2px 2px 3px #864f31
+}
+.main-div > div > div:nth-child(2) > p{
+    display:inline-block;
+    margin:0px;
+    padding:0px
+}
+#go-div{
+    width:450px;
+    font-size:40px;
+    position:absolute;
+    bottom:50px;
+    left:-500px;
+    font-family: 'Lobster', cursive;
+    cursor:pointer;
+    animation:mymove 6s linear;
+}
+#go{
+    text-decoration:none;
+    color:#D3D3D3;
+    text-shadow: 5px 2px 10px #864f31
+}
+#gif-div{
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    bottom: 90px;
+    left: 200px;
+    display:none;
+}
+#gif-div img{
+    height:100%;
+}
+@keyframes move{
+    0%{right:-600px}
+    80%,100%{right:100px}
+}
+@keyframes mymove{
+    0%{left:-500px;}
+    80%,100%{left:100px;}
+}

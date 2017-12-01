@@ -1,0 +1,197 @@
+body,
+html {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	margin: 0px;
+	padding: 0px
+}
+body{
+    background-image: url("../Images/playingback.jpg");
+    background-size: cover
+}
+button {
+    outline: none;
+    border: none
+}
+#ma {
+    width:20%;
+    height:200px;
+    margin: auto 0
+ }
+ #ma >h2 {
+    text-align: center;
+    font-family: cursive;
+    color: brown
+ }
+ label {
+    font:18px cursive
+}
+ #ma >h2+div {
+     width:40%;
+     margin:auto
+ }
+main{
+	width:60%;
+	height: 620px;
+	background: url("../Images/playbac.jpg");
+	background-size: cover;
+	margin: auto 0;
+	border-radius: 5px;
+    box-shadow: 1px 1px 20px rgba(63, 24, 7, 0.79)
+}
+main >header {
+    width:50%;
+    height: 100px;
+    box-sizing:border-box;
+    padding-top:15px;
+    margin:auto;
+    display:flex
+  }
+main >header>div:nth-child(2){
+    width:33.3%;
+    height:100%;
+    font:40px/100px 'Frijole', cursive;
+	color: #fff;
+	text-align: center;
+}
+main >header>div:nth-child(1),main >header>div:nth-child(3) {
+   background:#000;
+   width: 100px;
+   height: 100px;
+   border-radius:50%
+}
+header+div {
+    width:100%;
+    height:calc(100% - 100px);
+    display:flex;
+    margin-top:20px
+ }
+header+div>div {
+ width:50%;
+ height:100%
+}
+header+div>div:nth-child(1),header+div>div:nth-child(2) {
+    background: rgba(63, 24, 7, 0.47);
+    height:95%;
+	border: 3px solid #1F0100;
+	border-radius: 6px 
+}
+header+div>div:nth-child(2) {
+     background: rgba(63, 24, 7, 0.26);
+     border-left:none;
+}
+header+div>div:nth-child(1)>header{
+    color: #fff;
+    font:18px cursive;
+    padding: 5px;
+    text-align: center
+}
+header+div>div:nth-child(1)>header+div {
+    width:100%;
+    height:88.4%;
+    margin:0px;
+    overflow:auto;
+    display:block
+}
+#di-scrollbar-y,#di-scrollbar-y-rail{
+    width:0px;
+}
+#di>div {
+    width: 100%;
+    height: 74px;
+    padding-left: 25px;
+    display:flex;
+    box-sizing: border-box;
+    background: transparent;
+    border:none;
+    border-bottom: 2px dotted
+}
+#di>div>div:nth-child(1) {
+    width:60px;
+    height:60px;
+    margin-top:5px;
+    border-radius:50%;
+    background:#fff
+}
+#di>div>div:nth-child(2){
+    width:50%;
+    height:100%
+}
+#di>div>div:nth-child(2)>p:first-child{
+    padding-top:10px
+}
+#di>div>div:nth-child(2)>p{
+    margin:0px;
+    font: 18px cursive;
+    color: burlywood;
+    padding-left: 17px;
+}
+#di>div>div:nth-child(2)>p:nth-child(2){
+    color:antiquewhite
+}
+#di>div>div:nth-child(2)>p:nth-child(2) >span
+{
+    color: sandybrown
+}
+ #di::-webkit-scrollbar{
+     width:0px
+}
+/* #di::-moz-scrollbar{*/
+/*     width:0px*/
+/*}*/
+header+div>div:nth-child(2)>h2 {
+     font-family: cursive;
+    
+    color: moccasin
+}
+header+div>div:nth-child(2)>h2+div {
+    width: 200px;
+    height: 200px;
+    background: rgba(18, 148, 136, 0.53);
+    border-radius: 50%;
+    display:flex;
+    margin:auto
+}  
+header+div>div:nth-child(2)>h2+div>div {
+    width: 130px;
+    height: 130px;
+    margin: auto;
+    border-radius: 50%;
+    border: 5px solid rgba(29, 181, 169, 0.99)
+}
+h2+div+p {
+     font: 20px 'Arima Madurai', cursive;
+     color: rgba(250, 235, 215, 0.84);
+     margin:0px
+}
+.tot {
+     font: 22px 'Arima Madurai', cursive;
+     display:inline-block
+}
+table {
+    width:97%
+}
+th {
+    font: bold 19px 'Arima Madurai', cursive;
+    color: #F5D777;
+ }
+td>p {
+    background: #007570;
+    border-radius: 5px;
+    width: 50px;
+    height: 22px;
+    color:#fff;
+    padding-top: 5px;
+    margin: 10px auto
+}
+.req{
+    background: #E6C389;
+    width: 100px;
+    height: 30px;
+    font-size: 17px;
+    color: #552B11;
+    border-radius: 5px;
+    margin-top:20px;
+    letter-spacing: 1px
+}

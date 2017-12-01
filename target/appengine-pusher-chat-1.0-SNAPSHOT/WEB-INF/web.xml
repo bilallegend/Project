@@ -52,7 +52,7 @@
   	</servlet-mapping>
 	<servlet>
 		<servlet-name>Register_jsp</servlet-name>
-		<jsp-file>/jsp/Register.jsp</jsp-file>
+		<jsp-file>/Jsp/Register.jsp</jsp-file>
 	</servlet>
 
   <!--  Ajax signup servlet -->
