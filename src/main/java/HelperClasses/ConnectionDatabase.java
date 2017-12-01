@@ -23,14 +23,15 @@ public class ConnectionDatabase{
 		return connection;
     }
     
-    public void insert(Connection connection,String table_name,String column_name,String value) {
+    public String insert(Connection connection,String table_name,String column_name,String value) {
 	    try{
 		    Statement stmt = connection.createStatement();//Statement class creates a object that can execute our query in the connected database in connection object
 			String Query="insert into "+table_name+" ("+column_name+") values ("+value+")";//Query to be passed
 			System.out.println(Query);
 			stmt.executeUpdate(Query);//execution
+			return "Signup Successfull";
 	    } catch (SQLException e) {
-	        System.out.println(e+"");
+	        return e+"";
 	    }
         
     }

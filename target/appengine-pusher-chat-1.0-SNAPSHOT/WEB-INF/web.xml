@@ -65,4 +65,12 @@
 		<servlet-class>Ajax</servlet-class>
 	</servlet>
   
+  <servlet-mapping>
+  		<servlet-name>Fileupload_servlet</servlet-name>
+  		<url-pattern>/upload</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Fileupload_servlet</servlet-name>
+		<servlet-class>Upload</servlet-class>
+	</servlet>
 </web-app>

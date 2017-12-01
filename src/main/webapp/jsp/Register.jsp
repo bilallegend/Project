@@ -24,11 +24,12 @@
 			</div>
 			 
 			<div id="nam" style="display:flex;height:130px">
-			
+			<form id="data" action="upload" method="post" enctype="multipart/form-data">
 				<div class="co">
 					<label id="contanier">
 						<input type="file" name="photo" id="file"/>
 					</label>
+					</form>
 				</div>
 				<div>
 					<label>Name</label>
@@ -36,6 +37,7 @@
 						<div class="im">
 							<img src="../images/profile.png" />
 						</div>
+						
 						<input type="text" name="name" id="usrname_up" onkeyup="check()"/>
 					</div>
 					<p id="errname">username should have atleast 6</p>
@@ -70,7 +72,7 @@
 					</div>
 					<input type="text/number" name="num" class="in" maxlength="10" id="usrnum_up" onkeyup="check()"/>
 				</div>
-				<p id='errmail'>username should have atleast 6</p>
+				<p id='errnum'>username should have atleast 6</p>
 				<input type="submit" value="Register" class="sub" id="reg" />
 				
 			</div>

@@ -4,5 +4,6 @@ HelperClasses/CookieCreator.class
 com/example/appengine/pusher/ChatServlet.class
 Ajax.class
 com/example/appengine/pusher/SendMessageServlet.class
+Upload.class
 com/example/appengine/pusher/AuthorizeServlet.class
 com/example/appengine/pusher/SendMessageServlet$1.class
