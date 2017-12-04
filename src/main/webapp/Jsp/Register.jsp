@@ -126,13 +126,22 @@
 		</div>
 		<p class="sign" id="sgnup">SIGNUP</p>
 		<p class="sign sgnin" id="sig">SIGNIN</p>
-		<a href="http://gamecenterdesign.zcodeusers.com/MMAB-PROJECT/Html/Profile.html">
+		
 		<div class="profil"></div>
-		</a>
+		<div class="profilediv">
+                    <div>
+                        <div><div><a href="http://gamecenterdesign.zcodeusers.com/MMAB-PROJECT/Html/Profile.html"><p>change</p></a></div></div>
+                        <h5 id="name">madhubalan.m</h5>
+                        <p id="mail">madhubalan.m@zohouniv.com</p>
+                    </div>
+                    <button type="submit" class="edit">Edit profile</button>
+                    <button type="submit">Change password</button>
+                    <button type="submit">signout</button>
+           </div>
 		<div class="menu"><i class="fa fa-bars" aria-hidden="true"></i>
 		</div> <i class="fa fa-caret-right" id="aro" aria-hidden="true"></i>
 		<div class="feed"> <span>Tournament ID</span>
-			<p><a href="http://gamecenterdesign.zcodeusers.com/MMAB-PROJECT/Html/Tournament.html">AB-01</a></p>
+			<p class="tournament">AB-01</p>
 			<p>Ends in</p>
 			<h1>1h 29s</h1>
 			<i class="fa fa-commenting-o" aria-hidden="true" id="fed"><span>Feeds</span></i>

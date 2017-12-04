@@ -22,9 +22,13 @@ $(document).ready(function(){
 			        
 			        function(data,status){
 			            alert("Data: " + data + "\nStatus: " + status);
-			            $("#data").submit();
+			            console.log(typeof(data));
+			            var resultobj=JSON.parse(data);
+			        
 			            
-			            if(data=="Signup Successful"){
+			           // $("#data").submit();
+			            
+			            if(resultobj.status=="Signup Successful"){
 			            	
 			            	$("#signup").css({
 			        			"transform": "scale(0,0)",
@@ -41,6 +45,10 @@ $(document).ready(function(){
 			        			$(".profil").css("display", "block");
 			        			$(".menu").css("display", "block");
 			        		}, 700);
+			        		
+			        		$("#name").text(resultobj.name);
+			        		$("#mail").text(resultobj.mail);
+			        		
 			            }
 			        });
 		
@@ -82,6 +90,10 @@ $(document).ready(function(){
 			        },
 			        function(data,status){
 			            alert("Data: " + data + "\nStatus: " + status);
+			            
+			           
+			            var resultobj=JSON.parse(data);
+			            if(resultobj.status=="200"){
 			            $("#signin").css({
 			    			"transform": "scale(0,0)",
 			    			"transition": "1.5s"
@@ -97,10 +109,20 @@ $(document).ready(function(){
 			    			$(".profil").css("display", "block");
 			    			$(".menu").css("display", "block");
 			    		}, 700);
+			    		$("#name").text(resultobj.name);
+		        		$("#mail").text(resultobj.mail);
+			        }
 			        });
 	});
 	
-	
+	$(".tournament").click(function(){
+		
+		$.post("/ajax/tournament",{},function(data,status){
+			 alert(data+"Anu");
+			location.href=data;
+			
+		});
+	});
 	
 });
 
@@ -145,40 +167,43 @@ var check=function(){
 
 var check1=function(){
 	
-	$.post("/ajax/signin",
-	        {
-	          name: $("#usrname_in").val(),
-	          email:$("#usrmail_in").val(),
-	          pass:$("#usrpassword_in").val()
-	          
-	        },
-	        function(data,status){
-	        	
-	        	if(data=="200"){
-	        		console.log("Login Successful");
-	        		$("#errnamin")[0].style.visibility="hidden";
-	        		$("#errmailin")[0].style.visibility="hidden";
-	        		$("#errpassin")[0].style.visibility="hidden";
-	        	}
-	        	else if(data=="150"){
-	        		console.log("Invalid password");
-	        		$("#errpassin")[0].style.visibility="visible";
-	        	}
-	        	else if(data=="100"){
-	        		console.log("Invalid mail");
-	        		$("#errnamin")[0].style.visibility="hidden";
-	        		$("#errpassin")[0].style.visibility="hidden";
-	        		$("#errmailin")[0].style.visibility="visible";
-	        	}
-	        	else if(data=="50"){
-	        		console.log("Invalid username");
-	        		
-	        		$("#errnamin")[0].style.visibility="visible";
-	        		$("#errmailin")[0].style.visibility="hidden";
-	        		$("#errpassin")[0].style.visibility="hidden";
-	        	}
-	        	
-	        });
+//	$.post("/ajax/signin",
+//	        {
+//	          name: $("#usrname_in").val(),
+//	          email:$("#usrmail_in").val(),
+//	          pass:$("#usrpassword_in").val()
+//	          
+//	        },
+//	        function(data,status){
+//	        	console.log(data +"vg");
+//	        	var resultobj=JSON.parse(data);
+//	        	
+//	        	if(resultobj.status=="200"){
+//	        		console.log("Login Successful");
+//	        		$("#errnamin")[0].style.visibility="hidden";
+//	        		$("#errmailin")[0].style.visibility="hidden";
+//	        		$("#errpassin")[0].style.visibility="hidden";
+//	        	}
+//	        	else if(resultobj.status=="150"){
+//	        		console.log("Invalid password");
+//	        		$("#errpassin")[0].style.visibility="visible";
+//	        	}
+//	        	else if(resultobj.status=="100"){
+//	        		console.log("Invalid mail");
+//	        		$("#errnamin")[0].style.visibility="hidden";
+//	        		$("#errpassin")[0].style.visibility="hidden";
+//	        		$("#errmailin")[0].style.visibility="visible";
+//	        	}
+//	        	else if(resultobj.status=="50"){
+//	        		console.log("Invalid username");
+//	        		
+//	        		$("#errnamin")[0].style.visibility="visible";
+//	        		$("#errmailin")[0].style.visibility="hidden";
+//	        		$("#errpassin")[0].style.visibility="hidden";
+//	        	}
+//	        	
+//	        });
+//	
 	
 }
 	
