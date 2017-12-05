@@ -46,8 +46,22 @@
   <servlet-mapping>
     <servlet-name>uploadforexample</servlet-name>
     <url-pattern>/uploadad</url-pattern>
+  </servlet-mapping> <servlet>
+    <servlet-name>uploadforexample1</servlet-name>
+   <jsp-file>/Jsp/wer.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>uploadforexample1</servlet-name>
+    <url-pattern>/uploadfile</url-pattern>
   </servlet-mapping>
-  
+  <servlet-mapping>
+  		<servlet-name>Fileupload_servlet</servlet-name>
+  		<url-pattern>/upload</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Fileupload_servlet</servlet-name>
+		<servlet-class>Upload</servlet-class>
+	</servlet>
   
   
   
@@ -61,17 +75,63 @@
 		<servlet-name>Register_jsp</servlet-name>
 		<jsp-file>/Jsp/Register.jsp</jsp-file>
 	</servlet>
+	
+	<servlet-mapping>
+  		<servlet-name>Tournament_jsp</servlet-name>
+  		<url-pattern>/tournament</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Tournament_jsp</servlet-name>
+		<jsp-file>/Jsp/Tournament.jsp</jsp-file>
+	</servlet>
 
   <!--  Ajax signup servlet -->
   	<servlet-mapping>
-  		<servlet-name>Ajax_servlet</servlet-name>
-  		<url-pattern>/ajax/*</url-pattern>	
+  		<servlet-name>Signup</servlet-name>
+  		<url-pattern>/ajax/signup</url-pattern>	
   	</servlet-mapping>
 	<servlet>
-		<servlet-name>Ajax_servlet</servlet-name>
-		<servlet-class>Ajax</servlet-class>
+		<servlet-name>Signup</servlet-name>
+		<servlet-class>Ajax.Signup</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+  		<servlet-name>Signin</servlet-name>
+  		<url-pattern>/ajax/signin</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Signin</servlet-name>
+		<servlet-class>Ajax.Signin</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+  		<servlet-name>Tournament</servlet-name>
+  		<url-pattern>/ajax/tournament</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Tournament</servlet-name>
+		<servlet-class>Ajax.Tournament</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+  		<servlet-name>Tournament members</servlet-name>
+  		<url-pattern>/ajax/joinedmembers</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Tournament members</servlet-name>
+		<servlet-class>Ajax.TournamentMembers</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+  		<servlet-name>Join</servlet-name>
+  		<url-pattern>/ajax/join</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Join</servlet-name>
+		<servlet-class>Ajax.TournamentJoin</servlet-class>
 	</servlet>
   
+<<<<<<< HEAD
   <servlet-mapping>
   		<servlet-name>Fileupload_servlet</servlet-name>
   		<url-pattern>/upload</url-pattern>	
@@ -106,4 +166,7 @@
 		<servlet-class>OnlineMembers</servlet-class>
 	</servlet>
 	
+=======
+  
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 </web-app>

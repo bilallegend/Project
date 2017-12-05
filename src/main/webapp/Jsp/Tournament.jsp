@@ -1,10 +1,13 @@
+
 <!DOCTYPE HTML>
 <html>
     <head>
         <link rel="stylesheet" href="../Css/Tournament.css">
         <link href="https://fonts.googleapis.com/css?family=Macondo+Swash+Caps|Playball" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="../Js/Tournament.js"></script>
     </head>
-    <body>
+    <body id="body">
         <div class="whole">
             <div>
                 <header>
@@ -19,55 +22,15 @@
                     </div>
                 </header>
                 <div class="whldiv">
-                    <div class="frstdiv">
-                        <p>Tournament Players</p>
-                        <div>
-                            <div></div>
-                            <p>MadhuBalan</p>
-                        </div>
-                         <div>
-                             <div></div>
-                            <p>MadhuBalan</p>
-                         </div>
-                          <div>
-                              <div></div>
-                            <p>MadhuBalan</p>
-                          </div>
-                           <div>
-                               <div></div>
-                            <p>MadhuBalan</p>
-                           </div>
-                            <div>
-                                <div></div>
-                            <p>MadhuBalan</p>
-                            </div>
-                             <div>
-                                 <div></div>
-                            <p>MadhuBalan</p>
-                             </div>
-                              <div>
-                                  <div></div>
-                            <p>MadhuBalan</p>
-                              </div>
-                              <div style="border:none">
-                                  <div></div>
-                            <p>MadhuBalan</p>
-                              </div>
+                    <div class="frstdiv" id="first">
+                   
                     </div>
                     <div class="snddiv">
                         <div>
                             <p>MATCHES</p>
+                            <button id="join">JOIN</button>
                             <div id="di">
-                                <div>
-                                   <div></div>
-                                   <div></div>
-                                   <div></div>
-                                   <div></div>
-                                   <div></div>
-                                   <div></div>
-                                   <div></div>
-                                   <div></div>
-                                </div>
+
                                 <div>
                                 <div></div>
                                 <div style="left:240px"></div>

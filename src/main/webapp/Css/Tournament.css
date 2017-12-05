@@ -98,10 +98,24 @@ header > img:first-child{
     width:100%;
 }
 .snddiv>div>p {
+    width: 86%;
+    float: left;
     font:30px 'Macondo Swash Caps', cursive;
     color:#fff;
     padding-top:5px;
     text-align:center
+}
+.snddiv>div>p+button {
+    border: none;
+    outline: none;
+    background: #fff;
+    width: 100px;
+    height: 30px;
+    cursor:pointer;
+    border-radius: 4px;
+    font:bold 18px 'Macondo Swash Caps', cursive;
+    color: #994D13;
+    margin-top: 10px
 }
 .frstdiv>div>div {
     width:50px;

@@ -21,8 +21,9 @@ public class CookieCreator{
        }
        map.put(random, id);
        context.setAttribute("cookie",map);
+       cookie.setPath("/");
        res.addCookie(cookie);
-       System.out.println("ko");
+       
        
    }
 }
