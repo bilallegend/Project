@@ -1,4 +1,46 @@
 $(document).ready(function(){
+	
+	var cookie=document.cookie;
+	var list=cookie.split("; ");
+	var usercookie="0";
+	var count=0;
+	for(i=0;i<list.length;i++){
+		var l=list[i].split("=");
+		if(l[0]=="gc_account"){
+			usercookie=l[1];
+			count+=1;
+			break;
+		}
+	}
+	$.post("/ajax/profile",{num:usercookie},function(data,status){
+		
+		var obj=JSON.parse(data);
+	   
+		if(obj.mail!=""&&obj.name!=""){
+			
+			$("#signup").css({
+    			"transform": "scale(0,0)",
+    			"transition": "1.5s"
+    		});
+    		setTimeout(function () {
+    	        $(".whole").css("filter","blur(0px)");
+    			$("#menu").css({
+    				"transform": "scale(1,1)",
+    				"transition": "1s"
+    			});
+    			$("#sgnup").css("display", "none");
+    			$("#sig").css("display", "none");
+    			$(".profil").css("display", "block");
+    			$(".menu").css("display", "block");
+    		}, 700);
+			
+		$(".profil").css('background-image', "http://loclhost"+obj.photo);
+		$("#name").text(obj.name);
+		$("#mail").text(obj.mail);
+		}
+		
+	});
+	
 	$("#reg").click(function(){
 		
 		var name=$("#usrname_up").val();
@@ -17,8 +59,7 @@ $(document).ready(function(){
 		              
 		              
 			        },
-		            
-			        
+		            			        
 			        
 			        function(data,status){
 			            alert("Data: " + data + "\nStatus: " + status);
@@ -26,7 +67,7 @@ $(document).ready(function(){
 			            var resultobj=JSON.parse(data);
 			        
 			            
-			           // $("#data").submit();
+			           
 			            
 			            if(resultobj.status=="Signup Successful"){
 			            	
@@ -45,7 +86,7 @@ $(document).ready(function(){
 			        			$(".profil").css("display", "block");
 			        			$(".menu").css("display", "block");
 			        		}, 700);
-			        		
+			        		 //$("#data").submit();
 			        		$("#name").text(resultobj.name);
 			        		$("#mail").text(resultobj.mail);
 			        		
@@ -162,6 +203,8 @@ var check=function(){
 	else{
 		$(id[4])[0].style.visibility="visible";
 	}
+	
+	
 	
 }
 

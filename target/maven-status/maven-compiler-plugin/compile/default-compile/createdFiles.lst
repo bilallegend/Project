@@ -1,4 +1,5 @@
 Ajax/Signup.class
+Ajax/upload.class
 HelperClasses/ConnectionDatabase.class
 com/example/appengine/pusher/ChatServlet.class
 Ajax/Tournament.class
@@ -9,7 +10,9 @@ HelperClasses/CookieCreator.class
 Ajax/TournamentJoin.class
 Ajax.class
 Ajax/TournamentMembers.class
+Ajax/Serve.class
 com/example/appengine/pusher/SendMessageServlet.class
 HelperClasses/FIleUpload.class
 Upload.class
 com/example/appengine/pusher/AuthorizeServlet.class
+Ajax/Profile.class

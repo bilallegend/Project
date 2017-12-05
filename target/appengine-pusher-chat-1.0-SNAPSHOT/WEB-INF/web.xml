@@ -105,6 +105,15 @@
 	</servlet>
 	
 	<servlet-mapping>
+  		<servlet-name>Profile</servlet-name>
+  		<url-pattern>/ajax/profile</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Profile</servlet-name>
+		<servlet-class>Ajax.Profile</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
   		<servlet-name>Tournament</servlet-name>
   		<url-pattern>/ajax/tournament</url-pattern>	
   	</servlet-mapping>
@@ -130,6 +139,39 @@
 		<servlet-name>Join</servlet-name>
 		<servlet-class>Ajax.TournamentJoin</servlet-class>
 	</servlet>
+	
+	
+	 <servlet>
+    <servlet-name>Upload</servlet-name>
+    <servlet-class>Ajax.upload</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>Serve</servlet-name>
+    <servlet-class>Ajax.Serve</servlet-class>
+  </servlet>
+ 
+  <servlet-mapping>
+    <servlet-name>Upload</servlet-name>
+    <url-pattern>/upload</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Serve</servlet-name>
+    <url-pattern>/serve</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>File</servlet-name>
+    <jsp-file>/Jsp/wer.jsp</jsp-file>
+  </servlet>
+ 
+  <servlet-mapping>
+    <servlet-name>File</servlet-name>
+    <url-pattern>/uploadfile</url-pattern>
+  </servlet-mapping>
+  
+  
   
   
 </web-app>

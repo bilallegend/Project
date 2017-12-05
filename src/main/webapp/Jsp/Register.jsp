@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="com.google.appengine.api.blobstore.BlobstoreServiceFactory"%>
+<%@ page import="com.google.appengine.api.blobstore.BlobstoreService" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,11 +22,15 @@
 	<div class="blu">
 		<div id="signup">
 			<div id="rib">REGISTER
-				<img src="../images/close.png" alt="close" class="close" id="fir-clo" />
+				<img src="../Images/close.png" alt="close" class="close" id="fir-clo" />
 			</div>
 			 
-			<div id="nam" style="display:flex;height:130px">
-			<form id="data" action="upload" method="post" enctype="multipart/form-data">
+			<div id="nam" style="display:flex;height:130px">  <%
+    BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+    String url= blobstoreService.createUploadUrl("/upload");
+    %>
+     
+    <form  id='data' action="<%=url %>" method="post" enctype="multipart/form-data">
 				<div class="co">
 					<label id="contanier">
 						<input type="file" name="photo" id="file"/>
@@ -35,7 +41,7 @@
 					<label>Name</label>
 					<div class="dv">
 						<div class="im">
-							<img src="../images/profile.png" />
+							<img src="../Images/profile.png" />
 						</div>
 						
 						<input type="text" name="name" id="usrname_up" onkeyup="check()"/>

@@ -31,8 +31,7 @@ public class TournamentJoin  extends HttpServlet{
                    .create();
 	      String json ="";
    	 for(String s:users.keySet()) {
-   		 System.out.println(request.getParameter("num"));
-   		 System.out.println(users.get(s));
+   		 
    		 if(s.equals(request.getParameter("num"))) {
    			 name=users.get(s);
    			 break;
