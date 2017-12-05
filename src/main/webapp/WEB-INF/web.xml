@@ -131,7 +131,7 @@
 		<servlet-class>Ajax.TournamentJoin</servlet-class>
 	</servlet>
   
-<<<<<<< HEAD
+
   <servlet-mapping>
   		<servlet-name>Fileupload_servlet</servlet-name>
   		<url-pattern>/upload</url-pattern>	
