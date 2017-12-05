@@ -60,7 +60,7 @@
 
     var socket_id = null;
     // add presence prefix for authenticated presence channels.
-    var channel_name = "presence-" + room;
+    var channel_name = "private-" + room;
     function updateOnlineCount() {
         $('#chat_widget_counter').html($('.chat_widget_member').length);
     }
@@ -88,17 +88,11 @@
             console.log(" pusher:subscription_succeeded ");
             var whosonline_html = '';
             console.log(members);
-            members.each(function (member) {
-                whosonline_html += '<li class="chat_widget_member" id="chat_widget_member_'
-                    +
-                    member.id + '">' + member.info.displayName + '</li>';
-            });
-            $('#chat_widget_online_list').html(whosonline_html);
             updateOnlineCount();
         });
         // presence channel receive events when members are added / removed
         channel.bind('pusher:member_added', function (member) {
-        	console.log(" pusher:member_added ");
+        	console.log(member);
             // track member additions to channel
             $('#chat_widget_online_list').append('<li class="chat_widget_member" ' +
                 'id="chat_widget_member_' + member.id + '">'
@@ -137,6 +131,7 @@
             // trigger a server-side endpoint to send the message via Pusher
             $.post('/message', data,
                 function (msg) {
+            		console.log(msg)
                     chat_widget_button.show(); //show the chat button
                     if (msg.status == "SUCCESS") {
                         chat_widget_input.val('');

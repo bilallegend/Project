@@ -1,5 +1,7 @@
 
 import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.*;
 
 import javax.servlet.*;
@@ -72,6 +74,19 @@ public class Ajax extends HttpServlet{
 			} catch (SQLException e) {
 				
 				e.printStackTrace();
+			}
+			
+		}
+		
+		else if(request.getPathInfo().equals("/getOnlineMembers")) {
+			URI thisUri =null;
+			try {
+				thisUri = new URI(request.getRequestURL().toString());
+				response.getWriter().write(thisUri.getScheme()+"://"+thisUri.getHost()+":"+thisUri.getPort()+"/onlineMembers");//scheme,host,path,fragment
+				System.out.println(thisUri.getScheme()+"://"+thisUri.getHost()+":"+thisUri.getPort()+"/onlineMembers");
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				response.getWriter().write(null+"");
 			}
 			
 		}

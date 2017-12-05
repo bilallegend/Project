@@ -4,6 +4,8 @@
 	<link rel="stylesheet" href="../Css/Play.css">
 	<link href="https://fonts.googleapis.com/css?family=Frijole" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
     <div id="ma">
@@ -29,7 +31,7 @@
 	                    <div></div>
 	                    <div>
 	                    <p>Muthumari</p>
-	                    <p>Privacy: <span>private</span></p>
+	                    <p>Privacy: <span id="pri">private</span></p>
 	                    </div>
 	                    <a href="http://gamecenterdesign.zcodeusers.com/MMAB-PROJECT/Html/board.html"><button class="req">Request</button></a>
 	                </div>
@@ -113,5 +115,6 @@
 	        </div>
 	    </div>
 	</main>
+	<script src="../Js/onlinemembers.js"></script>
 </body>
 </html>

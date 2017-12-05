@@ -73,7 +73,8 @@ public class AuthorizeServlet extends HttpServlet {
     // Inject custom authentication code for your application here to allow/deny current request
 
     String auth =
-        pusher.authenticate(socketId, channelId, new PresenceUser(currentUserId, userInfo));
+    		pusher.authenticate(socketId, channelId);
+        //pusher.authenticate(socketId, channelId, new PresenceUser(currentUserId, userInfo));
     // if successful, returns authorization in the format
     //    {
     //      "auth":"49e26cb8e9dde3dfc009:a8cf1d3deefbb1bdc6a9d1547640d49d94b4b512320e2597c257a740edd1788f",

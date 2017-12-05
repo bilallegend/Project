@@ -36,13 +36,7 @@ public class ChatServlet extends HttpServlet {
       if (chatRoom != null) {
         query = "room=" + chatRoom;
       }
-      System.out.println(request.getRequestURL().toString()+"  getRequestURL()");
       URI thisUri = new URI(request.getRequestURL().toString());
-      System.out.println(thisUri+" thisUri");
-      System.out.println(thisUri.getScheme()+" "+
-              thisUri.getUserInfo()+" "+
-              thisUri.getHost()+" "+
-              thisUri.getPort());
       URI uriWithOptionalRoomParam =
           new URI(
               thisUri.getScheme(),
@@ -67,15 +61,12 @@ public class ChatServlet extends HttpServlet {
     User currentUser = userService.getCurrentUser();
     System.out.println(currentUser+" currentUser");
     String room = req.getParameter("room");
-    System.out.println(room+" room");
     // Show login link if user is not logged in.
     if (currentUser == null) {
       String loginUrl = userService.createLoginURL(getUriWithChatRoom(req, room));
-      System.out.println(loginUrl+" loginUrl");
       resp.getWriter().println("<p>Please <a href=\"" + loginUrl + "\">sign in</a>.</p>");
       return;
     }
-System.out.println("After if "+room);
     // user is already logged in
     if (room != null) {
       req.setAttribute("room", room);

@@ -80,4 +80,30 @@
 		<servlet-name>Fileupload_servlet</servlet-name>
 		<servlet-class>Upload</servlet-class>
 	</servlet>
+	
+	
+	 <servlet-mapping>
+  		<servlet-name>members_servlet</servlet-name>
+  		<url-pattern>/onlineMembers</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>members_servlet</servlet-name>
+		<jsp-file>/Jsp/Play.jsp</jsp-file>
+	</servlet>
+	
+	
+	
+	
+	<!-- Pusher -->
+	
+	
+		 <servlet-mapping>
+  		<servlet-name>online_servlet</servlet-name>
+  		<url-pattern>/getRoom</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>online_servlet</servlet-name>
+		<servlet-class>OnlineMembers</servlet-class>
+	</servlet>
+	
 </web-app>

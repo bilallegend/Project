@@ -29,12 +29,15 @@ public abstract class PusherService {
   private static Pusher instance;
 
   static Pusher getDefaultInstance() {
+	 
     if (instance != null) {
+    	System.out.println(instance.get(" /apps/[app_id]/channels/[channel_name]")  +"   hello");
       return instance;
     } // Instantiate a pusher
     Pusher pusher = new Pusher(APP_ID, APP_KEY, APP_SECRET);
     pusher.setCluster(CLUSTER); // required, if not default mt1 (us-east-1)
     pusher.setEncrypted(true); // optional, ensure subscriber also matches these settings
+    
     instance = pusher;
     return pusher;
   }

@@ -1,9 +1,13 @@
-com/example/appengine/pusher/PusherService.class
 HelperClasses/ConnectionDatabase.class
-HelperClasses/CookieCreator.class
 com/example/appengine/pusher/ChatServlet.class
+com/example/appengine/pusher/AuthorizeUser.class
+OnlineMembers.class
+com/example/appengine/pusher/SendMessageServlet$1.class
+com/example/appengine/pusher/PusherService.class
+HelperClasses/CookieCreator.class
 Ajax.class
+HelperClasses/Cooky.class
 com/example/appengine/pusher/SendMessageServlet.class
+HelperClasses/FIleUpload.class
 Upload.class
 com/example/appengine/pusher/AuthorizeServlet.class
-com/example/appengine/pusher/SendMessageServlet$1.class

@@ -109,8 +109,8 @@
 		</div>
 		
 		<div id="menu">
-			<div>
-				<p><a href="http://gamecenterdesign.zcodeusers.com/MMAB-PROJECT/Html/PlayingPage.html">PLAY ONLINE</a>
+			<div id="playonline">
+				<p><a>PLAY ONLINE</a>
 				</p>
 			</div>
 			<div>

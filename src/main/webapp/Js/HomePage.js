@@ -1,11 +1,23 @@
 $(document).ready(function(){
+	
+	
+	$("#playonline").click(function(){
+		$.post("/ajax/getOnlineMembers",{},function(data,status){
+			if(data!="null"){
+				location.href=data;
+			}
+			
+		});
+	});
 	$("#reg").click(function(){
 		
 		var name=$("#usrname_up").val();
 		var email=$("#usrmail_up").val();
 		var pass=$("#usrpassword_up").val();
 		var num=$("#usrnum_up").val();
-		var file=$("#file").val();		
+		//var file=$("#file").val();		
+		
+		
 		
 		 $.post("/ajax/signup",
 				 {
@@ -22,7 +34,6 @@ $(document).ready(function(){
 			        
 			        function(data,status){
 			            alert("Data: " + data + "\nStatus: " + status);
-			            $("#data").submit();
 			            
 			            if(data=="Signup Successful"){
 			            	
