@@ -344,11 +344,12 @@ a {
 	position: absolute;
 	top: 0;
 	left: 0;
+	overflow:auto
 }
 /*-----------------------------------------------Alert P tag----------------------------------------------------------*/
 .dv+p {
     padding-top: 10px;
-    font: 14px lato;
+    font: 11px lato;
     color: red;
     text-transform: capitalize
 } 

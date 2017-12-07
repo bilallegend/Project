@@ -3,6 +3,8 @@ import java.io.*;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.regex.Pattern;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 
@@ -18,13 +20,24 @@ public class Signup extends HttpServlet{
     protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		 ConnectionDatabase psql = new ConnectionDatabase();
 		 Connection conn			=psql.createConnection("gamecenter");
-		
-			String[] params= new String[]{"usrname,usrmail,usrpassword"};
+		 boolean name=Pattern.compile("^[A-Za-z0-9]{3,30}$").matcher(request.getParameter("name")).matches();
+		 boolean phone=Pattern.compile("^[0-9-()+]{10,15}").matcher(request.getParameter("num")).matches();
+		 boolean pass=Pattern.compile("[A-Za-z0-9_-]{6,10}$").matcher(request.getParameter("pass")).matches();
+		 boolean conpass=request.getParameter("pass").equals(request.getParameter("confirm"));
+		 boolean check[]= {name,pass,conpass,phone};
+		 
 			      
 			      HashMap<String,String> result= new  HashMap<String,String>(); 
 			      Gson gson = new GsonBuilder().setPrettyPrinting()
 		                    .create();
 			      String json ="";
+			      
+			      if(name&&phone&&pass&&conpass) {
+						
+			    	 
+			    	  
+					
+			      
 				  String res=psql.insert(conn, "player_info", "username,email_id,password,number", "'"+request.getParameter("name")+"','"+request.getParameter("email")+"','"+request.getParameter("pass")+"',"+request.getParameter("num"));
 				  if(res.equals("Signup Successfull")) {
 				  CookieCreator one = new CookieCreator();
@@ -54,7 +67,23 @@ public class Signup extends HttpServlet{
 					return;
 				}
 			}
-				  
+			}		
+			      else {
+			    	    String errors="";
+			    	    String a[]= {"#errname","#errpass","#errpassword","#errnum"};
+			    	    
+						
+			    	    for(int i=0;i<check.length;i++) {
+			    	    	if(check[i]==false) {
+			    	    		errors+="&"+a[i];
+			    	    	}
+			    	    }
+			    	    result.put("status","Invalid data");
+			    	    result.put("errors",errors);
+			    	    json=gson.toJson(result);
+						response.getWriter().write(json);
+			      }
+			      
 		}
 	}
 

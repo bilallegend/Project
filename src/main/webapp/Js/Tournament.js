@@ -15,16 +15,24 @@ $(document).ready(function(){
 		}
 		$.post("/ajax/joinedmembers",{num:usercookie},function(data,status){
 			
+			console.log(data);
+			console.log(data[2053]+" "+data[2054])
 			var obj=JSON.parse(data);
-		
+			console.log(obj);
 			$("#first").html(obj.members);
 			$("#di").html(obj.extra);
-//			$("#join").style.visibility=obj.join;
+			$("#name").text(obj.currtour);
+			document.getElementById("join").style.visibility=obj.join;
+			if((obj.extra).length>10){
+				for(k=1;k<9;k++){
+					document.getElementById(k).style.backgroundImage = "url('"+obj[k+""]+"')";
+				}
+			}
 			
 		});
 		$("#join").click(function(){
 			
-			//$(this).style.visibility="hidden";
+			document.getElementById("join").style.visibility="hidden";
 			var cookie=document.cookie;
 			var list=cookie.split("; ");
 			var usercookie="";
@@ -43,10 +51,15 @@ $(document).ready(function(){
 				$.post("/ajax/join",{num:usercookie},function(data,status){
 					
 					var obj=JSON.parse(data);
-			
+					console.log(obj);
 					$("#first").html(obj.members);
 					$("#di").html(obj.extra);
-				//	$("#join").style.visibility=obj.join;
+					document.getElementById("join").style.visibility=obj.join;
+					if((obj.extra).length>10){
+						for(k=1;k<5;k++){
+							document.getElementById(k).style.backgroundImage = "url('"+obj[k+""]+"')";
+						}
+					}
 				});
 				
 			}

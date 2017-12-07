@@ -22,22 +22,31 @@ public class Signin extends HttpServlet{
 	
 	
 		
-		ResultSet data_table=psql.select(conn, "player_info", "username,email_id,password", request.getParameter("name"));
+		ResultSet data_table=psql.select(conn, "player_info", "username,email_id,password,photo", request.getParameter("name"));
 		HashMap<String,String> result= new  HashMap<String,String>(); 
 	      Gson gson = new GsonBuilder().setPrettyPrinting()
                     .create();
 	      String json ="";
+	      String photo="";
 		
 		try {
 			while(data_table.next()) {
 				
 			    if(data_table.getString("email_id").equals(request.getParameter("email")) ){
 			        if(data_table.getString("password").equals(request.getParameter("pass"))){
+			        	
 			            CookieCreator one = new CookieCreator();
 			            one.createContext("gc_account", data_table.getString("username"),request,response);
+			             photo=data_table.getString("photo");
 			             result.put("status","200");
 		                  result.put("name",request.getParameter("name"));
 		                  result.put("mail",request.getParameter("email"));
+		                  if(photo=="") {
+		                	  result.put("photo","../Images/pr.png");
+		                  }
+		                  else {
+		                	  result.put("photo","http://localhost:8080"+photo);
+		                  }
 		                  json=gson.toJson(result);
 		                  System.out.println(result);
 		               
