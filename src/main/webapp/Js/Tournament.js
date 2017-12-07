@@ -25,7 +25,12 @@ $(document).ready(function(){
 			document.getElementById("join").style.visibility=obj.join;
 			if((obj.extra).length>10){
 				for(k=1;k<9;k++){
+					if(obj[k+""].contains("null")){
+						document.getElementById(k).style.backgroundImage = "url('')";
+					}
+					else{
 					document.getElementById(k).style.backgroundImage = "url('"+obj[k+""]+"')";
+					}
 				}
 			}
 			
