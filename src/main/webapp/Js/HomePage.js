@@ -1,5 +1,17 @@
 $(document).ready(function(){
 
+	
+	
+	$("#playonline").click(function(){
+		$.post("/ajax/getOnlineMembers",{},function(data,status){
+			if(data!="null"){
+				location.href=data;
+			}
+			
+		});
+	});
+
+
 	var cookie=document.cookie;
 	var list=cookie.split("; ");
 	var usercookie="0";
@@ -51,10 +63,16 @@ $(document).ready(function(){
 		var email=$("#usrmail_up").val();
 		var pass=$("#usrpassword_up").val();
 		var num=$("#usrnum_up").val();
+
 		var file=$("#file").val();	
 		
+
+		
+		
+
 		//if($("#errname").css("visibility")=="hidden"&&$("#errmail").css("visibility")=="hidden"&&$("#errpass").css("visibility")=="hidden"&&$("#errnum").css("visibility")=="hidden"&&$("#errpassword").css("visibility")=="hidden"){
 		 $.post("/ajax/signup",
+
 				 {
 			          name: name,
 			          email:email,
@@ -72,7 +90,6 @@ $(document).ready(function(){
 			            var resultobj=JSON.parse(data);
 			        
 			            alert(resultobj.status);
-			           
 			            
 			            if(resultobj.status=="Signup Successful"){
 
@@ -91,10 +108,6 @@ $(document).ready(function(){
 			            }
 			            
 			        });
-		
-		
-		
-
 	});
 		
 
@@ -102,7 +115,7 @@ $(document).ready(function(){
 
 	$("#login").click(function(){
 		
-		 $.post("/ajax/signin",
+		 $.post("/signin",
 			        {
 			          name: $("#usrname_in").val(),
 			          email:$("#usrmail_in").val(),

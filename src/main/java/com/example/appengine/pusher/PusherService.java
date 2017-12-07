@@ -28,13 +28,16 @@ public abstract class PusherService {
 
   private static Pusher instance;
 
-  static Pusher getDefaultInstance() {
+  public static Pusher getDefaultInstance() {
+	  System.out.println("Publicservice");
     if (instance != null) {
+    	System.out.println("instance is not null");
       return instance;
     } // Instantiate a pusher
     Pusher pusher = new Pusher(APP_ID, APP_KEY, APP_SECRET);
     pusher.setCluster(CLUSTER); // required, if not default mt1 (us-east-1)
     pusher.setEncrypted(true); // optional, ensure subscriber also matches these settings
+    
     instance = pusher;
     return pusher;
   }

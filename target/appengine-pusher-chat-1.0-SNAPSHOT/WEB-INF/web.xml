@@ -11,10 +11,27 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
   xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
   version="2.5">
+  
+  <!-- Ajax filter-->
+  
+  <filter>
+    <filter-name>myFilter</filter-name>
+    <filter-class>Filters.AccountFilter</filter-class>
+</filter>
+
+<filter-mapping>
+    <filter-name>myFilter</filter-name>
+    <url-pattern>/ajax/*</url-pattern>
+</filter-mapping>
+  
+  
+  
+  
+  
   <servlet>
     <servlet-name>chat</servlet-name>
     <servlet-class>com.example.appengine.pusher.ChatServlet</servlet-class>
@@ -27,6 +44,8 @@
     <servlet-name>sendMessage</servlet-name>
     <servlet-class>com.example.appengine.pusher.SendMessageServlet</servlet-class>
   </servlet>
+
+
   <servlet-mapping>
     <servlet-name>chat</servlet-name>
     <url-pattern>/</url-pattern>
@@ -40,6 +59,28 @@
     <url-pattern>/message</url-pattern>
   </servlet-mapping>
   
+<<<<<<< HEAD
+  
+  
+  
+  
+  <servlet>
+    <servlet-name>uploadforexample</servlet-name>
+    <servlet-class>HelperClasses.FIleUpload</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>uploadforexample</servlet-name>
+    <url-pattern>/uploadad</url-pattern>
+  </servlet-mapping> <servlet>
+    <servlet-name>uploadforexample1</servlet-name>
+   <jsp-file>/Jsp/wer.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>uploadforexample1</servlet-name>
+    <url-pattern>/uploadfile</url-pattern>
+  </servlet-mapping>
+=======
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
   <servlet-mapping>
   		<servlet-name>Fileupload_servlet</servlet-name>
   		<url-pattern>/upload</url-pattern>	
@@ -74,7 +115,7 @@
   <!--  Ajax signup servlet -->
   	<servlet-mapping>
   		<servlet-name>Signup</servlet-name>
-  		<url-pattern>/ajax/signup</url-pattern>	
+  		<url-pattern>/signup</url-pattern>	
   	</servlet-mapping>
 	<servlet>
 		<servlet-name>Signup</servlet-name>
@@ -85,7 +126,7 @@
 	
 	<servlet-mapping>
   		<servlet-name>Signin</servlet-name>
-  		<url-pattern>/ajax/signin</url-pattern>	
+  		<url-pattern>/signin</url-pattern>	
   	</servlet-mapping>
 	<servlet>
 		<servlet-name>Signin</servlet-name>
@@ -166,5 +207,80 @@
 	</servlet>
   
   
-  
+
+  <servlet-mapping>
+  		<servlet-name>Fileupload_servlet</servlet-name>
+  		<url-pattern>/upload</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Fileupload_servlet</servlet-name>
+		<servlet-class>Upload</servlet-class>
+	</servlet>
+	
+	
+	 <servlet-mapping>
+  		<servlet-name>members_servlet</servlet-name>
+  		<url-pattern>/onlineMembers</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>members_servlet</servlet-name>
+		<servlet-class>RoomChecker</servlet-class>
+	</servlet>
+	
+	
+	<servlet-mapping>
+  		<servlet-name>online_ser</servlet-name>
+  		<url-pattern>/ajax/getOnlineMembers</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>online_ser</servlet-name>
+		<servlet-class>Ajax.OnlineMemb</servlet-class>
+	</servlet>
+	
+	
+	<!-- Pusher -->
+	
+	
+		 <servlet-mapping>
+  		<servlet-name>online_servlet</servlet-name>
+  		<url-pattern>/getRoom</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>online_servlet</servlet-name>
+		<servlet-class>OnlineMembers</servlet-class>
+	</servlet>
+	
+	
+	
+	<servlet-mapping>
+  		<servlet-name>auth_servlet</servlet-name>
+  		<url-pattern>/auth</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>auth_servlet</servlet-name>
+		<servlet-class>com.example.appengine.pusher.AuthorizeUser</servlet-class>
+	</servlet>
+	
+	
+	<!-- if privacy is changes -->
+	<servlet-mapping>
+  		<servlet-name>pri_servlet</servlet-name>
+  		<url-pattern>/ajax/pri</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>pri_servlet</servlet-name>
+		<servlet-class>PrivacyHandler</servlet-class>
+	</servlet>
+	
+	
+	
+	<!-- if new member is added -->
+	<servlet-mapping>
+  		<servlet-name>req_servlet</servlet-name>
+  		<url-pattern>/ajax/req</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>req_servlet</servlet-name>
+		<servlet-class>NewMemberHandler</servlet-class>
+	</servlet>
 </web-app>
