@@ -1,4 +1,6 @@
 <!DOCTYPE HTML>
+<%@ page import="HelperClasses.Cooky" %>
+<%@ page import="HelperClasses.Redirecter" %>
 <html>
 <head>
 	<link rel="stylesheet" href="../Css/Play.css">
@@ -11,8 +13,8 @@
     <div id="ma">
         <h2>Visibility</h2>
      <div>   
-       <input type="radio" name="vis" id="pri" value="privacy">
-       <label for="pri">Privacy</label><br>
+       <input type="radio" name="vis" id="pri" value="private">
+       <label for="pri">Private</label><br>
        <input type="radio" name="vis" id="pub" value="public">
        <label for="pub">Public</label>
       </div>
@@ -27,64 +29,8 @@
 	        <div>
 	            <header>ONLINE PLAYERS</header>
 	            <div id="di">
-	                 <div>
-	                    <div></div>
-	                    <div>
-	                    <p>Muthumari</p>
-	                    <p>Privacy: <span id="pri">private</span></p>
-	                    </div>
-	                    <a href="http://gamecenterdesign.zcodeusers.com/MMAB-PROJECT/Html/board.html"><button class="req">Request</button></a>
-	                </div>
-	                 <div>
-	                    <div></div>
-	                    <div>
-	                    <p>Muthumari</p>
-	                    <p>Privacy: <span>private</span></p>
-	                    </div>
-	                </div>
-	                 <div>
-	                    <div></div>
-	                    <div>
-	                    <p>Muthumari</p>
-	                    <p>Privacy: <span>private</span></p>
-	                    </div>
-	                </div>
-	                 <div>
-	                    <div></div>
-	                    <div>
-	                    <p>Muthumari</p>
-	                    <p>Privacy: <span>private</span></p>
-	                    </div>
-	                </div>
-	                 <div>
-	                    <div></div>
-	                    <div>
-	                    <p>Muthumari</p>
-	                    <p>Privacy: <span>private</span></p>
-	                    </div>
-	                </div>
-	                 <div>
-	                    <div></div>
-	                    <div>
-	                    <p>Muthumari</p>
-	                    <p>Privacy: <span>private</span></p>
-	                    </div>
-	                </div>
-	                 <div>
-	                    <div></div>
-	                    <div>
-	                    <p>Muthumari</p>
-	                    <p>Privacy: <span>private</span></p>
-	                    </div>
-	                </div>
-	                 <div>
-	                    <div></div>
-	                    <div>
-	                    <p>Muthumari</p>
-	                    <p>Privacy: <span>private</span></p>
-	                    </div>
-	                </div>
-	                </div>
+	           	
+	            </div>
 	        </div>
 	        <div style=" text-align:center">
 	             <h2>PROFILE INFO</h2>
@@ -115,6 +61,18 @@
 	        </div>
 	    </div>
 	</main>
-	<script src="../Js/onlinemembers.js"></script>
+	<button id="police">H</button>
+	<script>
+	var privacy='<%=(String) request.getAttribute("privacy")%>';
+	console.log(privacy)
+	var name='<%= Cooky.getContextName("gc_account", request.getCookies(),"cookie",request)%>'
+	if(name=='null'|| name == null||name==""){
+		location.href='<%= Redirecter.giveUrlFor(request,"/home")%>';
+	}
+	
+	</script>
+	<script src="/Js/onlinemembers.js">
+	
+	</script>
 </body>
 </html>

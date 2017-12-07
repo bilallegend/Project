@@ -20,6 +20,7 @@ public class Ajax extends HttpServlet{
     protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		 ConnectionDatabase psql = new ConnectionDatabase();
 		 Connection conn			=psql.createConnection("gamecenter");
+		 System.out.println(request.getPathInfo());
 		if(request.getPathInfo().equals("/signup")) {
 			
 			
@@ -118,7 +119,6 @@ public class Ajax extends HttpServlet{
 			
 		}
 		
-<<<<<<< HEAD
 		else if(request.getPathInfo().equals("/getOnlineMembers")) {
 			URI thisUri =null;
 			try {
@@ -131,7 +131,6 @@ public class Ajax extends HttpServlet{
 			}
 			
 		}
-=======
 		if(request.getPathInfo().equals("/tournament")){
 			
 			response.getWriter().write("http://localhost:8080/tournament");
@@ -229,7 +228,6 @@ public class Ajax extends HttpServlet{
         	 
          }
 		
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	}
 	
 }	

@@ -128,6 +128,7 @@
                 channel_id: channel_name,
                 socket_id: socket_id
             });
+                console.log(data);
             // trigger a server-side endpoint to send the message via Pusher
             $.post('/message', data,
                 function (msg) {

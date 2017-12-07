@@ -19,7 +19,7 @@ $(document).ready(function(){
 		
 		
 		
-		 $.post("/ajax/signup",
+		 $.post("/signup",
 				 {
 			          name: name,
 			          email:email,
@@ -34,12 +34,8 @@ $(document).ready(function(){
 			        
 			        function(data,status){
 			            alert("Data: " + data + "\nStatus: " + status);
-<<<<<<< HEAD
-=======
 			            console.log(typeof(data));
 			            var resultobj=JSON.parse(data);
-			        
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 			            
 			           // $("#data").submit();
 			            
@@ -66,10 +62,6 @@ $(document).ready(function(){
 			        		
 			            }
 			        });
-		
-
-			  
-
 	});
 		
 
@@ -96,7 +88,7 @@ $(document).ready(function(){
 	
 	$("#login").click(function(){
 		
-		 $.post("/ajax/signin",
+		 $.post("/signin",
 			        {
 			          name: $("#usrname_in").val(),
 			          email:$("#usrmail_in").val(),

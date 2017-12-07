@@ -21,14 +21,16 @@ public class OnlineMembers extends HttpServlet{
 		// TODO Auto-generated method stub
 //		if(req.getPathInfo().equals("/getRoom")) {
 			Gson gson = new Gson(); 
-			HashMap<String,String> room=(HashMap<String, String>) req.getAttribute("room");
+			System.out.println("/getRoom\tOnlineMembers");
+			System.out.println(req.getSession().getServletContext().getAttribute("room"));
+			HashMap<String,String> room=(HashMap<String, String>) req.getSession().getServletContext().getAttribute("room");
 	
-			if(req.getAttribute("room")==null) {
+			if(room==null) {
 				room = new HashMap<String,String>();
 				room.put("AppKey",AppKey);
 				room.put("cluster", cluster);
 				room.put("channelname","private-online-"+Math.round((Math.random()*10000000)));
-				req.setAttribute("room",room);
+				req.getSession().getServletContext().setAttribute("room", room);;
 				System.out.println(room);
 				resp.getWriter().write(gson.toJson(room));
 				

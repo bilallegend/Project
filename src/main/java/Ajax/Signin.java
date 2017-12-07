@@ -66,6 +66,7 @@ public class Signin extends HttpServlet{
 			result.put("status","50");
             System.out.println(result);
             json=gson.toJson(result);
+            
             response.getWriter().write(json);//Invalid username
 		} catch (SQLException e) {
 			

@@ -1,30 +1,27 @@
-<<<<<<< HEAD
-=======
-Ajax/Signup.class
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+GameRequestHandler.class
 HelperClasses/ConnectionDatabase.class
-com/example/appengine/pusher/ChatServlet.class
-<<<<<<< HEAD
+GameRequestHandler$1.class
 com/example/appengine/pusher/AuthorizeUser.class
+PrivacyHandler.class
+Ajax/Signin.class
+com/example/appengine/pusher/PusherService.class
+HelperClasses/CookieCreator.class
+Ajax.class
+HelperClasses/Cooky.class
+Ajax/TournamentMembers.class
+Ajax/OnlineMemb.class
+com/example/appengine/pusher/AuthorizeServlet.class
+Ajax/Signup.class
+com/example/appengine/pusher/ChatServlet.class
+PrivacyHandler$1.class
+NewMemberHandler.class
+Filters/AccountFilter.class
+Ajax/Tournament.class
+HelperClasses/Redirecter.class
+RoomChecker.class
 OnlineMembers.class
 com/example/appengine/pusher/SendMessageServlet$1.class
-com/example/appengine/pusher/PusherService.class
-HelperClasses/CookieCreator.class
-=======
-Ajax/Tournament.class
-Ajax/Signin.class
-com/example/appengine/pusher/SendMessageServlet$1.class
-com/example/appengine/pusher/PusherService.class
-HelperClasses/CookieCreator.class
 Ajax/TournamentJoin.class
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
-Ajax.class
-<<<<<<< HEAD
-HelperClasses/Cooky.class
-=======
-Ajax/TournamentMembers.class
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 com/example/appengine/pusher/SendMessageServlet.class
 HelperClasses/FIleUpload.class
 Upload.class
-com/example/appengine/pusher/AuthorizeServlet.class

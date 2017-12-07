@@ -65,7 +65,7 @@ public class AuthorizeServlet extends HttpServlet {
     System.out.println("data Map "+data);
     String socketId = data.get("socket_id");
     String channelId = data.get("channel_name");
-
+   
     // Presence channels (presence-*) require user identification for authentication
     Map<String, String> userInfo = new HashMap<>();
     userInfo.put("displayName", displayName);
@@ -73,15 +73,15 @@ public class AuthorizeServlet extends HttpServlet {
     // Inject custom authentication code for your application here to allow/deny current request
 
     String auth =
-    		pusher.authenticate(socketId, channelId);
-        //pusher.authenticate(socketId, channelId, new PresenceUser(currentUserId, userInfo));
+//    		pusher.authenticate(socketId, channelId);
+        pusher.authenticate(socketId, channelId, new PresenceUser(currentUserId, userInfo));
     // if successful, returns authorization in the format
     //    {
     //      "auth":"49e26cb8e9dde3dfc009:a8cf1d3deefbb1bdc6a9d1547640d49d94b4b512320e2597c257a740edd1788f",
     //      "channel_data":"{\"user_id\":\"23423435252\",\"user_info\":{\"displayName\":\"John Doe\"}}"
     //    }
-
-    response.getWriter().append(auth);
+System.out.println(auth);
+//    response.getWriter().append(auth);
   }
 
   private static Map<String, String> splitQuery(String query) throws UnsupportedEncodingException {
