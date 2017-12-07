@@ -59,7 +59,7 @@
     <url-pattern>/message</url-pattern>
   </servlet-mapping>
   
-<<<<<<< HEAD
+
   
   
   
@@ -79,8 +79,7 @@
     <servlet-name>uploadforexample1</servlet-name>
     <url-pattern>/uploadfile</url-pattern>
   </servlet-mapping>
-=======
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+
   <servlet-mapping>
   		<servlet-name>Fileupload_servlet</servlet-name>
   		<url-pattern>/upload</url-pattern>	

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-<<<<<<< HEAD
+
 	
 	
 	$("#playonline").click(function(){
@@ -10,7 +10,7 @@ $(document).ready(function(){
 			
 		});
 	});
-=======
+
 
 	var cookie=document.cookie;
 	var list=cookie.split("; ");
@@ -57,27 +57,22 @@ $(document).ready(function(){
 		
 	});
 	
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	$("#reg").click(function(){
 		
 		var name=$("#usrname_up").val();
 		var email=$("#usrmail_up").val();
 		var pass=$("#usrpassword_up").val();
 		var num=$("#usrnum_up").val();
-<<<<<<< HEAD
-		//var file=$("#file").val();		
-=======
+
 		var file=$("#file").val();	
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 		
-<<<<<<< HEAD
+
 		
 		
-		 $.post("/signup",
-=======
+
 		//if($("#errname").css("visibility")=="hidden"&&$("#errmail").css("visibility")=="hidden"&&$("#errpass").css("visibility")=="hidden"&&$("#errnum").css("visibility")=="hidden"&&$("#errpassword").css("visibility")=="hidden"){
 		 $.post("/ajax/signup",
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+
 				 {
 			          name: name,
 			          email:email,
@@ -93,14 +88,8 @@ $(document).ready(function(){
 			            
 			            console.log(typeof(data));
 			            var resultobj=JSON.parse(data);
-<<<<<<< HEAD
-			            
-			           // $("#data").submit();
-=======
 			        
 			            alert(resultobj.status);
-			           
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 			            
 			            if(resultobj.status=="Signup Successful"){
 
@@ -119,13 +108,6 @@ $(document).ready(function(){
 			            }
 			            
 			        });
-<<<<<<< HEAD
-=======
-		
-		
-		
-
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	});
 		
 
