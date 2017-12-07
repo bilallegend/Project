@@ -1,6 +1,7 @@
 package Ajax;
 import java.io.*;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import javax.servlet.*;
@@ -20,12 +21,13 @@ public class Profile extends HttpServlet{
 		 Connection conn			=psql.createConnection("gamecenter");
 		 ServletContext context  =   request.getSession().getServletContext();
 	   	 HashMap<String,String> users=(HashMap<String,String>)context.getAttribute("cookie");
+	   	 ArrayList<Integer> tournaments= (ArrayList<Integer>) context.getAttribute("tournaments");
 	   	 String name="";
 	   	HashMap<String,String> result= new  HashMap<String,String>(); 
 	      Gson gson = new GsonBuilder().setPrettyPrinting()
                  .create();
 	      String json ="";
-	      if(users!=null) {
+	     if(users!=null) {
 		 for(String s:users.keySet()) {
 	   		 
 	   		 if(s.equals(request.getParameter("num"))) {
@@ -52,6 +54,16 @@ public class Profile extends HttpServlet{
 			result.put("name", name);
 			result.put("mail", mail);
 			result.put("photo",photo);
+			if(tournaments==null) {
+				ArrayList<Integer> array=new ArrayList<Integer>();
+				array.add(1);
+				context.setAttribute("tournaments",array);
+				result.put("currtour","AB-"+1);
+			}
+			else {
+				   
+				result.put("currtour","AB-"+tournaments.get(tournaments.size()-1));
+			}
 			json=gson.toJson(result);
 		     response.getWriter().write(json);
 			

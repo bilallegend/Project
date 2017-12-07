@@ -8,6 +8,7 @@
     <%
     BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
     String url= blobstoreService.createUploadUrl("/upload");
+    double sdf = Math.sin(234.3223);
     %>
      
     <form action="<%=url %>" method="post" enctype="multipart/form-data">

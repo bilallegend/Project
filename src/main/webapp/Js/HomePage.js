@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	
+
 	var cookie=document.cookie;
 	var list=cookie.split("; ");
 	var usercookie="0";
@@ -33,11 +33,15 @@ $(document).ready(function(){
     			$(".profil").css("display", "block");
     			$(".menu").css("display", "block");
     		}, 700);
+			var src="http://localhost:8080"+obj.photo;
 			
-		$(".profil").css('background-image', "http://loclhost"+obj.photo);
+		document.getElementById("img").style.backgroundImage = "url('"+src+"')";
+		document.getElementById("img1").style.backgroundImage = "url('"+src+"')";
 		$("#name").text(obj.name);
 		$("#mail").text(obj.mail);
 		}
+		
+		$("#currtour").text(obj.currtour);
 		
 	});
 	
@@ -47,8 +51,9 @@ $(document).ready(function(){
 		var email=$("#usrmail_up").val();
 		var pass=$("#usrpassword_up").val();
 		var num=$("#usrnum_up").val();
-		var file=$("#file").val();		
+		var file=$("#file").val();	
 		
+		//if($("#errname").css("visibility")=="hidden"&&$("#errmail").css("visibility")=="hidden"&&$("#errpass").css("visibility")=="hidden"&&$("#errnum").css("visibility")=="hidden"&&$("#errpassword").css("visibility")=="hidden"){
 		 $.post("/ajax/signup",
 				 {
 			          name: name,
@@ -62,64 +67,39 @@ $(document).ready(function(){
 		            			        
 			        
 			        function(data,status){
-			            alert("Data: " + data + "\nStatus: " + status);
+			            
 			            console.log(typeof(data));
 			            var resultobj=JSON.parse(data);
 			        
-			            
+			            alert(resultobj.status);
 			           
 			            
 			            if(resultobj.status=="Signup Successful"){
-			            	
-			            	$("#signup").css({
-			        			"transform": "scale(0,0)",
-			        			"transition": "1.5s"
-			        		});
-			        		setTimeout(function () {
-			        	        $(".whole").css("filter","blur(0px)");
-			        			$("#menu").css({
-			        				"transform": "scale(1,1)",
-			        				"transition": "1s"
-			        			});
-			        			$("#sgnup").css("display", "none");
-			        			$("#sig").css("display", "none");
-			        			$(".profil").css("display", "block");
-			        			$(".menu").css("display", "block");
-			        		}, 700);
-			        		 //$("#data").submit();
-			        		$("#name").text(resultobj.name);
-			        		$("#mail").text(resultobj.mail);
-			        		
+
+			        		 $("#data").submit();
+
 			            }
+			            else if(resultobj.status=="Invalid data"){
+			            	
+			            	var list=(resultobj.errors).split("&");
+			            	for(i=1;i<list.length;i++){
+			            		
+			            		$(list[i])[0].style.visibility="visible";
+			            	}
+			            	
+			            	
+			            }
+			            
 			        });
 		
-
-			  
+		
+		
 
 	});
 		
 
 	
-//	$("#data").submit(function(event){
-////        event.preventDefault(); //prevent default action 
-////        var post_url = $(this).attr("action"); //get form action url
-////        var request_method = $(this).attr("method"); //get form GET/POST method
-////        var form_data = new FormData($("#data")[0]); //Creates new FormData object
-////        console.log(form_data.values())
-////        $.ajax({
-////             
-////              url : post_url,
-////              type: request_method,
-////              data : form_data,
-////              cache: false,
-////              processData:false
-////            }).done(function(response){ //
-////                  alert(response);
-////                  
-////              });
-//		alert('Anu');
-//       });
-	
+
 	$("#login").click(function(){
 		
 		 $.post("/ajax/signin",
@@ -152,14 +132,16 @@ $(document).ready(function(){
 			    		}, 700);
 			    		$("#name").text(resultobj.name);
 		        		$("#mail").text(resultobj.mail);
+		        		document.getElementById("img").style.backgroundImage = "url('"+resultobj.photo+"')";
+		        		document.getElementById("img1").style.backgroundImage = "url('"+resultobj.photo+"')";
 			        }
 			        });
 	});
 	
 	$(".tournament").click(function(){
 		
-		$.post("/ajax/tournament",{},function(data,status){
-			 alert(data+"Anu");
+		$.post("/ajax/tournament",{no:$(this).text()},function(data,status){
+			 
 			location.href=data;
 			
 		});
@@ -179,7 +161,7 @@ var check=function(){
     var emailcheck=email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/gi);
     var passcheck=pass.match(/[a-z0-9_-]{6,10}$/g);
     var numcheck=num.match(/^[0-9-()+]{10,15}/g);
-   
+
 
     
 	var checklist=[namecheck,emailcheck,passcheck,numcheck];
@@ -199,6 +181,7 @@ var check=function(){
 	
 	if(pass==confirm){
 		$(id[4])[0].style.visibility="hidden";
+		
 	}
 	else{
 		$(id[4])[0].style.visibility="visible";

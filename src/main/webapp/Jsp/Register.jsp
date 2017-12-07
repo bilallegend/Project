@@ -46,7 +46,7 @@
 						
 						<input type="text" name="name" id="usrname_up" onkeyup="check()"/>
 					</div>
-					<p id="errname">username should have atleast 6</p>
+					<p id="errname">username should have atleast 6 should not have special characters</p>
 					<label class="pad-top">Email Id</label>
 					<div class="dv">
 						<div class="im"> <i class="fa fa-envelope-o" aria-hidden="true"></i>
@@ -64,21 +64,21 @@
 					</div>
 					<input type="password" name="pass" class="in" id="usrpassword_up" onkeyup="check()"/>
 				</div>
-				<p id='errpass'>username should have atleast 6</p>
+				<p id='errpass'>Password should have atleast and lesser than 11 letters can contain . or _</p>
 				<label class="pad-top pad-lef">Confirm Password</label>
 				<div class="dv mar-lef">
 					<div class="im"> <i class="fa fa-key i" aria-hidden="true"></i>
 					</div>
 					<input type="password" class="in" id="usrconfirm_up" onkeyup="check()"/>
 				</div>
-				<p id='errpassword'>username should have atleast 6</p>
+				<p id='errpassword'>Password didn't match</p>
 				<label class="pad-top pad-lef">Mobile Number</label>
 				<div class="dv mar-lef">
 					<div class="im"> <i class="fa fa-mobile" aria-hidden="true" id="ph"></i>
 					</div>
 					<input type="text/number" name="num" class="in" maxlength="10" id="usrnum_up" onkeyup="check()"/>
 				</div>
-				<p id='errnum'>username should have atleast 6</p>
+				<p id='errnum'>Invalid mobilenumber</p>
 				<input type="submit" value="Register" class="sub" id="reg" />
 				
 			</div>
@@ -133,10 +133,10 @@
 		<p class="sign" id="sgnup">SIGNUP</p>
 		<p class="sign sgnin" id="sig">SIGNIN</p>
 		
-		<div class="profil"></div>
+		<div class="profil" id="img"></div>
 		<div class="profilediv">
                     <div>
-                        <div><div><a href="http://gamecenterdesign.zcodeusers.com/MMAB-PROJECT/Html/Profile.html"><p>change</p></a></div></div>
+                        <div><div id="img1"><a href="http://gamecenterdesign.zcodeusers.com/MMAB-PROJECT/Html/Profile.html"><p>change</p></a></div></div>
                         <h5 id="name">madhubalan.m</h5>
                         <p id="mail">madhubalan.m@zohouniv.com</p>
                     </div>
@@ -147,7 +147,7 @@
 		<div class="menu"><i class="fa fa-bars" aria-hidden="true"></i>
 		</div> <i class="fa fa-caret-right" id="aro" aria-hidden="true"></i>
 		<div class="feed"> <span>Tournament ID</span>
-			<p class="tournament">AB-01</p>
+			<p class="tournament" id="currtour"></p>
 			<p>Ends in</p>
 			<h1>1h 29s</h1>
 			<i class="fa fa-commenting-o" aria-hidden="true" id="fed"><span>Feeds</span></i>

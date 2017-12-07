@@ -39,21 +39,7 @@
     <servlet-name>sendMessage</servlet-name>
     <url-pattern>/message</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <servlet-name>uploadforexample</servlet-name>
-    <servlet-class>HelperClasses.FIleUpload</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>uploadforexample</servlet-name>
-    <url-pattern>/uploadad</url-pattern>
-  </servlet-mapping> <servlet>
-    <servlet-name>uploadforexample1</servlet-name>
-   <jsp-file>/Jsp/wer.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>uploadforexample1</servlet-name>
-    <url-pattern>/uploadfile</url-pattern>
-  </servlet-mapping>
+  
   <servlet-mapping>
   		<servlet-name>Fileupload_servlet</servlet-name>
   		<url-pattern>/upload</url-pattern>	
@@ -95,6 +81,8 @@
 		<servlet-class>Ajax.Signup</servlet-class>
 	</servlet>
 	
+	<!--  Ajax signin servlet -->
+	
 	<servlet-mapping>
   		<servlet-name>Signin</servlet-name>
   		<url-pattern>/ajax/signin</url-pattern>	
@@ -104,6 +92,8 @@
 		<servlet-class>Ajax.Signin</servlet-class>
 	</servlet>
 	
+	<!--  Ajax profile servlet -->
+	
 	<servlet-mapping>
   		<servlet-name>Profile</servlet-name>
   		<url-pattern>/ajax/profile</url-pattern>	
@@ -112,6 +102,8 @@
 		<servlet-name>Profile</servlet-name>
 		<servlet-class>Ajax.Profile</servlet-class>
 	</servlet>
+	
+	<!--  Ajax tournament servlet -->
 	
 	<servlet-mapping>
   		<servlet-name>Tournament</servlet-name>
@@ -140,6 +132,7 @@
 		<servlet-class>Ajax.TournamentJoin</servlet-class>
 	</servlet>
 	
+	<!--  Ajax image upload servlet -->
 	
 	 <servlet>
     <servlet-name>Upload</servlet-name>
@@ -151,6 +144,7 @@
     <servlet-class>Ajax.Serve</servlet-class>
   </servlet>
  
+ 
   <servlet-mapping>
     <servlet-name>Upload</servlet-name>
     <url-pattern>/upload</url-pattern>
@@ -161,16 +155,15 @@
     <url-pattern>/serve</url-pattern>
   </servlet-mapping>
   
-  <servlet>
-    <servlet-name>File</servlet-name>
-    <jsp-file>/Jsp/wer.jsp</jsp-file>
-  </servlet>
- 
-  <servlet-mapping>
-    <servlet-name>File</servlet-name>
-    <url-pattern>/uploadfile</url-pattern>
-  </servlet-mapping>
-  
+ <!--  Game servlet -->
+    <servlet-mapping>
+  		<servlet-name>Board_jsp</servlet-name>
+  		<url-pattern>/play</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Board_jsp</servlet-name>
+		<jsp-file>/Jsp/board.jsp</jsp-file>
+	</servlet>
   
   
   
