@@ -24,12 +24,13 @@ import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import HelperClasses.ConnectionDatabase;
 
 public class upload extends HttpServlet {
+	
     private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse res)
         throws ServletException, IOException {
-
+    	System.out.println("fgfhgergyr4ruee");
         Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(req);
         List<BlobKey> blobKeys = blobs.get("photo");
 
@@ -59,6 +60,7 @@ public class upload extends HttpServlet {
    	   			 break;
    	   		 }
    	   	 }
+        	System.out.println(name);
         	ConnectionDatabase psql = new ConnectionDatabase();
    		 Connection conn			=psql.createConnection("gamecenter");
    		Statement stmt;
