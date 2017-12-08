@@ -17,10 +17,10 @@
    <version>1</version> 
   <threadsafe>true</threadsafe>
   <env-variables>
-    <env-var name="PUSHER_APP_ID" value="437741" />
-    <env-var name="PUSHER_APP_KEY" value = "c551d3cca2fce9983539" />
-    <env-var name="PUSHER_APP_SECRET" value = "cf833cf0132dcbd59cfb" />
-    <env-var name="PUSHER_CLUSTER" value="ap2" />
+    <env-var name="PUSHER_APP_ID" value="442317" />
+    <env-var name="PUSHER_APP_KEY" value = "63f35f26a75b722e22cf" />
+    <env-var name="PUSHER_APP_SECRET" value = "b00366986a63710fb3e7" />
+    <env-var name="PUSHER_CLUSTER" value="eu" />
   </env-variables>
 </appengine-web-app>
 

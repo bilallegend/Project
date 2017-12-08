@@ -33,37 +33,55 @@ public class upload extends HttpServlet {
     	System.out.println("fgfhgergyr4ruee");
         Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(req);
         List<BlobKey> blobKeys = blobs.get("photo");
+        ConnectionDatabase psql = new ConnectionDatabase();
+  		 Connection conn			=psql.createConnection("gamecenter");
+  		 
+  		Cookie[] cookies =  req.getCookies();
 
+    	String userId = null;
+    	for(Cookie cookie : cookies){
+    	    if("gc_account".equals(cookie.getName())){
+    	        userId = cookie.getValue();
+    	        break;
+    	    }
+    	}
+  		 
+  		String name="";
+   	 ServletContext context  =   req.getSession().getServletContext();
+   	HashMap<String,String> users=(HashMap<String,String>)context.getAttribute("cookie");
+   	for(String s:users.keySet()) {
+	   		 
+	   		 if(s.equals(userId)) {
+	   			 name=users.get(s);
+	   			 break;
+	   		 }
+	   	 }
+   	System.out.println(name);
+  		Statement stmt;
+  		String src="";
         if (blobKeys == null || blobKeys.isEmpty()) {
             //res.sendRedirect("/");
-        	res.getWriter().write("/");
+        	try {
+    			stmt = conn.createStatement();
+    			System.out.println("Anu");
+    			String Query="UPDATE player_info SET photo = '"+src+"' WHERE username = '"+name+"'";
+    			
+    			System.out.println(Query);
+    			stmt.executeUpdate(Query);
+    		} catch (SQLException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}//Statement class creates a object that can execute our query in the connected database in connection object
+    		
+                res.sendRedirect("http://localhost:8080/home");
         } else {
-        	res.getWriter().write("/serve?blob-key=" + blobKeys.get(0).getKeyString());
-        	  String src="/serve?blob-key=" + blobKeys.get(0).getKeyString();
         	
-        	Cookie[] cookies =  req.getCookies();
-
-        	String userId = null;
-        	for(Cookie cookie : cookies){
-        	    if("gc_account".equals(cookie.getName())){
-        	        userId = cookie.getValue();
-        	        break;
-        	    }
-        	}
-        	String name="";
-        	 ServletContext context  =   req.getSession().getServletContext();
-        	HashMap<String,String> users=(HashMap<String,String>)context.getAttribute("cookie");
-        	for(String s:users.keySet()) {
-   	   		 
-   	   		 if(s.equals(userId)) {
-   	   			 name=users.get(s);
-   	   			 break;
-   	   		 }
-   	   	 }
-        	System.out.println(name);
-        	ConnectionDatabase psql = new ConnectionDatabase();
-   		 Connection conn			=psql.createConnection("gamecenter");
-   		Statement stmt;
+        	res.getWriter().write("/serve?blob-key=" + blobKeys.get(0).getKeyString());
+        	   src="/serve?blob-key=" + blobKeys.get(0).getKeyString();
+        	
+        	
+        	
+        	
 		try {
 			stmt = conn.createStatement();
 			System.out.println("Anu");

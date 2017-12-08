@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="../Css/board.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="../Js/jquery.js"></script>
+    <script src="../Js/Game.js"></script>
     <title>Othello Board</title>
 </head>
 <body>

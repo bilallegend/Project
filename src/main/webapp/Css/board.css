@@ -42,6 +42,15 @@ body{
     border-bottom:1px solid #4e1f01;
     cursor:pointer
 }
+.gete1{
+	height: 58.39px;
+    width: 58.39px;
+    background: transparent;
+    float: left;
+    border-right:1px solid #4e1f01;
+    border-bottom:1px solid #4e1f01;
+    cursor:pointer
+}
 .one{
     margin:0px;
     height:100%;

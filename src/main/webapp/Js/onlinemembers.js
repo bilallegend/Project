@@ -18,8 +18,8 @@ $(document).ready(function(){
 	
 	
 	
-	var pusher = new Pusher('c551d3cca2fce9983539', {
-        cluster: 'ap2',
+	var pusher = new Pusher('63f35f26a75b722e22cf', {
+        cluster: 'eu',
         authEndpoint: '/auth',
         encrypted: true
 	});
