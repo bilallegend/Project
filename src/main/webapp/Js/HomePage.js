@@ -94,7 +94,7 @@ $(document).ready(function(){
 			            
 			            if(resultobj.status=="Signup Successful"){
 
-//			        		 $("#data").submit();
+        		 $("#data").submit();
 
 			            }
 			            else if(resultobj.status=="Invalid data"){
