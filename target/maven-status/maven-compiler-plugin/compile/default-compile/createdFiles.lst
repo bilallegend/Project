@@ -1,7 +1,11 @@
 Ajax/upload.class
+<<<<<<< HEAD
+=======
 GameRequestHandler.class
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 HelperClasses/ConnectionDatabase.class
-GameRequestHandler$1.class
+RequestConfirmHandler.class
+RequestHandler$1.class
 com/example/appengine/pusher/AuthorizeUser.class
 PrivacyHandler.class
 Ajax/Signin.class
@@ -10,20 +14,28 @@ HelperClasses/CookieCreator.class
 Ajax.class
 HelperClasses/Cooky.class
 Ajax/TournamentMembers.class
+<<<<<<< HEAD
+RequestHandler.class
+=======
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 Ajax/OnlineMemb.class
 com/example/appengine/pusher/AuthorizeServlet.class
 Ajax/Signup.class
 com/example/appengine/pusher/ChatServlet.class
 PrivacyHandler$1.class
-NewMemberHandler.class
 Filters/AccountFilter.class
 Ajax/Tournament.class
 HelperClasses/Redirecter.class
 RoomChecker.class
+RequestConfirmHandler$1.class
 OnlineMembers.class
 com/example/appengine/pusher/SendMessageServlet$1.class
 Ajax/TournamentJoin.class
 Ajax/Serve.class
 com/example/appengine/pusher/SendMessageServlet.class
 HelperClasses/FIleUpload.class
+<<<<<<< HEAD
+Upload.class
+=======
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 Ajax/Profile.class

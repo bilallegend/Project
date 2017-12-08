@@ -89,9 +89,11 @@ public class PrivacyHandler extends HttpServlet{
 			    for(String key : DivMap.keySet()) {
 			    	if(!key.equals(CookieValue)) {
 			    		html+=getHtml(DivMap.get(key)[0] ,DivMap.get(key)[3],DivMap.get(key)[2]);
+			    		
 			    	}
 			    }
 			    messageData.put("html", html);
+			   
 		    }
 		    
 		    System.out.println(messageData);
