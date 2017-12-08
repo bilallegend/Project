@@ -14,8 +14,8 @@ import HelperClasses.Cooky;
 
 public class OnlineMembers extends HttpServlet{
 	
-	private static String AppKey ="c551d3cca2fce9983539";
-	private static String cluster ="ap2";
+	private static String AppKey ="63f35f26a75b722e22cf";
+	private static String cluster ="eu";
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub

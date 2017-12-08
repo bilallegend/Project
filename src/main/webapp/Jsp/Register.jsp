@@ -87,12 +87,12 @@
 		
 		<div id="signin">
 			<div id="rib">LOGIN
-				<img src="../images/close.png" alt="close" class="close" id="sec-clo" />
+				<img src="../Images/close.png" alt="close" class="close" id="sec-clo" />
 			</div>
 			<label class="pad-lef">Username</label>
 			<div class="dv mar-lef" style="margin-top:0px">
 				<div class="im">
-					<img src="../images/profile.png" id="sty" />
+					<img src="../Images/profile.png" id="sty" />
 				</div>
 				<input type="text" class="inp" id="usrname_in" onkeyup="check1()"/>
 			</div>
@@ -133,17 +133,7 @@
 		<p class="sign" id="sgnup">SIGNUP</p>
 		<p class="sign sgnin" id="sig">SIGNIN</p>
 		
-		<div class="profil" id="img"></div>
-		<div class="profilediv">
-                    <div>
-                        <div><div id="img1"><a href="http://gamecenterdesign.zcodeusers.com/MMAB-PROJECT/Html/Profile.html"><p>change</p></a></div></div>
-                        <h5 id="name">madhubalan.m</h5>
-                        <p id="mail">madhubalan.m@zohouniv.com</p>
-                    </div>
-                    <button type="submit" class="edit">Edit profile</button>
-                    <button type="submit">Change password</button>
-                    <button type="submit">signout</button>
-           </div>
+		
 		<div class="menu"><i class="fa fa-bars" aria-hidden="true"></i>
 		</div> <i class="fa fa-caret-right" id="aro" aria-hidden="true"></i>
 		<div class="feed"> <span>Tournament ID</span>
@@ -206,5 +196,16 @@
         </div>
     </div>
 	</div>
+	<div class="profil" id="img"></div>
+		<div class="profilediv">
+                    <div>
+                        <div><div id="img1"><a href="http://gamecenterdesign.zcodeusers.com/MMAB-PROJECT/Html/Profile.html"><p>change</p></a></div></div>
+                        <h5 id="name">madhubalan.m</h5>
+                        <p id="mail">madhubalan.m@zohouniv.com</p>
+                    </div>
+                    <button type="submit" class="edit">Edit profile</button>
+                    <button type="submit">Change password</button>
+                    <button type="submit">signout</button>
+           </div>
 </body>
 </html>

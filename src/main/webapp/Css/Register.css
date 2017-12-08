@@ -211,7 +211,8 @@ i {
 	padding: 4px 0 0 7px
 }
 .ale{
-    padding-left:10px
+    padding-left:10px;
+    visibility:hidden
 }
 /*--------------------------------------------------------MENU PAGE--------------------------------------------------*/
 

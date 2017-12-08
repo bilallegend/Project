@@ -123,10 +123,19 @@ $(document).ready(function(){
 			          
 			        },
 			        function(data,status){
-			            alert("Data: " + data + "\nStatus: " + status);
-			            
+			           
 			           
 			            var resultobj=JSON.parse(data);
+			            var l=["errnamin","errpassin","errmailin"];
+			            var s=["50","150","100"];
+			            var i=s.indexOf(resultobj.status);
+			            if(i!=-1){
+			            	$("#"+l[0])[0].style.visibility="hidden";
+			            	$("#"+l[1])[0].style.visibility="hidden";
+			            	$("#"+l[2])[0].style.visibility="hidden";
+			                $("#"+l[i])[0].style.visibility="visible";
+			            }
+			            
 			            if(resultobj.status=="200"){
 			            $("#signin").css({
 			    			"transform": "scale(0,0)",

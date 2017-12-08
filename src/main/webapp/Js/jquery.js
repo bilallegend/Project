@@ -25,6 +25,9 @@
         $(".profil").click (function () {
             $(".profilediv").css("display","block");
         });
+        $(".blu").click(function(){
+        	    $(".profilediv").css("display","none");
+        });
 //-------------------------------------------- Feeds div ---------------------------------------------------------/
     	$("#aro").click(function () {
     		$(".feed").css("transform", "translateX(0)");
@@ -120,13 +123,20 @@
     	// /----------------------------------------------- Making div ---------------------------------------------------------/ 
     	for (var x = 1; x < 65; x++) {
     		document.getElementsByClassName("inrdiv")[0].innerHTML += "<div class='gete' id='box" + x + "'></div>";
-    		document.getElementById('box' + x).innerHTML = "<div class='gete one'></div>";
+    		document.getElementById('box' + x).innerHTML = "<div class='gete1 one'></div>";
     	}
     	// /---------------------------------------- The First Four Coin --------------------------------------------------------/ 
-    	$("#box28 > .one").addClass("coin");
-    	$("#box29 > .one").addClass("coin1");
-    	$("#box37 > .one").addClass("coin");
-    	$("#box36 > .one").addClass("coin1");
+//    	$("#box28 > .one").addClass("coin1");
+//    	$("#box29 > .one").addClass("coin");
+//    	$("#box37 > .one").addClass("coin1");
+//    	$("#box36 > .one").addClass("coin");
+    	
+    	document.getElementById("#box28").style.background('black');
+    	document.getElementById("#box29").style.background('white');
+    	document.getElementById("#box37").style.background('black');
+    	document.getElementById("#box36").style.background('white');
+    	
+    	
     	// /------------------------------------------- Setting show Animation -------------------------------------------------/ 
     	$("#setdiv").click(function () {
     		count += 1;
