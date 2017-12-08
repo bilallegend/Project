@@ -61,7 +61,7 @@
 	        </div>
 	    </div>
 	</main>
-	<button id="police">H</button>
+	
 	<script>
 	var privacy='<%=(String) request.getAttribute("privacy")%>';
 	console.log(privacy)

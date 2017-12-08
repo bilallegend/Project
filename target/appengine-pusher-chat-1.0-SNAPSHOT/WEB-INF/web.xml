@@ -59,7 +59,7 @@
     <url-pattern>/message</url-pattern>
   </servlet-mapping>
   
-<<<<<<< HEAD
+
   
   
   
@@ -79,8 +79,7 @@
     <servlet-name>uploadforexample1</servlet-name>
     <url-pattern>/uploadfile</url-pattern>
   </servlet-mapping>
-=======
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+
   <servlet-mapping>
   		<servlet-name>Fileupload_servlet</servlet-name>
   		<url-pattern>/upload</url-pattern>	
@@ -281,6 +280,19 @@
   	</servlet-mapping>
 	<servlet>
 		<servlet-name>req_servlet</servlet-name>
-		<servlet-class>NewMemberHandler</servlet-class>
+		<servlet-class>RequestHandler</servlet-class>
+	</servlet>
+	
+	
+	
+	<!-- If acceting -->
+	
+	<servlet-mapping>
+  		<servlet-name>resp_servlet</servlet-name>
+  		<url-pattern>/ajax/accept</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>resp_servlet</servlet-name>
+		<servlet-class>RequestConfirmHandler</servlet-class>
 	</servlet>
 </web-app>

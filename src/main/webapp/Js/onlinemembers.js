@@ -85,7 +85,10 @@ $(document).ready(function(){
         function handleMessage(data) {
         	if(data.id !== undefined){
         		$('#'+data.id).remove();
+        		$('#butt'+data.id).remove();
+        		
         	}
+        	$('body').append(data.butt);
         		$('#di').append(data.html);
         	
         	
@@ -98,6 +101,19 @@ $(document).ready(function(){
         
         notifyChannel.bind('GameReq', function (data) {
             alert(data);
+            $('body').append(data.msg);
+        });
+        
+        function gameRedirect(data){
+        	 if(data.redir!==undefined){
+             	location.href=data.redir;
+             }
+        }
+        
+        
+        notifyChannel.bind('GameResp', function (data) {
+        	alert(data.redir);
+//        	 gameRedirect(data);
         });
         
         channel.bind('privacyHandle', function (data) {
@@ -143,8 +159,12 @@ $(document).ready(function(){
         	$.post(ajaxUrl, data,
                     function (msg) {
                 		console.log(msg)
-                        if (msg.status == "SUCCESS" && msg.redir == undefined) {
-                        	alert("success again");
+                		if(msg.reply!==undefined){
+                			alert(msg.reply);
+                		}
+                		
+                		else if (msg.status == "SUCCESS" && msg.redir == undefined) {
+                        	alert("post again");
                         	
                            // handleMessage(msg); //display the message
                         } else if(msg.redir !== undefined){
@@ -156,17 +176,29 @@ $(document).ready(function(){
         	 return false;
         }
         
-        $('button').click(function(){
-//        	let parentID= $(this).parent().attr('id');
-//        	let parentID=$(this).attr('id');
-//        	console.log(parentID);
-//        	let data = JSON.stringify({
-//        		parentID:parentID,
-//                socket_id: socket_id
-//            });
-        	alert($(this).attr('name'));
-//        	reqUser(data,'/ajax/req');
+        $('body').on('click','button[name=accept]',function(){
+        	let Reply = $(this).html();
+        	alert(Reply);
+        	if(Reply=="YES" || Reply=="NO"){
+        		let data = JSON.stringify({
+                    socket_id: socket_id,
+                    reply:Reply
+                });
+            	post(data,'/ajax/accept');
+        	}
+        	
         });
+        
+        $("#di").on("click", "button.req", function(){
+        	alert($(this).parent().attr('id'));
+        	let data = JSON.stringify({
+                socket_id: socket_id,
+                parentID:$(this).parent().attr('id')
+            });
+        	post(data,'/ajax/req');
+        	
+        });
+        
         
          
         

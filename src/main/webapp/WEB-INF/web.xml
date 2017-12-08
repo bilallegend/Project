@@ -280,6 +280,19 @@
   	</servlet-mapping>
 	<servlet>
 		<servlet-name>req_servlet</servlet-name>
-		<servlet-class>NewMemberHandler</servlet-class>
+		<servlet-class>RequestHandler</servlet-class>
+	</servlet>
+	
+	
+	
+	<!-- If acceting -->
+	
+	<servlet-mapping>
+  		<servlet-name>resp_servlet</servlet-name>
+  		<url-pattern>/ajax/accept</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>resp_servlet</servlet-name>
+		<servlet-class>RequestConfirmHandler</servlet-class>
 	</servlet>
 </web-app>

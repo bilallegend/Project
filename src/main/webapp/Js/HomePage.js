@@ -26,6 +26,7 @@ $(document).ready(function(){
 	}
 	$.post("/ajax/profile",{num:usercookie},function(data,status){
 		
+		
 		var obj=JSON.parse(data);
 	   
 		if(obj.mail!=""&&obj.name!=""){
@@ -71,7 +72,7 @@ $(document).ready(function(){
 		
 
 		//if($("#errname").css("visibility")=="hidden"&&$("#errmail").css("visibility")=="hidden"&&$("#errpass").css("visibility")=="hidden"&&$("#errnum").css("visibility")=="hidden"&&$("#errpassword").css("visibility")=="hidden"){
-		 $.post("/ajax/signup",
+		 $.post("/signup",
 
 				 {
 			          name: name,
@@ -93,7 +94,7 @@ $(document).ready(function(){
 			            
 			            if(resultobj.status=="Signup Successful"){
 
-			        		 $("#data").submit();
+//			        		 $("#data").submit();
 
 			            }
 			            else if(resultobj.status=="Invalid data"){

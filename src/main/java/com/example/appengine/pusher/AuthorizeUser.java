@@ -61,20 +61,31 @@ public class AuthorizeUser extends HttpServlet{
 			    }
 			    DivMap = (HashMap<String, String[]>) context.getAttribute("DivMap");
 			    
-			    String[] ValuesArray =  new String[4];
-			    System.out.println(DivMap.keySet().size());
-			    String size=(DivMap.keySet().size())+"";
-			    ValuesArray[0]=size;
-			    ValuesArray[1]=socketId;
-			    ValuesArray[3]=name;
-			    System.out.println(Arrays.deepToString(ValuesArray));
-			    if(!DivMap.containsKey(CookieValue)) {
-			    	System.out.println(!DivMap.containsKey(CookieValue)+"");
-			    	DivMap.put(CookieValue,ValuesArray); 
-			    	
+			   
+			    for(String[] arr : DivMap.values()) {
+			    	if(arr[3].equals(name)) {
+			    		currentUserId=arr[0];
+			    		 System.out.println(Arrays.deepToString(arr));
+			    		break;
+			    	}
 			    }
+			    if(currentUserId==null) {
+				    String[] ValuesArray =  new String[4];
+				    System.out.println(DivMap.keySet().size());
+				    String size=(DivMap.keySet().size())+"";
+				    ValuesArray[0]=size;
+				    ValuesArray[1]=socketId;
+				    ValuesArray[3]=name;
+				    System.out.println(Arrays.deepToString(ValuesArray));
+				    if(!DivMap.containsKey(CookieValue) ) {
+				    	System.out.println(!DivMap.containsKey(CookieValue)+"");
+				    	DivMap.put(CookieValue,ValuesArray); 
+				    	
+				    }
+				    currentUserId = DivMap.get(CookieValue)[0];
+			    }
+			    
 		    }
-		    currentUserId = DivMap.get(CookieValue)[0];
 		    
 		    
 		    System.out.println(DivMap.toString());
