@@ -71,7 +71,7 @@ $(document).ready(function(){
 		
 
 		//if($("#errname").css("visibility")=="hidden"&&$("#errmail").css("visibility")=="hidden"&&$("#errpass").css("visibility")=="hidden"&&$("#errnum").css("visibility")=="hidden"&&$("#errpassword").css("visibility")=="hidden"){
-		 $.post("/ajax/signup",
+		 $.post("/signup",
 
 				 {
 			          name: name,

@@ -86,7 +86,7 @@
   	</servlet-mapping>
 	<servlet>
 		<servlet-name>Fileupload_servlet</servlet-name>
-		<servlet-class>Upload</servlet-class>
+		<servlet-class>Ajax.upload</servlet-class>
 	</servlet>
   
   
@@ -174,7 +174,7 @@
 	
 	<!--  Ajax image upload servlet -->
 	
-	 <servlet>
+	<servlet>
     <servlet-name>Upload</servlet-name>
     <servlet-class>Ajax.upload</servlet-class>
   </servlet>
@@ -194,6 +194,7 @@
     <servlet-name>Serve</servlet-name>
     <url-pattern>/serve</url-pattern>
   </servlet-mapping>
+	
   
  <!--  Game servlet -->
     <servlet-mapping>
@@ -213,7 +214,7 @@
   	</servlet-mapping>
 	<servlet>
 		<servlet-name>Fileupload_servlet</servlet-name>
-		<servlet-class>Upload</servlet-class>
+		<servlet-class>Ajax.upload</servlet-class>
 	</servlet>
 	
 	

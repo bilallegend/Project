@@ -47,7 +47,7 @@ public class Signup extends HttpServlet{
                   result.put("name",request.getParameter("name"));
                   result.put("mail",request.getParameter("email"));
                   json=gson.toJson(result);
-                  
+                  System.out.println(result);
                   response.getWriter().write(json);
                   return;
 				  }
