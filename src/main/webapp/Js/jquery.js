@@ -126,15 +126,15 @@
     		document.getElementById('box' + x).innerHTML = "<div class='gete1 one'></div>";
     	}
     	// /---------------------------------------- The First Four Coin --------------------------------------------------------/ 
-//    	$("#box28 > .one").addClass("coin1");
-//    	$("#box29 > .one").addClass("coin");
-//    	$("#box37 > .one").addClass("coin1");
-//    	$("#box36 > .one").addClass("coin");
+    	$("#box28 > .one").addClass("coin1");
+    	$("#box29 > .one").addClass("coin");
+    	$("#box37 > .one").addClass("coin1");
+    	$("#box36 > .one").addClass("coin");
     	
-    	document.getElementById("#box28").style.background('black');
-    	document.getElementById("#box29").style.background('white');
-    	document.getElementById("#box37").style.background('black');
-    	document.getElementById("#box36").style.background('white');
+//    	document.getElementById("#box28").style.background('black');
+//    	document.getElementById("#box29").style.background('white');
+//    	document.getElementById("#box37").style.background('black');
+//    	document.getElementById("#box36").style.background('white');
     	
     	
     	// /------------------------------------------- Setting show Animation -------------------------------------------------/ 

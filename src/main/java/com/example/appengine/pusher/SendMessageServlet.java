@@ -30,12 +30,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Submit a chat message over a channel. Note : we use socket_id to exclude the sender from
- * receiving the message // {@see
- * <ahref="https://pusher.com/docs/server_api_guide/server_excluding_recipients">Excluding
- * Recipients</ahref>}
- */
+
 public class SendMessageServlet extends HttpServlet {
 
   private Gson gson = new GsonBuilder().create();

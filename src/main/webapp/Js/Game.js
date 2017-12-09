@@ -15,10 +15,18 @@
 	var final = 0;
     var onCoin=[];
 	var save = 0;
-	
+	var channel_name;
+	var channel;
+	var watching_channel;
+	var usercookie;
     $(document).ready(function () {
     	
+    	
+    	
     	$(".gete").click(function () {
+    		
+    		 
+    		
     		var id=$(this).attr("id");
     		if(id.length==5){
     		var i=id[3]+id[4];
@@ -30,7 +38,75 @@
     		
     		
     	});
+    	var cookie=document.cookie;
+    	var list=cookie.split("; ");
+    	usercookie="0";
+    	var count=0;
+    	var gameid="";
+    	for(i=0;i<list.length;i++){
+    		var l=list[i].split("=");
+    		if(l[0]=="gc_play"){
+    			usercookie=l[1];
+    			count+=1;
+    			break;
+    		}
+    	}
+    	if(usercookie="0"){
+    		location.href="http://localhost:8080/home";
+    	}
+    	alert(usercookie);
+    	
+    	$.post("/ajax/checkingplayers",{num:usercookie},function(data,status){
+    		alert(data);
+    		var obj=JSON.parse(data);
+    		gameid=obj.gameid;
+    		
+    		
+    	});
+    	
+    	
     });
+    
+    var connection=function(){
+    	var pusher = new Pusher('63f35f26a75b722e22cf', {
+            cluster: 'eu',
+            //authEndpoint: '/auth',
+            encrypted: true
+    	});
+    	 console.log(pusher);
+    	 channel_name = "presence-play-" + gameid;
+    	
+    	 channel = pusher.subscribe(channel_name);
+    	 
+    	 watching_channel = pusher.subscribe("presence-watch-" + gameid);
+    	 
+    	 channel.bind('pusher:subscription_succeeded',function(members){
+    		 
+ 			console.log(" pusher:subscription_succeeded channel");
+ 			
+ 		});
+    	 pusher.connection.bind('connected', function () {
+         // subscribe to new messages in the chat application
+         channel.bind('new_message', function (data) {
+            
+         });
+         
+         channel.bind('pusher:member_removed', function (member) {
+         	console.log(" pusher:member_removed ");
+             // track member removals from channel
+            
+         });
+         channel.bind('pusher:member_added', function (member) {
+         	console.log(member);
+             // track member additions to channel
+             
+         });
+
+         // track socket_id to exclude recipient in subscription
+         socket_id = pusher.connection.socket_id;
+        });
+    }
+   
 	
     var date;
     
@@ -39,6 +115,7 @@
     function gq(a) {
       console.log(a);
       onCoin.push(a);
+    
         if (white.indexOf(a) == -1 && black.indexOf(a) == -1) {
 
             inter = document.getElementById("box" + a);
@@ -95,15 +172,15 @@
             }
             i++;
         }
-        check1(a);
-    }
+      check1(a);
+     }
     var ok = 0;
     var confirm = {};
     var final = 0;
 
     function check1(a) {
         final = 0;
-        let t = Number(save);
+       let t = Number(save);
         j = 0;
         while (j < click1.length) {
 
@@ -132,68 +209,96 @@
                 j++;
             }
 
-
         }
-        colors();
-    }
-
-    function colors() {
-
-        let k = Object.keys(confirm);
-        let t = save;
-        i = 0;
-        let temp;
-        while (i < k.length) {
+        var data = JSON.stringify({
+            message: a,
+            cookie:usercookie,
+            channel_id: channel_name,
+            
+            socket_id: socket_id
+        });
+        $.post('/ajax/move',data,function(res,status){
         	
-//        	if(changecolor=="white"){
-//        		$("#box"+t+" > .one").addClass("coin");
-//        	}
-//        	else{
-//        		$("#box"+t+" > .one").addClass("coin1");
-//        	}
-            document.getElementById("box" + t).style.background = changecolor;
- 
-            if (color1.indexOf(t) == -1) {
-                color1.push(t);
-            }
-
-            if (color.indexOf(t) !== -1) {
-                temp = color.indexOf(t);
-                color.splice(temp, 1);
-            }
-            if (t == confirm[k[i]]) {
-                i++;
-                t = save;
-            }
-            t = (t + Number(k[i]));
-        }
-
-        if (count == 0) {
-            white = color;
-            black = color1
-        } else {
-            white = color1;
-            black = color;
-        }
+        	
+        });
+        
+//        colors();
     }
-
-    function info() {
-        let tak = document.getElementById("info")
-        let p= document.getElementById("p")
-        p.innerHTML= "<pre>Black x   "+black.length +"<br>White x   "+white.length+"</pre>"
-       
-        if (count == 0) {
-            tak.innerHTML = "BLACK`s Move"
-          
-        } else {
-            tak.innerHTML = "WHITE`s Move"
-        }
-        if (white.length + black.length == 64) {
-            if (white.length > black.length) {
-                alert("White won the match")
-            } else {
-                alert("black won the match")
-            }
-          console.log(onCoin);
-        }
-    }
+//
+//    function colors() {
+//
+//        let k = Object.keys(confirm);
+//        let t = save;
+//        i = 0;
+//        let temp;
+//        while (i < k.length) {
+//        	
+////        	if(changecolor=="white"){
+////        		$("#box"+t+" > .one").addClass("coin");
+////        	}
+////        	else{
+////        		$("#box"+t+" > .one").addClass("coin1");
+////        	}
+//          //  document.getElementById("box" + t).style.background = changecolor;
+//            if(changecolor=="white"){
+//            	var c=$("#box"+t+" > .one").attr('class');
+//           
+//            	$("#box"+t+" > .one").removeClass(c)
+//            	     $("#box"+t+" > div").addClass("coin");
+//                      $("#box"+t+" > div").addClass("gete one");
+//            	
+//           
+//            }
+//            else if(changecolor=="black"){
+//            	var c=$("#box"+t+" > .one").attr('class');
+//            	 
+//                 	$("#box"+t+" > .one").removeClass(c)
+//                 	  $("#box"+t+" > div").addClass("coin1");
+//                      $("#box"+t+" > div").addClass("gete one");
+//            	
+//            }
+// 
+//            if (color1.indexOf(t) == -1) {
+//                color1.push(t);
+//            }
+//
+//            if (color.indexOf(t) !== -1) {
+//                temp = color.indexOf(t);
+//                color.splice(temp, 1);
+//            }
+//            if (t == confirm[k[i]]) {
+//                i++;
+//                t = save;
+//            }
+//            t = (t + Number(k[i]));
+//        }
+//
+//        if (count == 0) {
+//            white = color;
+//            black = color1
+//        } else {
+//            white = color1;
+//            black = color;
+//        }
+//    }
+//
+//    function info() {
+//        let tak = document.getElementById("info")
+//        let p= document.getElementById("p")
+//        p.innerHTML= "<pre>Black x   "+black.length +"<br>White x   "+white.length+"</pre>"
+//       
+//        if (count == 0) {
+//            tak.innerHTML = "BLACK`s Move"
+//          
+//        } else {
+//            tak.innerHTML = "WHITE`s Move"
+//        }
+//        if (white.length + black.length == 64) {
+//            if (white.length > black.length) {
+//                alert("White won the match")
+//            } else {
+//                alert("black won the match")
+//            }
+//          console.log(onCoin);
+//        }
+//    }
