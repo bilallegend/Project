@@ -5,6 +5,7 @@ import java.lang.ProcessBuilder.Redirect;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -55,40 +56,55 @@ public class AuthorizeUser extends HttpServlet{
 		    
 		    HashMap<String,String[]> DivMap = (HashMap<String, String[]>) context.getAttribute("DivMap");
 		    
-		    if(channelId != "presence-MyNotification-"+socketId) {
+		    if(!channelId.contains("presence-MyNotification-")) {
 			    if(context.getAttribute("DivMap")==null) {
 			    	context.setAttribute("DivMap", new HashMap<String,String[]>());
 			    }
+			    if(context.getAttribute("MultiBrowser")==null) {
+			    	context.setAttribute("MultiBrowser", new HashMap<String,ArrayList<String>>());
+			    }
+			    HashMap<String,ArrayList<String>> MultiBrowser = (HashMap<String, ArrayList<String>>) context.getAttribute("MultiBrowser");
 			    DivMap = (HashMap<String, String[]>) context.getAttribute("DivMap");
+			    if(MultiBrowser.get(name)==null) {
+			    	MultiBrowser.put(name,new ArrayList<String>());
+			    	MultiBrowser.get(name).add(CookieValue);
+			    }
 			    
-			   
-			    for(String[] arr : DivMap.values()) {
-			    	if(arr[3].equals(name)) {
-			    		currentUserId=arr[0];
-			    		 System.out.println(Arrays.deepToString(arr));
-			    		break;
-			    	}
-			    }
-			    if(currentUserId==null) {
-				    String[] ValuesArray =  new String[4];
-				    System.out.println(DivMap.keySet().size());
-				    String size=(DivMap.keySet().size())+"";
-				    ValuesArray[0]=size;
-				    ValuesArray[1]=socketId;
-				    ValuesArray[3]=name;
-				    System.out.println(Arrays.deepToString(ValuesArray));
-				    if(!DivMap.containsKey(CookieValue) ) {
-				    	System.out.println(!DivMap.containsKey(CookieValue)+"");
-				    	DivMap.put(CookieValue,ValuesArray); 
-				    	
+			    	boolean newUser=true;
+			    	String[] ValuesArray =  new String[4];
+			    	for(String key : DivMap.keySet()) {
+				    	if(key.equals(CookieValue)) {
+				    		currentUserId=DivMap.get(CookieValue)[0];
+				    		newUser=false;
+				    	}else if(DivMap.get(key)[3].equals(name)) {
+				    		newUser=false; 
+				    		System.out.println("old user");
+						    String size=(DivMap.keySet().size())+"";
+						    MultiBrowser.get(name).add(CookieValue);
+						    currentUserId=size;
+						    ValuesArray[0]=size;
+						    ValuesArray[1]=socketId;
+						    ValuesArray[3]=name;
+						    DivMap.put(CookieValue,ValuesArray);
+				    	}
 				    }
-				    currentUserId = DivMap.get(CookieValue)[0];
-			    }
+			   
+			    	if(newUser) {
+			    		String size=(DivMap.keySet().size())+"";
+			    		currentUserId = size;
+			    		ValuesArray[0]=size;
+					    ValuesArray[1]=socketId;
+					    ValuesArray[3]=name;
+					    DivMap.put(CookieValue,ValuesArray);
+			    	}
+			   
+			    
+		
 			    
 		    }
 		    
 		    
-		    System.out.println(DivMap.toString());
+		    System.out.println(DivMap);
 		    
 		    
 		    
@@ -100,8 +116,12 @@ public class AuthorizeUser extends HttpServlet{
 		    
 		    // Inject custom authentication code for your application here to allow/deny current request
 
-		    String auth =pusher.authenticate(socketId, channelId, new PresenceUser(currentUserId, userInfo));
-		    
+		    String auth=null;
+		    if(("private-MyNotification-"+socketId).equals(channelId)) {
+		    	auth =pusher.authenticate(socketId, channelId);
+		    }else {
+		    	auth =pusher.authenticate(socketId, channelId, new PresenceUser(currentUserId, userInfo));
+		    }
 //		    		pusher.authenticate(socketId, channelId);
 		        
 		    // if successful, returns authorization in the format

@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -46,6 +47,7 @@ public class PrivacyHandler extends HttpServlet{
 	    String privacy = data.get("privacy");
 	    String again= data.get("again");
 	    String  CookieValue = Cooky.getCookieValue("gc_account",request.getCookies());
+	    
 	    HashMap<String,String[]> DivMap = Cooky.getContextValue("DivMap", request);
 	    Map<String, String> messageData = new HashMap<>();
 	    
@@ -64,11 +66,10 @@ public class PrivacyHandler extends HttpServlet{
 		    System.out.println(DivMap);
 		    System.out.println(Arrays.deepToString(DivMap.get(CookieValue)));
 		    
-		    
-		    	messageData.put("id",DivMap.get(CookieValue)[0]);
+		    messageData.put("id",DivMap.get(CookieValue)[0]);
+		    	messageData.put("name",DivMap.get(CookieValue)[3]);
 		    	messageData.put("html",getHtml(DivMap.get(CookieValue)[0],name,privacy));
 		    
-		    	
 		    
 		    
 		    
@@ -82,12 +83,14 @@ public class PrivacyHandler extends HttpServlet{
 		                socketId); // (Optional) Use client socket_id to exclude the sender from receiving the message
 	
 		    // result.getStatus() == SUCCESS indicates successful transmission
-		    
+		    messageData.remove("name");
 		    messageData.put("status", result.getStatus().name());
 		    if(again== null ) {
 			    String html="";
+			    ArrayList<String > names = new ArrayList<>();
 			    for(String key : DivMap.keySet()) {
-			    	if(!key.equals(CookieValue)) {
+			    	if(!key.equals(CookieValue) && !names.contains(DivMap.get(key)[3])) {
+			    		names.add(DivMap.get(key)[3]);
 			    		html+=getHtml(DivMap.get(key)[0] ,DivMap.get(key)[3],DivMap.get(key)[2]);
 			    		
 			    	}

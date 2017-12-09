@@ -34,27 +34,28 @@ $(document).ready(function(){
 	pusher.connection.bind('connected', function () {
         // ...
 		socket_id = pusher.connection.socket_id;
-		var notifyChannel = pusher.subscribe('presence-MyNotification-'+socket_id);
-		var notifyChannelname='presence-MyNotification-'+socket_id;
+		var notifyChannel = pusher.subscribe('private-MyNotification-'+socket_id);
+		var notifyChannelname='private-MyNotification-'+socket_id;
 		console.log(socket_id+"  connection")
         // bind to successful subscription
 		var myID=null;
 		var childId=null;
-		
+		var name=null;
 		notifyChannel.bind('pusher:subscription_succeeded',function(members){
 			console.log(" pusher:subscription_succeeded notifyChannelname");
 		});
 		
 		
-        channel.bind('pusher:subscription_succeeded', function (members) {
+        channel.bind('pusher:subscription_succeeded', function (t) {
             // receive list of members on this channel
             console.log(" pusher:subscription_succeeded ");
             $("#di").html("");
             childId=getChildren();
             console.log(childId);
-           myID=members.myID;
+           myID=t.myID;
+           name = t.me.info.displayName;
            onPrivacyChange();
-            console.log(members);
+            console.log(t);
             
         });
         
@@ -83,14 +84,17 @@ $(document).ready(function(){
         
         
         function handleMessage(data) {
-        	if(data.id !== undefined){
-        		$('#'+data.id).remove();
-        		$('#butt'+data.id).remove();
-        		
+        	if(data.name == name){
+        		alert("same ")
+        	}else{
+	        	if(data.name !== undefined){
+	        		$('#'+data.id).remove();
+	        		$('#butt'+data.id).remove();
+	        		
+	        	}
+	        	$('body').append(data.butt);
+	        		$('#di').append(data.html);
         	}
-        	$('body').append(data.butt);
-        		$('#di').append(data.html);
-        	
         	
         }
 
@@ -117,7 +121,7 @@ $(document).ready(function(){
         });
         
         channel.bind('privacyHandle', function (data) {
-        	if(data.redir== undefined){
+        	if(data.redir== undefined ){
         		handleMessage(data);
         	} 
         });

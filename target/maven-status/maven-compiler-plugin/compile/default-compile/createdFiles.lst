@@ -27,5 +27,4 @@ Ajax/TournamentJoin.class
 Ajax/Serve.class
 com/example/appengine/pusher/SendMessageServlet.class
 HelperClasses/FIleUpload.class
-Upload.class
 Ajax/Profile.class
