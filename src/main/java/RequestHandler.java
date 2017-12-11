@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,21 +40,19 @@ public class RequestHandler extends HttpServlet{
 		String name = Cooky.getContextName("gc_account",req.getCookies(),"cookie", req);
 		HashMap<String, String[]> DivMap = Cooky.getContextValue("DivMap", req);
 		
-		HashMap<String,String[]> reqInfo = Cooky.getContextValue("reqIfnfo",req);
+		HashMap<String,String[]> reqInfo = Cooky.getContextValue("reqInfo",req);
 		if(reqInfo == null) {
-			req.getSession().getServletContext().setAttribute("reqIfnfo", new HashMap<String, String>());
+			req.getSession().getServletContext().setAttribute("reqInfo", new HashMap<String, String[]>());
 		}
-		reqInfo = Cooky.getContextValue("reqIfnfo",req);
-		String reqSID="";
+		reqInfo = Cooky.getContextValue("reqInfo",req);
+		
 		String[] values = new  String[2]; 
 		for(String[] arr : DivMap.values()) {
 			System.out.println(arr[0]+"  "+ParentID);
 			if(arr[3].equals(name)) {
 				values[0]=arr[1];
-			}else if(arr[0].equals(ParentID)) {
-				reqSID= arr[1];
+			}else if(arr[0].equals(ParentID)) {				
 				values[1]=arr[3];
-				System.out.println(reqSID);
 				System.out.println(Arrays.toString(arr));
 				
 			}
@@ -63,21 +62,43 @@ public class RequestHandler extends HttpServlet{
 		System.out.println(Arrays.toString(values));
 		reqInfo.put(name, values);
 		Map<String,String> messageData = new HashMap<String, String>();
-		
+//	"<div class=\"noti-div\" style=\"transform: translateY(0px);\">\n" + 
+//	"        \n" + 
+//	"        <div class=\"con\">\n" + 
+//	"            <div class=\"img\">\n" + 
+//	"                <div></div>\n" + 
+//	"            </div>\n" + 
+//	"           <div class=\"name-div\">\n" + 
+//	"               <p class=\"name\">"+name+"</p>\n" + 
+//	"               <p class=\"send\"><i>Send friend request for u.</i></p>\n" + 
+//	"                <div class=\"insi\">\n" + 
+//	"                 <button name='accept' class=\"yes\">Yes</button>\n" + 
+//	"                 <button name='accept' class=\"no\">No</button>\n" + 
+//	"             </div>\n" + 
+//	"           </div>\n" + 
+//	"       \n" + 
+//	"        </div>\n" + 
+//	"   </div>"	;
 		
 		messageData.put("name", name);
 		messageData.put("msg","<div style='position:absolute' name='senderInfo'>"+name
 		+"<br>wants to play with you??<button name='accept'>YES</button><button name='accept'>NO</button></div>");
-		
-		Result result =
-		        PusherService.getDefaultInstance()
-		            .trigger(
-		                "presence-MyNotification-"+reqSID,
-		                "GameReq", // name of event
-		                messageData);
-		System.out.println("presence-MyNotification-"+reqSID);
-		System.out.println(result.toString());
-		messageData.put("status", result.getStatus().name());
+		HashMap<String,ArrayList<String>> MultiBrowser = (HashMap<String, ArrayList<String>>) req.getSession().getServletContext().getAttribute("MultiBrowser");
+		ArrayList<String> senderCookies= MultiBrowser.get(values[1]);
+		for(String Cookie : senderCookies) {
+				Result result =
+				        PusherService.getDefaultInstance()
+				            .trigger(
+				                "private-MyNotification-"+DivMap.get(Cookie)[1],
+				                "GameReq", // name of event
+				                messageData);
+				
+				System.out.println("presence-MyNotification-"+DivMap.get(Cookie)[1]);
+				System.out.println(result.toString());
+				
+				messageData.put("status", result.getStatus().name());
+			
+		}
 		resp.getWriter().println(gson.toJson(messageData));
 	}
 }

@@ -36,6 +36,7 @@ public class CoinMoveCheck extends HttpServlet {
 	  String json = body.replaceFirst("^\\[", "").replaceFirst("\\]$", "");
 	  Map<String, String> data = gson.fromJson(json, typeReference.getType());
 	    
+<<<<<<< HEAD
 	  HashMap<String,ArrayList<String>> g= gamedetail.get(data.get("gameid"));
 	  ArrayList<String> cookie=g.get("cookie");
 	  ArrayList<String> white=new ArrayList<String>();
@@ -46,6 +47,9 @@ public class CoinMoveCheck extends HttpServlet {
 	  }
 	    
 	 
+=======
+//	  ArrayList<> gamedetail.get(data.get("cookie"));
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
   }
   
 }

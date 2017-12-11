@@ -297,6 +297,7 @@
 		<servlet-class>RequestConfirmHandler</servlet-class>
 	</servlet>
 	
+<<<<<<< HEAD
 	<!-- Redirecting to game page -->
 	
 	
@@ -308,5 +309,19 @@
 		<servlet-name>Checking_servlet</servlet-name>
 		<servlet-class>Ajax.CheckingPlayerInGamePage</servlet-class>
 	</servlet>
+=======
+	<!-- 
+	
+	
+	<servlet-mapping>
+  		<servlet-name>Checking_servlet</servlet-name>
+  		<url-pattern>/ajax/checkingplayers</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Checking_servlet</servlet-name>
+		<servlet-class>CheckingPlayerInGamePage</servlet-class>
+	</servlet>
+	-->
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	
 </web-app>

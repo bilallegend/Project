@@ -41,23 +41,26 @@ private Gson gson = new GsonBuilder().create();
 	    System.out.println(json);
 	    
 	    String Reply  = data.get("reply");
-	    HashMap<String,String[]> reqInfo = Cooky.getContextValue("reqIfnfo",request);
+	    HashMap<String,String[]> reqInfo = Cooky.getContextValue("reqInfo",request);
 	    Map<String,String> messageData = new HashMap<String, String>();
 	    
 		if(reqInfo == null) {
 			messageData.put("redir", Redirecter.giveUrlFor(request,"/home"));
 		}else {
-			reqInfo = Cooky.getContextValue("reqIfnfo",request);
+			reqInfo = Cooky.getContextValue("reqInfo",request);
+			String requesterName = "";
+			boolean tryF = true;
 			for(String Key : reqInfo.keySet()) {
 				if(reqInfo.get(Key)[1].equals(name)) {
 					messageData.put("replyId",reqInfo.get(Key)[0]);
+					requesterName=Key;
+					tryF=false;
 					break;
 				}
 				
 			}
-			
-			
-			if(Reply.equals("YES")) {
+			reqInfo.remove(requesterName);			
+			if(Reply.equals("YES") && !tryF) {
 				messageData.put("reply", Reply);
 				messageData.put("redir", Redirecter.giveUrlFor(request,"/game"));
 			}else {
