@@ -152,6 +152,14 @@
     			});
     		}
     	});
+    	
+    	
+//    	  $(".req,.frstdiv>div>div,#chan-pass").click(function(){
+//             
+//          });
+          $(".c").click(function(){
+              $(".whole>div:nth-child(2)").css("transform","translateY(-100%)");
+          });
     	// /-----------------------------------------------------------/
     	// $(".profile").click(function(){
     	//     alert("hi");

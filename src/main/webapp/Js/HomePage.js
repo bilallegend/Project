@@ -1,5 +1,13 @@
 $(document).ready(function(){
 
+		$('#Edit').click(function(){
+			$.post("/ajax/pro",{},function(data,status){
+				if(data!="null"){
+					location.href=data;
+				}
+				
+			});
+		});
 	
 	
 	$("#playonline").click(function(){

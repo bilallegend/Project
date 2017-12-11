@@ -309,5 +309,15 @@
 		<servlet-class>CheckingPlayerInGamePage</servlet-class>
 	</servlet>
 	-->
+	<servlet-mapping>
+  		<servlet-name>Feeds_servlet</servlet-name>
+  		<url-pattern>/ajax/getLive</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Feeds_servlet</servlet-name>
+		<servlet-class>Feeds</servlet-class>
+	</servlet>
+	
+	
 	
 </web-app>

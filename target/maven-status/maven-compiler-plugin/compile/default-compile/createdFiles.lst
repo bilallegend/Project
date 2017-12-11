@@ -26,8 +26,10 @@ OnlineMembers.class
 Ajax/CoinMoveCheck$1.class
 com/example/appengine/pusher/SendMessageServlet$1.class
 Ajax/TournamentJoin.class
+Feeds.class
 Ajax/Serve.class
 com/example/appengine/pusher/SendMessageServlet.class
 HelperClasses/FIleUpload.class
+Feeds$1.class
 Ajax/CoinMoveCheck.class
 Ajax/Profile.class
