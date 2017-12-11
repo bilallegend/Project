@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServlet;
@@ -22,16 +23,33 @@ public class CoinMoveCheck extends HttpServlet {
   private Gson gson = new GsonBuilder().create();
   private TypeReference<Map<String, String>> typeReference =
 	      new TypeReference<Map<String, String>>() {};
+  private static int x=0;
+  
+	
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	  
 	  ServletContext context  =   request.getSession().getServletContext();
-	  HashMap<String,ArrayList<String>> gamedetail= (HashMap<String,ArrayList<String>>) context.getAttribute("playdetails");
+	  HashMap<String,HashMap<String,ArrayList<String>>> gamedetail= (HashMap<String,HashMap<String,ArrayList<String>>>) context.getAttribute("playdetails");
 	  String body = CharStreams.readLines(request.getReader()).toString();
-	    String json = body.replaceFirst("^\\[", "").replaceFirst("\\]$", "");
-	    Map<String, String> data = gson.fromJson(json, typeReference.getType());
+	  String json = body.replaceFirst("^\\[", "").replaceFirst("\\]$", "");
+	  Map<String, String> data = gson.fromJson(json, typeReference.getType());
 	    
-//	  ArrayList<> gamedetail.get(data.get("cookie"));
-  }
+
+	  HashMap<String,ArrayList<String>> g= gamedetail.get(data.get("gameid"));
+	  ArrayList<String> cookie=g.get("cookie");
+	  ArrayList<String> white=new ArrayList<String>();
+	  ArrayList<String> black=new ArrayList<String>();
+	  
+	  for(String i:cookie) {
+		  
+	  }
+	    
+
+  
 }
+}
+  
+  
+  

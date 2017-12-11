@@ -21,10 +21,10 @@ public class CheckingPlayerInGamePage extends HttpServlet{
 		ConnectionDatabase psql = new ConnectionDatabase();
 		 Connection conn			=psql.createConnection("gamecenter");
 	   	 ServletContext context  =   request.getSession().getServletContext();
-	   	 HashMap<String,ArrayList<String>> gamedetail= (HashMap<String,ArrayList<String>>) context.getAttribute("playdetails");
+	   	 HashMap<String,HashMap<String,ArrayList<String>>> gamedetail= (HashMap<String,HashMap<String,ArrayList<String>>>) context.getAttribute("playdetails");
 		  String gameid="";
 		  for(String i:gamedetail.keySet()) {
-			  if(gamedetail.get(i).contains(request.getParameter("num"))) {
+			  if((gamedetail.get(i)).get("cookie")!=null&&(gamedetail.get(i)).get("cookie").contains(request.getParameter("num"))) {
 				  gameid=i;
 			  }
 		  }
@@ -74,8 +74,13 @@ public class CheckingPlayerInGamePage extends HttpServlet{
 		      Gson gson = new GsonBuilder().setPrettyPrinting()
 	                   .create();
 		      String json ="";
+		      
+		      HashMap<String,HashMap<String,ArrayList<String>>> pd=( HashMap<String,HashMap<String,ArrayList<String>>> )context.getAttribute("playdetails");
+		      HashMap<String,ArrayList<String>>d=pd.get(request.getParameter("num"));
+		      
 		      result.put("player1", player1name);
 		      result.put("player2", player2name);
+		      result.put("color",d.get("color").get(0));
 		      result.put("gameid",gameid);
 		      json=gson.toJson(result);
 			  response.getWriter().write(json);

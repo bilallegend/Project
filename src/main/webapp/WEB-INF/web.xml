@@ -306,7 +306,7 @@
   	</servlet-mapping>
 	<servlet>
 		<servlet-name>Checking_servlet</servlet-name>
-		<servlet-class>CheckingPlayerInGamePage</servlet-class>
+		<servlet-class>Ajax.CheckingPlayerInGamePage</servlet-class>
 	</servlet>
 	-->
 	
