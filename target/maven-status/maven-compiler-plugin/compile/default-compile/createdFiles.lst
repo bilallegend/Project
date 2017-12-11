@@ -2,6 +2,7 @@ Ajax/upload.class
 HelperClasses/ConnectionDatabase.class
 RequestConfirmHandler.class
 RequestHandler$1.class
+Ajax/CheckingPlayerInGamePage.class
 com/example/appengine/pusher/AuthorizeUser.class
 PrivacyHandler.class
 Ajax/Signin.class
@@ -22,9 +23,11 @@ HelperClasses/Redirecter.class
 RoomChecker.class
 RequestConfirmHandler$1.class
 OnlineMembers.class
+Ajax/CoinMoveCheck$1.class
 com/example/appengine/pusher/SendMessageServlet$1.class
 Ajax/TournamentJoin.class
 Ajax/Serve.class
 com/example/appengine/pusher/SendMessageServlet.class
 HelperClasses/FIleUpload.class
+Ajax/CoinMoveCheck.class
 Ajax/Profile.class

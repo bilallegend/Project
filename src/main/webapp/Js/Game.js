@@ -19,6 +19,7 @@
 	var channel;
 	var watching_channel;
 	var usercookie;
+	var gameid;
     $(document).ready(function () {
     	
     	
@@ -42,10 +43,10 @@
     	var list=cookie.split("; ");
     	usercookie="0";
     	var count=0;
-    	var gameid="";
+    	 gameid="";
     	for(i=0;i<list.length;i++){
     		var l=list[i].split("=");
-    		if(l[0]=="gc_play"){
+    		if(l[0]=="gc_account"){
     			usercookie=l[1];
     			count+=1;
     			break;
@@ -60,7 +61,14 @@
     		alert(data);
     		var obj=JSON.parse(data);
     		gameid=obj.gameid;
-    		
+    		if(obj.color=="white"){
+    		  $("#white").text(obj.player1name);
+    		  $("#black").text(obj.player2name);
+    		}
+    		else{
+    			$("#black").text(obj.player1name);
+    			$("#white").text(obj.player2name);
+    		}
     		
     	});
     	
@@ -89,6 +97,8 @@
          // subscribe to new messages in the chat application
          channel.bind('new_message', function (data) {
             
+        	 
+        	 
          });
          
          channel.bind('pusher:member_removed', function (member) {
@@ -212,9 +222,9 @@
         }
         var data = JSON.stringify({
             message: a,
-            cookie:usercookie,
+            gameid:gameid,
+            usercookie:usercookie,
             channel_id: channel_name,
-            
             socket_id: socket_id
         });
         $.post('/ajax/move',data,function(res,status){
