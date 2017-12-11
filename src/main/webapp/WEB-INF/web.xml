@@ -322,6 +322,14 @@
 	
 	
 	<!-- profile_redirect -->
+	<servlet-mapping>
+  		<servlet-name>Myinfo_servlet</servlet-name>
+  		<url-pattern>/home/MyInfo</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Myinfo_servlet</servlet-name>
+		<servlet-class>profileInfo</servlet-class>
+	</servlet>
 	
 	
 </web-app>

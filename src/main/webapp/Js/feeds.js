@@ -20,12 +20,16 @@ $(document).ready(function(){
 	            $.post('/ajax/getLive', data,
 	                function (msg) {
 	            		console.log(msg)
-	                    $('#feedsFlow').append(msg.html);
+	            		view(msg)
+//	                    $('#feedsFlow').append(msg.html);
 	                }, "json");
 			 
 			 
 		 });
 		
+		 function view(data){
+			 $('#feedsFlow').append(msg.html);
+		 }
 		 
 		 channel.bind('pusher:member_added', function (member){
 			 
@@ -39,7 +43,7 @@ $(document).ready(function(){
 		 });
 		 
 		 channel.bind('PlayLive',function(data){
-			
+			 view(data)
 			 
 		 });
 		 

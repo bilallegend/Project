@@ -1,12 +1,7 @@
 $(document).ready(function(){
 
 		$('#Edit').click(function(){
-			$.post("/ajax/pro",{},function(data,status){
-				if(data!="null"){
-					location.href=data;
-				}
-				
-			});
+			location.href="http://localhost:8080/home/MyInfo";
 		});
 	
 	
