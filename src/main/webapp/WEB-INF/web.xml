@@ -297,7 +297,7 @@
 		<servlet-class>RequestConfirmHandler</servlet-class>
 	</servlet>
 	
-	<!-- Redirecting to game page -->
+	<!-- 
 	
 	
 	<servlet-mapping>
@@ -308,5 +308,6 @@
 		<servlet-name>Checking_servlet</servlet-name>
 		<servlet-class>CheckingPlayerInGamePage</servlet-class>
 	</servlet>
+	-->
 	
 </web-app>

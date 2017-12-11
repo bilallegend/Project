@@ -32,6 +32,6 @@ public class CoinMoveCheck extends HttpServlet {
 	    String json = body.replaceFirst("^\\[", "").replaceFirst("\\]$", "");
 	    Map<String, String> data = gson.fromJson(json, typeReference.getType());
 	    
-	  ArrayList<> gamedetail.get(data.get("cookie"));
+//	  ArrayList<> gamedetail.get(data.get("cookie"));
   }
 }

@@ -121,7 +121,19 @@ $(document).ready(function(){
         });
         
         channel.bind('privacyHandle', function (data) {
-        	if(data.redir== undefined ){
+        	console.log(data.name,name);
+        	if(name == data.name){
+        		if(data.privacy=='public'){
+	        		$('input:radio[name=vis]')[1].checked=true;
+	            	privacy = "public";
+        		}else{
+        			$('input:radio[name=vis]')[0].checked=true;
+	            	privacy = "private";
+        		}
+        		
+        	}
+        	
+        	if(data.redir== undefined && name!= data.name){
         		handleMessage(data);
         	} 
         });

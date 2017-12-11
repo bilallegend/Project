@@ -8,7 +8,9 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServlet;
@@ -34,8 +36,7 @@ public class AuthorizeUser extends HttpServlet{
 		
 			 name = Cooky.getContextName("gc_account", request.getCookies(),"cookie",request) ;
 		 	System.out.println(name+ "  user name");
-		 	if(name == null) {
-		 		
+		 	if(name == null) {	 		
 		 		return;
 		 	}else {
 		    Pusher pusher = PusherService.getDefaultInstance();
@@ -65,18 +66,24 @@ public class AuthorizeUser extends HttpServlet{
 			    }
 			    HashMap<String,ArrayList<String>> MultiBrowser = (HashMap<String, ArrayList<String>>) context.getAttribute("MultiBrowser");
 			    DivMap = (HashMap<String, String[]>) context.getAttribute("DivMap");
-			    if(MultiBrowser.get(name)==null) {
-			    	MultiBrowser.put(name,new ArrayList<String>());
-			    	MultiBrowser.get(name).add(CookieValue);
-			    }
 			    
-			    	boolean newUser=true;
+			    //MultiBrowisng purpose
+			    if(MultiBrowser.get(name)==null) {
+			    	MultiBrowser.put(name,new ArrayList<String>());			    	
+			    }
+			    if(!MultiBrowser.get(name).contains(CookieValue)) {
+			    MultiBrowser.get(name).add(CookieValue);
+			    }
+			    //To find new user
+			    boolean newUser=true;
 			    	String[] ValuesArray =  new String[4];
 			    	for(String key : DivMap.keySet()) {
+				    	
 				    	if(key.equals(CookieValue)) {
 				    		currentUserId=DivMap.get(CookieValue)[0];
 				    		newUser=false;
-				    	}else if(DivMap.get(key)[3].equals(name)) {
+				    	}
+				    	else if(DivMap.get(key)[3].equals(name)) {
 				    		newUser=false; 
 				    		System.out.println("old user");
 						    String size=(DivMap.keySet().size())+"";
@@ -85,9 +92,9 @@ public class AuthorizeUser extends HttpServlet{
 						    ValuesArray[0]=size;
 						    ValuesArray[1]=socketId;
 						    ValuesArray[3]=name;
-						    DivMap.put(CookieValue,ValuesArray);
 				    	}
 				    }
+			    		
 			   
 			    	if(newUser) {
 			    		String size=(DivMap.keySet().size())+"";
@@ -96,6 +103,8 @@ public class AuthorizeUser extends HttpServlet{
 					    ValuesArray[1]=socketId;
 					    ValuesArray[3]=name;
 					    DivMap.put(CookieValue,ValuesArray);
+			    	}else if(ValuesArray[0] != null) {
+			    		DivMap.put(CookieValue,ValuesArray);
 			    	}
 			   
 			    
@@ -106,11 +115,6 @@ public class AuthorizeUser extends HttpServlet{
 		    
 		    System.out.println(DivMap);
 		    
-		    
-		    
-		    
-		    
-		    // Presence channels (presence-*) require user identification for authentication
 		    
 		    userInfo.put("displayName", Cooky.getContextName("gc_account", request.getCookies(),"cookie", request));
 		    

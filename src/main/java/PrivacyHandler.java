@@ -50,26 +50,38 @@ public class PrivacyHandler extends HttpServlet{
 	    
 	    HashMap<String,String[]> DivMap = Cooky.getContextValue("DivMap", request);
 	    Map<String, String> messageData = new HashMap<>();
-	    
-	    
-	    
-	    if(DivMap == null) {
+	    ServletContext context= request.getSession().getServletContext();
+	    if(context.getAttribute("NameIdMap")==null) { 
+	    	context.setAttribute("NameIdMap", new HashMap<String,String>());
+	    }
+	    	HashMap<String,String> NameIdMap = (HashMap<String, String>) context.getAttribute("NameIdMap");
+	    	HashMap<String,ArrayList<String>> MultiBrowser = (HashMap<String, ArrayList<String>>) context.getAttribute("MultiBrowser");
+	    if(DivMap == null || MultiBrowser==null ) {
 	    	messageData.put("redir",Redirecter.giveUrlFor(request,"/home"));
 	    }else {
+	    	String name= Cooky.getContextName("gc_account", request.getCookies(),"cookie", request);
 		    if(DivMap.get(CookieValue)[2]== privacy ) {
 		    	return;
 		    }
-		    DivMap.get(CookieValue)[2]=privacy;
-		    
+		    for(String cookie : MultiBrowser.get(name)) {
+		    	DivMap.get(cookie)[2]=privacy;
+		    }
 		    System.out.println(data);
-		    String name= Cooky.getContextName("gc_account", request.getCookies(),"cookie", request);
+		    
+		    String showingId=null;
+		    if(!NameIdMap.containsKey(name)) {
+		    	NameIdMap.put(name,DivMap.get(CookieValue)[0]);	
+		    }
+		    
+		    showingId=NameIdMap.get(name);
+		    
 		    System.out.println(DivMap);
 		    System.out.println(Arrays.deepToString(DivMap.get(CookieValue)));
 		    
-		    messageData.put("id",DivMap.get(CookieValue)[0]);
+		    messageData.put("id",showingId);
 		    	messageData.put("name",DivMap.get(CookieValue)[3]);
-		    	messageData.put("html",getHtml(DivMap.get(CookieValue)[0],name,privacy));
-		    
+		    	messageData.put("html",getHtml(showingId,name,privacy));
+		    	messageData.put("privacy",privacy);
 		    
 		    
 		    
@@ -87,11 +99,16 @@ public class PrivacyHandler extends HttpServlet{
 		    messageData.put("status", result.getStatus().name());
 		    if(again== null ) {
 			    String html="";
-			    ArrayList<String > names = new ArrayList<>();
+			    System.out.println("multiBrowser");
+			    System.out.println(MultiBrowser.get(name));
 			    for(String key : DivMap.keySet()) {
-			    	if(!key.equals(CookieValue) && !names.contains(DivMap.get(key)[3])) {
-			    		names.add(DivMap.get(key)[3]);
-			    		html+=getHtml(DivMap.get(key)[0] ,DivMap.get(key)[3],DivMap.get(key)[2]);
+			    	System.out.println(key);
+			    	System.out.println(!MultiBrowser.get(name).contains(key));
+			    	String memberName = DivMap.get(key)[3];
+			    	String  memberDivId = DivMap.get(key)[0];
+			    	if(!MultiBrowser.get(name).contains(key) && NameIdMap.get(memberName).equals(memberDivId)) {
+			    		
+			    		html+=getHtml( memberDivId,memberName,DivMap.get(key)[2]);
 			    		
 			    	}
 			    }

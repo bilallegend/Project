@@ -1,7 +1,7 @@
-<<<<<<< HEAD
 /home/zoho/GCP/PusherProj/src/main/java/Ajax/Tournament.java
 /home/zoho/GCP/PusherProj/src/main/java/RoomChecker.java
 /home/zoho/GCP/PusherProj/src/main/java/Ajax/Signup.java
+/home/zoho/GCP/PusherProj/src/main/java/Ajax/CheckingPlayerInGamePage.java
 /home/zoho/GCP/PusherProj/src/main/java/HelperClasses/Redirecter.java
 /home/zoho/GCP/PusherProj/src/main/java/Ajax/upload.java
 /home/zoho/GCP/PusherProj/src/main/java/Ajax.java
@@ -18,6 +18,7 @@
 /home/zoho/GCP/PusherProj/src/main/java/com/example/appengine/pusher/AuthorizeServlet.java
 /home/zoho/GCP/PusherProj/src/main/java/PrivacyHandler.java
 /home/zoho/GCP/PusherProj/src/main/java/Ajax/Serve.java
+/home/zoho/GCP/PusherProj/src/main/java/Ajax/CoinMoveCheck.java
 /home/zoho/GCP/PusherProj/src/main/java/Filters/AccountFilter.java
 /home/zoho/GCP/PusherProj/src/main/java/RequestHandler.java
 /home/zoho/GCP/PusherProj/src/main/java/com/example/appengine/pusher/ChatServlet.java
@@ -25,31 +26,3 @@
 /home/zoho/GCP/PusherProj/src/main/java/RequestConfirmHandler.java
 /home/zoho/GCP/PusherProj/src/main/java/HelperClasses/FIleUpload.java
 /home/zoho/GCP/PusherProj/src/main/java/com/example/appengine/pusher/SendMessageServlet.java
-=======
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/PrivacyHandler.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Ajax/Signup.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/com/example/appengine/pusher/AuthorizeUser.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/RoomChecker.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Ajax/TournamentMembers.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/RequestConfirmHandler.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/com/example/appengine/pusher/ChatServlet.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Ajax/Profile.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/HelperClasses/FIleUpload.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/OnlineMembers.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/com/example/appengine/pusher/SendMessageServlet.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Ajax/upload.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Ajax.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Ajax/Signin.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/HelperClasses/Redirecter.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/com/example/appengine/pusher/AuthorizeServlet.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/HelperClasses/CookieCreator.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/RequestHandler.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Ajax/Serve.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/com/example/appengine/pusher/PusherService.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Ajax/OnlineMemb.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Ajax/TournamentJoin.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/HelperClasses/Cooky.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Filters/AccountFilter.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Ajax/Tournament.java
-/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/HelperClasses/ConnectionDatabase.java
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
