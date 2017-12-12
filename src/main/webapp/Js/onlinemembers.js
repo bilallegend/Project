@@ -116,7 +116,7 @@ $(document).ready(function(){
         
         
         notifyChannel.bind('GameResp', function (data) {
-        	alert(data.redir);
+        	location.href=data.redir;
 //        	 gameRedirect(data);
         });
         

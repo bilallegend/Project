@@ -261,6 +261,15 @@
 		<servlet-class>com.example.appengine.pusher.AuthorizeUser</servlet-class>
 	</servlet>
 	
+	<servlet-mapping>
+  		<servlet-name>play auth_servlet</servlet-name>
+  		<url-pattern>/auth_player</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>play auth_servlet</servlet-name>
+		<servlet-class>com.example.appengine.pusher.Authorize</servlet-class>
+	</servlet>
+	
 	
 	<!-- if privacy is changes -->
 	<servlet-mapping>
@@ -297,8 +306,7 @@
 		<servlet-class>RequestConfirmHandler</servlet-class>
 	</servlet>
 	
-<<<<<<< HEAD
-	<!-- Redirecting to game page -->
+
 	
 	
 	<servlet-mapping>
@@ -309,19 +317,15 @@
 		<servlet-name>Checking_servlet</servlet-name>
 		<servlet-class>Ajax.CheckingPlayerInGamePage</servlet-class>
 	</servlet>
-=======
-	<!-- 
-	
 	
 	<servlet-mapping>
-  		<servlet-name>Checking_servlet</servlet-name>
-  		<url-pattern>/ajax/checkingplayers</url-pattern>	
+  		<servlet-name>CoinMove_servlet</servlet-name>
+  		<url-pattern>/ajax/move</url-pattern>	
   	</servlet-mapping>
 	<servlet>
-		<servlet-name>Checking_servlet</servlet-name>
-		<servlet-class>CheckingPlayerInGamePage</servlet-class>
+		<servlet-name>CoinMove_servlet</servlet-name>
+		<servlet-class>Ajax.CoinMoveCheck</servlet-class>
 	</servlet>
-	-->
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+	
 	
 </web-app>

@@ -28,6 +28,7 @@ com/example/appengine/pusher/SendMessageServlet$1.class
 Ajax/TournamentJoin.class
 Ajax/Serve.class
 com/example/appengine/pusher/SendMessageServlet.class
+com/example/appengine/pusher/Authorize.class
 HelperClasses/FIleUpload.class
 Ajax/CoinMoveCheck.class
 Ajax/Profile.class

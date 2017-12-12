@@ -43,12 +43,12 @@ private Gson gson = new GsonBuilder().create();
 	    String Reply  = data.get("reply");
 	    HashMap<String,String[]> reqInfo = Cooky.getContextValue("reqInfo",request);
 	    Map<String,String> messageData = new HashMap<String, String>();
-	    
+	    String requesterName = "";
 		if(reqInfo == null) {
 			messageData.put("redir", Redirecter.giveUrlFor(request,"/home"));
 		}else {
 			reqInfo = Cooky.getContextValue("reqInfo",request);
-			String requesterName = "";
+			
 			boolean tryF = true;
 			for(String Key : reqInfo.keySet()) {
 				if(reqInfo.get(Key)[1].equals(name)) {
@@ -59,17 +59,17 @@ private Gson gson = new GsonBuilder().create();
 				}
 				
 			}
-			reqInfo.remove(requesterName);			
+					
 			if(Reply.equals("YES") && !tryF) {
 				messageData.put("reply", Reply);
-				messageData.put("redir", Redirecter.giveUrlFor(request,"/game"));
+				messageData.put("redir", Redirecter.giveUrlFor(request,"/play"));
 			}else {
 				messageData.put("reply", "Sorry!");
 			}
 			Result result =
 			        PusherService.getDefaultInstance()
 			            .trigger(
-			                "presence-MyNotification-"+messageData.get("replyId"),
+			                "private-MyNotification-"+messageData.get("replyId"),
 			                "GameResp", // name of event
 			                messageData);
 			messageData.put("status", result.getStatus().name());
@@ -77,17 +77,16 @@ private Gson gson = new GsonBuilder().create();
 			messageData.remove("reply");messageData.remove("replyId");
 		}
 		
-		String[] info=reqInfo.get(name);
-		String oppname=info[info.length-1];
 		
+		String oppname=requesterName;
+		reqInfo.remove(requesterName);
 		ServletContext context  =   request.getSession().getServletContext();
 		HashMap<String,String[]> d=(HashMap<String,String[]>) context.getAttribute("DivMap");
-		ArrayList<String> gc_account=new ArrayList<String>();
-		HashMap<String,ArrayList<String>> gc=new HashMap<String,ArrayList<String>>();
-		gc.put("cookie", gc_account);
+		ArrayList<String> cookies=new ArrayList<String>();
+		
 		for(String i:d.keySet()) {
 			if(d.get(i)[3].equals(name)||d.get(i)[3].equals(oppname)) {
-				gc_account.add(i);
+				cookies.add(i);
 			}
 		}
 		ConnectionDatabase psql = new ConnectionDatabase();
@@ -106,34 +105,59 @@ private Gson gson = new GsonBuilder().create();
 		       // System.out.println(e);
 		    	System.out.println("Anu");
 		    }
-		 HashMap<String,HashMap<String,ArrayList<String>>> pd1=new HashMap<String,HashMap<String,ArrayList<String>>>();
-		 if(context.getAttribute("playdetails")==null) {
-			 context.setAttribute("playdetails", pd1);
+		
+		 if(context.getAttribute("GameIds")==null) {
+			 context.setAttribute("GameIds", new HashMap<String,String[]>() );
 		 }
-		 HashMap<String,HashMap<String,ArrayList<String>>> pd=( HashMap<String,HashMap<String,ArrayList<String>>> )context.getAttribute("playdetails");
-		 pd.put("game "+count, gc);
+		 if(context.getAttribute("PlayDetails")==null) {
+			 context.setAttribute("PlayDetails", new HashMap<String,HashMap<String,ArrayList<String>>>() );
+		 }
+		 HashMap<String,String[]> pd=(HashMap<String,String[]>)context.getAttribute("GameIds");
+		 String a[]= {"",""};
+		 a[0]=cookies.get(0);
+		 a[1]=cookies.get(1);
+		 pd.put("game "+(count+1), a);
+		 context.setAttribute("GameIds",pd);
 		 
-		 HashMap<String,ArrayList<String>> white=new HashMap<String,ArrayList<String>>();
+		 HashMap<String,HashMap<String,ArrayList<String>>> pd1=(HashMap<String,HashMap<String,ArrayList<String>>>) context.getAttribute("PlayDetails");
+		 HashMap<String,ArrayList<String>> White=new HashMap<String,ArrayList<String>>();
+		 HashMap<String,ArrayList<String>> Black=new HashMap<String,ArrayList<String>>();
+		 
 		 ArrayList<String> color=new ArrayList<String>();
 		 ArrayList<String> colorid=new ArrayList<String>();
+		 ArrayList<String> status=new ArrayList<String>();
 		 colorid.add("29");
 		 colorid.add("36");
 		 color.add("white");
-		 white.put("color",color);
-		 white.put("coins",colorid);
-		 HashMap<String,ArrayList<String>> black=new HashMap<String,ArrayList<String>>();
+		 status.add("Waiting");
+		 
+		 White.put("color",color);
+		 White.put("coins",colorid);
+		 White.put("status", status);
+		 
+		 
 		 ArrayList<String> color1=new ArrayList<String>();
-		 color1.add("black");
-		 ArrayList<String> color1id=new ArrayList<String>();
-		 color1id.add("29");
-		 color1id.add("36");
-		 black.put("color",color);
-		 black.put("coins",color1id);
-		 pd.put(gc_account.get(0),black);
-		 pd.put(gc_account.get(1),white);
+		 ArrayList<String> colorid1=new ArrayList<String>();
+		 ArrayList<String> status1=new ArrayList<String>();
+		 colorid1.add("28");
+		 colorid1.add("37");
+		 color1.add("Black");
+		 status1.add("Playing");
 		 
-		context.setAttribute("playdetails", pd);
+		 Black.put("color",color1);
+		 Black.put("coins",colorid1);
+		 Black.put("status", status1);
+
 		 
+		 pd1.put(cookies.get(0), White);
+		 pd1.put(cookies.get(1), Black);
+		 
+		 context.setAttribute("PlayDetails",pd1);
+		 
+		
+		System.out.println(pd);
+		System.out.println(pd1);
+		
 		response.getWriter().println(gson.toJson(messageData));
 	    
 	  }

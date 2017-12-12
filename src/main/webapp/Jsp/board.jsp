@@ -16,21 +16,21 @@
 			    <div class="inrdiv"></div>
 		    </div>
 	    </div>
-	    <h1 class="oth">OTHELLO GAME </h1>
+	    <h1 class="oth"></h1>
          <div class="time">00 <span>Sec</span><span class="it">It's Remaining For Your Turn.</span></div>
          <div class="play-sta">
              <div>
                  <div class="prf"></div>
                  <div>
                      <p class="pla" id="black">Anulakshmi</p>
-                     <p class=" pla play">Playing</p>
+                     <p class=" pla play" id="bla">Playing</p>
                  </div>
              </div>
              <div class="top">
                  <div class="prf"></div>
                  <div>
                      <p class="pla" id="white">Anulakshmi</p>
-                     <p class=" pla play colo">Playing</p>
+                     <p class=" pla play colo" id="whi">Playing</p>
                  </div>
              </div>
          </div>
