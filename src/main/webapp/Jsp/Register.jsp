@@ -9,6 +9,7 @@
 	<title>Register Page</title>
 	<link rel="stylesheet" href="../Css/Register.css">
 	<link rel="stylesheet" href="../Css/feeds.css">
+	<link rel="stylesheet" href="../Css/Instruction.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="../Js/jquery.js"></script>
 	<script src="../Js/HomePage.js"></script>
@@ -144,9 +145,11 @@
 			<i class="fa fa-caret-left" id="leftaro" aria-hidden="true"></i>
 		</div>
 		    <div class="feeds">
-        <div class="main" id='feedsFlow'>s
-        </div>
-    </div>
+		    	<button type="submit" class="feedbtn feedfrstbtn" name='toWatch'>Replays</button>
+                <button type="submit" class="feedbtn feedsndbtn" name='toWatch'>Live</button>
+        		<div class="main" id='feedsFlow'>s
+        		</div>
+    		</div>
 	</div>
 	<div class="profil" id="img"></div>
 		<div class="profilediv">

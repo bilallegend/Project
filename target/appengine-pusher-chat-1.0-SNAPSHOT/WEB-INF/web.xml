@@ -284,6 +284,25 @@
 		<servlet-class>RequestHandler</servlet-class>
 	</servlet>
 	
+	<servlet-mapping>
+  		<servlet-name>profile_servlet</servlet-name>
+  		<url-pattern>/ajax/getMyInfo</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>profile_servlet</servlet-name>
+		<servlet-class>profileInfo</servlet-class>
+	</servlet>
+
+
+	<servlet-mapping>
+  		<servlet-name>Myinfo_servlet</servlet-name>
+  		<url-pattern>/home/MyInfo</url-pattern>	
+  		<url-pattern>/MyInfo</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Myinfo_servlet</servlet-name>
+		<jsp-file>/Jsp/Profile.jsp</jsp-file>
+	</servlet>
 	
 	
 	<!-- If acceting -->
@@ -297,8 +316,7 @@
 		<servlet-class>RequestConfirmHandler</servlet-class>
 	</servlet>
 	
-<<<<<<< HEAD
-	<!-- Redirecting to game page -->
+	<!-- 
 	
 	
 	<servlet-mapping>
@@ -309,20 +327,9 @@
 		<servlet-name>Checking_servlet</servlet-name>
 		<servlet-class>Ajax.CheckingPlayerInGamePage</servlet-class>
 	</servlet>
-=======
-	<!-- 
-	
-	
-	<servlet-mapping>
-  		<servlet-name>Checking_servlet</servlet-name>
-  		<url-pattern>/ajax/checkingplayers</url-pattern>	
-  	</servlet-mapping>
-	<servlet>
-		<servlet-name>Checking_servlet</servlet-name>
-		<servlet-class>CheckingPlayerInGamePage</servlet-class>
-	</servlet>
 	-->
-<<<<<<< HEAD
+	
+	<!-- Live watch  -->
 	<servlet-mapping>
   		<servlet-name>Feeds_servlet</servlet-name>
   		<url-pattern>/ajax/getLive</url-pattern>	
@@ -333,8 +340,8 @@
 	</servlet>
 	
 	
-=======
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+	
+	
+	
 	
 </web-app>

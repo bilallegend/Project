@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 	var pusher = new Pusher('63f35f26a75b722e22cf', {
         cluster: 'eu',
-        authEndpoint: '/auth',
+        authEndpoint: '/auth/live',
         encrypted: true
 	});
 	
@@ -11,18 +11,30 @@ $(document).ready(function(){
 	
 	pusher.connection.bind('connected', function () {
 		socket_id = pusher.connection.socket_id;
-		 channel.bind('pusher:subscription_succeeded', function (t) {
-			 
-			 var data = JSON.stringify({
-	            });
-	                console.log(data);
-	            // trigger a server-side endpoint to send the message via Pusher
-	            $.post('/ajax/getLive', data,
+		
+		function post(data,url){
+			$.post(url, data,
 	                function (msg) {
 	            		console.log(msg)
 	            		view(msg)
 //	                    $('#feedsFlow').append(msg.html);
 	                }, "json");
+		}
+		
+		
+		$('button[name=toWatch]').click(function(){
+			let html = $(this).html();
+			var data = JSON.stringify({
+            });
+			post(data,'/ajax/get'+html);
+			 
+	                console.log(data);
+	            // trigger a server-side endpoint to send the message via Pusher
+	            
+		});
+		 channel.bind('pusher:subscription_succeeded', function (t) {
+			 
+			
 			 
 			 
 		 });

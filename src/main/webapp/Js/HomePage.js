@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 		$('#Edit').click(function(){
-			location.href="http://localhost:8080/home/MyInfo";
+			location.href="http://localhost:8080/MyInfo";
 		});
 	
 	

@@ -1,29 +1,37 @@
-body,html,.whole{
-    height:100%;
-    width:100%;
-    margin:0px;
-    padding:0px;
-}
-.whole{
-    display:flex;
-    background-image:url("../Images/instruction.jpg");
-    background-size:cover
+.who{
+    width:650px;
+    height: 480px;
+    display:none;
+    transition:1s;
+    position:absolute;
+    top:10%;
+    left:28%;
+    background-image: url("../Images/pap.png");
+    background-size: cover
 }
 .main{
-    height:375px;
-    width:500px;
+    height:332px;
+    width:460px;
     margin:auto;
     text-align:left;
     color:white;
-    font-family:sans-serif
+}
+.main>h1 {
+    color:floralwhite
 }
 h1{
-    text-align:center;
-    color:white
+    margin:0px;
+    text-align: center;
+    font-family: 'Macondo Swash Caps', cursive;
+    color: #88400f
 }
 a{
     text-decoration:none
 }
 h4{
-    font-style: italic
+    font:bold 17px cursive;
+    margin: 16px 0 0
+}
+.main>img {
+    margin: -1px -15px 0 0
 }
