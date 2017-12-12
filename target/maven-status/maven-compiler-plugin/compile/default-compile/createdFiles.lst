@@ -29,6 +29,7 @@ Ajax/TournamentJoin.class
 Feeds.class
 Ajax/Serve.class
 com/example/appengine/pusher/SendMessageServlet.class
+com/example/appengine/pusher/Authorize.class
 HelperClasses/FIleUpload.class
 Feeds$1.class
 Ajax/CoinMoveCheck.class

@@ -24,21 +24,20 @@
     	
     	
     	
-    	$(".gete").click(function () {
+    	var click=function(i){  		 
     		
-    		 
-    		
-    		var id=$(this).attr("id");
+    		var id=i;
     		if(id.length==5){
     		var i=id[3]+id[4];
     		}
     		else{
     			var i=id[3];	
     		}
-    		gq(i,id);
+   		gq(i,id);
     		
-    		
-    	});
+    }
+    
+    
     	var cookie=document.cookie;
     	var list=cookie.split("; ");
     	usercookie="0";
@@ -46,39 +45,49 @@
     	 gameid="";
     	for(i=0;i<list.length;i++){
     		var l=list[i].split("=");
-    		if(l[0]=="gc_account"){
+   		if(l[0]=="gc_account"){
     			usercookie=l[1];
     			count+=1;
     			break;
     		}
     	}
-    	if(usercookie="0"){
+    	if(usercookie=="0"){
     		location.href="http://localhost:8080/home";
     	}
     	alert(usercookie);
     	
-    	$.post("/ajax/checkingplayers",{num:usercookie},function(data,status){
+    	$.post("/ajax/checkingplayers",{},function(data,status){
     		alert(data);
-    		var obj=JSON.parse(data);
+    		console.log(data);
+   		var obj=JSON.parse(data);
     		gameid=obj.gameid;
-    		if(obj.color=="white"){
-    		  $("#white").text(obj.player1name);
-    		  $("#black").text(obj.player2name);
+    		if(obj.ok=="no"){
+    			location.href=obj.url;
+    		}
+    		if(obj.color1=="white"){
+    		  $("#white").text(obj.player1);
+    		  $("#black").text(obj.player2);
+    		  $("#whi").text(obj.status1);
+    		  $("#bla").text(obj.status2);
+    		  
     		}
     		else{
-    			$("#black").text(obj.player1name);
-    			$("#white").text(obj.player2name);
-    		}
+    			$("#black").text(obj.player1);
+    			$("#white").text(obj.player2);
+  		}
+    		gameid=obj.gameid;
+    		$(".oth").text(obj.gameid);
+    		connection();
     		
     	});
     	
     	
-    });
+  
     
     var connection=function(){
     	var pusher = new Pusher('63f35f26a75b722e22cf', {
             cluster: 'eu',
-            //authEndpoint: '/auth',
+            authEndpoint: '/auth_player',
             encrypted: true
     	});
     	 console.log(pusher);
@@ -86,7 +95,7 @@
     	
     	 channel = pusher.subscribe(channel_name);
     	 
-    	 watching_channel = pusher.subscribe("presence-watch-" + gameid);
+    	 watching_channel = pusher.subscribe("presence-live-" + gameid);
     	 
     	 channel.bind('pusher:subscription_succeeded',function(members){
     		 
@@ -114,6 +123,13 @@
 
          // track socket_id to exclude recipient in subscription
          socket_id = pusher.connection.socket_id;
+         
+         $(".gete").click(function () {
+        	 var c=$(this).attr("id");
+        	 alert(c);
+        	 click(c);
+         });
+         
         });
     }
    
@@ -220,20 +236,35 @@
             }
 
         }
-        var data = JSON.stringify({
-            message: a,
-            gameid:gameid,
-            usercookie:usercookie,
-            channel_id: channel_name,
-            socket_id: socket_id
-        });
+        onCoinMove(a)
+        
         $.post('/ajax/move',data,function(res,status){
         	
         	
         });
         
-//        colors();
+       // colors();
     }
+    
+    
+    function onCoinMove(){
+    	privacy = $('input:radio[name=vis]:checked').val();
+    	var data = JSON.stringify({
+            message: a,
+            channel_id: channel_name,
+            socket_id: socket_id,
+            gameid:gameid
+       });
+            console.log(data);
+        
+        $.post('/ajax/move', data,
+            function (msg) {
+        		alert(msg);
+            }, "json");
+
+        return false;
+    }
+    
 //
 //    function colors() {
 //
@@ -312,3 +343,7 @@
 //          console.log(onCoin);
 //        }
 //    }
+    });
+    
+    
+    

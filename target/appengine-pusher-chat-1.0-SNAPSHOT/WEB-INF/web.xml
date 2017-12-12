@@ -261,6 +261,15 @@
 		<servlet-class>com.example.appengine.pusher.AuthorizeUser</servlet-class>
 	</servlet>
 	
+	<servlet-mapping>
+  		<servlet-name>play auth_servlet</servlet-name>
+  		<url-pattern>/auth_player</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>play auth_servlet</servlet-name>
+		<servlet-class>com.example.appengine.pusher.Authorize</servlet-class>
+	</servlet>
+	
 	
 	<!-- if privacy is changes -->
 	<servlet-mapping>
@@ -316,7 +325,11 @@
 		<servlet-class>RequestConfirmHandler</servlet-class>
 	</servlet>
 	
+<<<<<<< HEAD
 	<!-- 
+=======
+
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	
 	
 	<servlet-mapping>
@@ -327,6 +340,21 @@
 		<servlet-name>Checking_servlet</servlet-name>
 		<servlet-class>Ajax.CheckingPlayerInGamePage</servlet-class>
 	</servlet>
+<<<<<<< HEAD
+=======
+	
+	<servlet-mapping>
+  		<servlet-name>CoinMove_servlet</servlet-name>
+  		<url-pattern>/ajax/move</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>CoinMove_servlet</servlet-name>
+		<servlet-class>Ajax.CoinMoveCheck</servlet-class>
+	</servlet>
+<<<<<<< HEAD
+	
+=======
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	-->
 	
 	<!-- Live watch  -->
@@ -340,8 +368,15 @@
 	</servlet>
 	
 	
+<<<<<<< HEAD
 	
 	
 	
+=======
+=======
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	
 </web-app>

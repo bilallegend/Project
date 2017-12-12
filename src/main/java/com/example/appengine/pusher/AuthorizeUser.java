@@ -32,7 +32,7 @@ public class AuthorizeUser extends HttpServlet{
 	 public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		 System.out.println("/ AuthorizeUser");
 		 String name=null;
-		// Instantiate a pusher connection
+		 // Instantiate a pusher connection
 		
 			 name = Cooky.getContextName("gc_account", request.getCookies(),"cookie",request) ;
 		 	System.out.println(name+ "  user name");

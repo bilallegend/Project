@@ -18,72 +18,77 @@ public class CheckingPlayerInGamePage extends HttpServlet{
 	
     protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		
+		HashMap<String,String> result= new  HashMap<String,String>(); 
+	      Gson gson = new GsonBuilder().setPrettyPrinting()
+                 .create();
+	      String json ="";
+	      
+		
+		Cookie[] c=request.getCookies();
+		String num="";
+		for(Cookie cookie:c) {
+			if(cookie.getName().equals("gc_account")) {
+				num=cookie.getValue();
+			}
+		}
+		if(num.equals("")) {
+			result.put("ok","no");
+			result.put("url","http://localhost:8080/home");
+			json=gson.toJson(result);
+		      System.out.println(result);
+			  response.getWriter().write(json);
+			
+		}
+		
 		ConnectionDatabase psql = new ConnectionDatabase();
 		 Connection conn			=psql.createConnection("gamecenter");
 	   	 ServletContext context  =   request.getSession().getServletContext();
-	   	 HashMap<String,HashMap<String,ArrayList<String>>> gamedetail= (HashMap<String,HashMap<String,ArrayList<String>>>) context.getAttribute("playdetails");
+	   	 HashMap<String,String[]> gamedetail= (HashMap<String,String[]>) context.getAttribute("GameIds");
+	   	 
 		  String gameid="";
 		  for(String i:gamedetail.keySet()) {
-			  if((gamedetail.get(i)).get("cookie")!=null&&(gamedetail.get(i)).get("cookie").contains(request.getParameter("num"))) {
+			  if((gamedetail.get(i))!=null&&((gamedetail.get(i)[0].equals(num)||(gamedetail.get(i)[1].equals(num)))) ){
 				  gameid=i;
 			  }
 		  }
 		  if(gameid.equals("")) {
-			  response.sendRedirect("http://localhost:8080/home");
+			  result.put("ok","no");
+			  result.put("url","http://localhost:8080/home");
+			  json=gson.toJson(result);
+		      System.out.println(result);
+			  response.getWriter().write(json);
 		  }
 		  else {
-			     
-			  Number player1=0;
-				Number player2=0;
 			  
-			  try{
-				    Statement stmt = conn.createStatement();
-					String Query="select player1,player2 from game where game_id='"+gameid+"'";
-					ResultSet data_table=stmt.executeQuery(Query);
-					
-					while(data_table.next()) {
-						player1=data_table.getInt("player1");
-						player2=data_table.getInt("player2");		
-					}
-					
-			    } catch (SQLException e) {
-			       // System.out.println(e);
-			    	System.out.println("Anu");
-			    }
+			  HashMap<String,String[]> d=(HashMap<String,String[]>) context.getAttribute("DivMap");
 			  String player1name="";
 			  String player2name="";
-			  try{
-				    Statement stmt = conn.createStatement();
-					String Query="select username,player_id from player_info where player_id in ('"+player1+"','"+player2+"')";
-					ResultSet data_table=stmt.executeQuery(Query);
-					
-					while(data_table.next()) {
-						if((Number)data_table.getInt("player_id")==player1) {
-						player1name=data_table.getString("username");
-						}
-						else {
-						player2name=data_table.getString("player2");		
-					}
-					}		
-					
-			    } catch (SQLException e) {
-			       // System.out.println(e);
-			    	System.out.println("Anu");
-			    }
-			  HashMap<String,String> result= new  HashMap<String,String>(); 
-		      Gson gson = new GsonBuilder().setPrettyPrinting()
-	                   .create();
-		      String json ="";
-		      
-		      HashMap<String,HashMap<String,ArrayList<String>>> pd=( HashMap<String,HashMap<String,ArrayList<String>>> )context.getAttribute("playdetails");
-		      HashMap<String,ArrayList<String>>d=pd.get(request.getParameter("num"));
+			  HashMap<String,String> detail=(HashMap<String,String>) context.getAttribute("cookie");
+			  player1name=d.get(gamedetail.get(gameid)[0])[3];
+			  player2name=d.get(gamedetail.get(gameid)[1])[3];
+			  System.out.println(player1name);
+			  System.out.println(player2name);
+			  
+			  
+			  
+		      System.out.println(gamedetail.get(gameid)[0]);
+		      System.out.println(gamedetail.get(gameid)[1]);
+		      HashMap<String,HashMap<String,ArrayList<String>>> playdetail=( HashMap<String,HashMap<String,ArrayList<String>>> )context.getAttribute("PlayDetails");
+		      System.out.println(playdetail);
+		      HashMap<String,ArrayList<String>>di=playdetail.get(gamedetail.get(gameid)[0]);
+		      HashMap<String,ArrayList<String>>di2=playdetail.get(gamedetail.get(gameid)[1]);
 		      
 		      result.put("player1", player1name);
 		      result.put("player2", player2name);
-		      result.put("color",d.get("color").get(0));
+		      result.put("color1",di.get("color").get(0));
+		      result.put("color2",di2.get("color").get(0));
+		      result.put("status1",di.get("status").get(0));
+		      result.put("status2",di2.get("status").get(0));
 		      result.put("gameid",gameid);
 		      json=gson.toJson(result);
+		      System.out.println(result);
 			  response.getWriter().write(json);
 		  }
 	}
+
 }	
