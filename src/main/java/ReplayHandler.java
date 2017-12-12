@@ -31,8 +31,7 @@ private Gson gson = new GsonBuilder().create();
 	    	HashMap<String,String> feedsDivId = (HashMap<String, String>) context.getAttribute("feedsDivId");
 	    	String gameId = feedsDivId.get(divId.split("Live")[0]);
 	    	req.setAttribute("LiveId",divId);
-	    	getServletContext().getRequestDispatcher("/Jsp/LiveReplay.jsp").forward(req, resp);
-	    	
+	    	getServletContext().getRequestDispatcher("/Jsp/LiveReplay.jsp").forward(req, resp);    	
 	    }else {
 	    	
 	    }

@@ -176,6 +176,26 @@
  		});
     	 pusher.connection.bind('connected', function () {
          // subscribe to new messages in the chat application
+    		 
+    		 watching_channel.bind('pusher:subscription_succeeded',function(){
+    			console.log('watching_channel pusher:subscription_succeeded'); 
+    		 });
+    		 
+    		 watching_channel.bind('pusher:member_added',function(){
+    			 trigger( {Black:black,
+    				 White:white,
+    				 B_player:$('#black').html(),
+    				 W_player:$('#white').html(),
+    				 B_status:$('#bla').html(),
+    				 W_status:$('#whi').html()});
+    		 })
+    		 
+    		 
+    		 function trigger(data){
+    			 console.log('trigger');
+    			 watching_channel.trigger('addNew',data);
+    		 }
+    		 
          channel.bind('colorchange', function (data) {
             
         	 ////(data);
@@ -462,6 +482,8 @@
             
           console.log(onCoin);
         }
+        trigger({Black:black,
+   		 White:white});
         if(white.black==0){
         	 alert("White won the match");
         }

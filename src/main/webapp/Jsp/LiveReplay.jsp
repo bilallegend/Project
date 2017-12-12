@@ -60,7 +60,10 @@
         </div>
     </div>
     <script>
-    $('.oth').html('<%=request.getAttribute("LiveId")%>');
+    var gameId= '<%=request.getAttribute("LiveId")%>';
+    $('.oth').html(gameId);
+    </script>
+    <script src='../Js/LiveReplay.js'>
     </script>
 </body>
 </html>
