@@ -56,6 +56,7 @@ public class PrivacyHandler extends HttpServlet{
 	    }
 	    	HashMap<String,String> NameIdMap = (HashMap<String, String>) context.getAttribute("NameIdMap");
 	    	HashMap<String,ArrayList<String>> MultiBrowser = (HashMap<String, ArrayList<String>>) context.getAttribute("MultiBrowser");
+	   
 	    if(DivMap == null || MultiBrowser==null ) {
 	    	messageData.put("redir",Redirecter.giveUrlFor(request,"/home"));
 	    }else {

@@ -58,7 +58,7 @@ h2+div+p {
      font: 20px 'Arima Madurai', cursive;
     color: rgba(250, 235, 215, 0.84)
 }
-#pro>div>div:nth-child(2)>p {
+#pro>div>div:nth-child(2)>p,.tot {
     font: 22px 'Arima Madurai', cursive;
     display:inline-block
 }

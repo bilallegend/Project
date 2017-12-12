@@ -144,55 +144,7 @@
 			<i class="fa fa-caret-left" id="leftaro" aria-hidden="true"></i>
 		</div>
 		    <div class="feeds">
-        <div class="main">
-            <div>
-                <div class="top-div">
-                    <div class="profile"></div>
-                    <p>MadhuBalan</p>
-                </div>
-                <div class="feedvideo"></div>
-                <div class="likediv">
-                    <i class="fa fa-heart like" aria-hidden="true"></i>
-                    <span>0</span>
-                    <span class="sec-spn">Likes</span>
-                </div>
-                <div class="viewdiv">
-                     <span>0</span>
-                     <i class="fa fa-eye" aria-hidden="true"></i>
-                </div>
-            </div>
-            <div>
-                <div class="top-div">
-                    <div class="profile"></div>
-                    <p>MadhuBalan</p>
-                </div>
-                <div class="feedvideo"></div>
-                <div class="likediv">
-                    <i class="fa fa-heart like" aria-hidden="true" ></i>
-                    <span>0</span>
-                    <span class="sec-spn">Likes</span>
-                </div>
-                <div class="viewdiv">
-                     <span>0</span>
-                     <i class="fa fa-eye" aria-hidden="true"></i>
-                </div>                    
-            </div>
-            <div>
-                <div class="top-div">
-                    <div class="profile"></div>
-                    <p>MadhuBalan</p>
-                </div>
-                <div class="feedvideo"></div>
-                  <div class="likediv">
-                    <i class="fa fa-heart like" aria-hidden="true"></i>
-                    <span>0</span>
-                    <span class="sec-spn">Likes</span>
-                </div>
-                <div class="viewdiv">
-                     <span>0</span>
-                     <i class="fa fa-eye" aria-hidden="true"></i>
-                </div>                  
-            </div>
+        <div class="main" id='feedsFlow'>s
         </div>
     </div>
 	</div>
@@ -203,7 +155,7 @@
                         <h5 id="name">madhubalan.m</h5>
                         <p id="mail">madhubalan.m@zohouniv.com</p>
                     </div>
-                    <button type="submit" class="edit">Edit profile</button>
+                    <button type="submit" class="edit" id='Edit'>Edit profile</button>
                     <button type="submit">Change password</button>
                     <button type="submit">signout</button>
            </div>

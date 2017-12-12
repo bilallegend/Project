@@ -62,27 +62,26 @@ public class RequestHandler extends HttpServlet{
 		System.out.println(Arrays.toString(values));
 		reqInfo.put(name, values);
 		Map<String,String> messageData = new HashMap<String, String>();
-//	"<div class=\"noti-div\" style=\"transform: translateY(0px);\">\n" + 
-//	"        \n" + 
-//	"        <div class=\"con\">\n" + 
-//	"            <div class=\"img\">\n" + 
-//	"                <div></div>\n" + 
-//	"            </div>\n" + 
-//	"           <div class=\"name-div\">\n" + 
-//	"               <p class=\"name\">"+name+"</p>\n" + 
-//	"               <p class=\"send\"><i>Send friend request for u.</i></p>\n" + 
-//	"                <div class=\"insi\">\n" + 
-//	"                 <button name='accept' class=\"yes\">Yes</button>\n" + 
-//	"                 <button name='accept' class=\"no\">No</button>\n" + 
-//	"             </div>\n" + 
-//	"           </div>\n" + 
-//	"       \n" + 
-//	"        </div>\n" + 
-//	"   </div>"	;
+	
 		
 		messageData.put("name", name);
-		messageData.put("msg","<div style='position:absolute' name='senderInfo'>"+name
-		+"<br>wants to play with you??<button name='accept'>YES</button><button name='accept'>NO</button></div>");
+		messageData.put("msg","<div class=\"noti-div\" style=\"transform: translateY(0px);\">\n" + 
+				"        \n" + 
+				"        <div class=\"con\">\n" + 
+				"            <div class=\"img\">\n" + 
+				"                <div></div>\n" + 
+				"            </div>\n" + 
+				"           <div class=\"name-div\">\n" + 
+				"               <p class=\"name\">"+name+"</p>\n" + 
+				"               <p class=\"send\"><i>Send friend request for u.</i></p>\n" + 
+				"                <div class=\"insi\">\n" + 
+				"                 <button name='accept' class=\"yes\">Yes</button>\n" + 
+				"                 <button name='accept' class=\"no\">No</button>\n" + 
+				"             </div>\n" + 
+				"           </div>\n" + 
+				"       \n" + 
+				"        </div>\n" + 
+				"   </div>"	);
 		HashMap<String,ArrayList<String>> MultiBrowser = (HashMap<String, ArrayList<String>>) req.getSession().getServletContext().getAttribute("MultiBrowser");
 		ArrayList<String> senderCookies= MultiBrowser.get(values[1]);
 		for(String Cookie : senderCookies) {

@@ -81,6 +81,7 @@ public class AuthorizeUser extends HttpServlet{
 				    	
 				    	if(key.equals(CookieValue)) {
 				    		currentUserId=DivMap.get(CookieValue)[0];
+				    		DivMap.get(CookieValue)[1]=socketId;
 				    		newUser=false;
 				    	}
 				    	else if(DivMap.get(key)[3].equals(name)) {

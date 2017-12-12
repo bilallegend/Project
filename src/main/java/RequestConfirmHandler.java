@@ -59,8 +59,13 @@ private Gson gson = new GsonBuilder().create();
 				}
 				
 			}
+<<<<<<< HEAD
 					
 			if(Reply.equals("YES") && !tryF) {
+=======
+			reqInfo.remove(requesterName);			
+			if(Reply.equals("Yes") && !tryF) {
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 				messageData.put("reply", Reply);
 				messageData.put("redir", Redirecter.giveUrlFor(request,"/play"));
 			}else {
@@ -73,8 +78,8 @@ private Gson gson = new GsonBuilder().create();
 			                "GameResp", // name of event
 			                messageData);
 			messageData.put("status", result.getStatus().name());
-			System.out.println("presence-MyNotification-"+messageData.get("replyId"));
-			messageData.remove("reply");messageData.remove("replyId");
+			System.out.println("private-MyNotification-"+messageData.get("replyId"));
+			messageData.remove("replyId");
 		}
 		
 		

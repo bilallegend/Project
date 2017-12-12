@@ -105,7 +105,7 @@ $(document).ready(function(){
         
         notifyChannel.bind('GameReq', function (data) {
             alert(data);
-            $('body').append(data.msg);
+            $('main').append(data.msg);
         });
         
         function gameRedirect(data){
@@ -195,7 +195,7 @@ $(document).ready(function(){
         $('body').on('click','button[name=accept]',function(){
         	let Reply = $(this).html();
         	alert(Reply);
-        	if(Reply=="YES" || Reply=="NO"){
+        	if(Reply=="Yes" || Reply=="No"){
         		let data = JSON.stringify({
                     socket_id: socket_id,
                     reply:Reply

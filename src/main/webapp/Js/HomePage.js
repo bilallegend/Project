@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+		$('#Edit').click(function(){
+			location.href="http://localhost:8080/home/MyInfo";
+		});
 	
 	
 	$("#playonline").click(function(){

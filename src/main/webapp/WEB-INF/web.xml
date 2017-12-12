@@ -328,4 +328,26 @@
 	</servlet>
 	
 	
+	<!-- Live watch  -->
+	<servlet-mapping>
+  		<servlet-name>Feeds_servlet</servlet-name>
+  		<url-pattern>/ajax/getLive</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Feeds_servlet</servlet-name>
+		<servlet-class>Feeds</servlet-class>
+	</servlet>
+	
+	
+	<!-- profile_redirect -->
+	<servlet-mapping>
+  		<servlet-name>Myinfo_servlet</servlet-name>
+  		<url-pattern>/home/MyInfo</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Myinfo_servlet</servlet-name>
+		<servlet-class>profileInfo</servlet-class>
+	</servlet>
+	
+	
 </web-app>

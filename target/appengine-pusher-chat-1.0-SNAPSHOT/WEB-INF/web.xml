@@ -326,6 +326,24 @@
 		<servlet-name>CoinMove_servlet</servlet-name>
 		<servlet-class>Ajax.CoinMoveCheck</servlet-class>
 	</servlet>
+<<<<<<< HEAD
 	
+=======
+	-->
+<<<<<<< HEAD
+	<servlet-mapping>
+  		<servlet-name>Feeds_servlet</servlet-name>
+  		<url-pattern>/ajax/getLive</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Feeds_servlet</servlet-name>
+		<servlet-class>Feeds</servlet-class>
+	</servlet>
+	
+	
+=======
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	
 </web-app>
