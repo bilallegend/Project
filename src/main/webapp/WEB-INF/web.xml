@@ -369,13 +369,21 @@
 	
 	<servlet-mapping>
   		<servlet-name>Replays_servlet</servlet-name>
-  		<url-pattern>/auth/Replays</url-pattern>	
+  		<url-pattern>/ajax/getReplays</url-pattern>	
   	</servlet-mapping>
 	<servlet>
 		<servlet-name>Replays_servlet</servlet-name>
 		<servlet-class>Replays</servlet-class>
 	</servlet>
 	
+	<servlet-mapping>
+  		<servlet-name>video_servlet</servlet-name>
+  		<url-pattern>/ajax/getVideo</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>video_servlet</servlet-name>
+		<servlet-class>ReplayHandler</servlet-class>
+	</servlet>
 	
 	
 </web-app>

@@ -40,6 +40,7 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
 				userDetailsMap.put("photo",resultset.getString("photo") );
 			}
 			resp.getWriter().println(gson.toJson(userDetailsMap));
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

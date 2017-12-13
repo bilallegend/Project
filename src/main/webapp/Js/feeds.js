@@ -9,6 +9,22 @@ $(document).ready(function(){
 	var channel = pusher.subscribe('presence-live');
 	var channelname= 'presence-live';
 	
+	
+	$('div[name=feedsClick]').click(function(){
+		let divId = $(this).attr('id');
+		var data = JSON.stringify({
+			divId:divId
+        });
+		
+			$.post('/ajax/getVideo', data,
+	                function (msg) {
+	            		console.log(msg)
+//	            		view(msg)
+//	                    $('#feedsFlow').append(msg.html);
+	                }, "json");
+		
+		
+	});
 	pusher.connection.bind('connected', function () {
 		socket_id = pusher.connection.socket_id;
 		
@@ -40,7 +56,10 @@ $(document).ready(function(){
 		 });
 		
 		 function view(data){
-			 $('#feedsFlow').append(msg.html);
+			 let source = $("#feeds-template").html(); 
+				let template = Handlebars.compile(source);
+				$('#feedsFlow').append(template(data));
+		            
 		 }
 		 
 		 channel.bind('pusher:member_added', function (member){

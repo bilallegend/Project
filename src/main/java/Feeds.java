@@ -17,6 +17,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.pusher.rest.data.Result;
 
+import HelperClasses.Cooky;
+
 public class Feeds extends HttpServlet{
 	private Gson gson = new GsonBuilder().create();
 	
@@ -38,26 +40,35 @@ public class Feeds extends HttpServlet{
 	    ServletContext context = request.getSession().getServletContext();
 		
 	    if(context.getAttribute("playdetails") == null) {
-	    	
+	    	return;
 	    }else {
 	    	HashMap<String,String[]> GameIds = (HashMap<String,String[]>) context.getAttribute("GameIds");
 	    	Set<String> GameId = GameIds.keySet();
-	    	HashMap<String,HashMap< String,ArrayList<String>>>  PlayDetails = (HashMap<String, HashMap<String, ArrayList<String>>>) context.getAttribute("PlayDetails");
+	    	 HashMap<String, String[]> DivMap = Cooky.getContextValue("DivMap", request);
 	    	if(context.getAttribute("feedsDivId")==null) {
 	    		context.setAttribute("feedsDivId",new HashMap<String,String>());
 	    	}
 	    	HashMap<String,String> feedsDivId = (HashMap<String, String>) context.getAttribute("feedsDivId");
-	    	String html="";String[] cookies=null;
-	    	Map<String, String> messageData = new HashMap<>();
+	    	String[] cookies=null;
+	    	Map<String,Object> messageData = new HashMap<>();
+	    	ArrayList<HashMap<String,String>> LivePlayList = new ArrayList<HashMap<String,String>>();
 	    	for(String gameId : GameId) {
 	    		if(!feedsDivId.values().contains(gameId)) {
+	    			HashMap<String,String> gamedetails = new HashMap<String,String>();
 		    		String randomNum = getRandomNumber(feedsDivId);
-		    		feedsDivId.put(randomNum,gameId);
+		    		feedsDivId.put(randomNum+"Live",gameId);
 		    		cookies=GameIds.get(gameId);
-		    		html+=getHtml(PlayDetails.get(cookies[0]).get("name").get(0), PlayDetails.get(cookies[1]).get("name").get(0), randomNum);
+//		    		html+=getHtml(DivMap.get(cookies[0])[3], DivMap.get(cookies[1])[3], randomNum);
+		    		gamedetails.put("game_id",randomNum+"Live");
+		    		gamedetails.put("player_1_name",DivMap.get(cookies[0])[3]);
+		    		gamedetails.put("player_2_name",DivMap.get(cookies[1])[3]);
+		    		gamedetails.put("likes", "0");gamedetails.put("views", "0");
+		    		LivePlayList.add(gamedetails);
+		    		
+		    		
 	    		}
 	    	}
-	    	messageData.put("html",html);
+	    	messageData.put("data",LivePlayList);
 	    	if(channelId != null && channelId.equals("presence-live")) {
 	    		Result result =
 	    		        PusherService.getDefaultInstance()
@@ -65,13 +76,11 @@ public class Feeds extends HttpServlet{
 	    		            		"presence-live",
 	    		                "PlayLive", // name of event
 	    		                messageData);
-	    		messageData.remove("html");
+	    		messageData.remove("data");
 	    		messageData.put("status", result.getStatus().name());
 	    		
 	    	}
-	    	response.getWriter().println(gson.toJson(messageData));
-	    	
-	    	
+	    	response.getWriter().println(gson.toJson(messageData));	    	
 	    }
 	}
 	

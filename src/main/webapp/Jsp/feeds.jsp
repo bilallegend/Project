@@ -5,6 +5,7 @@
     <link href="https://fonts.googleapis.com/css?family=Arima+Madurai" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
     <script src="../Js/jquery.js"></script>
     <title>Feeds Page</title>
 </head>

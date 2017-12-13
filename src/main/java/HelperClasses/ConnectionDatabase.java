@@ -49,10 +49,10 @@ public class ConnectionDatabase{
     	return null;
     }
     
-    public ResultSet selectCondition(Connection connection,String table_name,String column_name,String name,String condition) {
+    public ResultSet selectCondition(Connection connection,String table_name,String column_name,String conditionValue,String conditionfromColumn) {
     	try{
 		    Statement stmt = connection.createStatement();//Statement class creates a object that can execute our query in the connected database in connection object
-			String Query="select "+column_name+" from "+table_name+" where "+condition+"='"+name+"'";//Query to be passed
+			String Query="select "+column_name+" from "+table_name+" where "+conditionfromColumn+" in ("+conditionValue+")";//Query to be passed
 			System.out.println(Query);
 			ResultSet data_table=stmt.executeQuery(Query);//execution
 			return data_table;

@@ -17,6 +17,27 @@
 	<link href="https://fonts.googleapis.com/css?family=Lobster+Two:400,700i" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Macondo+Swash+Caps|Playball" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<script id="feeds-template" type="text/x-handlebars-template"> 
+			{{#data}}
+				<div id={{game_id}} name='feedsClick'>
+				    <div class=top-div>  
+				        <div class=profile></div>  
+				        <p>{{player_1_name}} vs   {{player_2_name}}</p>  
+				    </div>  
+				    <div class=feedvideo></div>  
+				    <div class=likediv>  
+				        <i class=fa fa-heart like aria-hidden=true></i>  
+				        <span id='likes'>{{likes}}</span>  
+				        <span class=sec-spn>Likes</span>  
+				    </div>  
+				    <div class=viewdiv>  
+				         <span id='views'>{{views}}</span>  
+				         <i class=fa fa-eye aria-hidden=true></i>  
+				    </div>  
+				</div>
+				{{/data}}
+		</script>
 </head>
 <body>
 	<div class="whole"></div>
@@ -147,7 +168,7 @@
 		    <div class="feeds">
 		    	<button type="submit" class="feedbtn feedfrstbtn" name='toWatch'>Replays</button>
                 <button type="submit" class="feedbtn feedsndbtn" name='toWatch'>Live</button>
-        		<div class="main" id='feedsFlow'>s
+        		<div class="main" id='feedsFlow'>
         		</div>
     		</div>
 	</div>
