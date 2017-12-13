@@ -67,6 +67,7 @@ public class CoinMoveCheck extends HttpServlet {
 	 System.out.println(usercookie);
 	 System.out.println(g.get(usercookie).get("status").get(0));
 	 System.out.println(g.get(oppcookie).get("status").get(0));
+	 HashMap<String,String> values=(HashMap<String,String> )context.getAttribute("cookies");
 	 if(g.get(usercookie).get("status").get(0).equals("Playing")||data.get("message").equals("")) {
 		  
 		         HashMap<String,ArrayList<String>> player=g.get(usercookie);
@@ -85,6 +86,11 @@ public class CoinMoveCheck extends HttpServlet {
 		     
      		     result.put("status","ok");
 			     result.put("id",data.get("message"));
+			     result.put("player1", values.get(usercookie));
+			     result.put("player2", values.get(oppcookie));
+			     result.put("player1status", g.get(usercookie).get("status").get(0) );
+			     result.put("player2status", g.get(oppcookie).get("status").get(0) );
+			     
 			     result.put("color",g.get(usercookie).get("color").get(0));
 			     System.out.println(result);
 			     
