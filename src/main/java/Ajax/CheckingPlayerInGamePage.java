@@ -25,13 +25,8 @@ public class CheckingPlayerInGamePage extends HttpServlet{
 	      
 		
 		Cookie[] c=request.getCookies();
-		String num="";
-		for(Cookie cookie:c) {
-			if(cookie.getName().equals("gc_account")) {
-				num=cookie.getValue();
-			}
-		}
-		if(num.equals("")) {
+		String num=Cooky.getCookieValue("gc_account",request.getCookies());
+		if(num.equals("") || num == null) {
 			result.put("ok","no");
 			result.put("url","http://localhost:8080/home");
 			json=gson.toJson(result);
@@ -47,11 +42,11 @@ public class CheckingPlayerInGamePage extends HttpServlet{
 	   	 
 		  String gameid="";
 		  for(String i:gamedetail.keySet()) {
-			  if((gamedetail.get(i))!=null&&((gamedetail.get(i)[0].equals(num)||(gamedetail.get(i)[1].equals(num)))) ){
+			  if( gamedetail.get(i)[0].equals(num) || gamedetail.get(i)[1].equals(num) ){
 				  gameid=i;
 			  }
 		  }
-		  if(gameid.equals("")) {
+		  if(gameid.equals("") || gameid==null) {
 			  result.put("ok","no");
 			  result.put("url","http://localhost:8080/home");
 			  json=gson.toJson(result);
@@ -64,26 +59,38 @@ public class CheckingPlayerInGamePage extends HttpServlet{
 			  String player1name="";
 			  String player2name="";
 			  HashMap<String,String> detail=(HashMap<String,String>) context.getAttribute("cookie");
-			  player1name=d.get(gamedetail.get(gameid)[0])[3];
-			  player2name=d.get(gamedetail.get(gameid)[1])[3];
+			  String[] playersCookies = gamedetail.get(gameid);
+			  player1name=d.get(playersCookies[0])[3];
+			  player2name=d.get(playersCookies[1])[3];
 			  System.out.println(player1name);
 			  System.out.println(player2name);
 			  
 			  
 			  
-		      System.out.println(gamedetail.get(gameid)[0]);
-		      System.out.println(gamedetail.get(gameid)[1]);
+		      System.out.println(playersCookies[0]);
+		      System.out.println(playersCookies[1]);
 		      HashMap<String,HashMap<String,ArrayList<String>>> playdetail=( HashMap<String,HashMap<String,ArrayList<String>>> )context.getAttribute("PlayDetails");
 		      System.out.println(playdetail);
-		      HashMap<String,ArrayList<String>>di=playdetail.get(gamedetail.get(gameid)[0]);
-		      HashMap<String,ArrayList<String>>di2=playdetail.get(gamedetail.get(gameid)[1]);
+		      HashMap<String,ArrayList<String>>di=playdetail.get(playersCookies[0]);
+		      HashMap<String,ArrayList<String>>di2=playdetail.get(playersCookies[1]);
+		     
+		      if(playersCookies[0].equals(num)) {
+		    	  result.put("You","player1");
+		      }
+		      else {
+		    	  result.put("You","player2");
+		      }
+		      
 		      
 		      result.put("player1", player1name);
 		      result.put("player2", player2name);
+		      
 		      result.put("color1",di.get("color").get(0));
 		      result.put("color2",di2.get("color").get(0));
+		      
 		      result.put("status1",di.get("status").get(0));
 		      result.put("status2",di2.get("status").get(0));
+		      
 		      result.put("gameid",gameid);
 		      json=gson.toJson(result);
 		      System.out.println(result);

@@ -59,13 +59,10 @@ private Gson gson = new GsonBuilder().create();
 				}
 				
 			}
-<<<<<<< HEAD
 					
-			if(Reply.equals("YES") && !tryF) {
-=======
+			
 			reqInfo.remove(requesterName);			
 			if(Reply.equals("Yes") && !tryF) {
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 				messageData.put("reply", Reply);
 				messageData.put("redir", Redirecter.giveUrlFor(request,"/play"));
 			}else {
@@ -88,7 +85,8 @@ private Gson gson = new GsonBuilder().create();
 		ServletContext context  =   request.getSession().getServletContext();
 		HashMap<String,String[]> d=(HashMap<String,String[]>) context.getAttribute("DivMap");
 		ArrayList<String> cookies=new ArrayList<String>();
-		
+		System.out.println(name);
+		System.out.println(oppname);
 		for(String i:d.keySet()) {
 			if(d.get(i)[3].equals(name)||d.get(i)[3].equals(oppname)) {
 				cookies.add(i);
@@ -119,9 +117,10 @@ private Gson gson = new GsonBuilder().create();
 		 }
 		 HashMap<String,String[]> pd=(HashMap<String,String[]>)context.getAttribute("GameIds");
 		 String a[]= {"",""};
+		 System.out.println(cookies);
 		 a[0]=cookies.get(0);
 		 a[1]=cookies.get(1);
-		 pd.put("game "+(count+1), a);
+		 pd.put("game_"+(count+1), a);
 		 context.setAttribute("GameIds",pd);
 		 
 		 HashMap<String,HashMap<String,ArrayList<String>>> pd1=(HashMap<String,HashMap<String,ArrayList<String>>>) context.getAttribute("PlayDetails");
@@ -133,7 +132,7 @@ private Gson gson = new GsonBuilder().create();
 		 ArrayList<String> status=new ArrayList<String>();
 		 colorid.add("29");
 		 colorid.add("36");
-		 color.add("white");
+		 color.add("White");
 		 status.add("Waiting");
 		 
 		 White.put("color",color);
@@ -158,12 +157,49 @@ private Gson gson = new GsonBuilder().create();
 		 pd1.put(cookies.get(1), Black);
 		 
 		 context.setAttribute("PlayDetails",pd1);
-		 
+		 System.out.println((HashMap<String,HashMap<String,ArrayList<String>>>) context.getAttribute("PlayDetails"));
 		
 		System.out.println(pd);
 		System.out.println(pd1);
+		String player1id="";
+		String player2id="";
+		System.out.println(name);
+		System.out.println(oppname);
+		try{
+		    Statement stmt = conn.createStatement();//Statement class creates a object that can execute our query in the connected database in connection object
+			String Query="select player_id,username from player_info where username in ('"+name+"','"+oppname+"')";//Query to be passed
+			System.out.println(Query);
+			ResultSet data_table=stmt.executeQuery(Query);
+			while(data_table.next()) {
+				System.out.println("ddgdf");
+				if(data_table.getString("username").equals(name)) {
+					player1id=data_table.getString("player_id");
+				}
+				else {
+					player2id=data_table.getString("player_id");
+				}
+			}
+			
+	    } catch (SQLException e) {
+	        System.out.println(e+"");
+	    }
+		
+		System.out.println(player1id);
+		System.out.println(player2id);
+		
+		try{
+		    Statement stmt = conn.createStatement();
+			String Query1="insert into game_list (game_id,player1_id,player2_id,date) values ("+(count+1)+","+Integer.parseInt(player1id)+","+Integer.parseInt(player2id)+",0)";
+			System.out.println(Query1);
+			stmt.executeUpdate(Query1);//execution
+			
+	    } catch (SQLException e) {
+	    	
+	      System.out.println(e+"");
+	      
+	    }
 		
 		response.getWriter().println(gson.toJson(messageData));
 	    
 	  }
-}
+	 }
