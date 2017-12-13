@@ -81,16 +81,17 @@ public class Authorize extends HttpServlet{
 				}
 			 ServletContext context  =   request.getSession().getServletContext();
 			 HashMap<String,String[]> gamedetail= (HashMap<String,String[]>) context.getAttribute("GameIds");
-		   	 
-			  
+			 Map<String, String> userInfo = new HashMap<>();
+			 String currentUserId=num;
+			 userInfo.put("displayName", Cooky.getContextName("gc_account", request.getCookies(),"cookie", request));
 			 
-				  if((gamedetail.get("game "+(count+1)))!=null||!((gamedetail.get("game "+count)[0].equals(num)||(gamedetail.get("game "+count)[1].equals(num)))) ){
+				  if((gamedetail.get("game_"+(count+1)))!=null||!((gamedetail.get("game_"+count)[0].equals(num)||(gamedetail.get("game "+count)[1].equals(num)))) ){
 					  
 					  String auth=null;
 					    if(("private-MyNotification-"+socketId).equals(channelId)) {
 					    	auth =pusher.authenticate(socketId, channelId);
 					    }else {
-					    	auth =pusher.authenticate(socketId, channelId);
+					    	auth =pusher.authenticate(socketId, channelId,new PresenceUser(currentUserId, userInfo));
 					    }
 			     	    response.getWriter().append(auth);
 					  

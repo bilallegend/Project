@@ -93,7 +93,7 @@ $(document).ready(function(){
 			            console.log(typeof(data));
 			            var resultobj=JSON.parse(data);
 			        
-			            alert(resultobj.status);
+			            //(resultobj.status);
 			            
 			            if(resultobj.status=="Signup Successful"){
 

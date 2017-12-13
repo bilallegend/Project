@@ -346,6 +346,16 @@
 		<servlet-class>Ajax.CoinMoveCheck</servlet-class>
 	</servlet>
 	
+		<servlet-mapping>
+  		<servlet-name>AddToTable</servlet-name>
+  		<url-pattern>/ajax/add</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>AddToTable</servlet-name>
+		<servlet-class>Ajax.AddGameId</servlet-class>
+	</servlet>
+	
+	
 	
 	<!-- Live watch  -->
 	<servlet-mapping>

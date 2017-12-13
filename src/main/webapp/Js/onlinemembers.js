@@ -63,18 +63,6 @@ $(document).ready(function(){
      // presence channel receive events when members are added / removed
         channel.bind('pusher:member_added', function (member) {
         	console.log(" pusher:member_added ");
-        	
-//        	$('#di').append(
-//        			"<div id='"+member.id+"'>"
-//                    +"<div></div>"
-//                    +"<div>"
-//            	    +"<p>"+member.info.displayName+"</p>"
-//            	    +"<p>Privacy: <span id='pri'>"+privacy+"</span></p>"
-//            	    +"</div>"
-//            	    +"<button class='req'>Request</button>"
-//            	    +"</div>"
-//        			);
-         	
         	console.log(member);
         });
         channel.bind('pusher:member_removed', function (member) {
@@ -85,7 +73,7 @@ $(document).ready(function(){
         
         function handleMessage(data) {
         	if(data.name == name){
-        		alert("same ")
+//        		alert("same ")
         	}else{
 	        	if(data.name !== undefined){
 	        		$('#'+data.id).remove();
@@ -104,7 +92,7 @@ $(document).ready(function(){
         });
         
         notifyChannel.bind('GameReq', function (data) {
-            alert(data);
+//            alert(data);
             $('main').append(data.msg);
         });
         
@@ -116,6 +104,7 @@ $(document).ready(function(){
         
         
         notifyChannel.bind('GameResp', function (data) {
+//        	alert(data.redir);
         	location.href=data.redir;
 //        	 gameRedirect(data);
         });
@@ -156,13 +145,13 @@ $(document).ready(function(){
                 function (msg) {
             		console.log(msg)
                     if (msg.status == "SUCCESS" && msg.redir == undefined) {
-                    	alert("success");
+//                    	alert("success");
                     	handleMessage(msg);
                     	
 //                        handleMessage(msg); //display the message
                     } else if(msg.redir !== undefined){
                     	
-                        alert("Error sending chat message : " + msg.status);
+//                        alert("Error sending chat message : " + msg.status);
                         location.href=msg.redir;
                     }
                 }, "json");
@@ -176,16 +165,16 @@ $(document).ready(function(){
                     function (msg) {
                 		console.log(msg)
                 		if(msg.reply!==undefined){
-                			alert(msg.reply);
+//                			alert(msg.reply);
                 		}
                 		
-                		else if (msg.status == "SUCCESS" && msg.redir == undefined) {
-                        	alert("post again");
+                		if (msg.status == "SUCCESS" && msg.redir == undefined) {
+//                        	alert("post again");
                         	
                            // handleMessage(msg); //display the message
                         } else if(msg.redir !== undefined){
                         	
-                            alert("Error sending chat message : " + msg.status);
+//                            alert("Error sending chat message : " + msg.status);
                             location.href=msg.redir;
                         }
                     }, "json");
@@ -194,7 +183,7 @@ $(document).ready(function(){
         
         $('body').on('click','button[name=accept]',function(){
         	let Reply = $(this).html();
-        	alert(Reply);
+//        	alert(Reply);
         	if(Reply=="Yes" || Reply=="No"){
         		let data = JSON.stringify({
                     socket_id: socket_id,
@@ -206,7 +195,7 @@ $(document).ready(function(){
         });
         
         $("#di").on("click", "button.req", function(){
-        	alert($(this).parent().attr('id'));
+//        	alert($(this).parent().attr('id'));
         	let data = JSON.stringify({
                 socket_id: socket_id,
                 parentID:$(this).parent().attr('id')

@@ -28,7 +28,7 @@ public class ConnectionDatabase{
 		    Statement stmt = connection.createStatement();//Statement class creates a object that can execute our query in the connected database in connection object
 			String Query="insert into "+table_name+" ("+column_name+") values ("+value+")";//Query to be passed
 			System.out.println(Query);
-			stmt.executeUpdate(Query);//execution
+			stmt.executeUpdate(Query);
 			return "Signup Successfull";
 	    } catch (SQLException e) {
 	        return e+"";

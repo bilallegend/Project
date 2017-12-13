@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +6,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="../Js/jquery.js"></script>
     <script src="../Js/Game.js"></script>
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
     <title>Othello Board</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
 		    </div>
 	    </div>
 	    <h1 class="oth"></h1>
-         <div class="time">00 <span>Sec</span><span class="it">It's Remaining For Your Turn.</span></div>
+         <div class="time"><time id='ti'>00</time> <span id="sec">Sec</span><span class="it" id="re" >It's Remaining For Your Turn.</span></div>
          <div class="play-sta">
              <div>
                  <div class="prf"></div>
@@ -40,14 +40,14 @@
                 <div class="gete one coin1"></div>
                  <div>
                    <span class="int">X</span>  
-                    <span class="int pad">20</span>  
+                    <span class="int pad" id="blackcount">4</span>  
                  </div>
              </div>
              <div class="top">
                  <div class="gete one coin"></div>
                  <div>
                    <span class="int colo">X</span>   
-                    <span class="int colo pad">20</span>  
+                    <span class="int colo pad" id="whitecount">4</span>  
                  </div>
              </div>
          </div>
