@@ -39,4 +39,11 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/main/webapp/Js/handlebars-v4.0.11.js</name>
+			<type>1</type>
+			<location>/home/zoho/Downloads/handlebars-v4.0.11.js</location>
+		</link>
+	</linkedResources>
 </projectDescription>

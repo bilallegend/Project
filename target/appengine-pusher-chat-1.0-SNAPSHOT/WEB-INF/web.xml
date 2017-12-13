@@ -293,6 +293,25 @@
 		<servlet-class>RequestHandler</servlet-class>
 	</servlet>
 	
+	<servlet-mapping>
+  		<servlet-name>profile_servlet</servlet-name>
+  		<url-pattern>/ajax/getMyInfo</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>profile_servlet</servlet-name>
+		<servlet-class>profileInfo</servlet-class>
+	</servlet>
+
+
+	<servlet-mapping>
+  		<servlet-name>Myinfo_servlet</servlet-name>
+  		<url-pattern>/home/MyInfo</url-pattern>	
+  		<url-pattern>/MyInfo</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Myinfo_servlet</servlet-name>
+		<jsp-file>/Jsp/Profile.jsp</jsp-file>
+	</servlet>
 	
 	
 	<!-- If acceting -->
@@ -306,7 +325,11 @@
 		<servlet-class>RequestConfirmHandler</servlet-class>
 	</servlet>
 	
+<<<<<<< HEAD
+	<!-- 
+=======
 
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	
 	
 	<servlet-mapping>
@@ -317,6 +340,8 @@
 		<servlet-name>Checking_servlet</servlet-name>
 		<servlet-class>Ajax.CheckingPlayerInGamePage</servlet-class>
 	</servlet>
+<<<<<<< HEAD
+=======
 	
 	<servlet-mapping>
   		<servlet-name>CoinMove_servlet</servlet-name>
@@ -327,6 +352,7 @@
 		<servlet-class>Ajax.CoinMoveCheck</servlet-class>
 	</servlet>
 	
+<<<<<<< HEAD
 		<servlet-mapping>
   		<servlet-name>AddToTable</servlet-name>
   		<url-pattern>/ajax/add</url-pattern>	
@@ -337,6 +363,11 @@
 	</servlet>
 	
 	
+=======
+=======
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+	-->
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	
 	<!-- Live watch  -->
 	<servlet-mapping>
@@ -349,6 +380,7 @@
 	</servlet>
 	
 	
+<<<<<<< HEAD
 	<!-- profile_redirect -->
 	<servlet-mapping>
   		<servlet-name>Myinfo_servlet</servlet-name>
@@ -359,5 +391,17 @@
 		<servlet-class>profileInfo</servlet-class>
 	</servlet>
 	
+=======
+<<<<<<< HEAD
+	
+	
+	
+=======
+=======
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	
 </web-app>

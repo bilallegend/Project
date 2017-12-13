@@ -49,4 +49,30 @@ public class ConnectionDatabase{
     	return null;
     }
     
+    public ResultSet selectCondition(Connection connection,String table_name,String column_name,String name,String condition) {
+    	try{
+		    Statement stmt = connection.createStatement();//Statement class creates a object that can execute our query in the connected database in connection object
+			String Query="select "+column_name+" from "+table_name+" where "+condition+"='"+name+"'";//Query to be passed
+			System.out.println(Query);
+			ResultSet data_table=stmt.executeQuery(Query);//execution
+			return data_table;
+	    } catch (SQLException e) {
+	        System.out.println(e+"");
+	    }
+    	return null;
+    }
+    
+    public ResultSet selectUnCondition(Connection connection,String table_name,String column_name) {
+    	try{
+		    Statement stmt = connection.createStatement();//Statement class creates a object that can execute our query in the connected database in connection object
+			String Query="select "+column_name+" from "+table_name;//Query to be passed
+			System.out.println(Query);
+			ResultSet data_table=stmt.executeQuery(Query);//execution
+			return data_table;
+	    } catch (SQLException e) {
+	        System.out.println(e+"");
+	    }
+    	return null;
+    }
+    
 }

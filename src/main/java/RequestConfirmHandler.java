@@ -58,10 +58,14 @@ private Gson gson = new GsonBuilder().create();
 					break;
 				}
 				
+<<<<<<< HEAD
 			}
 					
 			
 			reqInfo.remove(requesterName);			
+=======
+			}	
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 			if(Reply.equals("Yes") && !tryF) {
 				messageData.put("reply", Reply);
 				messageData.put("redir", Redirecter.giveUrlFor(request,"/play"));

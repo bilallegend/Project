@@ -5,15 +5,24 @@ html {
 	margin: 0px;
 	padding: 0px
 }
+button {
+    	cursor:pointer
+}
 input,
 button {
 	border: none;
 	outline: none
 }
+.mar,input,i,.i,#ph,.cha-pas+div>input::placeholder {
+    color:maroon
+}
 p,
 h1 {
 	margin: 0px;
 	color:black
+}
+body{
+    position:relative
 }
 .whole {
 	width: 100%;
@@ -41,16 +50,15 @@ h1 {
 	padding: 10px 20px;
 	border-radius: 5px
 }
-#signup #rib,
-#signin > #rib {
+#signup .rib,
+#signin > .rib {
 	width: 305px;
 	height: 48px;
 	font: bold 25px'Cinzel Decorative', cursive;
 	text-align: center;
 	padding-top: 10px;
-	color: maroon
 }
-#rib > img {
+.rib > img,.main>img {
 	float: right;
 	height: 25px;
 	cursor: pointer
@@ -86,8 +94,8 @@ h1 {
 }
 label {
 	display: block;
-	color: black;
-	font: 16px cursive
+	color:maroon;
+	font:bold  16px cursive
 }
 label+ .dv {
 	height: 30px;
@@ -99,7 +107,6 @@ label + .dv .im {
 	padding-top: 10px
 }
 input {
-	color: maroon;
 	padding-left: 10px;
 	font: 13px cursive;
 	background: transparent;
@@ -118,7 +125,6 @@ img {
 	margin: -8px 0 0 -5px
 }
 i {
-	color: maroon;
 	padding: 5px
 }
 #sec-div {
@@ -130,7 +136,7 @@ i {
 	width: 234px
 }
 .i {
-	color: maroon;
+	
 	padding-left: 13px
 }
 .pad-top {
@@ -138,7 +144,6 @@ i {
 }
 #ph {
 	font-size: 25px;
-	color: maroon;
 	padding: 2px 0 0 16px
 }
 .sub {
@@ -164,9 +169,9 @@ i {
 }
 .sign {
 	font: bold 30px'Cinzel Decorative', cursive;
-	background-color: #875032;
-	color: transparent;
-	text-shadow: 2px 2px 0px #4a2618;
+    background-color: #4a2618;
+    color: transparent;
+    text-shadow: 1px 1px 0px #4a2618;
 	display: inline-block;
 	position: absolute;
 	right: 200px;
@@ -186,11 +191,11 @@ i {
 	border-radius: 5px;
 	transform: scale(1, 1)
 }
-#signin > #rib {
+#signin > .rib {
 	padding-left: 21px;
 	width: 270px
 }
-#signin >#rib >.close {
+#signin >.rib >.close {
 	margin: -2px -9px 0 0
 }
 .inp {
@@ -211,8 +216,7 @@ i {
 	padding: 4px 0 0 7px
 }
 .ale{
-    padding-left:10px;
-    visibility:hidden
+    padding-left:10px
 }
 /*--------------------------------------------------------MENU PAGE--------------------------------------------------*/
 
@@ -350,7 +354,7 @@ a {
 /*-----------------------------------------------Alert P tag----------------------------------------------------------*/
 .dv+p {
     padding-top: 10px;
-    font: 11px lato;
+    font: 14px lato;
     color: red;
     text-transform: capitalize
 } 
@@ -444,4 +448,64 @@ a {
 }
 .profilediv > div:first-child > div:hover p{
     display:block
+}
+/*------------------------------------------CHANGE PASSWORD DIV------------------------------------------------*/
+.change,.edit1 {
+    text-align:left;
+    box-sizing:border-box;
+    padding:15px;
+    background: linear-gradient(to bottom right,#eebd84,#fff);
+    position: absolute;
+}
+.change{
+    width: 250px;
+    height: 250px;
+    transform:translateY(-100%);
+    transition:1s;
+    left: 42%;
+    top: 0px
+}
+.cha-pas {
+    color:#4A2618;
+    text-align:center;
+    font: bold 18px cursive
+}
+.cha-pas+div>input {
+    color: #4A2618;
+    width: 175px;
+    margin-top: 22px
+}
+.chan {
+    background: #4a2618;
+    color: #fff;
+    margin-top:22px;
+    padding: 8px 12px 8px;
+    border-radius: 3px;
+    font-family: cursive;
+}
+/*---------------------------------------EDIT PROFILE DIV---------------------------------------------------*/
+.edit1 {
+    width:343px;
+    height:490px;
+    display:none;
+    top:10%;
+    left:36%
+}
+.wi {
+    width: 23%;
+    margin: auto
+}
+.st {
+    padding-top:0px
+}
+.ima {
+    margin: -15px 0 0 0px
+}
+
+#aro{
+    top: 50%;
+    cursor: pointer;
+    position: absolute;
+    font-size: 35px !important;
+    color: #EEBD84
 }
