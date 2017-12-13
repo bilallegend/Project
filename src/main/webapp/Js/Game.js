@@ -189,11 +189,6 @@
     		 
     		 
     		 
-    		 
-    		 watching_channel.bind('addNew',function(){
-    			alert(data); 
-    		 });
-    		 
          channel.bind('colorchange', function (data) {
             
         	 ////(data);

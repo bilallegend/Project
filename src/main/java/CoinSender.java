@@ -36,8 +36,11 @@ public class CoinSender extends HttpServlet{
 	    String B_status = data.get("b_status");
 	    String gameId = data.get("gameId");
 	    
-//	    messageData.put(key, value)
-	    
+	    messageData.put("Black", data.get("Black"));
+	    messageData.put("White", White);messageData.put("B_player", B_player);
+	    messageData.put("W_player", W_player);
+	    messageData.put("W_status", W_status);messageData.put("B_player", B_player);
+	    messageData.put("W_player", W_player);
 	    Result result =
 		        PusherService.getDefaultInstance()
 		            .trigger(
@@ -45,6 +48,8 @@ public class CoinSender extends HttpServlet{
 		                "addNew", // name of event
 		                messageData
 		                );
+	    messageData.put("status", result.getStatus().name());
+	    resp.getWriter().println(gson.toJson(messageData));
 	   
 	}
 }

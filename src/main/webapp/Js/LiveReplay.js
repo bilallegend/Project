@@ -11,10 +11,11 @@ $(document).ready(function(){
 	pusher.connection.bind('connected',function(pusher){
 		
 		channel.bind('pusher:subscription_succeeded',function(){
-			
+			console.log('pusher:subscription_succeeded = presence-live-'+gameId);
 		});
 		
 		channel.bind('addNew',function(data){
+			console.log('addNewWorking');
 			if(data.length>4){
 				$('#black').html(data.B_player);$('#white').html(data.W_player);
 				$('#bla').html(data.B_status);$('#whi').html(data.W_status);
@@ -24,14 +25,14 @@ $(document).ready(function(){
 		});
 		
 		function ColorChange(black,white){
-			for(i of black){
+			for(let i of black){
 				let c=$("#box"+t+" > .one").attr('class');
            	 
              	$("#box"+t+" > .one").removeClass(c)
              	  $("#box"+t+" > div").addClass("coin1");
                   $("#box"+t+" > div").addClass("gete one");
 			}
-			for(j of white){
+			for(let j of white){
 				let c=$("#box"+t+" > .one").attr('class');
 		           
             	$("#box"+t+" > .one").removeClass(c);
