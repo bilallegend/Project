@@ -34,6 +34,7 @@ private Gson gson = new GsonBuilder().create();
 	  
 	  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	    String body = CharStreams.readLines(request.getReader()).toString();
+	    System.out.println("RequestConfirmHandler");
 	    System.out.println(body);
 	    String name = Cooky.getContextName("gc_account",request.getCookies(),"cookie", request);
 	    String json = body.replaceFirst("^\\[", "").replaceFirst("\\]$", "");
@@ -67,6 +68,8 @@ private Gson gson = new GsonBuilder().create();
 			}else {
 				messageData.put("reply", "Sorry!");
 			}
+			System.out.println("private-MyNotification-"+messageData.get("replyId"));
+			System.out.println(messageData);
 			Result result =
 			        PusherService.getDefaultInstance()
 			            .trigger(

@@ -41,7 +41,7 @@ public class Signin extends HttpServlet{
 			             result.put("status","200");
 		                  result.put("name",request.getParameter("name"));
 		                  result.put("mail",request.getParameter("email"));
-		                  if(photo=="") {
+		                  if(photo==null) {
 		                	  result.put("photo","../Images/pr.png");
 		                  }
 		                  else {

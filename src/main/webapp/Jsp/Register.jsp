@@ -10,10 +10,11 @@
 	<link rel="stylesheet" href="../Css/Register.css">
 	<link rel="stylesheet" href="../Css/feeds.css">
 	<link rel="stylesheet" href="../Css/Instruction.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="../Js/jquery.js"></script>
 	<script src="../Js/HomePage.js"></script>
-	<script src='../Js/feeds.js'></script>
+	<script src="https://js.pusher.com/4.1/pusher.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Lobster+Two:400,700i" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Macondo+Swash+Caps|Playball" rel="stylesheet">
@@ -44,7 +45,7 @@
 	<div class="whole"></div>
 	<div class="blu">
 		<div id="signup">
-			<div id="rib">REGISTER
+			<div id="rib" class='mar rib'>REGISTER
 				<img src="../Images/close.png" alt="close" class="close" id="fir-clo" />
 			</div>
 			 
@@ -109,7 +110,7 @@
 		</div>
 		
 		<div id="signin">
-			<div id="rib">LOGIN
+			<div id="rib" class='mar rib'>LOGIN
 				<img src="../Images/close.png" alt="close" class="close" id="sec-clo" />
 			</div>
 			<label class="pad-lef">Username</label>
@@ -184,5 +185,7 @@
                     <button type="submit">Change password</button>
                     <button type="submit">signout</button>
            </div>
+           
+           
 </body>
 </html>

@@ -1,16 +1,18 @@
 $(document).ready(function(){
 
+	
 	var pusher = new Pusher('63f35f26a75b722e22cf', {
         cluster: 'eu',
         authEndpoint: '/auth/live',
         encrypted: true
 	});
-	
-	var channel = pusher.subscribe('presence-live');
+	var channel =pusher.subscribe('presence-live');
 	var channelname= 'presence-live';
 	
 	
-	$('div[name=feedsClick]').click(function(){
+	
+	
+	$('#feedsFlow').on('click','div[name=feedsClick]',function(){
 		let divId = $(this).attr('id');
 		var data = JSON.stringify({
 			divId:divId
@@ -22,9 +24,8 @@ $(document).ready(function(){
 //	            		view(msg)
 //	                    $('#feedsFlow').append(msg.html);
 	                }, "json");
-		
-		
 	});
+	
 	pusher.connection.bind('connected', function () {
 		socket_id = pusher.connection.socket_id;
 		
@@ -50,7 +51,7 @@ $(document).ready(function(){
 		});
 		 channel.bind('pusher:subscription_succeeded', function (t) {
 			 
-			
+			console.log('pusher:subscription_succeeded');
 			 
 			 
 		 });

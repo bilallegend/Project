@@ -354,9 +354,10 @@ a {
 /*-----------------------------------------------Alert P tag----------------------------------------------------------*/
 .dv+p {
     padding-top: 10px;
-    font: 14px lato;
+    font: 11px lato;
     color: red;
-    text-transform: capitalize
+    text-transform: capitalize;
+    visibility:hidden
 } 
 /*------------------------------------------------Signout Option Div--------------------------------------------------*/
 .profilediv{

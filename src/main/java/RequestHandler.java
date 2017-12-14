@@ -62,7 +62,7 @@ public class RequestHandler extends HttpServlet{
 		System.out.println(Arrays.toString(values));
 		reqInfo.put(name, values);
 		Map<String,String> messageData = new HashMap<String, String>();
-	
+		System.out.println(name);
 		
 		messageData.put("name", name);
 		messageData.put("msg","<div class=\"noti-div\" style=\"transform: translateY(0px);\">\n" + 
@@ -92,10 +92,11 @@ public class RequestHandler extends HttpServlet{
 				                "GameReq", // name of event
 				                messageData);
 				
-				System.out.println("presence-MyNotification-"+DivMap.get(Cookie)[1]);
+				System.out.println("private-MyNotification-"+DivMap.get(Cookie)[1]);
 				System.out.println(result.toString());
 				
 				messageData.put("status", result.getStatus().name());
+				messageData.remove("msg");messageData.remove("name");
 			
 		}
 		resp.getWriter().println(gson.toJson(messageData));

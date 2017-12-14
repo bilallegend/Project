@@ -346,9 +346,6 @@
 		<servlet-class>Ajax.CoinMoveCheck</servlet-class>
 	</servlet>
 	
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 		<servlet-mapping>
   		<servlet-name>AddToTable</servlet-name>
   		<url-pattern>/ajax/add</url-pattern>	
@@ -359,12 +356,6 @@
 	</servlet>
 	
 	
-=======
-=======
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
-	-->
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	
 	<!-- Live watch  -->
 	<servlet-mapping>
@@ -376,52 +367,52 @@
 		<servlet-class>Feeds</servlet-class>
 	</servlet>
 	
-<<<<<<< HEAD
-	<servlet-mapping>
-  		<servlet-name>liveCheck_servlet</servlet-name>
-  		<url-pattern>/auth/live</url-pattern>	
-  	</servlet-mapping>
-	<servlet>
-		<servlet-name>liveCheck_servlet</servlet-name>
-		<servlet-class>Feeds</servlet-class>
-	</servlet>
-=======
-	
-<<<<<<< HEAD
-	<!-- profile_redirect -->
-	<servlet-mapping>
-  		<servlet-name>Myinfo_servlet</servlet-name>
-  		<url-pattern>/home/MyInfo</url-pattern>	
-  	</servlet-mapping>
-	<servlet>
-		<servlet-name>Myinfo_servlet</servlet-name>
-		<servlet-class>profileInfo</servlet-class>
-	</servlet>
-	
-=======
-<<<<<<< HEAD
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
-	
-	
 	<servlet-mapping>
   		<servlet-name>Replays_servlet</servlet-name>
-  		<url-pattern>/auth/Replays</url-pattern>	
+  		<url-pattern>/ajax/getReplays</url-pattern>	
   	</servlet-mapping>
 	<servlet>
 		<servlet-name>Replays_servlet</servlet-name>
 		<servlet-class>Replays</servlet-class>
 	</servlet>
 	
-<<<<<<< HEAD
+	<servlet-mapping>
+  		<servlet-name>video_servlet</servlet-name>
+  		<url-pattern>/ajax/getVideo</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>video_servlet</servlet-name>
+		<servlet-class>ReplayHandler</servlet-class>
+	</servlet>
 	
-=======
-=======
-=======
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+	<servlet-mapping>
+  		<servlet-name>authLive_servlet</servlet-name>
+  		<url-pattern>/auth/live</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>authLive_servlet</servlet-name>
+		<servlet-class>LiveWatchAuth</servlet-class>
+	</servlet> 
+	
+	
+	
+	<servlet-mapping>
+  		<servlet-name>LiveWatch_servlet</servlet-name>
+  		<url-pattern>/home/watch</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>LiveWatch_servlet</servlet-name>
+		<jsp-file>/Jsp/LiveReplay.jsp</jsp-file>
+	</servlet> 
+	
+	
+	<servlet-mapping>
+  		<servlet-name>OldWatch_servlet</servlet-name>
+  		<url-pattern>/home/replay</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>OldWatch_servlet</servlet-name>
+		<servlet-class>ReplaysMovesGiver</servlet-class>
+	</servlet> 
 	
 </web-app>

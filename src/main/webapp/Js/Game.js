@@ -22,9 +22,21 @@
 	var gameid;
 	var number="";
 	var time=30;
+	var watching_channelname;
     $(document).ready(function () {
     	
-    	
+    	function trigger(comingdata){
+			 console.log('trigger');
+			 let data = JSON.stringify(comingdata);
+		            console.log(data);
+		        
+		        $.post('/ajax/New', data,
+		            function (msg) {
+		        	    console.log(msg);
+		        		//(msg);
+		            }, "json");
+			 
+		 }
     	
     	var click=function(i){  		 
     		
@@ -45,7 +57,7 @@
     		
     		$("#ti").text(time+"");
     		time-=1;
-    		console.log(time);
+    		
     		
     		var a=$("#white").text();
             var b=$("#black").text();	
@@ -145,7 +157,7 @@
     			$("#bla").css('color','firebrick');
     			$("#whi").css('color','white')
     		}
-    		//alert('before timeout')
+    		////('before timeout')
     		timeout();
     		gameid=obj.gameid;
     		$(".oth").text(obj.gameid);
@@ -168,7 +180,7 @@
     	 channel = pusher.subscribe(channel_name);
     	 
     	 watching_channel = pusher.subscribe("presence-live-" + gameid);
-    	 
+    	 watching_channelname = "presence-live-" + gameid;
     	 channel.bind('pusher:subscription_succeeded',function(members){
     		 
  			console.log(" pusher:subscription_succeeded channel");
@@ -182,7 +194,10 @@
     		 });
     		 
     		 watching_channel.bind('pusher:member_added',function(){
-    			 trigger( {Black:black,
+    			 alert("member added");
+    			 trigger( {
+    				 gameId:watching_channelname,
+    				 Black:black,
     				 White:white,
     				 B_player:$('#black').html(),
     				 W_player:$('#white').html(),
@@ -191,10 +206,11 @@
     		 })
     		 
     		 
-    		 function trigger(data){
-    			 console.log('trigger');
-    			 watching_channel.trigger('addNew',data);
-    		 }
+    		 
+    		 
+    		 watching_channel.bind('addNew',function(){
+    			alert(data); 
+    		 });
     		 
          channel.bind('colorchange', function (data) {
             
@@ -229,8 +245,9 @@
         		 
         		console.log(data.id);
         		 if(data.id!==""){
-        			 gq(Number(data.id));
         			 time=30;
+        			 gq(Number(data.id));
+        			 
         		 }else{
         			console.log("time after");
         			 time=30;
@@ -239,7 +256,7 @@
         		 }	 
         	 }
         	 else{
-        		 alert("Invalid move");
+        		 //("Invalid move");
         	 }
         	 
         	 
@@ -388,7 +405,7 @@
     }
     
     function addvalue(a){
-    	alert(number);
+    	//(number);
     	var data = JSON.stringify({
             message: a,
             message1:number,
@@ -417,15 +434,9 @@
         let temp;
         while (i < k.length) {
         	
-        	if(changecolor=="white"){
-        		$("#box"+t+" > .one").addClass("coin");
-        	}
-        	else{
-        		$("#box"+t+" > .one").addClass("coin1");
-        	}
            
             if(changecolor=="white"){
-            	var c=$("#box"+t+" > .one").attr('class');
+            	let c=$("#box"+t+" > .one").attr('class');
            
             	$("#box"+t+" > .one").removeClass(c);
             	     $("#box"+t+" > div").addClass("coin");
@@ -434,7 +445,7 @@
            
             }
             else if(changecolor=="black"){
-            	var c=$("#box"+t+" > .one").attr('class');
+            	let c=$("#box"+t+" > .one").attr('class');
             	 
                  	$("#box"+t+" > .one").removeClass(c)
                  	  $("#box"+t+" > div").addClass("coin1");
@@ -475,20 +486,21 @@
        
         if (white.length + black.length == 64) {
             if (white.length > black.length) {
-                alert("White won the match")
+                //("White won the match")
             } else {
-               alert("black won the match")
+               //("black won the match")
             }
             
           console.log(onCoin);
         }
-        trigger({Black:black,
+        trigger({
+        	gameId:watching_channelname,Black:black,
    		 White:white});
         if(white.black==0){
-        	 alert("White won the match");
+        	 //("White won the match");
         }
         if(black.length==0){
-        	 alert("Black won the match");
+        	 //("Black won the match");
         }
     }
     

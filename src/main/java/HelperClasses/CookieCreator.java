@@ -13,13 +13,14 @@ public class CookieCreator{
            map =  new HashMap<String,String>();
        }else{
            map         =   (HashMap<String,String>) context.getAttribute("cookie");
-           System.out.println(map);
+           
            while(map.containsKey(random)){
                random  =   ""+(int)(Math.random()*500000+100000);
            }
            
        }
        map.put(random, id);
+       System.out.println(map);
        context.setAttribute("cookie",map);
        cookie.setPath("/");
        res.addCookie(cookie);
