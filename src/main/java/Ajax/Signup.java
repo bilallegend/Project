@@ -48,6 +48,12 @@ public class Signup extends HttpServlet{
                   result.put("mail",request.getParameter("email"));
                   json=gson.toJson(result);
                   System.out.println(result);
+                  try {
+        			  conn.close();
+        			} catch (SQLException e) {
+        				
+        				e.printStackTrace();
+        			}
                   response.getWriter().write(json);
                   return;
 				  }
@@ -57,12 +63,24 @@ public class Signup extends HttpServlet{
 					
 					result.put("status","Name already Exist ");
 					json=gson.toJson(result);
+					try {
+						  conn.close();
+						} catch (SQLException e) {
+							
+							e.printStackTrace();
+						}
 					response.getWriter().write(json);
 					return;
 				}
 				if (res.contains("player_info_email_id_key")) {
 					result.put("status","Mail Already Exist");
 				    json=gson.toJson(result);
+				    try {
+						  conn.close();
+						} catch (SQLException e) {
+							
+							e.printStackTrace();
+						}
 					response.getWriter().write(json);
 					return;
 				}
@@ -81,6 +99,12 @@ public class Signup extends HttpServlet{
 			    	    result.put("status","Invalid data");
 			    	    result.put("errors",errors);
 			    	    json=gson.toJson(result);
+			    	    try {
+			  			  conn.close();
+			  			} catch (SQLException e) {
+			  				
+			  				e.printStackTrace();
+			  			}
 						response.getWriter().write(json);
 			      }
 			      

@@ -1,83 +1,48 @@
-    var inter;
-	var x;
-	var black = [28, 37];
-	var white = [29, 36];
-	var count = 0;
-	var j = 0;
-	var i = 0;
-	var color1;
-	var set = [-9, -8, -7, -1, 1, 7, 9, 8];
-    var color;
-	var click1 = [];
-	var changecolor;
-	var ok = 0;
-	var confirm = {};
-	var final = 0;
-    var onCoin=[];
-	var save = 0;
-	var channel_name;
-	var channel;
-	var watching_channel;
-	var usercookie;
-	var gameid;
-	var number="";
-	var time=30;
+	var x; var black = [28, 37];
+	var white = [29, 36]; var count = 0;
+	var j = 0; var i = 0;
+	var color1; var set = [-9, -8, -7, -1, 1, 7, 9, 8];
+    var color; var click1 = [];
+	var changecolor; var ok = 0;
+    var confirm = {}; var final = 0;
+    var onCoin=[]; var save = 0;
+	var channel_name; var channel;
+	var watching_channel; var usercookie;
+	var gameid; var number=""; var time=30;
     $(document).ready(function () {
-    	
-    	
     	
     	var click=function(i){  		 
     		
     		var id=i;
-    		if(id.length==5){
-    		var i=id[3]+id[4];
-    		}
-    		else{
-    			var i=id[3];	
-    		}
+    		if(id.length==5){  var i=id[3]+id[4]; }
+    		else{ var i=id[3];}
     		onCoinMove(i);	
-   		
-    		
-    }
+   		}
     	
     	var timeout= function(){ 
-    		
-    		
     		$("#ti").text(time+"");
     		time-=1;
-    		console.log(time);
-    		
     		var a=$("#white").text();
             var b=$("#black").text();	
             var status="";
-            if(a=="You"){
-             	status=$("#whi").text();
-            }
-            else{
-            	status=$("#bla").text();
-            }
-            if(status=="Playing"){
-            	$("#ti").text(time+"");
-            	
-            }
+            if(a=="You"){ status=$("#whi").text(); }
+            else{ status=$("#bla").text(); }
+            
+            if(status=="Playing"){ $("#ti").text(time+""); }
             else{
             	$("#ti").text("");
             	$("#sec").text("");
             	$("#re").text("");
-            }
+             }
     		
     		if(time==0){
-    			
-                
-                if(status=="Playing"){
-                	onCoinMove("");
+    		  if(status=="Playing"){
+    			    onCoinMove("");
+                	changestatus();
                 }
-                
-    		}
-    			setTimeout(timeout,1000);
-    			
-    		
-    	}
+              }
+    		setTimeout(timeout,1000);
+       	}
     
     	$(".gete").click(function () {
        	  var c=$(this).attr("id");
@@ -102,12 +67,11 @@
     	if(usercookie=="0"){
     		location.href="http://localhost:8080/home";
     	}
-    	//(usercookie);
-    	
+    		
     	$.post("/ajax/checkingplayers",{},function(data,status){
-    		//(data);
+    		
     		console.log(data);
-   		var obj=JSON.parse(data);
+   		    var obj=JSON.parse(data);
     		gameid=obj.gameid;
     		if(obj.ok=="no"){
     			location.href=obj.url;
@@ -184,22 +148,22 @@
         	 if(data.status=="ok"){
         		// //(data.color);
         		 
-        		 if( $("#whi").text()=="Playing"){
-        			 $("#whi").text("Waiting");
-        			 $("#bla").text("Playing");
-        		 }
-        		 else{
-        			 $("#whi").text("Playing");
-        			 $("#bla").text("Waiting");
-        		 }
-        		 if($("#whi").text()=="Playing"){
-         			$("#whi").css('color','firebrick');
-         			$("#bla").css('color','white')
-         			}
-         		else{
-         			$("#bla").css('color','firebrick');
-         			$("#whi").css('color','white')
-         		}
+//        		 if( $("#whi").text()=="Playing"){
+//        			 $("#whi").text("Waiting");
+//        			 $("#bla").text("Playing");
+//        		 }
+//        		 else{
+//        			 $("#whi").text("Playing");
+//        			 $("#bla").text("Waiting");
+//        		 }
+//        		 if($("#whi").text()=="Playing"){
+//         			$("#whi").css('color','firebrick');
+//         			$("#bla").css('color','white')
+//         			}
+//         		else{
+//         			$("#bla").css('color','firebrick');
+//         			$("#whi").css('color','white')
+//         		}
         		 if(data.color=="White"){
         			 count=1;
         		 }
@@ -210,7 +174,7 @@
         		console.log(data.id);
         		 if(data.id!==""){
         			 gq(Number(data.id));
-        			 time=30;
+        			
         		 }else{
         			console.log("time after");
         			 time=30;
@@ -225,7 +189,32 @@
         	 
          });
          
-         
+         channel.bind('statuschange',function(data){
+        	 
+        	 
+     		if(data.status=="ok"){
+    		 if( $("#whi").text()=="Playing"){
+ 			 $("#whi").text("Waiting");
+ 			 $("#bla").text("Playing");
+ 		 }
+ 		 else{
+ 			 $("#whi").text("Playing");
+ 			 $("#bla").text("Waiting");
+ 		 }
+ 		 if($("#whi").text()=="Playing"){
+  			$("#whi").css('color','firebrick');
+  			$("#bla").css('color','white')
+  			}
+  		else{
+  			$("#bla").css('color','firebrick');
+  			$("#whi").css('color','white')
+  		}
+ 		 
+ 		 time=30;
+ 		 
+     		}
+        	 
+         });
 
          // track socket_id to exclude recipient in subscription
          socket_id = pusher.connection.socket_id;
@@ -247,7 +236,7 @@
     
         if (white.indexOf(a) == -1 && black.indexOf(a) == -1) {
 
-            inter = document.getElementById("box" + a);
+            
             save = Number(a);
             check(a);
             if ((count == 0) && (final == 1)) {
@@ -368,7 +357,7 @@
     }
     
     function addvalue(a){
-    	alert(number);
+    	
     	var data = JSON.stringify({
             message: a,
             message1:number,
@@ -396,15 +385,7 @@
         i = 0;
         let temp;
         while (i < k.length) {
-        	
-        	if(changecolor=="white"){
-        		$("#box"+t+" > .one").addClass("coin");
-        	}
-        	else{
-        		$("#box"+t+" > .one").addClass("coin1");
-        	}
-           
-            if(changecolor=="white"){
+         if(changecolor=="white"){
             	var c=$("#box"+t+" > .one").attr('class');
            
             	$("#box"+t+" > .one").removeClass(c);
@@ -444,6 +425,9 @@
             white = color1;
             black = color;
         }
+        if(k.length!=0){
+        	 changestatus();
+        }
         info();
     }
 
@@ -455,19 +439,56 @@
        
         if (white.length + black.length == 64) {
             if (white.length > black.length) {
-                alert("White won the match")
+                alert("White won the match");
+//                win();
             } else {
-               alert("black won the match")
+               alert("black won the match");
+ //              win();
             }
-            
-          console.log(onCoin);
+            location.href="http://localhost:8080/winner"; 
+         
         }
-        if(white.black==0){
-        	 alert("White won the match");
+        if(white.length==0){
+        	 alert("Black won the match");
+        	 location.href="http://localhost:8080/winner";
+//        	 win();
         }
         if(black.length==0){
-        	 alert("Black won the match");
+        	 alert("White won the match");
+        	 location.href="http://localhost:8080/winner";
+//        	 win();
         }
+       
+     }
+     
+//    function win(){
+//    	
+//       $.post("/ajax/removecontext",{white:white.length,black:black.length},function(data,status){
+//    		
+//    	   
+//    	   
+//    	});
+    	
+//    }
+    function changestatus(){
+    	
+    	var a=$("#white").text();
+        var b=$("#black").text();	
+        var status="";
+        if(a=="You"){ status=$("#whi").text(); }
+        else{ status=$("#bla").text(); }
+        
+        if(status=="Playing"){ $("#ti").text(time+""); 
+        
+        $.post("/ajax/changestatus",{gameid:gameid,channel_id: channel_name},function(data,status){
+    		
+    		
+    		
+    	});
+        
+        }
+    	
+    	
     }
     
     });

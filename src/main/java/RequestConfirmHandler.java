@@ -96,7 +96,7 @@ private Gson gson = new GsonBuilder().create();
 		 int count=0;
 		 try{
 			    Statement stmt = conn.createStatement();
-				String Query="select id from game ";
+				String Query="select game_id from game_list ";
 				ResultSet data_table=stmt.executeQuery(Query);
 				
 				while(data_table.next()) {
@@ -186,6 +186,8 @@ private Gson gson = new GsonBuilder().create();
 		System.out.println(player1id);
 		System.out.println(player2id);
 		
+		
+		
 		try{
 		    Statement stmt = conn.createStatement();
 			String Query1="insert into game_list (game_id,player1_id,player2_id,date) values ("+(count+1)+","+Integer.parseInt(player1id)+","+Integer.parseInt(player2id)+",0)";
@@ -197,7 +199,12 @@ private Gson gson = new GsonBuilder().create();
 	      System.out.println(e+"");
 	      
 	    }
-		
+		try {
+			  conn.close();
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
 		response.getWriter().println(gson.toJson(messageData));
 	    
 	  }

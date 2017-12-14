@@ -35,8 +35,6 @@ public class CheckingPlayerInGamePage extends HttpServlet{
 			
 		}
 		
-		ConnectionDatabase psql = new ConnectionDatabase();
-		 Connection conn			=psql.createConnection("gamecenter");
 	   	 ServletContext context  =   request.getSession().getServletContext();
 	   	 HashMap<String,String[]> gamedetail= (HashMap<String,String[]>) context.getAttribute("GameIds");
 	   	 

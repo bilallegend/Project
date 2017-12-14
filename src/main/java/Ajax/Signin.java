@@ -41,7 +41,7 @@ public class Signin extends HttpServlet{
 			             result.put("status","200");
 		                  result.put("name",request.getParameter("name"));
 		                  result.put("mail",request.getParameter("email"));
-		                  if(photo=="") {
+		                  if(photo==null) {
 		                	  result.put("photo","../Images/pr.png");
 		                  }
 		                  else {
@@ -49,7 +49,12 @@ public class Signin extends HttpServlet{
 		                  }
 		                  json=gson.toJson(result);
 		                  System.out.println(result);
-		               
+		                  try {
+		        			  conn.close();
+		        			} catch (SQLException e) {
+		        				
+		        				e.printStackTrace();
+		        			}
 		                  
 		                  response.getWriter().write(json);
 			           
@@ -59,6 +64,12 @@ public class Signin extends HttpServlet{
 			        	result.put("status","150");
 			        	  System.out.println(result);
 			        	  json=gson.toJson(result);
+			        	  try {
+			    			  conn.close();
+			    			} catch (SQLException e) {
+			    				
+			    				e.printStackTrace();
+			    			}
 		                  response.getWriter().write(json);
 			        	
 			            return;
@@ -68,6 +79,12 @@ public class Signin extends HttpServlet{
 			    	result.put("status","100");
 			    	json=gson.toJson(result);
 			    	  System.out.println(result);
+			    	  try {
+						  conn.close();
+						} catch (SQLException e) {
+							
+							e.printStackTrace();
+						}
 	                  response.getWriter().write(json);
 			    	return;
 			    }
@@ -75,7 +92,12 @@ public class Signin extends HttpServlet{
 			result.put("status","50");
             System.out.println(result);
             json=gson.toJson(result);
-            
+            try {
+  			  conn.close();
+  			} catch (SQLException e) {
+  				
+  				e.printStackTrace();
+  			}
             response.getWriter().write(json);//Invalid username
 		} catch (SQLException e) {
 			

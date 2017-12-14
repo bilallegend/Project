@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -98,6 +99,7 @@ public class RequestHandler extends HttpServlet{
 				messageData.put("status", result.getStatus().name());
 			
 		}
+		
 		resp.getWriter().println(gson.toJson(messageData));
 	}
 }

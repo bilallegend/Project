@@ -5,11 +5,11 @@ $(document).ready(function(){
 		});
 	
 	
-	$("#playonline").click(function(){
-		$.post("/ajax/getOnlineMembers",{},function(data,status){
-			if(data!="null"){
+	   $("#playonline").click(function(){
+		 $.post("/ajax/getOnlineMembers",{},function(data,status){
+			 if(data!="null"){
 				location.href=data;
-			}
+			 }
 			
 		});
 	});

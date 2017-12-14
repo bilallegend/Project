@@ -94,6 +94,12 @@ public class upload extends HttpServlet {
 			e.printStackTrace();
 		}//Statement class creates a object that can execute our query in the connected database in connection object
 		
+		try {
+			  conn.close();
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
             res.sendRedirect("http://localhost:8080/home");
        }
     }
