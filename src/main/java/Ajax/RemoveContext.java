@@ -89,7 +89,7 @@ public class RemoveContext extends HttpServlet {
 		  try{
 			    Statement stmt = conn.createStatement();
 			    String Query="insert into winner_id where game_id="+Integer.parseInt(gameid);
-				stmt.executeUpdate(Query);;
+				stmt.executeUpdate(Query);
 				
 				
 		    } catch (SQLException e) {
