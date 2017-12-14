@@ -405,6 +405,14 @@
 		<servlet-class>ReplayHandler</servlet-class>
 	</servlet>
 	
+	<servlet-mapping>
+  		<servlet-name>authLive_servlet</servlet-name>
+  		<url-pattern>/auth/live</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>authLive_servlet</servlet-name>
+		<servlet-class>LiveWatchAuth</servlet-class>
+	</servlet>
 	
 	<!--  Winner servlet -->
     <servlet-mapping>

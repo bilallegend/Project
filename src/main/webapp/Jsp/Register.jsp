@@ -13,6 +13,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="../Js/jquery.js"></script>
 	<script src="../Js/HomePage.js"></script>
+	<script src='../Js/feeds.js'></script>
 	<link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Lobster+Two:400,700i" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Macondo+Swash+Caps|Playball" rel="stylesheet">
