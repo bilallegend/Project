@@ -84,14 +84,14 @@ public class CoinMoveCheck extends HttpServlet {
 		     
      		     result.put("status","ok");
 			     result.put("id",data.get("message"));
-<<<<<<< HEAD
 
-=======
+
+
 //			     result.put("player1", values.get(usercookie));
 //			     result.put("player2", values.get(oppcookie));
 //			     result.put("player1status", g.get(usercookie).get("status").get(0) );
 //			     result.put("player2status", g.get(oppcookie).get("status").get(0) );
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+
 			     
 			     result.put("color",g.get(usercookie).get("color").get(0));
 			     System.out.println(result);
