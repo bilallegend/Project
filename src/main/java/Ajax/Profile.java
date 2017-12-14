@@ -65,6 +65,12 @@ public class Profile extends HttpServlet{
 				result.put("currtour","AB-"+tournaments.get(tournaments.size()-1));
 			}
 			json=gson.toJson(result);
+			try {
+				  conn.close();
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				}
 		     response.getWriter().write(json);
 			
 	}

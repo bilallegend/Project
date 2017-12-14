@@ -356,6 +356,19 @@
 	</servlet>
 	
 	
+<<<<<<< HEAD
+=======
+	<servlet-mapping>
+  		<servlet-name>ChangeStatus</servlet-name>
+  		<url-pattern>/ajax/changestatus</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>ChangeStatus</servlet-name>
+		<servlet-class>Ajax.ChangeStatus</servlet-class>
+	</servlet>
+	
+	
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	
 	<!-- Live watch  -->
 	<servlet-mapping>
@@ -367,6 +380,19 @@
 		<servlet-class>Feeds</servlet-class>
 	</servlet>
 	
+<<<<<<< HEAD
+=======
+	<servlet-mapping>
+  		<servlet-name>liveCheck_servlet</servlet-name>
+  		<url-pattern>/auth/live</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>liveCheck_servlet</servlet-name>
+		<servlet-class>Feeds</servlet-class>
+	</servlet>
+	
+	
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	<servlet-mapping>
   		<servlet-name>Replays_servlet</servlet-name>
   		<url-pattern>/ajax/getReplays</url-pattern>	
@@ -385,6 +411,7 @@
 		<servlet-class>ReplayHandler</servlet-class>
 	</servlet>
 	
+<<<<<<< HEAD
 	<servlet-mapping>
   		<servlet-name>authLive_servlet</servlet-name>
   		<url-pattern>/auth/live</url-pattern>	
@@ -414,5 +441,17 @@
 		<servlet-name>OldWatch_servlet</servlet-name>
 		<servlet-class>ReplaysMovesGiver</servlet-class>
 	</servlet> 
+=======
+	
+	<!--  Winner servlet -->
+    <servlet-mapping>
+  		<servlet-name>Winner_jsp</servlet-name>
+  		<url-pattern>/winner</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Winner_jsp</servlet-name>
+		<jsp-file>/Jsp/Winner.jsp</jsp-file>
+	</servlet>
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	
 </web-app>

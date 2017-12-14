@@ -3,6 +3,7 @@
 
 <head>
 	<link rel="stylesheet" href="../Css/Winner.css">
+	<script src="../Js/winner.js"></script>
 </head>
 
 <body>

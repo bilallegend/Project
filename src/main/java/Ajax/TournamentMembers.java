@@ -139,6 +139,12 @@ public class TournamentMembers extends HttpServlet{
 				    } catch (SQLException e) {
 				        System.out.println(e);
 				    }
+				 try {
+					  conn.close();
+					} catch (SQLException e) {
+						
+						e.printStackTrace();
+					}
 				 
 				 result.put(i+"","http://localhost:8080"+photo);
 			 }

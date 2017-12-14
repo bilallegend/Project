@@ -109,10 +109,17 @@ public class TournamentJoin  extends HttpServlet{
 				    }
 				 
 				 result.put(i+"","http://localhost:8080"+photo);
+				 try {
+					  conn.close();
+					} catch (SQLException e) {
+						
+						e.printStackTrace();
+					}
 			 }
 		 }
 		 result.put("join",visibility);
 		 json=gson.toJson(result);
+		 
 	     response.getWriter().write(json);
    	 
     }

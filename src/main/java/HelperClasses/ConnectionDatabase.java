@@ -27,10 +27,22 @@ public class ConnectionDatabase{
 	    try{
 		    Statement stmt = connection.createStatement();//Statement class creates a object that can execute our query in the connected database in connection object
 			String Query="insert into "+table_name+" ("+column_name+") values ("+value+")";//Query to be passed
-			System.out.println(Query);
+			
 			stmt.executeUpdate(Query);
+			try {
+				  connection.close();
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				}
 			return "Signup Successfull";
 	    } catch (SQLException e) {
+	    	try {
+				  connection.close();
+				} catch (SQLException e1) {
+					
+					e1.printStackTrace();
+				}
 	        return e+"";
 	    }
         
@@ -40,12 +52,25 @@ public class ConnectionDatabase{
     	try{
 		    Statement stmt = connection.createStatement();//Statement class creates a object that can execute our query in the connected database in connection object
 			String Query="select "+column_name+" from "+table_name+" where username='"+name+"'";//Query to be passed
-			System.out.println(Query);
+			
 			ResultSet data_table=stmt.executeQuery(Query);//execution
+			try {
+				  connection.close();
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				}
 			return data_table;
 	    } catch (SQLException e) {
+	    	
 	        System.out.println(e+"");
 	    }
+    	try {
+			  connection.close();
+			} catch (SQLException e2) {
+				
+				e2.printStackTrace();
+			}
     	return null;
     }
     
@@ -53,12 +78,24 @@ public class ConnectionDatabase{
     	try{
 		    Statement stmt = connection.createStatement();//Statement class creates a object that can execute our query in the connected database in connection object
 			String Query="select "+column_name+" from "+table_name+" where "+conditionfromColumn+" in ("+conditionValue+")";//Query to be passed
-			System.out.println(Query);
+			
 			ResultSet data_table=stmt.executeQuery(Query);//execution
+			try {
+				  connection.close();
+				} catch (SQLException e2) {
+					
+					e2.printStackTrace();
+				}
 			return data_table;
 	    } catch (SQLException e) {
 	        System.out.println(e+"");
 	    }
+    	try {
+			  connection.close();
+			} catch (SQLException e2) {
+				
+				e2.printStackTrace();
+			}
     	return null;
     }
     
@@ -68,10 +105,22 @@ public class ConnectionDatabase{
 			String Query="select "+column_name+" from "+table_name;//Query to be passed
 			System.out.println(Query);
 			ResultSet data_table=stmt.executeQuery(Query);//execution
+			try {
+				  connection.close();
+				} catch (SQLException e2) {
+					
+					e2.printStackTrace();
+				}
 			return data_table;
 	    } catch (SQLException e) {
 	        System.out.println(e+"");
 	    }
+    	try {
+			  connection.close();
+			} catch (SQLException e2) {
+				
+				e2.printStackTrace();
+			}
     	return null;
     }
     

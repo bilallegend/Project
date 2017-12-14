@@ -39,9 +39,7 @@ public class CoinMoveCheck extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	  
 	  ServletContext context  =   request.getSession().getServletContext();
-	  ConnectionDatabase psql = new ConnectionDatabase();
-		 Connection conn			=psql.createConnection("gamecenter");
-	  
+	
 	  String body = CharStreams.readLines(request.getReader()).toString();
 	  String json = body.replaceFirst("^\\[", "").replaceFirst("\\]$", "");
 	  Map<String, String> data = gson.fromJson(json, typeReference.getType());
@@ -70,23 +68,30 @@ public class CoinMoveCheck extends HttpServlet {
 	 HashMap<String,String> values=(HashMap<String,String> )context.getAttribute("cookies");
 	 if(g.get(usercookie).get("status").get(0).equals("Playing")||data.get("message").equals("")) {
 		  
-		         HashMap<String,ArrayList<String>> player=g.get(usercookie);
-
-			      ArrayList<String> status=new ArrayList<String>();
-			      status.add("Waiting");
-			      player.put("status",status);
-
-			    HashMap<String,ArrayList<String>> oppositeplayer=g.get(oppcookie);
-
-			    ArrayList<String> status1=new ArrayList<String>();
-			    status1.add("Playing");
-			    oppositeplayer.put("status",status1);
+//		         HashMap<String,ArrayList<String>> player=g.get(usercookie);
+//
+//			      ArrayList<String> status=new ArrayList<String>();
+//			      status.add("Waiting");
+//			      player.put("status",status);
+//
+//			    HashMap<String,ArrayList<String>> oppositeplayer=g.get(oppcookie);
+//
+//			    ArrayList<String> status1=new ArrayList<String>();
+//			    status1.add("Playing");
+//			    oppositeplayer.put("status",status1);
 	    
 			     HashMap<String,String> result=new  HashMap<String,String>(); 
 		     
      		     result.put("status","ok");
 			     result.put("id",data.get("message"));
+<<<<<<< HEAD
 
+=======
+//			     result.put("player1", values.get(usercookie));
+//			     result.put("player2", values.get(oppcookie));
+//			     result.put("player1status", g.get(usercookie).get("status").get(0) );
+//			     result.put("player2status", g.get(oppcookie).get("status").get(0) );
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 			     
 			     result.put("color",g.get(usercookie).get("color").get(0));
 			     System.out.println(result);

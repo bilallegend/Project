@@ -45,7 +45,11 @@
 	<div class="whole"></div>
 	<div class="blu">
 		<div id="signup">
+<<<<<<< HEAD
 			<div id="rib" class='mar rib'>REGISTER
+=======
+			<div id="rib" class="mar rib">REGISTER
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 				<img src="../Images/close.png" alt="close" class="close" id="fir-clo" />
 			</div>
 			 
@@ -110,7 +114,11 @@
 		</div>
 		
 		<div id="signin">
+<<<<<<< HEAD
 			<div id="rib" class='mar rib'>LOGIN
+=======
+			<div id="rib" class="mar rib">LOGIN
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 				<img src="../Images/close.png" alt="close" class="close" id="sec-clo" />
 			</div>
 			<label class="pad-lef">Username</label>
@@ -120,21 +128,21 @@
 				</div>
 				<input type="text" class="inp" id="usrname_in" onkeyup="check1()"/>
 			</div>
-			<p id="errnamin" class="ale">username should have atleast 6</p>
+			<p id="errnamin" class="ale">Invalid username</p>
 			<label class="pad-lef pa">Email</label>
 			<div class="dv mar-lef" style="margin-top:0px">
 				<div class="im"><i class="fa fa-envelope-o" aria-hidden="true"></i>
 				</div>
 				<input type="Email" class="inp" id="usrmail_in" onkeyup="check1()" />
 			</div>
-			<p id="errmailin" class="ale">username should have atleast 6</p>
+			<p id="errmailin" class="ale">Invalid mail</p>
 			<label class="pad-lef pa">Password</label>
 			<div class="dv mar-lef" style="margin-top:0px">
 				<div class="im"> <i class="fa fa-key i" aria-hidden="true"></i>
 				</div>
 				<input type="Password" class="inp" id="usrpassword_in" onkeyup="check1()"/>
 			</div>
-			<p id="errpassin" class="ale">username should have atleast 6</p>
+			<p id="errpassin" class="ale">Invalid password</p>
 			<input type="submit" value="Login" class="sub" id="login" />
 		</div>
 		

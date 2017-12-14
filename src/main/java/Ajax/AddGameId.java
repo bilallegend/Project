@@ -58,7 +58,12 @@ public class AddGameId extends HttpServlet {
 		      System.out.println(e+"");
 		      
 		    }
-		 
+		  try {
+			  conn.close();
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
 	  }	  
 	
 }

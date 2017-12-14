@@ -61,7 +61,7 @@ public class Authorize extends HttpServlet{
 			 int count=0;
 			 try{
 				    Statement stmt = conn.createStatement();
-					String Query="select id from game ";
+					String Query="select game_id from game_list ";
 					ResultSet data_table=stmt.executeQuery(Query);
 					
 					while(data_table.next()) {
@@ -79,13 +79,15 @@ public class Authorize extends HttpServlet{
 						num=cookie.getValue();
 					}
 				}
+				System.out.println(count+"hfhh");
 			 ServletContext context  =   request.getSession().getServletContext();
 			 HashMap<String,String[]> gamedetail= (HashMap<String,String[]>) context.getAttribute("GameIds");
+			 System.out.println(gamedetail);
 			 Map<String, String> userInfo = new HashMap<>();
 			 String currentUserId=num;
 			 userInfo.put("displayName", Cooky.getContextName("gc_account", request.getCookies(),"cookie", request));
 			 
-				  if((gamedetail.get("game_"+(count+1)))!=null||!((gamedetail.get("game_"+count)[0].equals(num)||(gamedetail.get("game "+count)[1].equals(num)))) ){
+				  if((gamedetail.get("game_"+(count)))!=null||!((gamedetail.get("game_"+(count))[0].equals(num)||(gamedetail.get("game "+(count))[1].equals(num)))) ){
 					  
 					  String auth=null;
 					    if(("private-MyNotification-"+socketId).equals(channelId)) {
@@ -93,10 +95,23 @@ public class Authorize extends HttpServlet{
 					    }else {
 					    	auth =pusher.authenticate(socketId, channelId,new PresenceUser(currentUserId, userInfo));
 					    }
+					    try {
+							conn.close();
+						} catch (SQLException e) {
+							
+							e.printStackTrace();
+						}
 			     	    response.getWriter().append(auth);
 					  
 				  }
 				  else {
+					  try {
+						  conn.close();
+						} catch (SQLException e) {
+							
+							e.printStackTrace();
+						}
+					  
 					  return;
 				  }
 		    

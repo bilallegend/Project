@@ -356,6 +356,16 @@
 	</servlet>
 	
 	
+	<servlet-mapping>
+  		<servlet-name>ChangeStatus</servlet-name>
+  		<url-pattern>/ajax/changestatus</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>ChangeStatus</servlet-name>
+		<servlet-class>Ajax.ChangeStatus</servlet-class>
+	</servlet>
+	
+	
 	
 	<!-- Live watch  -->
 	<servlet-mapping>
@@ -416,5 +426,15 @@
 	</servlet> 
 	
 	
+	
+	<!--  Winner servlet -->
+    <servlet-mapping>
+  		<servlet-name>Winner_jsp</servlet-name>
+  		<url-pattern>/winner</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Winner_jsp</servlet-name>
+		<jsp-file>/Jsp/Winner.jsp</jsp-file>
+	</servlet>
 	
 </web-app>

@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -99,6 +100,7 @@ public class RequestHandler extends HttpServlet{
 				messageData.remove("msg");messageData.remove("name");
 			
 		}
+		
 		resp.getWriter().println(gson.toJson(messageData));
 	}
 }

@@ -45,6 +45,12 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		try {
+			  con.close();
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
 	}
 }
 }
