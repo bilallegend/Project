@@ -36,6 +36,7 @@ public class TournamentJoin  extends HttpServlet{
 	      Gson gson = new GsonBuilder().setPrettyPrinting()
                    .create();
 	      String json ="";
+	if(users!=null) {      
    	 for(String s:users.keySet()) {
    		 
    		 if(s.equals(request.getParameter("num"))) {
@@ -123,7 +124,7 @@ public class TournamentJoin  extends HttpServlet{
 	     response.getWriter().write(json);
    	 
     }
-	
+	}	
 }
 
 

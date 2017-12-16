@@ -3,6 +3,7 @@ package Ajax;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.Cookie;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.example.appengine.pusher.PusherService;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.google.common.io.CharStreams;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.pusher.rest.data.Result;
@@ -19,16 +22,23 @@ import HelperClasses.Cooky;
 
 public class ChangeStatus extends HttpServlet {
 
+	 private TypeReference<Map<String, String>> typeReference =
+		      new TypeReference<Map<String, String>>() {};
 	 public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		 Gson gson = new GsonBuilder().create();
+		
+			      String body = CharStreams.readLines(request.getReader()).toString();
+				  String json = body.replaceFirst("^\\[", "").replaceFirst("\\]$", "");
+				  Map<String, String> data = gson.fromJson(json, typeReference.getType());		      
+			      
 		 ServletContext context=request.getSession().getServletContext();
 		 HashMap<String,HashMap<String,ArrayList<String>>> g= (HashMap<String,HashMap<String,ArrayList<String>>>)context.getAttribute("PlayDetails");
 		  HashMap<String,String[]> gameid= ( HashMap<String,String[]>)context.getAttribute("GameIds");
 		  
 		  Cookie[] cookie=request.getCookies();
 		  String usercookie=Cooky.getCookieValue("gc_account", request.getCookies());
-		  String gi=request.getParameter("gameid");
-		  
+		  String gi=data.get("gameid");
+		  System.out.println(data.get("gameid"));
 		  String[] cookies=gameid.get(gi);
 		  String oppcookie="";
 		  if(cookies[0].equals(usercookie)) {
@@ -66,7 +76,7 @@ public class ChangeStatus extends HttpServlet {
 				     Result result1 =
 						        PusherService.getDefaultInstance()
 						            .trigger(
-						                request.getParameter("channel_id"),
+						                data.get("channel_id"),
 						                "statuschange", 
 						                result
 						                ); 

@@ -45,7 +45,7 @@
     		var id=i;
     		if(id.length==5){  var i=id[3]+id[4]; }
     		else{ var i=id[3];}
-    		onCoinMove(i);	
+    		gq(Number(i));
    		}
     	
     	var timeout= function(){ 
@@ -58,7 +58,7 @@
             if(a=="You"){ status=$("#whi").text(); }
             else{ status=$("#bla").text(); }
             
-            if(status=="Playing"){ $("#ti").text(time+""); }
+            if(status=="Playing"&&time>0){ $("#ti").text(time+""); }
             else{
             	$("#ti").text("");
             	$("#sec").text("");
@@ -67,7 +67,7 @@
     		
     		if(time==0){
     		  if(status=="Playing"){
-    			    onCoinMove("");
+    			    //onCoinMove("");
                 	changestatus();
                 }
               }
@@ -76,6 +76,7 @@
     
     	$(".gete").click(function () {
        	  var c=$(this).attr("id");
+       	  alert(c);
        	  click(c);
        	 
         });
@@ -84,13 +85,13 @@
     	var cookie=document.cookie;
     	var list=cookie.split("; ");
     	usercookie="0";
-    	var count=0;
+//    	var count=0;
     	 gameid="";
     	for(i=0;i<list.length;i++){
     		var l=list[i].split("=");
    		if(l[0]=="gc_account"){
     			usercookie=l[1];
-    			count+=1;
+    			//count+=1;
     			break;
     		}
     	}
@@ -100,7 +101,7 @@
     		
     	$.post("/ajax/checkingplayers",{},function(data,status){
     		
-    		console.log(data);
+    		// console.log(data);
    		    var obj=JSON.parse(data);
     		gameid=obj.gameid;
     		if(obj.ok=="no"){
@@ -156,21 +157,24 @@
             authEndpoint: '/auth_player',
             encrypted: true
     	});
-    	 console.log(pusher);
+    	 // console.log(pusher);
     	 channel_name = "presence-play-" + gameid;
     	
     	 channel = pusher.subscribe(channel_name);
     	 
     	 watching_channel = pusher.subscribe("presence-live-" + gameid);
     	 watching_channelname = "presence-live-" + gameid;
-    	 channel.bind('pusher:subscription_succeeded',function(members){ 		 
- 			console.log(" pusher:subscription_succeeded channel");
+    	 channel.bind('pusher:subscription_succeeded',function(members){
+    		 
+ 			 console.log(" pusher:subscription_succeeded channel");
+ 			
+
  		});
     	 pusher.connection.bind('connected', function () {
          // subscribe to new messages in the chat application
     		 
     		 watching_channel.bind('pusher:subscription_succeeded',function(){
-    			console.log('watching_channel pusher:subscription_succeeded'); 
+    			 console.log('watching_channel pusher:subscription_succeeded'); 
     		 });
     		 
     		 watching_channel.bind('pusher:member_added',function(){
@@ -185,39 +189,34 @@
     				 W_status:$('#whi').html()});
     		 })
     		 
-    		 
+    		 function trigger(data){
+    			 // console.log('trigger');
+    			 watching_channel.trigger('addNew',data);
+    		 }
     		 
          channel.bind('colorchange', function (data) {
             
         	 ////(data);
-        	 console.log(data.id);
-        	 console.log(data);
-        	 if(data.status=="ok"){
-        		// //(data.color);
-        		 
-//        		 if( $("#whi").text()=="Playing"){
-//        			 $("#whi").text("Waiting");
-//        			 $("#bla").text("Playing");
-//        		 }
-//        		 else{
-//        			 $("#whi").text("Playing");
-//        			 $("#bla").text("Waiting");
-//        		 }
-//        		 if($("#whi").text()=="Playing"){
-//         			$("#whi").css('color','firebrick');
-//         			$("#bla").css('color','white')
-//         			}
-//         		else{
-//         			$("#bla").css('color','firebrick');
-//         			$("#whi").css('color','white')
-//         		}
-        		 if(data.color=="White"){
-        			 count=1;
-        		 }
-        		 else{
+        	 alert("im colorchnage");
+        	
+        	 // console.log(data.id);
+        	  console.log(data);
+        	 if((data.status)[0]=="ok"){
+     
+        		 if((data.color)[0]=="White"){
         			 count=0;
         		 }
+        		 else{
+        			 count=1;
+        		 }
         		 
+        		for(i=0;i<(data.black).length;i++){
+        			
+        			var c=$("#box"+(data.black)[i]+" > .one").attr('class');
+        	           
+                	$("#box"+(data.black)[i]+" > .one").removeClass(c);
+                	     $("#box"+(data.black)[i]+" > div").addClass("coin1");
+                          $("#box"+(data.black)[i]+" > div").addClass("gete one");
         		console.log(data.id);
         		 if(data.id!==""){
         			 gq(Number(data.id));
@@ -226,7 +225,21 @@
         			 time=30;
         			 addvalue("");
         			
-        		 }	 
+        		} 
+        		
+                for(i=0;i<(data.white).length;i++){
+        			
+                	var c=$("#box"+(data.white)[i]+" > .one").attr('class');
+     	           
+                	$("#box"+(data.white)[i]+" > .one").removeClass(c);
+                	     $("#box"+(data.white)[i]+" > div").addClass("coin");
+                          $("#box"+(data.white)[i]+" > div").addClass("gete one");
+                	
+        		} 
+        		 
+        		time=30;
+        		
+        	 }
         	 }
         	 else{
         		 //("Invalid move");
@@ -242,23 +255,29 @@
     		 if( $("#whi").text()=="Playing"){
  			 $("#whi").text("Waiting");
  			 $("#bla").text("Playing");
- 		 }
- 		 else{
+ 		   }
+ 		   else{
  			 $("#whi").text("Playing");
  			 $("#bla").text("Waiting");
- 		 }
- 		 if($("#whi").text()=="Playing"){
+ 		    }
+ 		  if($("#whi").text()=="Playing"){
   			$("#whi").css('color','firebrick');
   			$("#bla").css('color','white')
   			}
   		else{
   			$("#bla").css('color','firebrick');
   			$("#whi").css('color','white')
-  		}
+  		  }
  		 
- 		 time=30;
+ 		 	time=30;
  		 
      		}
+        	 
+         });
+         
+         channel.bind('redirect',function(data){
+        	 
+        	 location.href=data.redirect;
         	 
          });
 
@@ -268,21 +287,17 @@
          
          
         });
-    }
-   
-	
     var date;
-    
     var save = 0;
 
     function gq(a) {
     	
-      console.log(a);
+      // console.log(a);
       onCoin.push(a);
     
         if (white.indexOf(a) == -1 && black.indexOf(a) == -1) {
 
-            
+            // console.log(color,color1);
             save = Number(a);
             check(a);
             if ((count == 0) && (final == 1)) {
@@ -302,6 +317,7 @@
     var changecolor;
 
     function check(a) {
+    	// console.log(count);
         click1 = [];
         confirm = {};
         ok = 0;
@@ -314,7 +330,7 @@
             color1 = white;
             changecolor = "white";
         }
-
+        // console.log(color,color1)
         i = 0;
         j = 0;
        
@@ -336,6 +352,7 @@
             }
             i++;
         }
+        // console.log("click "+click1);
       check1(a);
      }
     var ok = 0;
@@ -375,9 +392,19 @@
 
         }
        // onCoinMove(a)
-        
+        // console.log("confirm  ",confirm);
+        // console.log(color,color1);
+        var k1=Object.keys(confirm);
+        if(k1.length>0){
+        	
+        	
+        	
+    		onCoinMove(a);	
+    		alert(a)
+    	}
+    	
        
-        colors(a);
+     //   colors(a);
     }
     
     
@@ -386,16 +413,16 @@
     	number=$("#ti").text();
     	var data = JSON.stringify({
             message: a,
-            
+            message1:number,
             channel_id: channel_name,
             socket_id: socket_id,
             gameid:gameid
        });
-            console.log(data);
+            // console.log(data);
         
         $.post('/ajax/move', data,
             function (msg) {
-        	    console.log(msg);
+        	    // console.log(msg);
         		//(msg);
             }, "json");
 
@@ -403,6 +430,23 @@
     }
     
     function addvalue(a){
+    	
+//    	var data = JSON.stringify({
+//            message: a,
+//            message1:number,
+//            channel_id: channel_name,
+//            socket_id: socket_id,
+//            gameid:gameid
+//       });
+//            // console.log(data);
+//        
+//        $.post('/ajax/add', data,
+//            function (msg) {
+//        	    // console.log(msg);
+//        		
+//            }, "json");
+//
+//        return false;
     	var data = JSON.stringify({
             message: a,
             message1:number,
@@ -424,7 +468,9 @@
 
     function colors(a) {
 
-    	addvalue(a);
+    	
+    	
+    	//addvalue(a);
         let k = Object.keys(confirm);
         let t = save;
         i = 0;
@@ -489,6 +535,8 @@
         	 changestatus();
         }
         info();
+        // console.log("color  "+color);
+        // console.log("color1  "+color1);
     }
 
     function info() {
@@ -500,58 +548,78 @@
         if (white.length + black.length == 64) {
             if (white.length > black.length) {
                 alert("White won the match");
-//                win();
+                win();
             } else {
 
                alert("black won the match");
+              win();
             }
-            location.href="http://localhost:8080/winner"; 
+//            location.href="http://localhost:8080/winner"; 
          
         }
 
         if(white.length==0){
         	 alert("Black won the match");
-        	 location.href="http://localhost:8080/winner";
-        }
-        if(black.length==0){
-        	 alert("White won the match");
+
+//        	 location.href="http://localhost:8080/winner";
+        	 win();
+
         	 location.href="http://localhost:8080/winner";
 
+
+        trigger({Black:black,
+
+   		 White:white});
+
+
+        }
+       
+        
+        if(black.length==0){
+        	 alert("White won the match");
+//        	 location.href="http://localhost:8080/winner";
+        	 win();
+
+        	 location.href="http://localhost:8080/winner";
         }
        
      }
      
-//    function win(){
-//    	
-//       $.post("/ajax/removecontext",{white:white.length,black:black.length},function(data,status){
+    function win(){
+    	
+//    	var data=JSON.stringify({white:white.length,black:black.length,channel_id: channel_name});
+//       $.post("/ajax/removecontext",data,function(msg){
 //    		
-//    	   
+//    	    
 //    	   
 //    	});
     	
-//    }
+    }
     function changestatus(){
     	
-    	var a=$("#white").text();
-        var b=$("#black").text();	
-        var status="";
-        if(a=="You"){ status=$("#whi").text(); }
-        else{ status=$("#bla").text(); }
-        
-        if(status=="Playing"){ $("#ti").text(time+""); 
-        
-        $.post("/ajax/changestatus",{gameid:gameid,channel_id: channel_name},function(data,status){
-    		
-    		
-    		
-    	});
-        
-        }
+//    	var a=$("#white").text();
+//        var b=$("#black").text();	
+//        var status="";
+//        if(a=="You"){ status=$("#whi").text(); }
+//        else{ status=$("#bla").text(); }
+//        
+//        if(status=="Playing"){ $("#ti").text(time+""); 
+//        // console.log(gameid);
+//        var data = JSON.stringify({
+//        	gameid:gameid,
+//        	channel_id: channel_name
+//        	});
+//        $.post("/ajax/changestatus",data,function(msg){
+//    		
+//    		
+//    		
+//    	 });
+//        
+//        }
+//    	
     	
-    	
-    }
-    
-    });
-    
+    };
+    }  
+    	 });
     
     
