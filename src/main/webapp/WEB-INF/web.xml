@@ -355,6 +355,15 @@
 		<servlet-class>Ajax.AddGameId</servlet-class>
 	</servlet>
 	
+	<servlet-mapping>
+  		<servlet-name>RemoveContext</servlet-name>
+  		<url-pattern>/ajax/removecontext</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>RemoveContext</servlet-name>
+		<servlet-class>Ajax.RemoveContext</servlet-class>
+	</servlet>
+	
 	
 	<servlet-mapping>
   		<servlet-name>ChangeStatus</servlet-name>
@@ -363,6 +372,16 @@
 	<servlet>
 		<servlet-name>ChangeStatus</servlet-name>
 		<servlet-class>Ajax.ChangeStatus</servlet-class>
+	</servlet>
+	
+	
+	<servlet-mapping>
+  		<servlet-name>ShowResult</servlet-name>
+  		<url-pattern>/ajax/showresult</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>ShowResult</servlet-name>
+		<servlet-class>Ajax.ShowResult</servlet-class>
 	</servlet>
 	
 	
@@ -405,14 +424,14 @@
 		<servlet-class>ReplayHandler</servlet-class>
 	</servlet>
 	
-	<servlet-mapping>
+<!-- 	<servlet-mapping>
   		<servlet-name>authLive_servlet</servlet-name>
   		<url-pattern>/auth/live</url-pattern>	
   	</servlet-mapping>
 	<servlet>
 		<servlet-name>authLive_servlet</servlet-name>
 		<servlet-class>LiveWatchAuth</servlet-class>
-	</servlet>
+	</servlet>  -->
 	
 	<!--  Winner servlet -->
     <servlet-mapping>

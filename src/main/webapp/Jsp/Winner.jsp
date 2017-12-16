@@ -3,6 +3,7 @@
 
 <head>
 	<link rel="stylesheet" href="../Css/Winner.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="../Js/winner.js"></script>
 </head>
 
@@ -12,155 +13,49 @@
 			<div id="scor">
 				<div>
 					<div>HIGH SCORE</div>
-					<div class="frst">
-						<div class="scrdiv">
-							<ul id="fir-ul">
-								<li>
-									<div></div>
-								</li>
-								<li>MANUAL ROBBINS</li>
-								<li>
-									<img src="../Images/star1.png">
-									<div>1234</div>
-								</li>
-								<li>
-									<div>
-										<img src="../Images/cup.png">
-										<div>1</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-						<div class="scrdiv">
-							<ul id="fir-ul">
-								<li>
-									<div></div>
-								</li>
-								<li>MANUAL ROBBINS</li>
-								<li>
-									<img src="../Images/star1.png">
-									<div>1234</div>
-								</li>
-								<li>
-									<div>
-										<img src="../Images/cup.png">
-										<div>1</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-						<div class="scrdiv">
-							<ul id="fir-ul">
-								<li>
-									<div></div>
-								</li>
-								<li>MANUAL ROBBINS</li>
-								<li>
-									<img src="../Images/star1.png">
-									<div>1234</div>
-								</li>
-								<li>
-									<div>
-										<img src="../Images/cup.png">
-										<div>1</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-						<div class="scrdiv">
-							<ul id="fir-ul">
-								<li>
-									<div></div>
-								</li>
-								<li>MANUAL ROBBINS</li>
-								<li>
-									<img src="../Images/star1.png">
-									<div>1234</div>
-								</li>
-								<li>
-									<div>
-										<img src="../Images/cup.png">
-										<div>1</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-						<div class="scrdiv">
-							<ul id="fir-ul">
-								<li>
-									<div></div>
-								</li>
-								<li>MANUAL ROBBINS</li>
-								<li>
-									<img src="../Images/star1.png">
-									<div>1234</div>
-								</li>
-								<li>
-									<div>
-										<img src="../Images/cup.png">
-										<div>1</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-						<div class="scrdiv">
-							<ul id="fir-ul">
-								<li>
-									<div></div>
-								</li>
-								<li>MANUAL ROBBINS</li>
-								<li>
-									<img src="../Images/star1.png">
-									<div>1234</div>
-								</li>
-								<li>
-									<div>
-										<img src="../Images/cup.png">
-										<div>1</div>
-									</div>
-								</li>
-							</ul>
-						</div>
+					<div class="frst" id="ranking">
+						
+					
 					</div>
 				</div>
 				<div id="sec">
 					<div>
 						<ul id="fir-ul">
 							<li>
-								<div></div>
+								<div id="loser"></div>
 							</li>
-							<li>MANUAL ROBBINS</li>
+							<li id="losername">MANUAL ROBBINS</li>
 							<li>
 								<img src="../Images/star1.png">
-								<div>1234</div>
+								<div id="loserscore"></div>
 							</li>
 							<li>
 								<div>
 									<img src="../Images/cup.png">
-									<div>1</div>
+									<div id="loserwin"></div>
 								</div>
 							</li>
 						</ul>
 						<p>Opponent's Result</p>
 					</div>
 					<div>
-						<div></div>
+						<div id="winner"></div>
 					</div>
 					<div>
 						<li style="float:left">
 							<img src="../Images/star1.png">
-							<div>1234</div>
+							<div id="winnerscore">1234</div>
 						</li>
 						<li style="float:right">
 							<div>
 								<img src="../Images/cup.png">
-								<div>1</div>
+								<div id="winnerwin">1</div>
 							</div>
 						</li>
 					</div>
 				</div>
 			</div>
-			<button>Back To Home</button>
+			<button id="back">Back To Home</button>
 		</div>
 	</div>
 </body>

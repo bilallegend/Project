@@ -31,7 +31,7 @@ $(document).ready(function(){
 		
 		
 		var obj=JSON.parse(data);
-	   
+	   alert(obj);
 		if(obj.mail!=""&&obj.name!=""){
 			
 			$("#signup").css({
