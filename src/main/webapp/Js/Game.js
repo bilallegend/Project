@@ -1,16 +1,45 @@
-	var x; var black = [28, 37];
-	var white = [29, 36]; var count = 0;
-	var j = 0; var i = 0;
-	var color1; var set = [-9, -8, -7, -1, 1, 7, 9, 8];
-    var color; var click1 = [];
-	var changecolor; var ok = 0;
-    var confirm = {}; var final = 0;
-    var onCoin=[]; var save = 0;
-	var channel_name; var channel;
-	var watching_channel; var usercookie;
-	var gameid; var number=""; var time=30;
+
+    var inter;
+	var x;
+	var black = [28, 37];
+	var white = [29, 36];
+	var count = 0;
+	var j = 0;
+	var i = 0;
+	var color1;
+	var set = [-9, -8, -7, -1, 1, 7, 9, 8];
+    var color;
+	var click1 = [];
+	var changecolor;
+	var ok = 0;
+	var confirm = {};
+	var final = 0;
+    var onCoin=[];
+	var save = 0;
+	var channel_name;
+	var channel;
+	var watching_channel;
+	var usercookie;
+	var gameid;
+	var number="";
+	var time=30;
+	var watching_channelname;
+
     $(document).ready(function () {
-    	
+
+    	function trigger(comingdata){
+			 console.log('trigger');
+			 let data = JSON.stringify(comingdata);
+		            console.log(data);
+		        
+		        $.post('/ajax/New', data,
+		            function (msg) {
+		        	    console.log(msg);
+		        		//(msg);
+		            }, "json");
+			 
+		 }
+
     	var click=function(i){  		 
     		
     		var id=i;
@@ -22,6 +51,7 @@
     	var timeout= function(){ 
     		$("#ti").text(time+"");
     		time-=1;
+
     		var a=$("#white").text();
             var b=$("#black").text();	
             var status="";
@@ -110,7 +140,7 @@
     			$("#bla").css('color','firebrick');
     			$("#whi").css('color','white')
     		}
-    		//alert('before timeout')
+    		////('before timeout')
     		timeout();
     		gameid=obj.gameid;
     		$(".oth").text(obj.gameid);
@@ -133,7 +163,7 @@
     	 channel = pusher.subscribe(channel_name);
     	 
     	 watching_channel = pusher.subscribe("presence-live-" + gameid);
-    	 
+    	 watching_channelname = "presence-live-" + gameid;
     	 channel.bind('pusher:subscription_succeeded',function(members){
     		 
  			// console.log(" pusher:subscription_succeeded channel");
@@ -147,14 +177,16 @@
     		 });
     		 
     		 watching_channel.bind('pusher:member_added',function(){
-    			 trigger( {Black:black,
+    			 alert("member added");
+    			 trigger( {
+    				 gameId:watching_channelname,
+    				 Black:black,
     				 White:white,
     				 B_player:$('#black').html(),
     				 W_player:$('#white').html(),
     				 B_status:$('#bla').html(),
     				 W_status:$('#whi').html()});
     		 })
-    		 
     		 
     		 function trigger(data){
     			 // console.log('trigger');
@@ -184,7 +216,14 @@
                 	$("#box"+(data.black)[i]+" > .one").removeClass(c);
                 	     $("#box"+(data.black)[i]+" > div").addClass("coin1");
                           $("#box"+(data.black)[i]+" > div").addClass("gete one");
-                	
+        		console.log(data.id);
+        		 if(data.id!==""){
+        			 time=30;
+        			 gq(Number(data.id));
+        		 }else{
+        			console.log("time after");
+        			 time=30;
+        			 addvalue("");
         			
         		} 
         		
@@ -201,8 +240,9 @@
         		time=30;
         		
         	 }
+        	 }
         	 else{
-        		 alert("Invalid move");
+        		 //("Invalid move");
         	 }
         	 
         	 
@@ -411,6 +451,22 @@
 //            }, "json");
 //
 //        return false;
+    	var data = JSON.stringify({
+            message: a,
+            message1:number,
+            channel_id: channel_name,
+            socket_id: socket_id,
+            gameid:gameid
+       });
+            console.log(data);
+        
+        $.post('/ajax/add', data,
+            function (msg) {
+        	    console.log(msg);
+        		
+            }, "json");
+
+        return false;
     	
     }
 
@@ -424,6 +480,7 @@
         i = 0;
         let temp;
         while (i < k.length) {
+
          if(changecolor=="white"){
             	var c=$("#box"+t+" > .one").attr('class');
            
@@ -434,7 +491,7 @@
            
             }
             else if(changecolor=="black"){
-            	var c=$("#box"+t+" > .one").attr('class');
+            	let c=$("#box"+t+" > .one").attr('class');
             	 
                  	$("#box"+t+" > .one").removeClass(c)
                  	  $("#box"+t+" > div").addClass("coin1");
@@ -483,6 +540,7 @@
                 alert("White won the match");
                 win();
             } else {
+
                alert("black won the match");
               win();
             }
@@ -492,8 +550,15 @@
 
         if(white.length==0){
         	 alert("Black won the match");
+
 //        	 location.href="http://localhost:8080/winner";
         	 win();
+
+        	 location.href="http://localhost:8080/winner";
+        trigger({Black:black,
+
+   		 White:white});
+
         }
        
         
@@ -501,6 +566,8 @@
         	 alert("White won the match");
 //        	 location.href="http://localhost:8080/winner";
         	 win();
+
+        	 location.href="http://localhost:8080/winner";
         }
        
      }

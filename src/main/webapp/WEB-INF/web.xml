@@ -397,16 +397,6 @@
 	</servlet>
 	
 	<servlet-mapping>
-  		<servlet-name>liveCheck_servlet</servlet-name>
-  		<url-pattern>/auth/live</url-pattern>	
-  	</servlet-mapping>
-	<servlet>
-		<servlet-name>liveCheck_servlet</servlet-name>
-		<servlet-class>Feeds</servlet-class>
-	</servlet>
-	
-	
-	<servlet-mapping>
   		<servlet-name>Replays_servlet</servlet-name>
   		<url-pattern>/ajax/getReplays</url-pattern>	
   	</servlet-mapping>
@@ -431,7 +421,31 @@
 	<servlet>
 		<servlet-name>authLive_servlet</servlet-name>
 		<servlet-class>LiveWatchAuth</servlet-class>
+
 	</servlet>  -->
+
+	
+	
+	
+	<servlet-mapping>
+  		<servlet-name>LiveWatch_servlet</servlet-name>
+  		<url-pattern>/home/watch</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>LiveWatch_servlet</servlet-name>
+		<jsp-file>/Jsp/LiveReplay.jsp</jsp-file>
+	</servlet> 
+	
+	
+	<servlet-mapping>
+  		<servlet-name>coinreplace</servlet-name>
+  		<url-pattern>/ajax/New</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>coinreplace</servlet-name>
+		<servlet-class>CoinSender</servlet-class>
+	</servlet> 
+	
 	
 	<!--  Winner servlet -->
     <servlet-mapping>

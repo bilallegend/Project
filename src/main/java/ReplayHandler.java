@@ -13,6 +13,8 @@ import com.google.common.io.CharStreams;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import HelperClasses.Cooky;
+
 public class ReplayHandler extends HttpServlet{
 private Gson gson = new GsonBuilder().create();
 	
@@ -20,25 +22,31 @@ private Gson gson = new GsonBuilder().create();
 	      new TypeReference<Map<String, String>>() {};
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("hi ");
 		String body = CharStreams.readLines(req.getReader()).toString();
 	    String json = body.replaceFirst("^\\[", "").replaceFirst("\\]$", "");
 	    Map<String, String> data = gson.fromJson(json, typeReference.getType());
 	    String divId = data.get("divId");
 	    ServletContext context = req.getSession().getServletContext();
-	    
+	    System.out.println(divId);
 	    if(divId.contains("Live")) {
-	    	HashMap<String,String[]> GameIds = (HashMap<String,String[]>) context.getAttribute("GameIds");
 	    	HashMap<String,String> feedsDivId = (HashMap<String, String>) context.getAttribute("feedsDivId");
-	    	String gameId = feedsDivId.get(divId.split("Live")[0]);
-	    	req.setAttribute("LiveId",divId);
-	    	getServletContext().getRequestDispatcher("/Jsp/LiveReplay.jsp").forward(req, resp);    	
-	    }else {
+	    	System.out.println("FeedsDivId");
+	    	System.out.println(feedsDivId);
+	    	String gameId = feedsDivId.get(divId);
+	    	System.out.println(gameId);
+	    	HashMap<String,String> sendData = new HashMap<String,String>();
+	    	sendData.put("redir", "/watch?LiveId="+(gameId));
+//	    	req.setAttribute("LiveId",divId);  
 	    	
+	    	resp.getWriter().println(gson.toJson(sendData));
+	    	
+	    }else if(divId.contains("Replay")){
+	    	resp.getWriter().print("/replay?RId="+divId.split("Replay")[0]);
 	    }
+	    
+	   
 	}
 	
-	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.getWriter().write("No page Found");
-	}
+	
 }

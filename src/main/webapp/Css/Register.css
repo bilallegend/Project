@@ -357,7 +357,11 @@ a {
     font: 11px lato;
     color: red;
     text-transform: capitalize;
+<<<<<<< HEAD
+    visibility:hidden
+=======
     visibility: hidden
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 } 
 /*------------------------------------------------Signout Option Div--------------------------------------------------*/
 .profilediv{

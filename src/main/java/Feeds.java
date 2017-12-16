@@ -39,11 +39,15 @@ public class Feeds extends HttpServlet{
 	    
 	    ServletContext context = request.getSession().getServletContext();
 		
-	    if(context.getAttribute("playdetails") == null) {
+	    HashMap<String,HashMap<String,ArrayList<String>>>  play = (HashMap<String, HashMap<String, ArrayList<String>>>) context.getAttribute("PlayDetails");
+	    if(context.getAttribute("PlayDetails") == null) {
 	    	return;
 	    }else {
-	    	HashMap<String,String[]> GameIds = (HashMap<String,String[]>) context.getAttribute("GameIds");
-	    	Set<String> GameId = GameIds.keySet();
+	    	System.out.println(play);
+	    	HashMap<String,String[]> GameIdCookies = (HashMap<String,String[]>) context.getAttribute("GameIds");
+	    	Set<String> GameIds = GameIdCookies.keySet();
+	    	System.out.println("GameIdCookies");
+	    	System.out.println(GameIdCookies);
 	    	 HashMap<String, String[]> DivMap = Cooky.getContextValue("DivMap", request);
 	    	if(context.getAttribute("feedsDivId")==null) {
 	    		context.setAttribute("feedsDivId",new HashMap<String,String>());
@@ -52,24 +56,23 @@ public class Feeds extends HttpServlet{
 	    	String[] cookies=null;
 	    	Map<String,Object> messageData = new HashMap<>();
 	    	ArrayList<HashMap<String,String>> LivePlayList = new ArrayList<HashMap<String,String>>();
-	    	for(String gameId : GameId) {
+	    	for(String gameId : GameIds) {
 	    		if(!feedsDivId.values().contains(gameId)) {
 	    			HashMap<String,String> gamedetails = new HashMap<String,String>();
 		    		String randomNum = getRandomNumber(feedsDivId);
 		    		feedsDivId.put(randomNum+"Live",gameId);
-		    		cookies=GameIds.get(gameId);
+		    		cookies=GameIdCookies.get(gameId);
 //		    		html+=getHtml(DivMap.get(cookies[0])[3], DivMap.get(cookies[1])[3], randomNum);
 		    		gamedetails.put("game_id",randomNum+"Live");
 		    		gamedetails.put("player_1_name",DivMap.get(cookies[0])[3]);
 		    		gamedetails.put("player_2_name",DivMap.get(cookies[1])[3]);
 		    		gamedetails.put("likes", "0");gamedetails.put("views", "0");
-		    		LivePlayList.add(gamedetails);
-		    		
-		    		
+		    		LivePlayList.add(gamedetails);  		
 	    		}
 	    	}
 	    	messageData.put("data",LivePlayList);
-	    	if(channelId != null && channelId.equals("presence-live")) {
+	    	System.out.println(messageData);
+	    	if(channelId != null && !channelId.equals("presence-live") && channelId.contains("presence-live-")) {
 	    		Result result =
 	    		        PusherService.getDefaultInstance()
 	    		            .trigger(

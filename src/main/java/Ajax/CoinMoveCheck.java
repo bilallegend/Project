@@ -70,6 +70,7 @@ public class CoinMoveCheck extends HttpServlet {
 	  }
 	  
 	 System.out.println(usercookie);
+
 	 System.out.println(PlayDetails.get(usercookie).get("status").get(0));
 	 System.out.println(PlayDetails.get(oppcookie).get("status").get(0));
 	 
@@ -86,6 +87,37 @@ public class CoinMoveCheck extends HttpServlet {
   
 			     HashMap<String,ArrayList<String>> result=new  HashMap<String,ArrayList<String>>(); 
 			    
+
+	 System.out.println(PlayDetails.get(usercookie).get("status").get(0));
+	 System.out.println(PlayDetails.get(oppcookie).get("status").get(0));
+//	 HashMap<String,String> values=(HashMap<String,String> ) context.getAttribute("cookies");
+	 if(PlayDetails.get(usercookie).get("status").get(0).equals("Playing")||data.get("message").equals("")) {
+		  
+//		         HashMap<String,ArrayList<String>> player=g.get(usercookie);
+//
+//			      ArrayList<String> status=new ArrayList<String>();
+//			      status.add("Waiting");
+//			      player.put("status",status);
+//
+//			    HashMap<String,ArrayList<String>> oppositeplayer=g.get(oppcookie);
+//
+//			    ArrayList<String> status1=new ArrayList<String>();
+//			    status1.add("Playing");
+//			    oppositeplayer.put("status",status1);
+	    
+			     
+		     
+//     		     result.put("status","ok");
+//			     result.put("id",data.get("message"));
+
+
+
+//			     result.put("player1", values.get(usercookie));
+//			     result.put("player2", values.get(oppcookie));
+//			     result.put("player1status", g.get(usercookie).get("status").get(0) );
+//			     result.put("player2status", g.get(oppcookie).get("status").get(0) );
+
+
 			     
 			     color1=PlayDetails.get(usercookie).get("coins");
 			     System.out.println(color1);
@@ -210,7 +242,7 @@ public class CoinMoveCheck extends HttpServlet {
   
 	     response.getWriter().println(gson.toJson(messageData));
 	  }
-
+	 }
   
   }
   

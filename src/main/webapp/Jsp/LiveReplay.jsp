@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,500" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="../Js/jquery.js"></script>
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
     <title>Othello Board</title>
 </head>
 <body>
@@ -60,7 +61,7 @@
         </div>
     </div>
     <script>
-    var gameId= '<%=request.getAttribute("LiveId")%>';
+    var gameId= '<%=request.getParameter("LiveId")%>';
     $('.oth').html(gameId);
     </script>
     <script src='../Js/LiveReplay.js'>
