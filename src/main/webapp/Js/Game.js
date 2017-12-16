@@ -163,10 +163,8 @@
     	 
     	 watching_channel = pusher.subscribe("presence-live-" + gameid);
     	 watching_channelname = "presence-live-" + gameid;
-    	 channel.bind('pusher:subscription_succeeded',function(members){
-    		 
+    	 channel.bind('pusher:subscription_succeeded',function(members){ 		 
  			console.log(" pusher:subscription_succeeded channel");
- 			
  		});
     	 pusher.connection.bind('connected', function () {
          // subscribe to new messages in the chat application
@@ -177,7 +175,7 @@
     		 
     		 watching_channel.bind('pusher:member_added',function(){
     			 alert("member added");
-    			 trigger( {
+    			 trigger({
     				 gameId:watching_channelname,
     				 Black:black,
     				 White:white,
@@ -222,7 +220,6 @@
         		 
         		console.log(data.id);
         		 if(data.id!==""){
-        			 time=30;
         			 gq(Number(data.id));
         		 }else{
         			console.log("time after");
@@ -474,6 +471,20 @@
             white = color1;
             black = color;
         }
+        if($('#black').text()=='You' && $('#bla').text()=='Playing'){
+        	trigger({
+        		gameId:watching_channelname,
+            	Black:black,
+          		 White:white});
+        }else if($('#white').text()=='You' && $('#whi').text()=='Playing'){
+        	trigger({
+        		gameId:watching_channelname,
+            	Black:black,
+          		 White:white});
+        }
+        
+        
+           
         if(k.length!=0){
         	 changestatus();
         }
@@ -501,9 +512,6 @@
         if(white.length==0){
         	 alert("Black won the match");
         	 location.href="http://localhost:8080/winner";
-        trigger({Black:black,
-
-   		 White:white});
         }
         if(black.length==0){
         	 alert("White won the match");

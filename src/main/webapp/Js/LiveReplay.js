@@ -12,35 +12,53 @@ $(document).ready(function(){
 		
 		channel.bind('pusher:subscription_succeeded',function(){
 			console.log('pusher:subscription_succeeded = presence-live-'+gameId);
+			let data = JSON.stringify({
+				game_id:gameId
+	        });
+			$.post('/ajax/LiveDetails',data,function(data){
+				if(data.alert!=undefined){
+					alert(data.alert);
+				}else{
+					$('#black').html(''+data.Black);
+					$('#bla').html(''+data[data.Black]);
+					$('#whi').html(''+data[data.White]);
+					$('#white').html(''+data.White);
+				}				
+			},'json');
 		});
 		
 		channel.bind('addNew',function(data){
-			console.log('addNewWorking');
-			if(data.length>4){
-				$('#black').html(data.B_player);$('#white').html(data.W_player);
-				$('#bla').html(data.B_status);$('#whi').html(data.W_status);
-			}
+			console.log('addNew....Working......./');
+			console.log(data);
 			ColorChange(data.Black,data.White);
 			
 		});
+		function StatusChanger(B_Status,W_Status,B_color,W_color){
+			$('#bla').html(W_Status);
+			$('#whi').html(B_Status);
+			$('#bla').css('color',W_color);
+			$('#bla').css('color',B_color);
+		}
 		
-		function ColorChange(black,white){
-			for(let i of black){
-				let c=$("#box"+t+" > .one").attr('class');
+		function forLoop(array,css){
+			for( i of array){
+				let c=$("#box"+i+" > .one").attr('class');
            	 
-             	$("#box"+t+" > .one").removeClass(c)
-             	  $("#box"+t+" > div").addClass("coin1");
-                  $("#box"+t+" > div").addClass("gete one");
+             	$("#box"+i+" > .one").removeClass(c)
+             	  $("#box"+i+" > div").addClass(css);
+                  $("#box"+i+" > div").addClass("gete one");
 			}
-			for(let j of white){
-				let c=$("#box"+t+" > .one").attr('class');
-		           
-            	$("#box"+t+" > .one").removeClass(c);
-            	     $("#box"+t+" > div").addClass("coin");
-                      $("#box"+t+" > div").addClass("gete one");
-			}
+		}
+		function ColorChange(black,white){
+			forLoop(black,"coin1");
+			forLoop(white,'coin');
+			$('#countBlack').html(black.length+"");
+			$('#countWhite').html(white.length+"");
+			StatusChanger($('#bla').html(),$('#whi').html(),$('#bla').css('color'),$('#whi').css('color'));
 			
 		}
+		
+		
 		
 		
 	});

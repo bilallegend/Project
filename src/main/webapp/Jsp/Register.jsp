@@ -45,11 +45,8 @@
 	<div class="whole"></div>
 	<div class="blu">
 		<div id="signup">
-<<<<<<< HEAD
-			<div id="rib" class='mar rib'>REGISTER
-=======
+
 			<div id="rib" class="mar rib">REGISTER
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 				<img src="../Images/close.png" alt="close" class="close" id="fir-clo" />
 			</div>
 			 
@@ -114,11 +111,8 @@
 		</div>
 		
 		<div id="signin">
-<<<<<<< HEAD
-			<div id="rib" class='mar rib'>LOGIN
-=======
+
 			<div id="rib" class="mar rib">LOGIN
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 				<img src="../Images/close.png" alt="close" class="close" id="sec-clo" />
 			</div>
 			<label class="pad-lef">Username</label>
@@ -177,7 +171,7 @@
 		</div>
 		    <div class="feeds">
 		    	<button type="submit" class="feedbtn feedfrstbtn" name='toWatch'>Replays</button>
-                <button type="submit" class="feedbtn feedsndbtn" name='toWatch'>Live</button>
+                <button type="submit" class="feedbtn feedsndbtn hover" name='toWatch'>Live</button>
         		<div class="main" id='feedsFlow'>
         		</div>
     		</div>

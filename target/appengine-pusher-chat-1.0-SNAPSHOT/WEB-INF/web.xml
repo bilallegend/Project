@@ -356,8 +356,6 @@
 	</servlet>
 	
 	
-<<<<<<< HEAD
-=======
 	<servlet-mapping>
   		<servlet-name>ChangeStatus</servlet-name>
   		<url-pattern>/ajax/changestatus</url-pattern>	
@@ -368,7 +366,6 @@
 	</servlet>
 	
 	
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	
 	<!-- Live watch  -->
 	<servlet-mapping>
@@ -380,19 +377,6 @@
 		<servlet-class>Feeds</servlet-class>
 	</servlet>
 	
-<<<<<<< HEAD
-=======
-	<servlet-mapping>
-  		<servlet-name>liveCheck_servlet</servlet-name>
-  		<url-pattern>/auth/live</url-pattern>	
-  	</servlet-mapping>
-	<servlet>
-		<servlet-name>liveCheck_servlet</servlet-name>
-		<servlet-class>Feeds</servlet-class>
-	</servlet>
-	
-	
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	<servlet-mapping>
   		<servlet-name>Replays_servlet</servlet-name>
   		<url-pattern>/ajax/getReplays</url-pattern>	
@@ -411,7 +395,6 @@
 		<servlet-class>ReplayHandler</servlet-class>
 	</servlet>
 	
-<<<<<<< HEAD
 	<servlet-mapping>
   		<servlet-name>authLive_servlet</servlet-name>
   		<url-pattern>/auth/live</url-pattern>	
@@ -434,14 +417,24 @@
 	
 	
 	<servlet-mapping>
-  		<servlet-name>OldWatch_servlet</servlet-name>
-  		<url-pattern>/home/replay</url-pattern>	
+  		<servlet-name>coinreplace</servlet-name>
+  		<url-pattern>/ajax/New</url-pattern>	
   	</servlet-mapping>
 	<servlet>
-		<servlet-name>OldWatch_servlet</servlet-name>
-		<servlet-class>ReplaysMovesGiver</servlet-class>
+		<servlet-name>coinreplace</servlet-name>
+		<servlet-class>CoinSender</servlet-class>
 	</servlet> 
-=======
+	
+	<!-- LiveDetails -->
+	 <servlet-mapping>
+  		<servlet-name>LiveDetails</servlet-name>
+  		<url-pattern>/ajax/LiveDetails</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>LiveDetails</servlet-name>
+		<servlet-class>LiveDetails</servlet-class>
+	</servlet>
+	
 	
 	<!--  Winner servlet -->
     <servlet-mapping>
@@ -452,6 +445,5 @@
 		<servlet-name>Winner_jsp</servlet-name>
 		<jsp-file>/Jsp/Winner.jsp</jsp-file>
 	</servlet>
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	
 </web-app>
