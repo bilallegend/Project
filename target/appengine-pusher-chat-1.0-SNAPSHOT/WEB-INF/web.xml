@@ -375,9 +375,6 @@
 	</servlet>
 	
 	
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 	<servlet-mapping>
   		<servlet-name>ShowResult</servlet-name>
   		<url-pattern>/ajax/showresult</url-pattern>	
@@ -388,10 +385,6 @@
 	</servlet>
 	
 	
-=======
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	
 	<!-- Live watch  -->
 	<servlet-mapping>
@@ -421,20 +414,6 @@
 		<servlet-class>ReplayHandler</servlet-class>
 	</servlet>
 	
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<!-- 	<servlet-mapping>
-  		<servlet-name>authLive_servlet</servlet-name>
-  		<url-pattern>/auth/live</url-pattern>	
-  	</servlet-mapping>
-	<servlet>
-		<servlet-name>authLive_servlet</servlet-name>
-		<servlet-class>LiveWatchAuth</servlet-class>
-	</servlet>  -->
-=======
-<<<<<<< HEAD
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	<servlet-mapping>
   		<servlet-name>authLive_servlet</servlet-name>
   		<url-pattern>/auth/live</url-pattern>	
@@ -442,7 +421,9 @@
 	<servlet>
 		<servlet-name>authLive_servlet</servlet-name>
 		<servlet-class>LiveWatchAuth</servlet-class>
-	</servlet> 
+
+	</servlet>  
+
 	
 	
 	
@@ -454,6 +435,15 @@
 		<servlet-name>LiveWatch_servlet</servlet-name>
 		<jsp-file>/Jsp/LiveReplay.jsp</jsp-file>
 	</servlet> 
+	<servlet-mapping>
+  		<servlet-name>ReplaysWatch_servlet</servlet-name>
+  		<url-pattern>/home/replay</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>ReplaysWatch_servlet</servlet-name>
+		<servlet-class>ReplaysMovesGiver</servlet-class>
+	</servlet> 
+	
 	
 	
 	<servlet-mapping>
@@ -464,7 +454,6 @@
 		<servlet-name>coinreplace</servlet-name>
 		<servlet-class>CoinSender</servlet-class>
 	</servlet> 
-<<<<<<< HEAD
 	
 	<!-- LiveDetails -->
 	 <servlet-mapping>
@@ -475,11 +464,6 @@
 		<servlet-name>LiveDetails</servlet-name>
 		<servlet-class>LiveDetails</servlet-class>
 	</servlet>
-	
-=======
-=======
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	
 	<!--  Winner servlet -->
     <servlet-mapping>

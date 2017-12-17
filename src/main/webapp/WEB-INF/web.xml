@@ -414,7 +414,7 @@
 		<servlet-class>ReplayHandler</servlet-class>
 	</servlet>
 	
-<!-- 	<servlet-mapping>
+	<servlet-mapping>
   		<servlet-name>authLive_servlet</servlet-name>
   		<url-pattern>/auth/live</url-pattern>	
   	</servlet-mapping>
@@ -422,7 +422,7 @@
 		<servlet-name>authLive_servlet</servlet-name>
 		<servlet-class>LiveWatchAuth</servlet-class>
 
-	</servlet>  -->
+	</servlet>  
 
 	
 	
@@ -435,6 +435,15 @@
 		<servlet-name>LiveWatch_servlet</servlet-name>
 		<jsp-file>/Jsp/LiveReplay.jsp</jsp-file>
 	</servlet> 
+	<servlet-mapping>
+  		<servlet-name>ReplaysWatch_servlet</servlet-name>
+  		<url-pattern>/home/replay</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>ReplaysWatch_servlet</servlet-name>
+		<servlet-class>ReplaysMovesGiver</servlet-class>
+	</servlet> 
+	
 	
 	
 	<servlet-mapping>

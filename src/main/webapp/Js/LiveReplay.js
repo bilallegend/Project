@@ -30,7 +30,13 @@ $(document).ready(function(){
 		channel.bind('addNew',function(data){
 			console.log('addNew....Working......./');
 			console.log(data);
-			ColorChange(data.Black,data.White);
+			let id=data.color[0].toLowerCase().substring(0,3);
+			let id2= data.oppcolor[0].toLowerCase().substring(0,3);
+			
+			
+			$('#'+id).html(data.player1status[0]);
+	    	$('#'+id2).html(data.player2status[0]);
+			ColorChange(data.black,data.white);
 			
 		});
 		function StatusChanger(B_Status,W_Status,B_color,W_color){

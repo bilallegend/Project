@@ -52,7 +52,7 @@ public class ConnectionDatabase{
     	try{
 		    Statement stmt = connection.createStatement();//Statement class creates a object that can execute our query in the connected database in connection object
 			String Query="select "+column_name+" from "+table_name+" where username='"+name+"'";//Query to be passed
-			
+			System.out.println(Query);
 			ResultSet data_table=stmt.executeQuery(Query);//execution
 			try {
 				  connection.close();
@@ -78,14 +78,8 @@ public class ConnectionDatabase{
     	try{
 		    Statement stmt = connection.createStatement();//Statement class creates a object that can execute our query in the connected database in connection object
 			String Query="select "+column_name+" from "+table_name+" where "+conditionfromColumn+" in ("+conditionValue+")";//Query to be passed
-			
+			System.out.println(Query);
 			ResultSet data_table=stmt.executeQuery(Query);//execution
-			try {
-				  connection.close();
-				} catch (SQLException e2) {
-					
-					e2.printStackTrace();
-				}
 			return data_table;
 	    } catch (SQLException e) {
 	        System.out.println(e+"");
@@ -105,12 +99,6 @@ public class ConnectionDatabase{
 			String Query="select "+column_name+" from "+table_name;//Query to be passed
 			System.out.println(Query);
 			ResultSet data_table=stmt.executeQuery(Query);//execution
-			try {
-				  connection.close();
-				} catch (SQLException e2) {
-					
-					e2.printStackTrace();
-				}
 			return data_table;
 	    } catch (SQLException e) {
 	        System.out.println(e+"");

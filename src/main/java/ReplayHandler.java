@@ -29,21 +29,21 @@ private Gson gson = new GsonBuilder().create();
 	    String divId = data.get("divId");
 	    ServletContext context = req.getSession().getServletContext();
 	    System.out.println(divId);
+	    HashMap<String,String> sendData = new HashMap<String,String>();
 	    if(divId.contains("Live")) {
 	    	HashMap<String,String> feedsDivId = (HashMap<String, String>) context.getAttribute("feedsDivId");
 	    	System.out.println("FeedsDivId");
 	    	System.out.println(feedsDivId);
 	    	String gameId = feedsDivId.get(divId);
 	    	System.out.println(gameId);
-	    	HashMap<String,String> sendData = new HashMap<String,String>();
+	    	
 	    	sendData.put("redir", "/watch?LiveId="+(gameId));
 //	    	req.setAttribute("LiveId",divId);  
 	    	
-	    	resp.getWriter().println(gson.toJson(sendData));
-	    	
 	    }else if(divId.contains("Replay")){
-	    	resp.getWriter().print("/replay?RId="+divId.split("Replay")[0]);
+	    	sendData.put("redir", "/replay?RId="+divId.split("Replay")[0]);
 	    }
+	    resp.getWriter().println(gson.toJson(sendData));
 	    
 	   
 	}

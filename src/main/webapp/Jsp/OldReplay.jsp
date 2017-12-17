@@ -8,6 +8,7 @@
     <script src="../Js/jquery.js"></script>
     <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
     <title>Othello Board</title>
+    
 </head>
 <body>
     <div class="whole-div">
@@ -17,7 +18,7 @@
 		    </div>
 	    </div>
 	    <h1 class="oth"></h1>
-         <div class="time"><time>00<time><span></span><span class="it"></span></div>
+         <div class="time"><time id='ti'>00<time><span></span><span class="it"></span></div>
          <div class="play-sta">
              <div>
                  <div class="prf"></div>
@@ -61,12 +62,11 @@
         </div>
     </div>
     <script>
-    var gameId= '<%=request.getParameter("LiveId")%>';
-    var MoveIdandTimeMap=<%=request.getParameter("MoveIdandTimeMap")%>;
-    var playerNames=<%=request.getParameter("playerNames")%>;
-    $('.oth').html(gameId);
+	    var gameId= '<%=request.getAttribute("LiveId")%>';
+	    var MoveIdandTimeMap=<%=request.getAttribute("MoveIdandTimeMap")%>;
+	    var playerNames =<%=request.getAttribute("playerNames")%>
     </script>
-    <script src='../Js/LiveReplay.js'>
+    <script src='../Js/OldReplay.js'>
     </script>
 </body>
 </html>

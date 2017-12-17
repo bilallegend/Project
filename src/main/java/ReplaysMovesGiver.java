@@ -1,21 +1,32 @@
 import java.io.IOException;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.postgresql.jdbc.PgArray;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import HelperClasses.ConnectionDatabase;
 
 public class ReplaysMovesGiver  extends HttpServlet{
+	private Gson gson = new GsonBuilder().create();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {	
 			String id = req.getParameter("RId");
+			
 			ConnectionDatabase MyDB = new ConnectionDatabase();
 			Connection connection = MyDB.createConnection("gamecenter");
 			ResultSet MoveTimeResultSet = MyDB.selectCondition(connection,"game_info","whitearray,blackarray,time",id,"game_id");
@@ -27,6 +38,7 @@ public class ReplaysMovesGiver  extends HttpServlet{
 						firstmove=""+gamelistResultSet.getInt("firstmove");
 					}
 				}
+				System.out.println(firstmove);
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
@@ -37,16 +49,20 @@ public class ReplaysMovesGiver  extends HttpServlet{
 				ArrayList<Object> moveIds =new ArrayList<Object>(); 
 				ArrayList<Object> Time = new ArrayList<Object>(); 
 				while(MoveTimeResultSet.next()) {
-					System.out.print("Array type\t "+MoveTimeResultSet.getArray("blackarray").getClass().getSimpleName());
-					moveIds.add(MoveTimeResultSet.getArray("blackarray"));
-					moveIds.add(MoveTimeResultSet.getArray("whitearray"));
-					Time.add(MoveTimeResultSet.getInt("time"));
 					
+					Array blackarray = MoveTimeResultSet.getArray("blackarray");
+					Integer[] inte = (Integer[]) blackarray.getArray();
+					moveIds.add(ALgiver(inte));
+					System.out.println(Arrays.toString(inte));
+					Array whitearray = MoveTimeResultSet.getArray("whitearray");
+					Integer[] intw = (Integer[]) whitearray.getArray();
+					moveIds.add(ALgiver(intw));
+					Time.add(MoveTimeResultSet.getInt("time"));
 				}
 				MoveIdandTimeMap.put("moveIds", moveIds);
 				MoveIdandTimeMap.put("Time",Time);
 				
-			} catch (SQLException e) {
+			} catch (SQLException e){
 				System.out.println("Problem in resultset in getting");
 			}catch(Exception e) {
 				e.printStackTrace();
@@ -74,9 +90,10 @@ public class ReplaysMovesGiver  extends HttpServlet{
 				
 			}
 			
-			req.setAttribute("MoveIdandTimeMap", MoveIdandTimeMap);
-			req.setAttribute("playerNames", playerNames);
+			req.setAttribute("MoveIdandTimeMap", gson.toJson(MoveIdandTimeMap));
+			req.setAttribute("playerNames", gson.toJson(playerNames));
 			req.setAttribute("LiveId", id);
+			System.out.println("Yes");
 			getServletContext().getRequestDispatcher("/Jsp/OldReplay.jsp").forward(req, resp);
 			
 	}
@@ -92,4 +109,12 @@ public class ReplaysMovesGiver  extends HttpServlet{
 		return null;
 		
 	}
+	private ArrayList<Integer> ALgiver(Integer[] arr){
+		ArrayList<Integer> rarr = new ArrayList<Integer>();
+		for(Integer i : arr) {
+			rarr.add(i);
+		}
+		return rarr;
+	}
+	
 }
