@@ -17,7 +17,7 @@
 		    </div>
 	    </div>
 	    <h1 class="oth"></h1>
-         <div class="time">00 <span>Sec</span><span class="it">Remaining sec.</span></div>
+         <div class="time"><span></span><span class="it"></span></div>
          <div class="play-sta">
              <div>
                  <div class="prf"></div>
@@ -40,14 +40,14 @@
                 <div class="gete one coin1"></div>
                  <div>
                    <span class="int">X</span>  
-                    <span class="int pad">20</span>  
+                    <span class="int pad" id='countBlack'>20</span>  
                  </div>
              </div>
              <div class="top">
                  <div class="gete one coin"></div>
                  <div>
                    <span class="int colo">X</span>   
-                    <span class="int colo pad">20</span>  
+                    <span class="int colo pad" id='countWhite'>20</span>  
                  </div>
              </div>
          </div>

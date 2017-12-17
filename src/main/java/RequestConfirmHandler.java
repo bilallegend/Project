@@ -193,7 +193,7 @@ private Gson gson = new GsonBuilder().create();
 		
 		try{
 		    Statement stmt = conn.createStatement();
-			String Query1="insert into game_list (game_id,player1_id,player2_id,date) values ("+(count+1)+","+Integer.parseInt(player1id)+","+Integer.parseInt(player2id)+",0)";
+			String Query1="insert into game_list (game_id,player1_id,player2_id,date,firstmove) values ("+(count+1)+","+Integer.parseInt(player1id)+","+Integer.parseInt(player2id)+",0,"+Integer.parseInt(player2id)+")";
 			System.out.println(Query1);
 			stmt.executeUpdate(Query1);//execution
 			

@@ -1,7 +1,8 @@
 $(document).ready(function(){
-	$('#white').html(playerNames.nextplayer);
-	$('#black').html(playerNames.firstplayer);
-	StatusChanger('Waiting','Playing');
+	$('.oth').html('game_'+gameId);
+	$('#white').html(""+playerNames.nextplayer);
+	$('#black').html(""+playerNames.firstplayer);
+	StatusChanger('Waiting','Playing',$('#whi').css('color'),$('#bla').css('color'));
 	var time=30;
 	var moveIds= MoveIdandTimeMap.moveIds;
 	var Time = MoveIdandTimeMap.Time;
@@ -9,38 +10,43 @@ $(document).ready(function(){
 	
 	var timeChange =function(){
 		if(time >=0 && time <=30){
-			$('time').html(time+'');
+			$('#ti').html(time+'');
 			time--;
-		}else{
+		}
 			setTimeout(timeChange,1000);
-		}	
+			
 	};
-	
-	setTimeout(ColorChange(moveIds[index],moveIds[index+1]),(30-Time[index%2])*1000);
+	var delay =(30-Time[index%2])*1000;
+	setTimeout(ColorChange,delay);
 	
 	function forLoop(array,css){
-		for( i of array){
-			let c=$("#box"+i+" > .one").attr('class');
-         	$("#box"+i+" > .one").removeClass(c)
-         	$("#box"+i+" > div").addClass(css);
-            $("#box"+i+" > div").addClass("gete one");
+		if(array!=undefined){
+			for( i of array){
+				let c=$("#box"+i+" > .one").attr('class');
+	         	$("#box"+i+" > .one").removeClass(c)
+	         	$("#box"+i+" > div").addClass(css);
+	            $("#box"+i+" > div").addClass("gete one");
+			}
 		}
 	}
 	function StatusChanger(B_Status,W_Status,B_color,W_color){
 		$('#bla').html(W_Status);
 		$('#whi').html(B_Status);
 		$('#bla').css('color',W_color);
-		$('#bla').css('color',B_color);
+		$('#whi').css('color',B_color);
 	}
 	function ColorChange(black,white){
+		black=moveIds[index];
+		white=moveIds[index+1];
 		time=30;
-		StatusChanger($('#bla').html(),$('#whi').html());
+		StatusChanger($('#bla').html(),$('#whi').html(),$('#bla').css('color'),$('#whi').css('color'));
 		forLoop(black,"coin1");
 		forLoop(white,"coin");
 		$('#countBlack').html(black.length+"");
-		$('#countBlack').html(white.length+"");
+		$('#countWhite').html(white.length+"");
 		index+=2;
-		setTimeout(ColorChange(moveIds[index],moveIds[index+1]), (30-Time[index%2])*1000);
+		delay = (30-Time[index%2])*1000;
+		setTimeout(ColorChange,delay);
 		
 	}
 	timeChange();	

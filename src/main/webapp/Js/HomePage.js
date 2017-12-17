@@ -285,10 +285,7 @@ $(document).ready(function(){
 	            
 		});
 		 channel.bind('pusher:subscription_succeeded', function (t) {
-			 
-			console.log('pusher:subscription_succeeded');
-			 
-			 
+			 console.log('pusher:subscription_succeeded');	 
 		 });
 		
 		 function view(data){

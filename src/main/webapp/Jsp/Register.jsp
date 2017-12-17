@@ -47,7 +47,10 @@
 		<div id="signup">
 
 			<div id="rib" class="mar rib">REGISTER
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 				<img src="../Images/close.png" alt="close" class="close" id="fir-clo" />
 			</div>
 			 
@@ -112,8 +115,14 @@
 		</div>
 		
 		<div id="signin">
+<<<<<<< HEAD
 		<div id="rib" class="mar rib">LOGIN
 						<img src="../Images/close.png" alt="close" class="close" id="sec-clo" />
+=======
+
+			<div id="rib" class="mar rib">LOGIN
+				<img src="../Images/close.png" alt="close" class="close" id="sec-clo" />
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 			</div>
 			<label class="pad-lef">Username</label>
 			<div class="dv mar-lef" style="margin-top:0px">
@@ -208,7 +217,7 @@
 		</div>
 		    <div class="feeds">
 		    	<button type="submit" class="feedbtn feedfrstbtn" name='toWatch'>Replays</button>
-                <button type="submit" class="feedbtn feedsndbtn" name='toWatch'>Live</button>
+                <button type="submit" class="feedbtn feedsndbtn hover" name='toWatch'>Live</button>
         		<div class="main" id='feedsFlow'>
         		</div>
     		</div>

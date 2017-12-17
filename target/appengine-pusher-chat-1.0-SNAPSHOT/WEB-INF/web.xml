@@ -427,6 +427,7 @@
 		<servlet-class>ReplayHandler</servlet-class>
 	</servlet>
 	
+<<<<<<< HEAD
 	<servlet-mapping>
 	<servlet-name>Change_servlet</servlet-name>
   		<url-pattern>/ajax/edit1</url-pattern>	
@@ -445,6 +446,8 @@
 		<servlet-class>Ajax.ChangeProfile</servlet-class>
 	</servlet>
 	
+=======
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	<servlet-mapping>
   		<servlet-name>authLive_servlet</servlet-name>
   		<url-pattern>/auth/live</url-pattern>	
@@ -453,9 +456,16 @@
 		<servlet-name>authLive_servlet</servlet-name>
 		<servlet-class>LiveWatchAuth</servlet-class>
 
+<<<<<<< HEAD
 	</servlet> 
 
    
+=======
+	</servlet>  
+
+	
+	
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	
 	<servlet-mapping>
   		<servlet-name>LiveWatch_servlet</servlet-name>
@@ -465,6 +475,27 @@
 		<servlet-name>LiveWatch_servlet</servlet-name>
 		<jsp-file>/Jsp/LiveReplay.jsp</jsp-file>
 	</servlet> 
+	<servlet-mapping>
+<<<<<<< HEAD
+  		<servlet-name>coinreplace</servlet-name>
+  		<url-pattern>/ajax/New</url-pattern>	
+=======
+  		<servlet-name>ReplaysWatch_servlet</servlet-name>
+  		<url-pattern>/home/replay</url-pattern>	
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+  	</servlet-mapping>
+	<servlet>
+<<<<<<< HEAD
+		<servlet-name>coinreplace</servlet-name>
+		<servlet-class>CoinSender</servlet-class>
+=======
+		<servlet-name>ReplaysWatch_servlet</servlet-name>
+		<servlet-class>ReplaysMovesGiver</servlet-class>
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+	</servlet> 
+	
+<<<<<<< HEAD
+=======
 	
 	
 	<servlet-mapping>
@@ -476,6 +507,16 @@
 		<servlet-class>CoinSender</servlet-class>
 	</servlet> 
 	
+	<!-- LiveDetails -->
+	 <servlet-mapping>
+  		<servlet-name>LiveDetails</servlet-name>
+  		<url-pattern>/ajax/LiveDetails</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>LiveDetails</servlet-name>
+		<servlet-class>LiveDetails</servlet-class>
+	</servlet>
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	
 	<!--  Winner servlet -->
     <servlet-mapping>

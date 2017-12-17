@@ -90,50 +90,18 @@ public class CoinMoveCheck extends HttpServlet {
 
 	 System.out.println(PlayDetails.get(usercookie).get("status").get(0));
 	 System.out.println(PlayDetails.get(oppcookie).get("status").get(0));
-//	 HashMap<String,String> values=(HashMap<String,String> ) context.getAttribute("cookies");
-	 if(PlayDetails.get(usercookie).get("status").get(0).equals("Playing")||data.get("message").equals("")) {
-		  
-//		         HashMap<String,ArrayList<String>> player=g.get(usercookie);
-//
-//			      ArrayList<String> status=new ArrayList<String>();
-//			      status.add("Waiting");
-//			      player.put("status",status);
-//
-//			    HashMap<String,ArrayList<String>> oppositeplayer=g.get(oppcookie);
-//
-//			    ArrayList<String> status1=new ArrayList<String>();
-//			    status1.add("Playing");
-//			    oppositeplayer.put("status",status1);
-	    
-			     
-		     
-//     		     result.put("status","ok");
-//			     result.put("id",data.get("message"));
-
-
-
-//			     result.put("player1", values.get(usercookie));
-//			     result.put("player2", values.get(oppcookie));
-//			     result.put("player1status", g.get(usercookie).get("status").get(0) );
-//			     result.put("player2status", g.get(oppcookie).get("status").get(0) );
-
-
-			     
+	 if(PlayDetails.get(usercookie).get("status").get(0).equals("Playing")||data.get("message").equals("")) {		     
 			     color1=PlayDetails.get(usercookie).get("coins");
 			     System.out.println(color1);
-			     
 			     color=PlayDetails.get(oppcookie).get("coins");
 			     System.out.println(color);
 			     System.out.println(data.get("message"));
 			     
-			     if(PlayDetails.get(usercookie).get("color").get(0).equals("White")) {
-			    	 
+			     if(PlayDetails.get(usercookie).get("color").get(0).equals("White")) {		    	 
 		     			white=color1;
 		     			black=color;
-		    	 
 		     	}
 		     	else {
-		    	 
 		     			white=color;
 		     			black=color1;
 		     	}
@@ -142,13 +110,11 @@ public class CoinMoveCheck extends HttpServlet {
 			    }
 		          
 			     	if(PlayDetails.get(usercookie).get("color").get(0).equals("White")) {
-			    	 
 			     			white=color1;
 			     			black=color;
 			    	 
 			     	}
-			     	else {
-			    	 
+			     	else {	    	 
 			     			white=color;
 			     			black=color1;
 			     	}
@@ -165,16 +131,12 @@ public class CoinMoveCheck extends HttpServlet {
 			    	 }
 			    	 System.out.println(Arrays.toString(blackarray));
 			    	 System.out.println(Arrays.toString(whitearray));
-			     
 			     try{
 					    Statement stmt = conn.createStatement();
 						String Query="insert into game_info (game_id,whitearray,blackarray,time) values ("+Integer.parseInt(id)+",Array"+Arrays.toString(whitearray)+",Array"+Arrays.toString(blackarray)+","+time+")";//Query to be passed
-						
 						System.out.println(Query);
-						stmt.executeUpdate(Query);//execution
-						
+						stmt.executeUpdate(Query);//execution					
 				    } catch (SQLException e) {
-				    	
 				      System.out.println(e+"");
 				      
 				    }
@@ -203,8 +165,6 @@ public class CoinMoveCheck extends HttpServlet {
 				    oppositeplayer.put("status",stat1);
 				    oppositeplayer.put("coins",color);
 				    PlayDetails.put(oppcookie, oppositeplayer);
-				    
-				    
 				    context.setAttribute("PlayerDetails", PlayDetails);
 				    System.out.println(PlayDetails);
 				    
@@ -223,6 +183,7 @@ public class CoinMoveCheck extends HttpServlet {
 			     result.put("black",black);
 			     result.put("white",white);
 			     result.put("color",PlayDetails.get(usercookie).get("color"));
+			     result.put("oppcolor",PlayDetails.get(oppcookie).get("color"));
 			    
 		         System.out.println(result);
 			     
@@ -233,8 +194,15 @@ public class CoinMoveCheck extends HttpServlet {
 					                "colorchange", 
 					                result
 					                ); 
-			  
-		  
+			     
+			     Result Liveresult =
+					        PusherService.getDefaultInstance()
+					            .trigger(
+					            		"presence-live-"+gameid,
+					                "addNew", 
+					                result
+					                ); 
+			     
 	  }
 	  else { 
 		  
@@ -358,12 +326,7 @@ public class CoinMoveCheck extends HttpServlet {
           }
          
       }
-
      System.out.println(color);
-     System.out.println(color1);
-	  
+     System.out.println(color1);	  
   }
-
 }
-  
-  

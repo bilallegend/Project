@@ -38,35 +38,36 @@ public class Feeds extends HttpServlet{
 	    String channelId = data.get("channel_id");
 	    
 	    ServletContext context = request.getSession().getServletContext();
-		
+	    Map<String,Object> messageData = new HashMap<>();
 	    HashMap<String,HashMap<String,ArrayList<String>>>  play = (HashMap<String, HashMap<String, ArrayList<String>>>) context.getAttribute("PlayDetails");
 	    if(context.getAttribute("PlayDetails") == null) {
-	    	return;
+	    	messageData.put("alert","No Live Now");
 	    }else {
 	    	System.out.println(play);
 	    	HashMap<String,String[]> GameIdCookies = (HashMap<String,String[]>) context.getAttribute("GameIds");
 	    	Set<String> GameIds = GameIdCookies.keySet();
 	    	System.out.println("GameIdCookies");
 	    	System.out.println(GameIdCookies);
-	    	 HashMap<String, String[]> DivMap = Cooky.getContextValue("DivMap", request);
+	    	HashMap<String, String[]> DivMap = Cooky.getContextValue("DivMap", request);
 	    	if(context.getAttribute("feedsDivId")==null) {
 	    		context.setAttribute("feedsDivId",new HashMap<String,String>());
 	    	}
-	    	HashMap<String,String> feedsDivId = (HashMap<String, String>) context.getAttribute("feedsDivId");
+	    	HashMap<String,String> feedsDivId=(HashMap<String, String>) context.getAttribute("feedsDivId");
 	    	String[] cookies=null;
-	    	Map<String,Object> messageData = new HashMap<>();
+	    	
 	    	ArrayList<HashMap<String,String>> LivePlayList = new ArrayList<HashMap<String,String>>();
 	    	for(String gameId : GameIds) {
 	    		if(!feedsDivId.values().contains(gameId)) {
-	    			HashMap<String,String> gamedetails = new HashMap<String,String>();
+	    			HashMap<String,String> gamedetails=new HashMap<String,String>();
 		    		String randomNum = getRandomNumber(feedsDivId);
-		    		feedsDivId.put(randomNum+"Live",gameId);
+		    		feedsDivId.put(randomNum+"Live",gameId ) ;
 		    		cookies=GameIdCookies.get(gameId);
-//		    		html+=getHtml(DivMap.get(cookies[0])[3], DivMap.get(cookies[1])[3], randomNum);
+//		    		html+=getHtml(DivMap.get(cookies[0])[3], DivMap.get(cookies[1])[3],randomNum);
 		    		gamedetails.put("game_id",randomNum+"Live");
 		    		gamedetails.put("player_1_name",DivMap.get(cookies[0])[3]);
 		    		gamedetails.put("player_2_name",DivMap.get(cookies[1])[3]);
-		    		gamedetails.put("likes", "0");gamedetails.put("views", "0");
+		    		gamedetails.put("likes", "0");
+		    		gamedetails.put("views", "0");
 		    		LivePlayList.add(gamedetails);  		
 	    		}
 	    	}
@@ -77,14 +78,16 @@ public class Feeds extends HttpServlet{
 	    		        PusherService.getDefaultInstance()
 	    		            .trigger(
 	    		            		"presence-live",
-	    		                "PlayLive", // name of event
-	    		                messageData);
+	    		            		"PlayLive", // name   of   event
+	    		            		messageData);
 	    		messageData.remove("data");
 	    		messageData.put("status", result.getStatus().name());
-	    		
 	    	}
-	    	response.getWriter().println(gson.toJson(messageData));	    	
+	    	response.getWriter().println(gson.toJson(messageData));	
+	    	return;
 	    }
+	    
+	    response.getWriter().println(gson.toJson(messageData));
 	}
 	
 	
