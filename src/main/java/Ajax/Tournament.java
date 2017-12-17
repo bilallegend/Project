@@ -14,7 +14,7 @@ public class Tournament  extends HttpServlet{
 	
     protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		
-		   response.getWriter().write("http://localhost:8080/tournament");
+		   response.sendRedirect("http://localhost:8080/tournament");
 		   
 		}
 }

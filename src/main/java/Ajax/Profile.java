@@ -23,19 +23,14 @@ public class Profile extends HttpServlet{
 	   	 HashMap<String,String> users=(HashMap<String,String>)context.getAttribute("cookie");
 	   	 ArrayList<Integer> tournaments= (ArrayList<Integer>) context.getAttribute("tournaments");
 	   	 String name="";
-	   	HashMap<String,String> result= new  HashMap<String,String>(); 
+	   	 HashMap<String,String> result= new  HashMap<String,String>(); 
 	      Gson gson = new GsonBuilder().setPrettyPrinting()
                  .create();
 	      String json ="";
-	     if(users!=null) {
-		 for(String s:users.keySet()) {
-	   		 
-	   		 if(s.equals(request.getParameter("num"))) {
-	   			 name=users.get(s);
-	   			 break;
-	   		 }
-	   	 }
-	      } 
+	     String cookie=Cooky.getCookieValue("gc_account", request.getCookies());
+	     if(cookie!=null&&users!=null) {
+	     name=users.get(cookie);
+	     }
 		     Statement stmt;
 		     String mail="";
 		     String photo="";
@@ -71,7 +66,8 @@ public class Profile extends HttpServlet{
 					
 					e.printStackTrace();
 				}
-		     response.getWriter().write(json);
+			System.out.println(result);
+		    response.getWriter().write(json);
 			
 	}
 }	

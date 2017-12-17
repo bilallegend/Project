@@ -9,9 +9,7 @@ $(document).ready(function(){
 	});
 	var channel =pusher.subscribe('presence-live');
 	var channelname= 'presence-live';
-		$('#Edit').click(function(){
-			location.href="http://localhost:8080/MyInfo";
-		});
+		
 	
 	
 	   $("#playonline").click(function(){
@@ -39,6 +37,8 @@ $(document).ready(function(){
 	$.post("/ajax/profile",{num:usercookie},function(data,status){
 		
 		
+		console.log(data);
+		if(data.indexOf("<!DOCTYPE")==-1){
 		var obj=JSON.parse(data);
 	   alert(obj);
 		if(obj.mail!=""&&obj.name!=""){
@@ -67,7 +67,7 @@ $(document).ready(function(){
 		}
 		
 		$("#currtour").text(obj.currtour);
-		
+		}
 	});
 	
 	$("#reg").click(function(){
@@ -174,13 +174,75 @@ $(document).ready(function(){
 	
 	$(".tournament").click(function(){
 		
-		$.post("/ajax/tournament",{no:$(this).text()},function(data,status){
-			 
-			location.href=data;
-			
-		});
+		location.href="http://localhost:8080/tournament";
 	});
 	
+	$("#Edit").click(function(){
+		
+		$("#menu").css('display','none');
+		$(".edit1").css('display','block');
+		$.post("ajax/edit1",{},function(data){
+			
+			console.log(data);
+			var detail=JSON.parse(data);
+			$("#ename").val(detail.name);
+			$("#email").val(detail.mail);
+			$("#enumber").val(detail.number);
+			document.getElementById("ephoto").style.background="url('"+detail.photo+"')";
+			
+		});
+		
+	});
+	
+	$("#editprofile").click(function(){
+		
+		var namecheck=($("#ename").val()).match(/^[a-z0-9]{3,30}$/gi);
+	    var emailcheck=($("#email").val()).match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/gi);
+	   // var passcheck=pass.match(/[a-z0-9_-]{6,10}$/g);
+	    var numcheck=($("#enumber").val()).match(/^[0-9-()+]{10,15}/g);
+	    
+	   
+
+      var li=[$("#ename").val(),$("#email").val(),$("#enumber").val()];
+	    
+		var checklist=[namecheck,emailcheck,numcheck];
+		
+		var id=["#na","#mai","#no"];
+		var c=0;
+		for(i=0;i<checklist.length;i++){
+			if(checklist[i]+""==li[i]){
+				
+				c+=1;
+			}
+			else{
+				
+				$(id[i])[0].style.visibility="visible";
+			}
+			
+		}
+		if(c==3){
+			$.post("ajax/changeprofile",{name:$("#ename").val(),mail:$("#email").val(),number:$("#enumber").val()},function(data){
+				
+				var result=JSON.parse(data);
+				console.log(result);
+				if(result.status=="ok"){
+					$("#data1").submit();
+				}
+				else{
+					
+					var list=(resul.errors).split("&");
+	            	for(i=1;i<list.length;i++){
+	            		
+	            		$(list[i])[0].style.visibility="visible";
+	            	}
+				}
+				
+			});
+			
+		}
+		
+		
+	})
 	
 	
 	

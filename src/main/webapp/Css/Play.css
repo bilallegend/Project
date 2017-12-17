@@ -116,7 +116,8 @@ header+div>div:nth-child(1)>header+div {
     height:60px;
     margin-top:5px;
     border-radius:50%;
-    background:#fff
+    background:#fff;
+    background-size:cover
 }
 #di>div>div:nth-child(2){
     width:50%;

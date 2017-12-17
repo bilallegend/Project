@@ -17,8 +17,8 @@ public class OnlineMemb extends HttpServlet{
 		try {
 			thisUri = new URI(req.getRequestURL().toString());
 			
-			resp.getWriter().write(thisUri.getScheme()+"://"+thisUri.getHost()+":"+thisUri.getPort()+"/onlineMembers");//scheme,host,path,fragment
-			System.out.println(thisUri.getScheme()+"://"+thisUri.getHost()+":"+thisUri.getPort()+"/onlineMembers");
+			resp.getWriter().write(thisUri.getScheme()+"://"+thisUri.getHost()+":"+thisUri.getPort()+"/home/onlineMembers");//scheme,host,path,fragment
+			System.out.println(thisUri.getScheme()+"://"+thisUri.getHost()+":"+thisUri.getPort()+"/home/onlineMembers");
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
 			resp.getWriter().write(null+"");

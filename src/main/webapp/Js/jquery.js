@@ -154,9 +154,13 @@
     	});
     	
     	
-//    	  $(".req,.frstdiv>div>div,#chan-pass").click(function(){
-//             
-//          });
+    	 $(".req,.frstdiv>div>div,#chan-pass").click(function(){
+             $(".noti-div,.whole>div:nth-child(2),.change").css("transform","translateY(0)");
+         });
+         $(".c").click(function(){
+             $(".whole>div:nth-child(2)").css("transform","translateY(-100%)");
+         });
+
           $(".c").click(function(){
               $(".whole>div:nth-child(2)").css("transform","translateY(-100%)");
           });

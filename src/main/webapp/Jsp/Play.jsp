@@ -36,7 +36,7 @@
 	        <div style=" text-align:center">
 	             <h2>PROFILE INFO</h2>
 	              <div>
-                    <div></div>
+                    <div id="pro"></div>
                  </div>
                 <p>Muthumari</p>
                 <p class="tot">Total Match:</p>
@@ -49,13 +49,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <p>25</p>
+                                    <p id="win">25</p>
                                 </td>
                                  <td>
                                     <p>20</p>
                                 </td>
                                 <td>
-                                    <p>20</p>
+                                    <p id="score">20</p>
                                 </td>
                             </tr>
                         </table>

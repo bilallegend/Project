@@ -1,4 +1,21 @@
 $(document).ready(function(){
+	
+	$(document).on("click",".img",function(){
+
+		var id=$(this).parent().attr('id');
+		alert(id);
+		var name=$("#"+id+"name").text();
+		$.post("ajax/getdetail",{name:name},function(data){
+			
+			var object=JSON.parse(data);
+			$("#win").text(data.win);
+			$("#score").text(data.score);
+			document.getElementById("pro").style.background="url('"+data.photo+"')";
+			
+		});
+		
+	});
+	
 	//Pusher Connection
 	
 	if(privacy=="null" || privacy == ""||privacy == null ||privacy=="public"){

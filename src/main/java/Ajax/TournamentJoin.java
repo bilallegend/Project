@@ -18,6 +18,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import HelperClasses.ConnectionDatabase;
+import HelperClasses.Cooky;
 
 public class TournamentJoin  extends HttpServlet{
 
@@ -36,13 +37,10 @@ public class TournamentJoin  extends HttpServlet{
 	      Gson gson = new GsonBuilder().setPrettyPrinting()
                    .create();
 	      String json ="";
-	if(users!=null) {      
-   	 for(String s:users.keySet()) {
-   		 
-   		 if(s.equals(request.getParameter("num"))) {
-   			 name=users.get(s);
-   			 break;
-   		 }
+	      String cookie=Cooky.getCookieValue("gc_account", request.getCookies());
+	if(cookie!=null) {      
+   	 
+		name=users.get(cookie);
    	 }
  	ArrayList<Integer> tournaments=(ArrayList<Integer>) context.getAttribute("tournaments");
    	String t=tournaments.get(tournaments.size()-1)+"";
@@ -57,6 +55,7 @@ public class TournamentJoin  extends HttpServlet{
    		 if(!joinedmembers.contains(name)) {
    		 joinedmembers.add(name);
    		 context.setAttribute(t,joinedmembers);
+   		visibility="hidden";
    		 }
    	 }
    	 
@@ -125,6 +124,7 @@ public class TournamentJoin  extends HttpServlet{
    	 
     }
 	}	
-}
+
+
 
 

@@ -1,4 +1,8 @@
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -20,6 +24,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.pusher.rest.data.Result;
 
+import HelperClasses.ConnectionDatabase;
 import HelperClasses.Cooky;
 import HelperClasses.Redirecter;
 
@@ -34,9 +39,10 @@ public class PrivacyHandler extends HttpServlet{
 		  
 	    // Parse POST request body received in the format:
 	    // [{"message": "my-message", "socket_id": "1232.24", "channel": "presence-my-channel"}]
-		  System.out.println("/privacy Handler");
+		 System.out.println("/privacy Handler");
 	    String body = CharStreams.readLines(request.getReader()).toString();
 	    System.out.println(body);
+	    
 	    
 	    String json = body.replaceFirst("^\\[", "").replaceFirst("\\]$", "");
 	    Map<String, String> data = gson.fromJson(json, typeReference.getType());
@@ -127,10 +133,35 @@ public class PrivacyHandler extends HttpServlet{
 	  
 	  private String getHtml(String id ,String name,String privacy) {
 		  
+		  ConnectionDatabase psql = new ConnectionDatabase();
+		  Connection conn			=psql.createConnection("gamecenter");
+		  String image=null;
+		  try{
+			    Statement stmt = conn.createStatement();
+			    String Query="select photo from player_info where username='"+name+"'";
+				ResultSet data_table=stmt.executeQuery(Query);
+				
+				while(data_table.next()) {
+					
+					image=data_table.getString("photo");
+				}
+				
+		    } catch (SQLException e) {
+		    	
+		        System.out.println(e+"");
+		    }
+		  String img="";
+		  if(image==null) {
+			   img="style=\"background-image: url('../Images/pr.png')\">";
+		  }
+		  else {
+			  img="style=\"background-image: url('"+image+"')\">";
+		  }
+		  
 		  return "<div id='"+id+"' name='req'>"
-			        +"<div></div>"
+			        +"<div class='img' "+img+"</div>"
 			        +"<div>"
-				    +"<p>"+name+"</p>"
+				    +"<p id='"+id+"name'>"+name+"</p>"
 				    +"<p>Privacy: <span id='pri'>"+privacy+"</span></p>"
 				    +"</div>"
 				    +"<button class='req' >Request</button>"

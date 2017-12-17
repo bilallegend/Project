@@ -1,8 +1,10 @@
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/PrivacyHandler.java
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Ajax/Signup.java
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/com/example/appengine/pusher/AuthorizeUser.java
+/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Ajax/GetDetail.java
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Ajax/RemoveContext.java
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Feeds.java
+/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/LiveDetails.java
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/RoomChecker.java
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Ajax/TournamentMembers.java
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/LiveWatchAuth.java
@@ -11,12 +13,14 @@
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/RequestConfirmHandler.java
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/ReplayHandler.java
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/com/example/appengine/pusher/ChatServlet.java
+/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Filters/cookieFilter.java
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Ajax/Profile.java
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/HelperClasses/FIleUpload.java
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Ajax/AddGameId.java
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/CoinSender.java
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Ajax/CoinMoveCheck.java
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/profileInfo.java
+/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Ajax/ChangeProfile.java
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/OnlineMembers.java
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/com/example/appengine/pusher/SendMessageServlet.java
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Ajax/upload.java
@@ -40,4 +44,5 @@
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/ReplaysMovesGiver.java
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Filters/AccountFilter.java
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Ajax/Tournament.java
+/home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/Ajax/EditProfile.java
 /home/zoho/eclipse-workspace/Hello/Giggle/src/main/java/HelperClasses/ConnectionDatabase.java
