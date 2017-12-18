@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,6 +38,7 @@ public class RequestHandler extends HttpServlet{
 		    Map<String, String> data = gson.fromJson(json, typeReference.getType());
 		    System.out.println(json);
 		
+		ServletContext context = req.getSession().getServletContext();
 		String ParentID = data.get("parentID");
 		String name = Cooky.getContextName("gc_account",req.getCookies(),"cookie", req);
 		HashMap<String, String[]> DivMap = Cooky.getContextValue("DivMap", req);
@@ -48,17 +50,17 @@ public class RequestHandler extends HttpServlet{
 		reqInfo = Cooky.getContextValue("reqInfo",req);
 		
 		String[] values = new  String[2]; 
+		values[0]=name;
 		for(String[] arr : DivMap.values()) {
 			System.out.println(arr[0]+"  "+ParentID);
-			if(arr[3].equals(name)) {
-				values[0]=arr[1];
-			}else if(arr[0].equals(ParentID)) {				
+			if(arr[0].equals(ParentID)) {				
 				values[1]=arr[3];
 				System.out.println(Arrays.toString(arr));
+				return;
 				
 			}
 		}
-		
+		HashMap<String,ArrayList<String>> MultiTabs = (HashMap<String, ArrayList<String>>) context.getAttribute("MultiTabs");
 		System.out.println("request handle");
 		System.out.println(Arrays.toString(values));
 		reqInfo.put(name, values);
@@ -83,23 +85,39 @@ public class RequestHandler extends HttpServlet{
 				"       \n" + 
 				"        </div>\n" + 
 				"   </div>"	);
-		HashMap<String,ArrayList<String>> MultiBrowser = (HashMap<String, ArrayList<String>>) req.getSession().getServletContext().getAttribute("MultiBrowser");
-		ArrayList<String> senderCookies= MultiBrowser.get(values[1]);
-		for(String Cookie : senderCookies) {
-				Result result =
-				        PusherService.getDefaultInstance()
-				            .trigger(
-				                "private-MyNotification-"+DivMap.get(Cookie)[1],
-				                "GameReq", // name of event
-				                messageData);
-				
-				System.out.println("private-MyNotification-"+DivMap.get(Cookie)[1]);
-				System.out.println(result.toString());
-				
-				messageData.put("status", result.getStatus().name());
-				messageData.remove("msg");messageData.remove("name");
+		HashMap<String,ArrayList<String>> MultiBrowser = (HashMap<String, ArrayList<String>>) context.getAttribute("MultiBrowser");
+		ArrayList<String> receiverCookies= MultiBrowser.get(values[1]);
+		String receivername = DivMap.get(receiverCookies.get(0))[3];
+		ArrayList<String> receivingSockets= MultiTabs.get(receivername);
+		for(String socketId : receivingSockets) {
+			Result result =
+			        PusherService.getDefaultInstance()
+			            .trigger(
+			                "private-MyNotification-"+socketId,
+			                "GameReq", // name of event
+			                messageData);
 			
+			System.out.println("private-MyNotification-"+socketId);
+			System.out.println(result.toString());
+			
+			messageData.put("status", result.getStatus().name());
+			messageData.remove("msg");messageData.remove("name");
 		}
+//		for(String Cookie : receiverCookies) {
+//				Result result =
+//				        PusherService.getDefaultInstance()
+//				            .trigger(
+//				                "private-MyNotification-"+DivMap.get(Cookie)[1],
+//				                "GameReq", // name of event
+//				                messageData);
+//				
+//				System.out.println("private-MyNotification-"+DivMap.get(Cookie)[1]);
+//				System.out.println(result.toString());
+//				
+//				messageData.put("status", result.getStatus().name());
+//				messageData.remove("msg");messageData.remove("name");
+//			
+//		}
 		
 		resp.getWriter().println(gson.toJson(messageData));
 	}

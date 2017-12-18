@@ -47,10 +47,6 @@
 		<div id="signup">
 
 			<div id="rib" class="mar rib">REGISTER
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 				<img src="../Images/close.png" alt="close" class="close" id="fir-clo" />
 			</div>
 			 
@@ -82,7 +78,7 @@
 						</div>
 						<input type="email" name="email" id="usrmail_up" onkeyup="check()"/>
 					</div>
-					<p id='errmail'>Invalid mail</p>
+					<p id='errmail'>username should have atleast 6</p>
 					
 				</div>
 			</div>
@@ -115,14 +111,9 @@
 		</div>
 		
 		<div id="signin">
-<<<<<<< HEAD
-		<div id="rib" class="mar rib">LOGIN
-						<img src="../Images/close.png" alt="close" class="close" id="sec-clo" />
-=======
 
 			<div id="rib" class="mar rib">LOGIN
 				<img src="../Images/close.png" alt="close" class="close" id="sec-clo" />
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 			</div>
 			<label class="pad-lef">Username</label>
 			<div class="dv mar-lef" style="margin-top:0px">
@@ -169,47 +160,10 @@
 		<p class="sign sgnin" id="sig">SIGNIN</p>
 		
 		
-		         <div class="edit1">
-             <p class="cha-pas">PERSONAL INFORMATION</p>
-             <form  id='data1' action="<%=url %>" method="post" enctype="multipart/form-data">
-             <div class="co wi" id="ephoto">
-					<label id="contanier">
-						<input type="file" />
-					</label>
-				</div>
-				</form>
-				<div id="sec-div st">
-				<label class="pad-lef">Name</label>
-				<div class="dv mar-lef">
-					<div class="im"> <div class="im" >
-							<img src="../Images/profile.png" class="ima" />
-						</div>
-					</div>
-					<input type="text" class="in" id="ename"/>
-				</div>
-				<p id="na">username should have atleast 6 should not have special characters</p>
-				<label class="pad-top pad-lef">Email</label>
-				<div class="dv mar-lef">
-					<div class="im"><i class="fa fa-envelope-o" aria-hidden="true"></i>
-					</div>
-					<input type="text" class="in" id="email" />
-				</div>
-				<p id="mai">Invalid mail</p>
-				<label class="pad-top pad-lef">Mobile Number</label>
-				<div class="dv mar-lef">
-					<div class="im"> <i class="fa fa-mobile" aria-hidden="true" id="ph"></i>
-					</div>
-					<input type="text/number" class="in"  id="enumber"/>
-				</div>
-				<p id="no">Invalid mobile number</p>
-				<input type="submit" id="editprofile" value="Change" class="sub" id="reg" />
-			</div>
-         </div>
-		
 		<div class="menu"><i class="fa fa-bars" aria-hidden="true"></i>
 		</div> <i class="fa fa-caret-right" id="aro" aria-hidden="true"></i>
 		<div class="feed"> <span>Tournament ID</span>
-			<p class="tournament" id="currtour">AB-1</p>
+			<p class="tournament" id="currtour"></p>
 			<p>Ends in</p>
 			<h1>1h 29s</h1>
 			<i class="fa fa-commenting-o" aria-hidden="true" id="fed"><span>Feeds</span></i>
@@ -225,24 +179,14 @@
 	<div class="profil" id="img"></div>
 		<div class="profilediv">
                     <div>
-                        <div><div id="img1"><p>change</p></a></div></div>
+                        <div><div id="img1"><a href="http://gamecenterdesign.zcodeusers.com/MMAB-PROJECT/Html/Profile.html"><p>change</p></a></div></div>
                         <h5 id="name">madhubalan.m</h5>
                         <p id="mail">madhubalan.m@zohouniv.com</p>
                     </div>
                     <button type="submit" class="edit" id='Edit'>Edit profile</button>
-                    <button type="submit" id="chan-pass">Change password</button>
+                    <button type="submit">Change password</button>
                     <button type="submit">signout</button>
            </div>
-           
-           <div class="change">
-            <p class="cha-pas">Change Password</p>
-          <div>
-            <input type="password" placeholder="Current Password" id="curr"/><i class="fa fa-lock" aria-hidden="true"></i>
-            <input type="password" placeholder="New Password" id="new"/><i class="fa fa-lock" aria-hidden="true"></i>
-            <input type="password" placeholder="Confirm Your Password" id="new1"/><i class="fa fa-lock" aria-hidden="true"></i>
-          </div>
-          <button class="chan" id="change">CHANGE</button>
-        </div>
            
            
 </body>

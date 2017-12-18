@@ -447,8 +447,6 @@
 	</servlet>
 	
 	<servlet-mapping>
-=======
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
   		<servlet-name>authLive_servlet</servlet-name>
   		<url-pattern>/auth/live</url-pattern>	
   	</servlet-mapping>
@@ -509,6 +507,17 @@
 	<servlet>
 		<servlet-name>Winner_jsp</servlet-name>
 		<jsp-file>/Jsp/Winner.jsp</jsp-file>
+	</servlet>
+	
+	
+	<!--Deleting online members-->
+	<servlet-mapping>
+  		<servlet-name>DeleteMembers</servlet-name>
+  		<url-pattern>/ajax/delete</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>DeleteMembers</servlet-name>
+		<servlet-class>OnlineRemover</servlet-class>
 	</servlet>
 	
 </web-app>

@@ -40,11 +40,8 @@ public class AuthorizeUser extends HttpServlet{
 		 		return;
 		 	}else {
 		    Pusher pusher = PusherService.getDefaultInstance();
-
 		    String query = CharStreams.toString(request.getReader());
 		    System.out.println(" query "+query);
-		    // socket_id, channel_name parameters are automatically set in the POST body of the request
-		    // eg.socket_id=1232.12&channel_name=presence-my-channel
 		    Map<String, String> data = splitQuery(query);
 		    System.out.println("data Map "+data);
 		    String socketId = data.get("socket_id");
@@ -66,7 +63,10 @@ public class AuthorizeUser extends HttpServlet{
 			    }
 			    HashMap<String,ArrayList<String>> MultiBrowser = (HashMap<String, ArrayList<String>>) context.getAttribute("MultiBrowser");
 			    DivMap = (HashMap<String, String[]>) context.getAttribute("DivMap");
-			    
+			    if(context.getAttribute("MultiTabs")==null) {
+			    	context.setAttribute("MultiTabs", new HashMap<String,ArrayList<String>>());
+			    }
+			    HashMap<String,ArrayList<String>> MultiTabs = (HashMap<String, ArrayList<String>>) context.getAttribute("MultiTabs");
 			    //MultiBrowisng purpose
 			    if(MultiBrowser.get(name)==null) {
 			    	MultiBrowser.put(name,new ArrayList<String>());			    	
@@ -82,6 +82,9 @@ public class AuthorizeUser extends HttpServlet{
 				    	if(key.equals(CookieValue)) {
 				    		currentUserId=DivMap.get(CookieValue)[0];
 				    		DivMap.get(CookieValue)[1]=socketId;
+				    		ArrayList<String> socketsList = MultiTabs.get(name);
+						    socketsList.add(socketId);
+						    MultiTabs.put(name,socketsList);
 				    		newUser=false;
 				    	}
 				    	else if(DivMap.get(key)[3].equals(name)) {
@@ -93,6 +96,12 @@ public class AuthorizeUser extends HttpServlet{
 						    ValuesArray[0]=size;
 						    ValuesArray[1]=socketId;
 						    ValuesArray[3]=name;
+						    ArrayList<String> socketsList = new ArrayList<String>();
+						    if(MultiTabs.containsKey(name)) {
+						    	socketsList = MultiTabs.get(name);
+						    }
+						    socketsList.add(socketId);
+						    MultiTabs.put(name,socketsList);
 				    	}
 				    }
 			    		
@@ -103,6 +112,12 @@ public class AuthorizeUser extends HttpServlet{
 			    		ValuesArray[0]=size;
 					    ValuesArray[1]=socketId;
 					    ValuesArray[3]=name;
+					    ArrayList<String> socketsList = new ArrayList<String>();
+					    if(MultiTabs.containsKey(name)) {
+					    	socketsList = MultiTabs.get(name);
+					    }
+					    socketsList.add(socketId);
+					    MultiTabs.put(name,socketsList);
 					    DivMap.put(CookieValue,ValuesArray);
 			    	}else if(ValuesArray[0] != null) {
 			    		DivMap.put(CookieValue,ValuesArray);

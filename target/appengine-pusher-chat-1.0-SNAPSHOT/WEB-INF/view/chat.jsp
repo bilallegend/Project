@@ -46,7 +46,7 @@
 
     var socket_id = null;
     // add presence prefix for authenticated presence channels.
-    var channel_name = "private-" + room;
+    var channel_name = "presence-" + room;
     function updateOnlineCount() {
         $('#chat_widget_counter').html($('.chat_widget_member').length);
     }
