@@ -440,7 +440,6 @@
 	</servlet>
 	
 	<servlet-mapping>
-
   		<servlet-name>authLive_servlet</servlet-name>
   		<url-pattern>/auth/live</url-pattern>	
   	</servlet-mapping>
@@ -502,7 +501,7 @@
 		<servlet-name>Winner_jsp</servlet-name>
 		<jsp-file>/Jsp/Winner.jsp</jsp-file>
 	</servlet>
-	
+
 		<servlet-mapping>
   		<servlet-name>Detail</servlet-name>
   		<url-pattern>/home/ajax/getdetail</url-pattern>	
@@ -537,6 +536,15 @@
 	<servlet>
 		<servlet-name>Photo</servlet-name>
 		<servlet-class>Ajax.GetPhoto</servlet-class>
+	</servlet>
+	<!--Deleting online members-->
+	<servlet-mapping>
+  		<servlet-name>DeleteMembers</servlet-name>
+  		<url-pattern>/ajax/delete</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>DeleteMembers</servlet-name>
+		<servlet-class>OnlineRemover</servlet-class>
 	</servlet>
 	
 </web-app>

@@ -10,7 +10,7 @@ $(document).ready(function(){
 		var id=$(this).parent().attr('id');
 	
 		var name=$("#"+id+"name").text();
-		$.post("ajax/getdetail",{name:name},function(data){
+		$.post("/ajax/getdetail",{name:name},function(data){
 			
 			var object=JSON.parse(data);
 			console.log(object);
@@ -98,6 +98,16 @@ $(document).ready(function(){
         });
         channel.bind('pusher:member_removed', function (member) {
         	console.log(" pusher:member_removed ");
+        	var data=JSON.stringify({
+            	id:member.id,
+            	channel_id: 'presence-online-room',
+                socket_id: socket_id
+            });
+        	$.post('/ajax/delete',data,function(data,status){
+        		console.log(data.status);
+        		console.log(status);
+        	},'json');
+        	
         	console.log(member);
         });
         

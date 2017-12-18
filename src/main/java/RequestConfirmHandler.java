@@ -40,7 +40,7 @@ private Gson gson = new GsonBuilder().create();
 	    String json = body.replaceFirst("^\\[", "").replaceFirst("\\]$", "");
 	    Map<String, String> data = gson.fromJson(json, typeReference.getType());
 	    System.out.println(json);
-	    
+	    ServletContext context = request.getSession().getServletContext();
 	    String Reply  = data.get("reply");
 	    HashMap<String,String[]> reqInfo = Cooky.getContextValue("reqInfo",request);
 	    Map<String,String> messageData = new HashMap<String, String>();
@@ -49,7 +49,7 @@ private Gson gson = new GsonBuilder().create();
 			messageData.put("redir", Redirecter.giveUrlFor(request,"/home"));
 		}else {
 			reqInfo = Cooky.getContextValue("reqInfo",request);
-			
+			HashMap<String,ArrayList<String>> MultiTabs = (HashMap<String, ArrayList<String>>) context.getAttribute("MultiTabs");
 			boolean tryF = true;
 			for(String Key : reqInfo.keySet()) {
 				if(reqInfo.get(Key)[1].equals(name)) {
@@ -70,21 +70,24 @@ private Gson gson = new GsonBuilder().create();
 			}
 			System.out.println("private-MyNotification-"+messageData.get("replyId"));
 			System.out.println(messageData);
-			Result result =
-			        PusherService.getDefaultInstance()
-			            .trigger(
-			                "private-MyNotification-"+messageData.get("replyId"),
-			                "GameResp", // name of event
-			                messageData);
-			messageData.put("status", result.getStatus().name());
-			System.out.println("private-MyNotification-"+messageData.get("replyId"));
+			ArrayList<String> socketList = MultiTabs.get(messageData.get("replyId"));
+			for(String socketId : socketList) {
+				Result result =
+				        PusherService.getDefaultInstance()
+				            .trigger(
+				                "private-MyNotification-"+socketId,
+				                "GameResp", // name of event
+				                messageData);
+				messageData.put("status", result.getStatus().name());
+				System.out.println("private-MyNotification-"+socketId);
+			}
+			
 			messageData.remove("replyId");
 		}
 		
 		
 		String oppname=requesterName;
 		reqInfo.remove(requesterName);
-		ServletContext context  =   request.getSession().getServletContext();
 		HashMap<String,String[]> d=(HashMap<String,String[]>) context.getAttribute("DivMap");
 		ArrayList<String> cookies=new ArrayList<String>();
 		System.out.println(name);
