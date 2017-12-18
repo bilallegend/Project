@@ -126,7 +126,7 @@ $.post("/ajax/checkingplayers",{},function(data,status){
     //WHen click any coins
     	$(".gete").click(function () {
        	  let c=$(this).attr("id");
-       	  alert(c);
+       	  //(c);
        	  click(c);
        	 
         });
@@ -380,7 +380,7 @@ $.post("/ajax/checkingplayers",{},function(data,status){
         var k1=Object.keys(confirm);
         if(k1.length>0){
     		onCoinMove(a);	
-    		alert(a)
+    		//(a)
     	}
     	
        
@@ -514,11 +514,11 @@ $.post("/ajax/checkingplayers",{},function(data,status){
        
         if (white.length + black.length == 64) {
             if (white.length > black.length) {
-                alert("White won the match");
+                //("White won the match");
                 win();
             } else {
 
-               alert("black won the match");
+               //("black won the match");
               win();
             }
 //            location.href="http://localhost:8080/winner"; 
@@ -526,24 +526,15 @@ $.post("/ajax/checkingplayers",{},function(data,status){
         }
 
         if(white.length==0){
-        	 alert("Black won the match");
-
+        	 //("Black won the match");
 //        	 location.href="http://localhost:8080/winner";
         	 win();
-
         	 location.href="http://localhost:8080/winner";
-
-
 //        trigger({Black:black,
-//
 //   		 White:white});
-
-
-        }
-       
-        
+        }        
         if(black.length==0){
-        	 alert("White won the match");
+        	 //("White won the match");
 //        	 location.href="http://localhost:8080/winner";
         	 win();
 

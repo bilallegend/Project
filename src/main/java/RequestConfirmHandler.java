@@ -71,16 +71,16 @@ private Gson gson = new GsonBuilder().create();
 			System.out.println("private-MyNotification-"+messageData.get("replyId"));
 			System.out.println(messageData);
 			ArrayList<String> socketList = MultiTabs.get(messageData.get("replyId"));
-			for(String socketId : socketList) {
+			
 				Result result =
 				        PusherService.getDefaultInstance()
 				            .trigger(
-				                "private-MyNotification-"+socketId,
+				                "private-MyNotification-"+messageData.get("replyId"),
 				                "GameResp", // name of event
 				                messageData);
 				messageData.put("status", result.getStatus().name());
-				System.out.println("private-MyNotification-"+socketId);
-			}
+				System.out.println("private-MyNotification-"+messageData.get("replyId"));
+			
 			
 			messageData.remove("replyId");
 		}
@@ -121,7 +121,7 @@ private Gson gson = new GsonBuilder().create();
 			 context.setAttribute("PlayDetails", new HashMap<String,HashMap<String,ArrayList<String>>>() );
 		 }
 		 HashMap<String,String[]> pd=(HashMap<String,String[]>)context.getAttribute("GameIds");
-		 String a[]= {"",""};
+		 String a[]= new String[2];
 		 System.out.println(cookies);
 		 a[0]=cookies.get(0);
 		 a[1]=cookies.get(1);

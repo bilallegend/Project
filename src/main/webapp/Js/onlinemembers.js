@@ -120,10 +120,7 @@ $(document).ready(function(){
         	}else{
 	        	if(data.name !== undefined){
 	        		$('#'+data.id).remove();
-	        		$('#butt'+data.id).remove();
-	        		
 	        	}
-	        	$('body').append(data.butt);
 	        		$('#di').append(data.html);
         	}
         	
