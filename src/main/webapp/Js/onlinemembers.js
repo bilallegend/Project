@@ -238,7 +238,8 @@ $(document).ready(function(){
 //        	alert($(this).parent().attr('id'));
         	var parentid=$(this).parent().attr('id');
         	var src=document.getElementById("img"+parentid).style.backgroundImage;
-        	alert(src);
+        	//alert(src);
+        	document.getElementById("opposite").style.background=src;
         	document.getElementById("opposite").style.backgroundSize="contain";
         	let data = JSON.stringify({
                 socket_id: socket_id,

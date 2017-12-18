@@ -64,7 +64,7 @@ private Gson gson = new GsonBuilder().create();
 			}	
 			if(Reply.equals("Yes") && !tryF) {
 				messageData.put("reply", Reply);
-				messageData.put("redir", Redirecter.giveUrlFor(request,"/play"));
+				messageData.put("redir", Redirecter.giveUrlFor(request,"/home/play"));
 			}else {
 				messageData.put("reply", "Sorry!");
 			}

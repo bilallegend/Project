@@ -202,7 +202,7 @@
  <!--  Game servlet -->
     <servlet-mapping>
   		<servlet-name>Board_jsp</servlet-name>
-  		<url-pattern>/play</url-pattern>	
+  		<url-pattern>/home/play</url-pattern>	
   	</servlet-mapping>
 	<servlet>
 		<servlet-name>Board_jsp</servlet-name>
