@@ -34,14 +34,12 @@ private Gson gson = new GsonBuilder().create();
 	  
 	  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	    String body = CharStreams.readLines(request.getReader()).toString();
-	    System.out.println("RequestConfirmHandler");
-	    System.out.println(body);
 	    String name = Cooky.getContextName("gc_account",request.getCookies(),"cookie", request);
 	    String json = body.replaceFirst("^\\[", "").replaceFirst("\\]$", "");
 	    Map<String, String> data = gson.fromJson(json, typeReference.getType());
-	    System.out.println(json);
 	    ServletContext context = request.getSession().getServletContext();
 	    String Reply  = data.get("reply");
+	    String socketId= data.get("socket_id");
 	    HashMap<String,String[]> reqInfo = Cooky.getContextValue("reqInfo",request);
 	    Map<String,String> messageData = new HashMap<String, String>();
 	    String requesterName = "";
@@ -69,19 +67,41 @@ private Gson gson = new GsonBuilder().create();
 				messageData.put("reply", "Sorry!");
 			}
 			System.out.println("private-MyNotification-"+messageData.get("replyId"));
-			System.out.println(messageData);
-			ArrayList<String> socketList = MultiTabs.get(messageData.get("replyId"));
-			
+			ArrayList<String> socketList = MultiTabs.get(name);
+			System.out.println(socketList);
+			for(String socketid : socketList) {
+				if(!socketid.equals(socketId)) {
+					messageData.put("redir", Redirecter.giveUrlFor(request,"/home"));
+				
 				Result result =
 				        PusherService.getDefaultInstance()
 				            .trigger(
-				                "private-MyNotification-"+messageData.get("replyId"),
+				                "private-MyNotification-"+socketid,
 				                "GameResp", // name of event
 				                messageData);
 				messageData.put("status", result.getStatus().name());
-				System.out.println("private-MyNotification-"+messageData.get("replyId"));
-			
-			
+				System.out.println("private-MyNotification-"+socketid);
+				System.out.println(result.getStatus().name());
+				}
+			}
+			MultiTabs.get(name).remove(socketList.indexOf(socketId));
+			socketList = MultiTabs.get(requesterName);
+			for(String socketid : socketList) {
+				if(socketid.equals(messageData.get("replyId")) && (Reply.equals("Yes") && !tryF)) {
+					messageData.put("redir", Redirecter.giveUrlFor(request,"/play"));
+				}else {
+					messageData.put("redir", Redirecter.giveUrlFor(request,"/home"));
+				}
+				Result result =
+				        PusherService.getDefaultInstance()
+				            .trigger(
+				                "private-MyNotification-"+socketid,
+				                "GameResp", // name of event
+				                messageData);
+				messageData.put("status", result.getStatus().name());
+				
+			}
+			MultiTabs.get(requesterName).remove(socketList.indexOf(messageData.get("replyId")));
 			messageData.remove("replyId");
 		}
 		

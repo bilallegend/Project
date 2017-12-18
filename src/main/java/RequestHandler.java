@@ -85,8 +85,10 @@ public class RequestHandler extends HttpServlet{
 			                messageData);
 			System.out.println(result.getStatus()+"  for "+"private-MyNotification-"+socketId+"   ");
 			messageData.put("status", result.getStatus().name());
-			messageData.remove("msg");messageData.remove("name");
+			
 		}
+		
+		messageData.remove("msg");messageData.remove("name");
 //		for(String Cookie : receiverCookies) {
 //				Result result =
 //				        PusherService.getDefaultInstance()
