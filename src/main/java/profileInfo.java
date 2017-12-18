@@ -37,7 +37,13 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
 				userDetailsMap.put("total_match",(resultset.getInt("win")+resultset.getInt("loss")+""));
 				userDetailsMap.put("name",name);
 				userDetailsMap.put("draws","0");
+				System.out.println(resultset.getString("photo")==null);
+				if(resultset.getString("photo")==null) {
+					userDetailsMap.put("photo","../Images/pr.png");
+				}
+				else {
 				userDetailsMap.put("photo",resultset.getString("photo") );
+				}
 			}
 			resp.getWriter().println(gson.toJson(userDetailsMap));
 			

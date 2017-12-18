@@ -76,7 +76,7 @@ public class upload extends HttpServlet {
                 res.sendRedirect("http://localhost:8080/home");
         } else {
         	
-        	res.getWriter().write("/serve?blob-key=" + blobKeys.get(0).getKeyString());
+        	//res.getWriter().write("/serve?blob-key=" + blobKeys.get(0).getKeyString());
         	   src="/serve?blob-key=" + blobKeys.get(0).getKeyString();
         	
         	

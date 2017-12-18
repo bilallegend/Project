@@ -178,7 +178,8 @@ i {
 	-webkit-background-clip: text;
 	background-clip: text;
 	margin: 20px 0 0 0;
-	cursor: pointer
+	cursor: pointer;
+	top:0
 }
 .sgnin {
 	right: 50px
@@ -357,11 +358,9 @@ a {
     font: 11px lato;
     color: red;
     text-transform: capitalize;
-<<<<<<< HEAD
+
     visibility:hidden
-=======
-    visibility: hidden
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+
 } 
 /*------------------------------------------------Signout Option Div--------------------------------------------------*/
 .profilediv{

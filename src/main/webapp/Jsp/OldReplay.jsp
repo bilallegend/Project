@@ -61,11 +61,17 @@
         </div>
     </div>
     <script>
-	    var gameId= '<%=request.getAttribute("LiveId")%>';
-	    var MoveIdandTimeMap=<%=request.getAttribute("MoveIdandTimeMap")%>;
-	    var playerNames =<%=request.getAttribute("playerNames")%>
+
+    var gameId= '<%=request.getParameter("LiveId")%>';
+    var MoveIdandTimeMap=<%=request.getParameter("MoveIdandTimeMap")%>;
+    var playerNames=<%=request.getParameter("playerNames")%>;
+    $('.oth').html(gameId);
     </script>
     <script src='../Js/OldReplay.js'>
+
+
+
+>>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
     </script>
 </body>
 </html>

@@ -32,15 +32,19 @@ public class GetDetail extends HttpServlet {
 			 String name=request.getParameter("name");
 			 try{
 				    Statement stmt = conn.createStatement();
-				    String Query="select username,win,score,photo from player_info where username='"+name+"'";
+				    String Query="select username,win,score,loss,photo from player_info where username='"+name+"'";
 					ResultSet data_table=stmt.executeQuery(Query);
-					
+					System.out.println(name);
 					while(data_table.next()) {
 						
-						details.put("name", data_table.getString("username"));
-						details.put("win", data_table.getInt("win")+"");
-						details.put("score", data_table.getString("number"));
+						System.out.println(data_table.getString("photo"));
+						
 						details.put("photo", data_table.getString("photo"));
+					    details.put("name", data_table.getString("username"));
+						details.put("win", data_table.getInt("win")+"");
+						details.put("score", data_table.getInt("score")+"");
+						details.put("loss",data_table.getInt("loss")+"");
+						
 
 					}
 					
@@ -54,6 +58,7 @@ public class GetDetail extends HttpServlet {
 					
 					e.printStackTrace();
 				}
+			 System.out.println(details);
 			 response.getWriter().println(gson.toJson(details));
 			  
 			 
