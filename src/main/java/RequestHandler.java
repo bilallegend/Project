@@ -29,44 +29,32 @@ public class RequestHandler extends HttpServlet{
 	@Override
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.println("RequestHandler");
+
 		    String body = CharStreams.readLines(req.getReader()).toString();
-		    System.out.println(body);
-		    
 		    String json = body.replaceFirst("^\\[", "").replaceFirst("\\]$", "");
 		    Map<String, String> data = gson.fromJson(json, typeReference.getType());
-		    System.out.println(json);
-		
 		ServletContext context = req.getSession().getServletContext();
 		String ParentID = data.get("parentID");
+		String socketID = data.get("socket_id");
 		String name = Cooky.getContextName("gc_account",req.getCookies(),"cookie", req);
 		HashMap<String, String[]> DivMap = Cooky.getContextValue("DivMap", req);
-		
 		HashMap<String,String[]> reqInfo = Cooky.getContextValue("reqInfo",req);
 		if(reqInfo == null) {
-			req.getSession().getServletContext().setAttribute("reqInfo", new HashMap<String, String[]>());
+			req.getSession().getServletContext().setAttribute("reqInfo", new HashMap<String, String[]>());//for check request info must be deleted after confirm
 		}
 		reqInfo = Cooky.getContextValue("reqInfo",req);
-		
 		String[] values = new  String[2]; 
-		values[0]=name;
+		values[0]=socketID;    //setting requester socketId in values[0]
 		for(String[] arr : DivMap.values()) {
-			System.out.println(arr[0]+"  "+ParentID);
 			if(arr[0].equals(ParentID)) {				
-				values[1]=arr[3];
-				System.out.println(Arrays.toString(arr));
-				return;
+				values[1]=arr[3]; //setting receiver name in vlaues[1]
+				break;
 				
 			}
 		}
 		HashMap<String,ArrayList<String>> MultiTabs = (HashMap<String, ArrayList<String>>) context.getAttribute("MultiTabs");
-		System.out.println("request handle");
-		System.out.println(Arrays.toString(values));
-		reqInfo.put(name, values);
+		reqInfo.put(name, values);//setting reqInfo {requestername:[requestersocketId,recivername]}
 		Map<String,String> messageData = new HashMap<String, String>();
-		System.out.println(name);
-		
 		messageData.put("name", name);
 		messageData.put("msg","<div class=\"noti-div\" style=\"transform: translateY(0px);\">\n" + 
 				"        \n" + 
@@ -85,10 +73,9 @@ public class RequestHandler extends HttpServlet{
 				"       \n" + 
 				"        </div>\n" + 
 				"   </div>"	);
-		HashMap<String,ArrayList<String>> MultiBrowser = (HashMap<String, ArrayList<String>>) context.getAttribute("MultiBrowser");
-		ArrayList<String> receiverCookies= MultiBrowser.get(values[1]);
-		String receivername = DivMap.get(receiverCookies.get(0))[3];
+		String receivername =values[1];
 		ArrayList<String> receivingSockets= MultiTabs.get(receivername);
+		System.out.println(receivingSockets);
 		for(String socketId : receivingSockets) {
 			Result result =
 			        PusherService.getDefaultInstance()
@@ -96,10 +83,7 @@ public class RequestHandler extends HttpServlet{
 			                "private-MyNotification-"+socketId,
 			                "GameReq", // name of event
 			                messageData);
-			
-			System.out.println("private-MyNotification-"+socketId);
-			System.out.println(result.toString());
-			
+			System.out.println(result.getStatus()+"  for "+"private-MyNotification-"+socketId+"   ");
 			messageData.put("status", result.getStatus().name());
 			messageData.remove("msg");messageData.remove("name");
 		}
