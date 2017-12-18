@@ -1,9 +1,11 @@
 $(document).ready(function(){
 	
+	
          $.post("ajax/load",function(data){
 		
 		var o=JSON.parse(data);
-		document.getElementById("player").style.background=o.photo;
+		document.getElementById("player").style.background="url('"+o.photo+"')";
+		document.getElementById("player").style.backgroundSize="contain";
 	});
 	$(document).on("click",".img",function(){
 
@@ -234,6 +236,11 @@ $(document).ready(function(){
         
         $("#di").on("click", "button.req", function(){
 //        	alert($(this).parent().attr('id'));
+        	var parentid=$(this).parent().attr('id');
+        	var src=document.getElementById("img"+parentid).style.backgroundImage;
+        	//alert(src);
+        	document.getElementById("opposite").style.background=src;
+        	document.getElementById("opposite").style.backgroundSize="contain";
         	let data = JSON.stringify({
                 socket_id: socket_id,
                 parentID:$(this).parent().attr('id')

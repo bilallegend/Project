@@ -152,7 +152,7 @@ public class PrivacyHandler extends HttpServlet{
 		  }
 		  
 		  return "<div id='"+id+"' name='req'>"
-			        +"<div class='img' "+img+"</div>"
+			        +"<div class='img' id='img"+id+"' "+img+"</div>"
 			        +"<div>"
 				    +"<p id='"+id+"name'>"+name+"</p>"
 				    +"<p>Privacy: <span id='pri'>"+privacy+"</span></p>"

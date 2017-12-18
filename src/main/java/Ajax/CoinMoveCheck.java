@@ -13,6 +13,7 @@ import HelperClasses.Cooky;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -140,12 +141,7 @@ public class CoinMoveCheck extends HttpServlet {
 				      System.out.println(e+"");
 				      
 				    }
-				  try {
-					  conn.close();
-					} catch (SQLException e) {
-						
-						e.printStackTrace();
-					}
+				  
 			     
 
 			         HashMap<String,ArrayList<String>> player=PlayDetails.get(usercookie);
@@ -171,15 +167,51 @@ public class CoinMoveCheck extends HttpServlet {
 				  
 			     ArrayList<String> s=new ArrayList<String>();
 			     ArrayList<String> s1=new ArrayList<String>();
-			       s.add(values.get(usercookie));
-			       s1.add(values.get(oppcookie));
-			       ArrayList<String> sta=new ArrayList<String>();
-			       sta.add("ok");
-			       result.put("status",sta);
-			         result.put("player1", s);
-				     result.put("player2", s1);
-				     result.put("player1status", PlayDetails.get(usercookie).get("status"));
-				     result.put("player2status", PlayDetails.get(oppcookie).get("status"));
+			     s.add(values.get(usercookie));
+			     s1.add(values.get(oppcookie));
+			     
+			     ArrayList<String> photo=new ArrayList<String>();
+			     ArrayList<String> photo1=new ArrayList<String>();
+			     
+			     try{
+					    Statement stmt = conn.createStatement();
+						String Query="select photo,username from player_info where username in('"+(values.get(usercookie))+"','"+(values.get(oppcookie))+"');";
+						System.out.println(Query);
+						ResultSet data_table=stmt.executeQuery(Query);
+						
+						while(data_table.next()) {
+							if(data_table.getString("username").equals(values.get(usercookie))) {
+								photo.add(data_table.getString("photo"));
+							}
+							else {
+								photo1.add(data_table.getString("photo"));
+							}
+						}
+						
+				    } catch (SQLException e) {
+				    	
+				      System.out.println(e+"");
+				      
+				    }
+			     try {
+					  conn.close();
+					} catch (SQLException e) {
+						
+						e.printStackTrace();
+					}
+			     System.out.println(photo);
+			     System.out.println(photo1);
+			     
+			     
+			     ArrayList<String> sta=new ArrayList<String>();
+			     sta.add("ok");
+			     result.put("status",sta);
+			     result.put("player1", s);
+				 result.put("player2", s1);
+				 result.put("player1photo",photo);
+				 result.put("player2photo",photo1);
+				 result.put("player1status", PlayDetails.get(usercookie).get("status"));
+				 result.put("player2status", PlayDetails.get(oppcookie).get("status"));
 			     result.put("black",black);
 			     result.put("white",white);
 			     result.put("color",PlayDetails.get(usercookie).get("color"));

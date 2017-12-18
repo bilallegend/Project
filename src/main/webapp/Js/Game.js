@@ -216,6 +216,11 @@ $.post("/ajax/checkingplayers",{},function(data,status){
         			let id2= data.oppcolor[0].toLowerCase().substring(0,3);
         	    	$('#'+id).html(data.player1status[0]+"");
         	    	$('#'+id2).html(data.player2status[0]+"");
+        	    	$('#'+id+'img').css('background-image','url(' + data.player1photo[0]) + ')';
+        	    	$('#'+id2+'img').css('background-image','url(' + data.player2photo[0]) + ')';
+        	    	$('#'+id+'img').css('background-size','cover');
+        	    	$('#'+id2+'img').css('background-size','cover');
+        	    	
         	    	time=30;
         	    	}
         		 
@@ -431,6 +436,7 @@ $.post("/ajax/checkingplayers",{},function(data,status){
     function colorChange(Black,White){
     	black=forChangetype(Black);white=forChangetype(White);
     	forLoop(Black,'coin1');forLoop(White,'coin');
+    	info();
     }
 
     function colors(a) {
@@ -514,31 +520,27 @@ $.post("/ajax/checkingplayers",{},function(data,status){
        
         if (white.length + black.length == 64) {
             if (white.length > black.length) {
-                //("White won the match");
-                win();
+                alert("White won the match");
+                
             } else {
 
-               //("black won the match");
+               alert("black won the match");
               win();
             }
-//            location.href="http://localhost:8080/winner"; 
+            location.href="http://localhost:8080/home/winner"; 
          
         }
 
         if(white.length==0){
-        	 //("Black won the match");
-//        	 location.href="http://localhost:8080/winner";
         	 win();
-        	 location.href="http://localhost:8080/winner";
-//        trigger({Black:black,
-//   		 White:white});
-        }        
+        	 location.href="http://localhost:8080/home/winner";
+      }        
         if(black.length==0){
         	 //("White won the match");
 //        	 location.href="http://localhost:8080/winner";
         	 win();
 
-        	 location.href="http://localhost:8080/winner";
+        	 location.href="http://localhost:8080/home/winner";
         }
        
      }

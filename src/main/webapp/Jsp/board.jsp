@@ -20,14 +20,14 @@
          <div class="time"><time id='ti'>00</time> <span id="sec">Sec</span><span class="it" id="re" >It's Remaining For Your Turn.</span></div>
          <div class="play-sta">
              <div>
-                 <div class="prf"></div>
+                 <div class="prf" id="blaimg"></div>
                  <div>
                      <p class="pla" id="black">Anulakshmi</p>
                      <p class=" pla play" id="bla">Playing</p>
                  </div>
              </div>
              <div class="top">
-                 <div class="prf"></div>
+                 <div class="prf" id="whiimg"></div>
                  <div>
                      <p class="pla" id="white">Anulakshmi</p>
                      <p class=" pla play colo" id="whi">Playing</p>
