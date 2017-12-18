@@ -46,7 +46,7 @@ public class GetPhoto extends HttpServlet {
 		    	
 		        System.out.println(e+"");
 		    }
-		  if(photo.equals("")) {
+		  if(photo==null) {
 			  
 			  photo="../Images/pr.png";
 			  

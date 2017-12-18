@@ -22,9 +22,9 @@
     </div>
 	<main>
 	    <header>
-	        <div></div>
+	        <div id="player"></div>
 	        <div>VS</div>
-	        <div></div>
+	        <div id="opposite"></div>
 	    </header>
 	    <div>
 	        <div>
