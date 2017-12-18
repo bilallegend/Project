@@ -1,16 +1,30 @@
 $(document).ready(function(){
 	
+         $.post("ajax/load",function(data){
+		
+		var o=JSON.parse(data);
+		document.getElementById("player").style.background=o.photo;
+	});
 	$(document).on("click",".img",function(){
 
 		var id=$(this).parent().attr('id');
-		alert(id);
+	
 		var name=$("#"+id+"name").text();
 		$.post("ajax/getdetail",{name:name},function(data){
 			
 			var object=JSON.parse(data);
-			$("#win").text(data.win);
-			$("#score").text(data.score);
-			document.getElementById("pro").style.background="url('"+data.photo+"')";
+			console.log(object);
+			$("#win").text(object.win);
+			$("#score").text(object.score);
+			$("#loss").text(object.score);
+			if(object.photo==undefined){
+				document.getElementById("pro").style.background="url('../Images/pr.png')";
+			}
+			else{
+			document.getElementById("pro").style.background="url('"+object.photo+"')";
+			}
+			document.getElementById("pro").style.backgroundSize="contain";
+			$(".tot").text(Number(object.win)+Number(object.loss));
 			
 		});
 		

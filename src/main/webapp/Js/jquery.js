@@ -154,16 +154,18 @@
     	});
     	
     	
-    	 $(".req,.frstdiv>div>div,#chan-pass").click(function(){
-             $(".noti-div,.whole>div:nth-child(2),.change").css("transform","translateY(0)");
+    	
+    	 $(".req,.frstdiv>div>div").click(function(){
+             $(".noti-div,.whole>div:nth-child(2)").css("transform","translateY(0)");
          });
-         $(".c").click(function(){
-             $(".whole>div:nth-child(2)").css("transform","translateY(-100%)");
-         });
+//    	 $("#chan-pass").click(function(){
+//    		$(".change").css("transform","translateY(0)"); 
+//    	 });
+//         $(".c").click(function(){
+//             $(".whole>div:nth-child(2)").css("transform","translateY(-100%)");
+//         });
 
-          $(".c").click(function(){
-              $(".whole>div:nth-child(2)").css("transform","translateY(-100%)");
-          });
+         
     	// /-----------------------------------------------------------/
     	// $(".profile").click(function(){
     	//     alert("hi");

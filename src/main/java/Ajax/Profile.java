@@ -48,6 +48,9 @@ public class Profile extends HttpServlet{
 			}
 			result.put("name", name);
 			result.put("mail", mail);
+			if(photo==null) {
+				photo="../Images/pr.png";
+			}
 			result.put("photo",photo);
 			if(tournaments==null) {
 				ArrayList<Integer> array=new ArrayList<Integer>();

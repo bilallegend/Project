@@ -8,7 +8,7 @@
     <script src="../Js/jquery.js"></script>
     <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
     <title>Othello Board</title>
-<<<<<<< HEAD
+
 </head>
 <body>
     <div class="whole-div">
@@ -68,7 +68,7 @@
     $('.oth').html(gameId);
     </script>
     <script src='../Js/LiveReplay.js'>
-=======
+
     
 </head>
 <body>
@@ -128,7 +128,7 @@
 	    var playerNames =<%=request.getAttribute("playerNames")%>
     </script>
     <script src='../Js/OldReplay.js'>
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+
     </script>
 </body>
 </html>

@@ -350,14 +350,7 @@
 	</servlet>
 	
 	
-	<servlet-mapping>
-  		<servlet-name>Detail</servlet-name>
-  		<url-pattern>/ajax/getdetail</url-pattern>	
-  	</servlet-mapping>
-	<servlet>
-		<servlet-name>Detail</servlet-name>
-		<servlet-class>Ajax.GetDetail</servlet-class>
-	</servlet>
+
 	
 		<servlet-mapping>
   		<servlet-name>AddToTable</servlet-name>
@@ -427,14 +420,14 @@
 		<servlet-class>ReplayHandler</servlet-class>
 	</servlet>
 	
-<<<<<<< HEAD
 	<servlet-mapping>
-	<servlet-name>Change_servlet</servlet-name>
-  		<url-pattern>/ajax/edit1</url-pattern>	
+
+	<servlet-name>Edit_servlet</servlet-name>
+  		<url-pattern>/ajax/edit</url-pattern>	
   	</servlet-mapping>
 	<servlet>
-		<servlet-name>Change_servlet</servlet-name>
-		<servlet-class>Ajax.ChangeProfile</servlet-class>
+		<servlet-name>Edit_servlet</servlet-name>
+		<servlet-class>Ajax.EditProfile</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
@@ -446,9 +439,8 @@
 		<servlet-class>Ajax.ChangeProfile</servlet-class>
 	</servlet>
 	
-=======
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	<servlet-mapping>
+
   		<servlet-name>authLive_servlet</servlet-name>
   		<url-pattern>/auth/live</url-pattern>	
   	</servlet-mapping>
@@ -456,16 +448,12 @@
 		<servlet-name>authLive_servlet</servlet-name>
 		<servlet-class>LiveWatchAuth</servlet-class>
 
-<<<<<<< HEAD
+
 	</servlet> 
 
-   
-=======
-	</servlet>  
+	
 
-	
-	
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
+   
 	
 	<servlet-mapping>
   		<servlet-name>LiveWatch_servlet</servlet-name>
@@ -476,26 +464,14 @@
 		<jsp-file>/Jsp/LiveReplay.jsp</jsp-file>
 	</servlet> 
 	<servlet-mapping>
-<<<<<<< HEAD
-  		<servlet-name>coinreplace</servlet-name>
-  		<url-pattern>/ajax/New</url-pattern>	
-=======
   		<servlet-name>ReplaysWatch_servlet</servlet-name>
   		<url-pattern>/home/replay</url-pattern>	
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
   	</servlet-mapping>
 	<servlet>
-<<<<<<< HEAD
-		<servlet-name>coinreplace</servlet-name>
-		<servlet-class>CoinSender</servlet-class>
-=======
 		<servlet-name>ReplaysWatch_servlet</servlet-name>
 		<servlet-class>ReplaysMovesGiver</servlet-class>
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	</servlet> 
 	
-<<<<<<< HEAD
-=======
 	
 	
 	<servlet-mapping>
@@ -516,7 +492,6 @@
 		<servlet-name>LiveDetails</servlet-name>
 		<servlet-class>LiveDetails</servlet-class>
 	</servlet>
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 	
 	<!--  Winner servlet -->
     <servlet-mapping>
@@ -526,6 +501,42 @@
 	<servlet>
 		<servlet-name>Winner_jsp</servlet-name>
 		<jsp-file>/Jsp/Winner.jsp</jsp-file>
+	</servlet>
+	
+		<servlet-mapping>
+  		<servlet-name>Detail</servlet-name>
+  		<url-pattern>/home/ajax/getdetail</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Detail</servlet-name>
+		<servlet-class>Ajax.GetDetail</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+  		<servlet-name>Signout</servlet-name>
+  		<url-pattern>/ajax/signout</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Signout</servlet-name>
+		<servlet-class>Ajax.SignOut</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+  		<servlet-name>Password</servlet-name>
+  		<url-pattern>/ajax/changepass</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Password</servlet-name>
+		<servlet-class>Ajax.ChangePassword</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+  		<servlet-name>Photo</servlet-name>
+  		<url-pattern>/home/ajax/load</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Photo</servlet-name>
+		<servlet-class>Ajax.GetPhoto</servlet-class>
 	</servlet>
 	
 </web-app>

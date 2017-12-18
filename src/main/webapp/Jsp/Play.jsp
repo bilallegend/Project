@@ -38,13 +38,13 @@
 	              <div>
                     <div id="pro"></div>
                  </div>
-                <p>Muthumari</p>
+                <p id="name">Muthumari</p>
                 <p class="tot">Total Match:</p>
                         <p class="tot">5</p>
                         <table>
                             <tr>
                                 <th>Victories</th>
-                                <th>Draws</th>
+                                <th>Scores</th>
                                 <th>Defects</th>
                             </tr>
                             <tr>
@@ -52,7 +52,7 @@
                                     <p id="win">25</p>
                                 </td>
                                  <td>
-                                    <p>20</p>
+                                    <p id="loss">20</p>
                                 </td>
                                 <td>
                                     <p id="score">20</p>

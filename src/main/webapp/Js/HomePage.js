@@ -21,6 +21,10 @@ $(document).ready(function(){
 		});
 	});
 
+	$("#prof").click(function(){
+		
+		location.href="/home/MyInfo";
+	});
 
 	var cookie=document.cookie;
 	var list=cookie.split("; ");
@@ -40,7 +44,7 @@ $(document).ready(function(){
 		console.log(data);
 		if(data.indexOf("<!DOCTYPE")==-1){
 		var obj=JSON.parse(data);
-	   alert(obj);
+	  
 		if(obj.mail!=""&&obj.name!=""){
 			
 			$("#signup").css({
@@ -58,7 +62,7 @@ $(document).ready(function(){
     			$(".profil").css("display", "block");
     			$(".menu").css("display", "block");
     		}, 700);
-			var src="http://localhost:8080"+obj.photo;
+			var src=obj.photo;
 			
 		document.getElementById("img").style.backgroundImage = "url('"+src+"')";
 		document.getElementById("img1").style.backgroundImage = "url('"+src+"')";
@@ -181,7 +185,7 @@ $(document).ready(function(){
 		
 		$("#menu").css('display','none');
 		$(".edit1").css('display','block');
-		$.post("ajax/edit1",{},function(data){
+		$.post("ajax/edit",{},function(data){
 			
 			console.log(data);
 			var detail=JSON.parse(data);
@@ -242,10 +246,61 @@ $(document).ready(function(){
 		}
 		
 		
-	})
+	});
 	
+	$("#out").click(function(){
+		
+		$.post("ajax/signout",function(data){
+			
+			location.href="/home";
+		});
+		
+	});
 	
+	 $("#chan-pass").click(function(){
+ 		$(".change").css("transform","translateY(35%)"); 
+ 	 });
 	
+	$("#change").click(function(){
+		
+		 var passcheck=($("#curr").val()).match(/[a-z0-9_-]{6,10}$/g);
+		 var passcheck1=($("#new").val()).match(/[a-z0-9_-]{6,10}$/g);
+		 var passcheck2=($("#new1").val()).match(/[a-z0-9_-]{6,10}$/g);
+		 
+		 if(passcheck&&passcheck1&&passcheck2&& $("#new").val()==$("#new1").val()){
+		
+		$.post("ajax/changepass",{ curr:$("#curr").text(),newpass:$("#new").text(),newpass1:$("#new1").text()},function(data){
+			
+			 var re=JSON.parse(data);
+			  if(re.status=="ok"){
+				  location.href="/home";
+			  }
+			  else{
+				  alert(re.status);
+			  }
+			
+			
+		   });
+		
+		 }
+		 else{
+			 if(passcheck==false){
+				 alert("Invalid current password")
+			 }
+			 else if(passcheck1==false){
+				 
+            	 alert("Invalid new password");
+			 }
+             else if(passcheck2==false){
+            	 alert("Invalid new password");
+			 }
+             else if($("#new").val()!=$("#new1").val()){
+            	 alert("Password didn't match");
+             }
+		 }
+		
+	});
+	 
 	$('#feedsFlow').on('click','div[name=feedsClick]',function(){
 		let divId = $(this).attr('id');
 		var data = JSON.stringify({

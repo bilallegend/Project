@@ -81,7 +81,7 @@ public class ChangeProfile extends HttpServlet{
 	      }
 	      else {
 	    	  
-	    	  String errors="";
+	    	    String errors="";
 	    	    String a[]= {"#na","#no"};
 	    	    
 				

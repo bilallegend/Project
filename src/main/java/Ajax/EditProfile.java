@@ -24,7 +24,7 @@ public class EditProfile extends HttpServlet {
 	 public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		  Gson gson = new GsonBuilder().create(); 
 		 ServletContext context=request.getSession().getServletContext();
-		 ConnectionDatabase psql = new ConnectionDatabase();
+		  ConnectionDatabase psql = new ConnectionDatabase();
 		  Connection conn			=psql.createConnection("gamecenter");
 		  HashMap<String,String> details=new HashMap<String,String>();
 		 String cookie=Cooky.getCookieValue("gc_account", request.getCookies());
@@ -34,6 +34,7 @@ public class EditProfile extends HttpServlet {
 		 else {
 			 
 			 String name=((HashMap<String,String>) context.getAttribute("cookie")).get(cookie);
+			 System.out.println(name);
 			 try{
 				    Statement stmt = conn.createStatement();
 				    String Query="select photo,email_id,username,number from player_info where username='"+name+"'";
@@ -58,6 +59,7 @@ public class EditProfile extends HttpServlet {
 					
 					e.printStackTrace();
 				}
+			 System.out.println(details);
 			 response.getWriter().println(gson.toJson(details));
 			  
 			 
