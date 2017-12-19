@@ -192,7 +192,10 @@ $(document).ready(function(){
 			$("#ename").val(detail.name);
 			$("#email").val(detail.mail);
 			$("#enumber").val(detail.number);
-			document.getElementById("ephoto").style.background="url('"+detail.photo+"')";
+			
+                        document.getElementById("ephoto").style.background="url('"+detail.photo+"')";
+			$("#ephoto").css('background-size','cover');
+			$(".hi").css('background','');
 			
 		});
 		
@@ -258,6 +261,7 @@ $(document).ready(function(){
 	});
 	
 	 $("#chan-pass").click(function(){
+                $("#menu").css('display','none');
  		$(".change").css("transform","translateY(35%)"); 
  	 });
 	

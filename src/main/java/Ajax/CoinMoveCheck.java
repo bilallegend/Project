@@ -120,7 +120,8 @@ public class CoinMoveCheck extends HttpServlet {
 			     			black=color1;
 			     	}
 			     	
-			     	
+			     	  
+                    
 			    	 int[] whitearray=new int[white.size()];
 			    	 int[] blackarray=new int[black.size()];
 			    	 
@@ -130,6 +131,14 @@ public class CoinMoveCheck extends HttpServlet {
 			    	 for(int i=0;i<black.size();i++) {
 			    		blackarray[i]=Integer.parseInt(black.get(i));
 			    	 }
+			    	 
+			    	 if(whitearray.length==0) {
+			    		 whitearray=new int[1];
+			    	 }
+			    	 if(blackarray.length==0) {
+			    		 blackarray=new int[1];
+			    	 }
+			    	 
 			    	 System.out.println(Arrays.toString(blackarray));
 			    	 System.out.println(Arrays.toString(whitearray));
 			     try{
@@ -143,7 +152,6 @@ public class CoinMoveCheck extends HttpServlet {
 				    }
 				  
 			     
-
 			         HashMap<String,ArrayList<String>> player=PlayDetails.get(usercookie);
 	
 				     
@@ -181,10 +189,20 @@ public class CoinMoveCheck extends HttpServlet {
 						
 						while(data_table.next()) {
 							if(data_table.getString("username").equals(values.get(usercookie))) {
+								if(data_table.getString("photo")==null) {
+									photo.add("../Images/pr.png");
+								}
+								else {
 								photo.add(data_table.getString("photo"));
+								}
 							}
 							else {
+                                   if(data_table.getString("photo")==null) {
+                                	   photo1.add("../Images/pr.png");
+								}
+								else {
 								photo1.add(data_table.getString("photo"));
+								}
 							}
 						}
 						

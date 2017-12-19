@@ -23,7 +23,7 @@
                         <table>
                             <tr>
                                 <th>Victories</th>
-                                <th>Draws</th>
+                                <th>Score</th>
                                 <th>Defeats</th>
                             </tr>
                             <tr>
@@ -31,7 +31,7 @@
                                     <p>{{victories}}</p>
                                 </td>
                                  <td>
-                                    <p>{{draws}}</p>
+                                    <p>{{score}}</p>
                                 </td>
                                 <td>
                                     <p>{{defeats}}</p>

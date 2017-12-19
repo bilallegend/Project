@@ -44,8 +44,8 @@
                         <table>
                             <tr>
                                 <th>Victories</th>
-                                <th>Scores</th>
-                                <th>Defects</th>
+                                <th>Defeats</th>
+                                <th>Score</th>
                             </tr>
                             <tr>
                                 <td>

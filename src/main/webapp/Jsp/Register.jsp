@@ -78,7 +78,7 @@
 						</div>
 						<input type="email" name="email" id="usrmail_up" onkeyup="check()"/>
 					</div>
-					<p id='errmail'>username should have atleast 6</p>
+					<p id='errmail'>Inavalid mail</p>
 					
 				</div>
 			</div>
@@ -176,6 +176,75 @@
         		</div>
     		</div>
 	</div>
+	
+	
+	<div class="change">
+            <p class="cha-pas">Change Password</p>
+          <div>
+            <input type="password" id="curr" placeholder="Current Password"/><i class="fa fa-lock" aria-hidden="true"></i>
+            <input type="password" id="new" placeholder="New Password"/><i class="fa fa-lock" aria-hidden="true"></i>
+            <input type="password" id="new1" placeholder="Confirm Your Password"/><i class="fa fa-lock" aria-hidden="true"></i>
+          </div>
+          <button class="chan" id="change">CHANGE</button>
+        </div>
+                                                      <!--INSTRUCTION DIV-->
+ <div class="who">
+            <div class="main">
+                 <img src="../Images/close.png" alt="close" class="close" id="thi-clo" />
+                <h1>Instruction</h1>
+                <h4>During your turn,put a piece onto the grid so thai it aligns with another piece of yours on a straight line,
+                while at least one oponent piece is completely surrounded and becomes your piece.</h4>
+                <h4>You cannot move without Caputuring oponent pieces.</h4>
+                <h4>when both players cannot move, the ggame ends. the player with the most pieces turned to his corresponding color wins.</h4>
+                <a href="http://gamecenterdesign.zcodeusers.com/MMAB-PROJECT/Html/board.html"><h1>start</h1></a>
+            </div>
+        </div>
+                                                    <!--EDIT PROFILE DIV-->
+         <div class="edit1">
+             <p class="cha-pas">PERSONAL INFORMATION</p>
+              <form  id='data' action="<%=url %>" method="post" enctype="multipart/form-data">
+             <div class="co wi" id="ephoto">
+					<label id="contanier" class="hi">
+						<input type="file" id="file" name="photo" />
+					</label>
+				</div>
+				</form>
+ 
+         <div id="sec-div st">
+				<label class="pad-lef">Name</label>
+				<div class="dv mar-lef">
+					<div class="im"> <div class="im">
+							<img src="../Images/profile.png" class="ima" />
+						</div>
+					</div>
+					<input type="text" id="ename" class="in" />
+				</div>
+				<p id="na">username should have atleast 6 should not have special characters</p>
+				<label class="pad-top pad-lef">Email</label>
+				<div class="dv mar-lef">
+					<div class="im"><i class="fa fa-envelope-o" aria-hidden="true"></i>
+					</div>
+					<input type="text" id="email" class="in" />
+				</div>
+				<p id="mai">Inavalid mail</p>
+				<label class="pad-top pad-lef">Mobile Number</label>
+				<div class="dv mar-lef">
+					<div class="im"> <i class="fa fa-mobile" aria-hidden="true" id="ph"></i>
+					</div>
+					<input type="text/number" id="enumber" class="in" maxlength="10" />
+				</div>
+				<p id="no">Invalid mobilenumber</p>
+				<input type="submit" value="Change" class="sub" id="editprofile" />
+			</div>
+         </div>
+         
+         
+         
+         
+         
+                                   
+	
+	
 	<div class="profil" id="img"></div>
 		<div class="profilediv">
                     <div>
@@ -184,9 +253,12 @@
                         <p id="mail">madhubalan.m@zohouniv.com</p>
                     </div>
                     <button type="submit" class="edit" id='Edit'>Edit profile</button>
-                    <button type="submit">Change password</button>
-                    <button type="submit">signout</button>
+                    <button type="submit" class="edit" id='prof'>View profile</button>
+                    <button type="submit" id="chan-pass">Change password</button>
+                    <button type="submit" id="out">signout</button>
            </div>
+           
+           
            
            
 </body>
