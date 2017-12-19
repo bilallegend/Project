@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,6 +20,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.pusher.rest.data.Result;
 
+import HelperClasses.ConnectionDatabase;
 import HelperClasses.Cooky;
 
 public class RequestHandler extends HttpServlet{
@@ -52,6 +55,18 @@ public class RequestHandler extends HttpServlet{
 				
 			}
 		}
+		ConnectionDatabase DB = new ConnectionDatabase();
+		Connection connection = DB.createConnection("gamecenter");
+		ResultSet resultset =DB.selectCondition(connection,"player_info","photo","'"+name+"'","username");
+		String pic="";
+		try {
+			while(resultset.next()) {
+				pic=resultset.getString("photo");
+			}
+		} catch (SQLException e) {
+
+		}
+		System.out.println("pic "+pic);
 		HashMap<String,ArrayList<String>> MultiTabs = (HashMap<String, ArrayList<String>>) context.getAttribute("MultiTabs");
 		reqInfo.put(name, values);//setting reqInfo {requestername:[requestersocketId,recivername]}
 		Map<String,String> messageData = new HashMap<String, String>();
@@ -60,7 +75,7 @@ public class RequestHandler extends HttpServlet{
 				"        \n" + 
 				"        <div class=\"con\">\n" + 
 				"            <div class=\"img\">\n" + 
-				"                <div></div>\n" + 
+				"                <div style='background:url(\""+pic+"\");background-size:cover'></div>\n" + 
 				"            </div>\n" + 
 				"           <div class=\"name-div\">\n" + 
 				"               <p class=\"name\">"+name+"</p>\n" + 

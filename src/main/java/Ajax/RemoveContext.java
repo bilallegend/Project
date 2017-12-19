@@ -60,7 +60,7 @@ public class RemoveContext extends HttpServlet {
 			
 		 }
 		 String winner=null;
-		 if(data.get("white").equals("0")) {
+		 if(data.get("white").equals("0") && Integer.parseInt(data.get("white")) < Integer.parseInt(data.get("black"))) {
 			  winner="Black";
 		 }
 		 else {
@@ -69,14 +69,14 @@ public class RemoveContext extends HttpServlet {
 		 
 		 String winnername="";
 		 String losername="";
-		 
+		 HashMap<String,String> cookiename = (HashMap<String,String>)context.getAttribute("cookie");
 		 if(playdetails.get(usercookie).get("color").get(0).equals(winner)){
-			 winnername=((HashMap<String,String>)context.getAttribute("cookie")).get(usercookie);
-			 losername=((HashMap<String,String>)context.getAttribute("cookie")).get(oppcookie);
+			 winnername=cookiename.get(usercookie);
+			 losername=cookiename.get(oppcookie);
 		 }
 		 else {
-			 winnername=((HashMap<String,String>)context.getAttribute("cookie")).get(oppcookie);
-			 losername=((HashMap<String,String>)context.getAttribute("cookie")).get(usercookie);
+			 winnername=cookiename.get(oppcookie);
+			 losername=cookiename.get(usercookie);
 		 }
 		 
 		  ConnectionDatabase psql = new ConnectionDatabase();

@@ -48,10 +48,10 @@
     		$(".feed").hide();
     	});
     		$(".feeds").click(function () {
-    		$(".feeds").css("transform", "translateX(-100%)");
-    		$(".feed").show();
-    	   // $("#leftaro").show(1800);
-    	    $(".whole").css("filter","blur(0px)");
+//    		$(".feeds").css("transform", "translateX(-100%)");
+//    		$(".feed").show();
+//    	   // $("#leftaro").show(1800);
+//    	    $(".whole").css("filter","blur(0px)");
     	});
 
 // / ------------------------------------ The signup and signin div show animation ---------------------------------------/ 

@@ -9,12 +9,13 @@
 	 .grv_is_sponsored { display: none !important; }
 	  .zergnet-widget-related { display: none !important; } </style>
     <link rel="stylesheet" href="../Css/board.css" />
+    <link rel='icon' href='http://image.rakuten.co.jp/wood-l/cabinet/sa01/toi/sa-syoku-02-03-4.jpg'>
     <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,500" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="../Js/jquery.js"></script>
     <script src="../Js/Game.js"></script>
     <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
-    <title>Othello Board</title>
+    <title>Reversi|GamePlay</title>
 </head>
 <body>
     <div class="whole-div">

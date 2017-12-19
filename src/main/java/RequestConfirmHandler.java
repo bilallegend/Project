@@ -45,6 +45,8 @@ private Gson gson = new GsonBuilder().create();
 	    String requesterName = "";
 		if(reqInfo == null) {
 			messageData.put("redir", Redirecter.giveUrlFor(request,"/home"));
+			response.getWriter().println(gson.toJson(messageData));
+			return;
 		}else {
 			reqInfo = Cooky.getContextValue("reqInfo",request);
 			HashMap<String,ArrayList<String>> MultiTabs = (HashMap<String, ArrayList<String>>) context.getAttribute("MultiTabs");
@@ -60,15 +62,9 @@ private Gson gson = new GsonBuilder().create();
 					
 
 			}	
-			if(Reply.equals("Yes") && !tryF) {
-				messageData.put("reply", Reply);
-				messageData.put("redir", Redirecter.giveUrlFor(request,"/home/play"));
-			}else {
-				messageData.put("reply", "Sorry!");
-			}
 			System.out.println("private-MyNotification-"+messageData.get("replyId"));
 			ArrayList<String> socketList = MultiTabs.get(name);
-			System.out.println(socketList);
+			System.out.println(socketList+" in "+socketId);
 			for(String socketid : socketList) {
 				if(!socketid.equals(socketId)) {
 					messageData.put("redir", Redirecter.giveUrlFor(request,"/home"));
@@ -86,6 +82,7 @@ private Gson gson = new GsonBuilder().create();
 			}
 			MultiTabs.get(name).remove(socketList.indexOf(socketId));
 			socketList = MultiTabs.get(requesterName);
+			System.out.println(socketList+" in "+messageData.get("replyId"));
 			for(String socketid : socketList) {
 				if(socketid.equals(messageData.get("replyId")) && (Reply.equals("Yes") && !tryF)) {
 					messageData.put("redir", Redirecter.giveUrlFor(request,"/home/play"));
@@ -101,22 +98,31 @@ private Gson gson = new GsonBuilder().create();
 				messageData.put("status", result.getStatus().name());
 				
 			}
+			if(Reply.equals("Yes") && !tryF) {
+				messageData.put("reply", Reply);
+				messageData.put("redir", Redirecter.giveUrlFor(request,"/home/play"));
+			}else {
+				messageData.put("reply", "Sorry!");
+			}
 			MultiTabs.get(requesterName).remove(socketList.indexOf(messageData.get("replyId")));
-			messageData.remove("replyId");
+			
+			
 		}
 		
 		
 		String oppname=requesterName;
-		reqInfo.remove(requesterName);
+		
 		HashMap<String,String[]> d=(HashMap<String,String[]>) context.getAttribute("DivMap");
 		ArrayList<String> cookies=new ArrayList<String>();
 		System.out.println(name);
 		System.out.println(oppname);
 		for(String i:d.keySet()) {
-			if(d.get(i)[3].equals(name)||d.get(i)[3].equals(oppname)) {
+			if((d.get(i)[3].equals(name) && d.get(i)[1].equals(socketId))||(d.get(i)[3].equals(oppname)  && d.get(i)[1].equals(messageData.get("replyId")))) {
 				cookies.add(i);
 			}
 		}
+		reqInfo.remove(requesterName);
+		messageData.remove("replyId");
 		ConnectionDatabase psql = new ConnectionDatabase();
 		 Connection conn			=psql.createConnection("gamecenter");
 		 int count=0;

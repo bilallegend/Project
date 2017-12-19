@@ -1,7 +1,9 @@
 $(document).ready(function(){
 	
-	$('.blu').click(function(){
-		
+	$('#quit').click(function(){
+		$(".feeds").css("transform", "translateX(-100%)");
+		$(".feed").show();
+	    $(".whole").css("filter","blur(0px)");
 	});
 	
 	

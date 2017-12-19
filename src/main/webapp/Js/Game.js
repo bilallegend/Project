@@ -69,7 +69,6 @@ $.post("/ajax/checkingplayers",{},function(data,status){
     			$("#bla").css('color','firebrick');
     			$("#whi").css('color','white')
     		}
-    		////('before timeout')
     		timeout();
     		gameid=obj.gameid;
     		$(".oth").text(obj.gameid);
@@ -77,18 +76,7 @@ $.post("/ajax/checkingplayers",{},function(data,status){
     		
     	});
     	
-//    	function trigger(comingdata){
-//			 console.log('trigger');
-//			 let data = JSON.stringify(comingdata);
-//		            console.log(data);
-//		        
-//		        $.post('/ajax/New', data,
-//		            function (msg) {
-//		        	    console.log(msg);
-//		        		//(msg);
-//		            }, "json");
-//			 
-//		 }
+
 
     	var click=function(i){  		 
     		
@@ -197,8 +185,7 @@ $.post("/ajax/checkingplayers",{},function(data,status){
      			$('.ale').html('Sorry ! User exited the game ....!');
      			$('.ale').css('visibility','visible');
      			pusher.disconnect();
-     			setTimeout(function(){location.href='http://localhost:8080/home';},700)
-     			
+     			setTimeout(win,700)
      		 });
     		 
     		 
