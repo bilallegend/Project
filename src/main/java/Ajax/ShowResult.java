@@ -149,7 +149,7 @@ public class ShowResult extends HttpServlet {
     		  
     		  for(String key:gameid.keySet()) {
     			  
-    			  if(gameid.get(key)[0].equals(cookievalue)) {
+    			  if(gameid.get(key)[0].equals(cookievalue)||gameid.get(key)[1].equals(cookievalue)) {
     				  
     				  id=key;
     				  
