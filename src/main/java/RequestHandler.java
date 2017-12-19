@@ -104,21 +104,6 @@ public class RequestHandler extends HttpServlet{
 		}
 		
 		messageData.remove("msg");messageData.remove("name");
-//		for(String Cookie : receiverCookies) {
-//				Result result =
-//				        PusherService.getDefaultInstance()
-//				            .trigger(
-//				                "private-MyNotification-"+DivMap.get(Cookie)[1],
-//				                "GameReq", // name of event
-//				                messageData);
-//				
-//				System.out.println("private-MyNotification-"+DivMap.get(Cookie)[1]);
-//				System.out.println(result.toString());
-//				
-//				messageData.put("status", result.getStatus().name());
-//				messageData.remove("msg");messageData.remove("name");
-//			
-//		}
 		
 		resp.getWriter().println(gson.toJson(messageData));
 	}

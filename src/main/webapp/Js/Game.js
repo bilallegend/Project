@@ -185,8 +185,7 @@ $.post("/ajax/checkingplayers",{},function(data,status){
      			console.log('pusher:member_removed',member); 
      			$('.ale').html('Sorry ! User exited the game ....!');
      			$('.ale').css('visibility','visible');
-     	        win();
-     	      
+     			setTimeout(win(),700);
      		 });
     		 
     		 

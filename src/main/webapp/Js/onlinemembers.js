@@ -5,7 +5,8 @@ $(document).ready(function(){
 		
 		var o=JSON.parse(data);
 		document.getElementById("player").style.background="url('"+o.photo+"')";
-		document.getElementById("player").style.backgroundSize="contain";
+		$('#player').css('background-size','cover');
+		
 	});
 	$(document).on("click",".img",function(){
 
