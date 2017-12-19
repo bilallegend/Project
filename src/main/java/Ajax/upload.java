@@ -2,6 +2,7 @@ package Ajax;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
@@ -60,7 +61,25 @@ public class upload extends HttpServlet {
   		Statement stmt;
   		String src="../Images/pr.png";
         if (blobKeys == null || blobKeys.isEmpty()) {
-            //res.sendRedirect("/");
+            
+        	try{
+			    Statement stmt1 = conn.createStatement();
+				String Query="select photo from player_info where username ='"+name+"';";
+				System.out.println(Query);
+				ResultSet data_table=stmt1.executeQuery(Query);
+				
+				while(data_table.next()) {
+					
+					src=data_table.getString("photo");
+				
+				}
+				
+		    } catch (SQLException e) {
+		    	
+		      System.out.println(e+"");
+		      
+		    }
+        	
         	try {
     			stmt = conn.createStatement();
     			System.out.println("Anu");
@@ -69,10 +88,9 @@ public class upload extends HttpServlet {
     			System.out.println(Query);
     			stmt.executeUpdate(Query);
     		} catch (SQLException e) {
-    			// TODO Auto-generated catch block
+    			
     			e.printStackTrace();
-    		}//Statement class creates a object that can execute our query in the connected database in connection object
-    		
+    		}    		
                 res.sendRedirect("http://localhost:8080/home");
         } else {
         	

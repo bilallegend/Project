@@ -3,6 +3,7 @@ import java.sql.Array;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -32,6 +33,9 @@ public class ReplaysMovesGiver  extends HttpServlet{
 			ResultSet MoveTimeResultSet = MyDB.selectCondition(connection,"game_info","whitearray,blackarray,time",id,"game_id");
 			ResultSet gamelistResultSet = MyDB.selectCondition(connection,"game_list","firstmove",id,"game_id");
 			String firstmove=null;
+	
+			
+			
 			try {
 				while(gamelistResultSet.next()) {
 					if(firstmove==null) {

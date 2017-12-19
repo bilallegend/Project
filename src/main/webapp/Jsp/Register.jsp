@@ -150,6 +150,7 @@
 				<p>PLAY GUEST</p>
 			</div>
 			<div>
+
 				<p><a>INSTRUCTIONS</a>
 				</p>
 			</div>
@@ -243,7 +244,7 @@
 	<div class="profil" id="img"></div>
 		<div class="profilediv">
                     <div>
-                        <div><div id="img1"><a><p>change</p></a></div></div>
+                        <div><div id="img1"><p>change</p></div></div>
                         <h5 id="name">madhubalan.m</h5>
                         <p id="mail">madhubalan.m@zohouniv.com</p>
                     </div>

@@ -56,7 +56,18 @@ public class PlayDetail extends HttpServlet{
 			  String player1name="";
 			  String player2name="";
 			  HashMap<String,String> detail=(HashMap<String,String>) context.getAttribute("cookie");
+			  
 			  String[] playersCookies = gamedetail.get(gameid);
+			  System.out.println(playersCookies  +"asdfghjkl");
+			  if(playersCookies==null) {
+				 
+				  result.put("ok","no");
+				  result.put("url","http://localhost:8080/home");
+				  json=gson.toJson(result);
+			      System.out.println(result);
+				  response.getWriter().write(json);
+				  return;
+			  }
 			  player1name=d.get(playersCookies[0])[3];
 			  player2name=d.get(playersCookies[1])[3];
 			  System.out.println(player1name);
@@ -68,9 +79,11 @@ public class PlayDetail extends HttpServlet{
 		      System.out.println(playersCookies[1]);
 		      HashMap<String,HashMap<String,ArrayList<String>>> playdetail=( HashMap<String,HashMap<String,ArrayList<String>>> )context.getAttribute("PlayDetails");
 		      System.out.println(playdetail);
-		      HashMap<String,ArrayList<String>>di=playdetail.get(playersCookies[0]);
+		  		      HashMap<String,ArrayList<String>>di=playdetail.get(playersCookies[0]);
 		      HashMap<String,ArrayList<String>>di2=playdetail.get(playersCookies[1]);
 		     
+		      
+		      
 		      if(playersCookies[0].equals(num)) {
 		    	  result.put("You","player1");
 		      }

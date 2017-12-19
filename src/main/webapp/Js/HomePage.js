@@ -219,7 +219,7 @@ $(document).ready(function(){
 	    var emailcheck=($("#email").val()).match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/gi);
 	   // var passcheck=pass.match(/[a-z0-9_-]{6,10}$/g);
 	    var numcheck=($("#enumber").val()).match(/^[0-9-()+]{10,15}/g);
-	    
+	    var im=$("#file").val();
 	   
 
       var li=[$("#ename").val(),$("#email").val(),$("#enumber").val()];
@@ -245,12 +245,11 @@ $(document).ready(function(){
 				var result=JSON.parse(data);
 				console.log(result);
 				if(result.status=="ok"){
-					if($("#file").val()!=""){
+					
+				
 					$("#data1").submit();
-					}
-					else{
-						location.href="/home"
-					}
+			
+					
 				}
 				else{
 					
