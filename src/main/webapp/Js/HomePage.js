@@ -246,12 +246,10 @@ $(document).ready(function(){
 				console.log(result);
 				if(result.status=="ok"){
 					
-					if(im!=""){
+				
 					$("#data1").submit();
-					}
-					else{
-						location.href="/home"
-					}
+			
+					
 				}
 				else{
 					
