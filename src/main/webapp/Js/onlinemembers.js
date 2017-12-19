@@ -19,6 +19,7 @@ $(document).ready(function(){
 			$("#win").text(object.win);
 			$("#score").text(object.score);
 			$("#loss").text(object.score);
+			$("#name").text(name);
 			if(object.photo==undefined){
 				document.getElementById("pro").style.background="url('../Images/pr.png')";
 			}

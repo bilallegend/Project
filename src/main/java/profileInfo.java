@@ -36,7 +36,7 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
 				userDetailsMap.put("defeats", resultset.getInt("loss")+"");
 				userDetailsMap.put("total_match",(resultset.getInt("win")+resultset.getInt("loss")+""));
 				userDetailsMap.put("name",name);
-				userDetailsMap.put("draws","0");
+				userDetailsMap.put("score",resultset.getInt("score")+"");
 				System.out.println(resultset.getString("photo")==null);
 				if(resultset.getString("photo")==null) {
 					userDetailsMap.put("photo","../Images/pr.png");

@@ -106,7 +106,7 @@ $.post("/ajax/checkingplayers",{},function(data,status){
     		if(time==0){
     		  if(status=="Playing"){
     			    onCoinMove("");
-                	changestatus();
+                	
                 }
               }
     		setTimeout(timeout,1000);
@@ -432,34 +432,35 @@ $.post("/ajax/checkingplayers",{},function(data,status){
             } else {
 
                alert("black won the match");
-              win();
+            
             }
-            location.href="http://localhost:8080/home/winner"; 
+            win();
+//            location.href="http://localhost:8080/home/winner"; 
          
         }
 
         if(white.length==0){
         	 win();
-        	 location.href="http://localhost:8080/home/winner";
+//        	 location.href="http://localhost:8080/home/winner";
       }        
         if(black.length==0){
         	 //("White won the match");
 //        	 location.href="http://localhost:8080/winner";
         	 win();
 
-        	 location.href="http://localhost:8080/home/winner";
+//        	 location.href="http://localhost:8080/home/winner";
         }
        
      }
      
     function win(){
     	
-//    	var data=JSON.stringify({white:white.length,black:black.length,channel_id: channel_name});
-//       $.post("/ajax/removecontext",data,function(msg){
-//    		
-//    	    
-//    	   
-//    	});
+    	var data=JSON.stringify({white:white.length,black:black.length,channel_id: channel_name});
+       $.post("/ajax/removecontext",data,function(msg){
+    		
+    	    
+    	   
+    	});
     	
     }
       

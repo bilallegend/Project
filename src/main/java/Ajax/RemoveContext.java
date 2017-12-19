@@ -40,7 +40,7 @@ public class RemoveContext extends HttpServlet {
 		  
 		 HashMap<String,String[]> gameids= (HashMap<String,String[]>) context.getAttribute("GameIds");
 		 HashMap<String,HashMap<String,ArrayList<String>>> playdetails= (HashMap<String,HashMap<String,ArrayList<String>>>) context.getAttribute("PlayDetails");
-		 
+ 		 HashMap<String,String> values=(HashMap<String,String> )context.getAttribute("cookie");	
 		 String usercookie=Cooky.getCookieValue("gc_account",request.getCookies());
 		 String oppcookie=null;
 		 String gameid=null;
@@ -84,21 +84,52 @@ public class RemoveContext extends HttpServlet {
 		  
 		  String winnerid="";
 		  String loserid="";
+		  int win=0;
+		  int loss=0;
+		  
+		  
+		 
 			 
 		  try{
 			    Statement stmt = conn.createStatement();
-			    String Query="select player_id,username from player_info where username in ('"+winnername+"','"+losername+"')";
+			    String Query="select player_id,username,win,loss from player_info where username in ('"+winnername+"','"+losername+"')";
 				ResultSet data_table=stmt.executeQuery(Query);
 				
 				while(data_table.next()) {
 					
 					if(data_table.getString("username").equals(winnername)) {
 						winnerid=data_table.getInt("player_id")+"";
+						win=data_table.getInt("win")+1;
 					}
 					else {
 						loserid=data_table.getInt("player_id")+"";
+						loss=data_table.getInt("loss")+1;
 					}
 				}
+				
+		    } catch (SQLException e) {
+		    	
+		        System.out.println(e+"");
+		    }
+		  
+		  try{
+			    Statement stmt = conn.createStatement();
+			    String Query="update player_info set win="+win+" where username='"+winnername+"'";
+			    System.out.println(Query);
+				stmt.executeUpdate(Query);
+				
+				
+		    } catch (SQLException e) {
+		    	
+		        System.out.println(e+"");
+		    }
+		  
+
+		  try{
+			    Statement stmt = conn.createStatement();
+			    String Query="update player_info set loss="+loss+" where username='"+losername+"'";
+				stmt.executeUpdate(Query);
+				
 				
 		    } catch (SQLException e) {
 		    	
@@ -109,13 +140,52 @@ public class RemoveContext extends HttpServlet {
 		  try{
 			    Statement stmt = conn.createStatement();
 			    String Query="update game_list set winner_id="+Integer.parseInt(winnerid)+" where game_id="+Integer.parseInt(gameid.substring(gameid.indexOf('_')+1, gameid.length()));
-				stmt.executeUpdate(Query);
+				System.out.println(Query);
+			    stmt.executeUpdate(Query);
 				
 				
 		    } catch (SQLException e) {
 		    	
 		        System.out.println(e+"");
 		    }
+
+		  
+		  int score1=0;
+		  int score2=0;
+		  
+		  if(playdetails.get(usercookie).get("color").get(0).equals("White")) {
+			  
+			  score1=Integer.parseInt(data.get("white"));
+			  score2=Integer.parseInt(data.get("black"));
+			  
+		  }
+		  else {
+			  score2=Integer.parseInt(data.get("white"));
+			  score1=Integer.parseInt(data.get("black"));	  
+			  
+		  }
+		  
+		 
+		  try{
+			    Statement stmt = conn.createStatement();
+				String Query="update player_info set score="+score1+" where username='"+values.get(usercookie)+"'";
+				System.out.println(Query);
+				stmt.executeUpdate(Query);//execution					
+		    } catch (SQLException e) {
+		      System.out.println(e+"");
+		      
+		    }
+		  try{
+			    Statement stmt = conn.createStatement();
+				String Query="update player_info set score="+score2+" where username='"+values.get(oppcookie)+"'";
+				System.out.println(Query);
+				stmt.executeUpdate(Query);//execution					
+		    } catch (SQLException e) {
+		      System.out.println(e+"");
+		      
+		    }
+		 
+		  
 		  try {
 			  conn.close();
 			} catch (SQLException e) {
@@ -127,7 +197,7 @@ public class RemoveContext extends HttpServlet {
 		
 		
 		HashMap<String,String> result= new HashMap<String,String>();
-		result.put("redirect","http://localhost:8080/winner");
+		result.put("redirect","http://localhost:8080/home/winner");
 	     System.out.println(result);
 	     
 	     Result result1 =

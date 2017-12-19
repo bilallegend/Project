@@ -58,7 +58,7 @@ public class upload extends HttpServlet {
 	   	 }
    	System.out.println(name);
   		Statement stmt;
-  		String src="";
+  		String src="../Images/pr.png";
         if (blobKeys == null || blobKeys.isEmpty()) {
             //res.sendRedirect("/");
         	try {

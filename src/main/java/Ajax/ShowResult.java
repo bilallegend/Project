@@ -144,20 +144,32 @@ public class ShowResult extends HttpServlet {
 			  
     		  playdetails.remove(cookievalue);
     		  
-    		  
-    		   ArrayList<Integer> scores=new ArrayList<Integer>();
-    		  ArrayList<String>  names=new ArrayList<String>();
-    		  HashMap<String,String[]> scoredetails=new HashMap<String,String[]>();
+    		  String div="";
+//    		   ArrayList<Integer> scores=new ArrayList<Integer>();
+//    		  ArrayList<String>  names=new ArrayList<String>();
+//    		  HashMap<String,String[]> scoredetails=new HashMap<String,String[]>();
     		  try{
 				    Statement stmt = conn.createStatement();
-				    String Query="select username,win,score,photo from player_info";
+				    String Query="select username,win,score,photo from player_info order by score desc";
 					ResultSet data_table=stmt.executeQuery(Query);
 					
 					while(data_table.next()) {
-						scores.add(data_table.getInt("score"));
-						names.add(data_table.getString("username"));
-						String[] d= {data_table.getString("score")+"",data_table.getInt("win")+"",data_table.getString("photo")};
-						scoredetails.put(data_table.getString("username"), d);
+//						scores.add(data_table.getInt("score"));
+//						names.add(data_table.getString("username"));
+//						String[] d= {data_table.getString("score")+"",data_table.getInt("win")+"",data_table.getString("photo")};
+//						scoredetails.put(data_table.getString("username"), d);
+		    			  String p=data_table.getString("photo");
+		    			  if(p==null) {
+		    				  p="../Images/pr.png";
+		    			  }
+		    			  String n=data_table.getString("username");
+		    			  String w=data_table.getInt("win")+"";
+		    			  String s=data_table.getString("score")+"";
+
+						
+						div+="<div class='scrdiv'><ul id='fir-ul'><li><div style=\"background-image: url('"+p+"');\"></div></li><li>"+n+"</li><li><img src='../Images/star1.png'><div>"+s+"</div></li><li><div><img src='../Images/cup.png'><div>"+w+"</div></div></li></ul></div><div class='scrdiv'>";
+						
+						
 					}
 					
 			    } catch (SQLException e) {
@@ -172,34 +184,34 @@ public class ShowResult extends HttpServlet {
 					e.printStackTrace();
 				}
 				
-    		  for(int i=0;i<scores.size();i++) {
-    			  for(int j=0;j<scores.size();j++) {
-    				  
-    				  if(scores.get(i)<scores.get(j)) {
-    					  
-    					  int temp=scores.get(i);
-    					  String tempname=names.get(i);
-    					  scores.set(i,scores.get(j));
-    					  scores.set(j,temp);
-    					  names.set(i,names.get(j));
-    					  names.set(j,tempname);
-    					  
-    				  }
-    			  }
-    		  }
-    		 
-    		  String div="";
-              
-    		  for(int k=0;k<names.size();k++) {
-    			  String p=scoredetails.get(names.get(k))[2];
-    			  if(p==null) {
-    				  p="../Images/pr.png";
-    			  }
-    			  String n=names.get(k);
-    			  String w=scoredetails.get(names.get(k))[1];
-    			  String s=scoredetails.get(names.get(k))[0];
-    			  div+="<div class='scrdiv'><ul id='fir-ul'><li><div style=\"background-image: url('"+p+"');\"></div></li><li>"+n+"</li><li><img src='../Images/star1.png'><div>"+s+"</div></li><li><div><img src='../Images/cup.png'><div>"+w+"</div></div></li></ul></div><div class='scrdiv'>";
-    		  }
+//    		  for(int i=0;i<scores.size();i++) {
+//    			  for(int j=0;j<scores.size();j++) {
+//    				  
+//    				  if(scores.get(i)<scores.get(j)) {
+//    					  
+//    					  int temp=scores.get(i);
+//    					  String tempname=names.get(i);
+//    					  scores.set(i,scores.get(j));
+//    					  scores.set(j,temp);
+//    					  names.set(i,names.get(j));
+//    					  names.set(j,tempname);
+//    					  
+//    				  }
+//    			  }
+//    		  }
+//    		 
+//    		  String div="";
+//              
+//    		  for(int k=0;k<names.size();k++) {
+//    			  String p=scoredetails.get(names.get(k))[2];
+//    			  if(p==null) {
+//    				  p="../Images/pr.png";
+//    			  }
+//    			  String n=names.get(k);
+//    			  String w=scoredetails.get(names.get(k))[1];
+//    			  String s=scoredetails.get(names.get(k))[0];
+//    			  div+="<div class='scrdiv'><ul id='fir-ul'><li><div style=\"background-image: url('"+p+"');\"></div></li><li>"+n+"</li><li><img src='../Images/star1.png'><div>"+s+"</div></li><li><div><img src='../Images/cup.png'><div>"+w+"</div></div></li></ul></div><div class='scrdiv'>";
+//    		  }
     		  
 			  HashMap<String,String> result=new HashMap<String,String>();
 			  result.put("name", name);

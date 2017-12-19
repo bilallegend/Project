@@ -493,6 +493,16 @@
 	</servlet>
 	
 	<!--  Winner servlet -->
+	
+	<servlet-mapping>
+  		<servlet-name>Score</servlet-name>
+  		<url-pattern>/ajax/addscore</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>Score</servlet-name>
+		<servlet-class>Ajax.AddScore</servlet-class>
+	</servlet>
+	
     <servlet-mapping>
   		<servlet-name>Winner_jsp</servlet-name>
   		<url-pattern>/home/winner</url-pattern>	
@@ -504,7 +514,7 @@
 
 		<servlet-mapping>
   		<servlet-name>Detail</servlet-name>
-  		<url-pattern>/home/ajax/getdetail</url-pattern>	
+  		<url-pattern>/ajax/getdetail</url-pattern>	
   	</servlet-mapping>
 	<servlet>
 		<servlet-name>Detail</servlet-name>
