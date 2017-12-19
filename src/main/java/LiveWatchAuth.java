@@ -39,6 +39,7 @@ public class LiveWatchAuth extends HttpServlet{
 			    System.out.println(auth);
 			    resp.getWriter().append(auth);
 			}catch (Exception e) {
+				e.printStackTrace();
 				return;
 			}
 		    
