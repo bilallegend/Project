@@ -57,18 +57,20 @@ public class Feeds extends HttpServlet{
 	    	
 	    	ArrayList<HashMap<String,String>> LivePlayList = new ArrayList<HashMap<String,String>>();
 	    	for(String gameId : GameIds) {
-	    		if(!feedsDivId.values().contains(gameId)) {
-	    			HashMap<String,String> gamedetails=new HashMap<String,String>();
-		    		String randomNum = getRandomNumber(feedsDivId);
-		    		feedsDivId.put(randomNum+"Live",gameId ) ;
-		    		cookies=GameIdCookies.get(gameId);
-//		    		html+=getHtml(DivMap.get(cookies[0])[3], DivMap.get(cookies[1])[3],randomNum);
-		    		gamedetails.put("game_id",randomNum+"Live");
-		    		gamedetails.put("player_1_name",DivMap.get(cookies[0])[3]);
-		    		gamedetails.put("player_2_name",DivMap.get(cookies[1])[3]);
-		    		gamedetails.put("likes", "0");
-		    		gamedetails.put("views", "0");
-		    		LivePlayList.add(gamedetails);  		
+	    		if(GameIdCookies.get(gameId)[2].equals("Public")) {
+		    		if(!feedsDivId.values().contains(gameId)) {
+		    			HashMap<String,String> gamedetails=new HashMap<String,String>();
+			    		String randomNum = getRandomNumber(feedsDivId);
+			    		feedsDivId.put(randomNum+"Live",gameId ) ;
+			    		cookies=GameIdCookies.get(gameId);
+	//		    		html+=getHtml(DivMap.get(cookies[0])[3], DivMap.get(cookies[1])[3],randomNum);
+			    		gamedetails.put("game_id",randomNum+"Live");
+			    		gamedetails.put("player_1_name",DivMap.get(cookies[0])[3]);
+			    		gamedetails.put("player_2_name",DivMap.get(cookies[1])[3]);
+			    		gamedetails.put("likes", "0");
+			    		gamedetails.put("views", "0");
+			    		LivePlayList.add(gamedetails);  		
+		    		}
 	    		}
 	    	}
 	    	messageData.put("data",LivePlayList);

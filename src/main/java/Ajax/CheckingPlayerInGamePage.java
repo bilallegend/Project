@@ -36,13 +36,12 @@ public class CheckingPlayerInGamePage extends HttpServlet{
 			result.put("ok","no");
 			result.put("url","http://localhost:8080/home");
 			json=gson.toJson(result);
-		      System.out.println(result+"  "+num);
-			  response.getWriter().write(json);
+			response.getWriter().write(json);
 			  return;
 			
 		}
 			
-		HashMap<String,String[]> DivMap = Cooky.getContextValue("DivMap", request);
+			HashMap<String,String[]> DivMap = Cooky.getContextValue("DivMap", request);
 	   	 ServletContext context  =   request.getSession().getServletContext();
 	   	 HashMap<String,String[]> gamedetail= (HashMap<String,String[]>) context.getAttribute("GameIds");
 	   	 System.out.println(gamedetail);
@@ -51,6 +50,7 @@ public class CheckingPlayerInGamePage extends HttpServlet{
 			  for(String key:gamedetail.keySet()) {
 				  if( gamedetail.get(key)[0].equals(num) || gamedetail.get(key)[1].equals(num) ){
 					  gameid=key;
+					  break;
 				  }
 			  }
 			  String[] cookies = gamedetail.get(gameid); 
