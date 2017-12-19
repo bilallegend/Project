@@ -202,7 +202,7 @@
                                                     <!--EDIT PROFILE DIV-->
          <div class="edit1">
              <p class="cha-pas">PERSONAL INFORMATION</p>
-              <form  id='data' action="<%=url %>" method="post" enctype="multipart/form-data">
+              <form  id='data1' action="<%=url %>" method="post" enctype="multipart/form-data">
              <div class="co wi" id="ephoto">
 					<label id="contanier" class="hi">
 						<input type="file" id="file" name="photo" />

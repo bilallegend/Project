@@ -71,6 +71,7 @@ $.post("/ajax/checkingplayers",{},function(data,status){
     		}
     		////('before timeout')
     		timeout();
+    		colorChange(obj.black,obj.white);
     		gameid=obj.gameid;
     		$(".oth").text(obj.gameid);
     		connection();

@@ -44,7 +44,7 @@ $(document).ready(function(){
 	$.post("/ajax/profile",{num:usercookie},function(data,status){
 		
 		
-		console.log(data);
+		
 		if(data.indexOf("<!DOCTYPE")==-1){
 		var obj=JSON.parse(data);
 	  
@@ -72,8 +72,14 @@ $(document).ready(function(){
 		$("#name").text(obj.name);
 		$("#mail").text(obj.mail);
 		}
+                else{
+			$(".sign").css('display','block');
+		}
 		
 		$("#currtour").text(obj.currtour);
+		}
+               else{
+			$(".sign").css('display','block');
 		}
 	});
 	
@@ -197,8 +203,9 @@ $(document).ready(function(){
 			$("#enumber").val(detail.number);
 			
                         document.getElementById("ephoto").style.background="url('"+detail.photo+"')";
-			$("#ephoto").css('background-size','cover');
-			$(".hi").css('background','');
+		       $("#ephoto").css('background-size','cover');
+			$("#ephoto").css('border-radius','50%');
+			$(".hi").css('background','none');
 			
 		});
 		
@@ -236,7 +243,12 @@ $(document).ready(function(){
 				var result=JSON.parse(data);
 				console.log(result);
 				if(result.status=="ok"){
+					if($("#file").val()!=""){
 					$("#data1").submit();
+					}
+					else{
+						location.href="/home"
+					}
 				}
 				else{
 					
@@ -276,7 +288,7 @@ $(document).ready(function(){
 		 
 		 if(passcheck&&passcheck1&&passcheck2&& $("#new").val()==$("#new1").val()){
 		
-		$.post("ajax/changepass",{ curr:$("#curr").text(),newpass:$("#new").text(),newpass1:$("#new1").text()},function(data){
+		$.post("ajax/changepass",{ curr:$("#curr").val(),newpass:$("#new").val(),newpass1:$("#new1").val()},function(data){
 			
 			 var re=JSON.parse(data);
 			  if(re.status=="ok"){

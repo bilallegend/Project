@@ -51,7 +51,7 @@ public class RemoveContext extends HttpServlet {
 			 
 			 if(gameids.get(i)[0].equals(usercookie)) {
 				 gameid=i;
-				 oppcookie=gameids.get(i)[0];
+				 oppcookie=gameids.get(i)[1];
 			 }
 			 if(gameids.get(i)[1].equals(usercookie)) {
 				 gameid=i;
@@ -69,6 +69,8 @@ public class RemoveContext extends HttpServlet {
 		 
 		 String winnername="";
 		 String losername="";
+		 System.out.println(playdetails.get(usercookie).get("color").get(0).equals(winner));
+		 System.out.println(winner);
 		 
 		 if(playdetails.get(usercookie).get("color").get(0).equals(winner)){
 			 winnername=((HashMap<String,String>)context.getAttribute("cookie")).get(usercookie);
@@ -88,7 +90,8 @@ public class RemoveContext extends HttpServlet {
 		  int loss=0;
 		  
 		  
-		 
+		 System.out.println("winner "+winnername);
+		 System.out.println("losser "+losername);
 			 
 		  try{
 			    Statement stmt = conn.createStatement();
@@ -128,6 +131,7 @@ public class RemoveContext extends HttpServlet {
 		  try{
 			    Statement stmt = conn.createStatement();
 			    String Query="update player_info set loss="+loss+" where username='"+losername+"'";
+			    System.out.println(Query);
 				stmt.executeUpdate(Query);
 				
 				
@@ -164,6 +168,31 @@ public class RemoveContext extends HttpServlet {
 			  score1=Integer.parseInt(data.get("black"));	  
 			  
 		  }
+		  System.out.println(score1);
+		  System.out.println(score2);
+		  
+		  try{
+			    Statement stmt = conn.createStatement();
+			    String Query="select score,username from player_info where username in ('"+values.get(usercookie)+"','"+values.get(oppcookie)+"')";
+				ResultSet data_table=stmt.executeQuery(Query);
+				
+				while(data_table.next()) {
+					
+					if(data_table.getString("username").equals(values.get(usercookie))) {
+						score1+=data_table.getInt("score");
+					}
+					else {
+						score2+=data_table.getInt("score");  
+					}
+				}
+				
+		    } catch (SQLException e) {
+		    	
+		        System.out.println(e+"");
+		    }
+		  System.out.println(score1);
+		  System.out.println(score2);
+		  
 		  
 		 
 		  try{

@@ -53,7 +53,7 @@ header > img:first-child{
     height: 100%;
     width: 10%;
     color: white;
-    float: left;
+    float: right;
     font-family:cursive;
 }
 .lstdiv h1{
@@ -79,7 +79,7 @@ header > img:first-child{
     font: 20px cursive;
     text-align: center;
     border-bottom: 1px dotted rgba(221, 221, 221, 0.28);
-    padding-bottom: 3px;
+    padding-bottom: 13px;
     color: #ddd
 }
 .frstdiv>div {
@@ -106,7 +106,7 @@ header > img:first-child{
     padding-top:5px;
     text-align:center
 }
-.snddiv>div>p+button {
+.snddiv>div>p+button,.show {
     border: none;
     outline: none;
     background: #fff;
@@ -118,9 +118,15 @@ header > img:first-child{
     color: #994D13;
     margin-top: 10px
 }
+.show {
+    font-size: 13px;
+    margin-top: 6px;
+    display:none
+}
 .frstdiv>div>div {
     width:45px;
     height:45px;
+    cursor:pointer;
     border-radius:50%;
     background:#ddd
 }
@@ -172,7 +178,7 @@ header > img:first-child{
     height: 35px
 }
 #di>div>div:nth-child(2):after {
-    top:58.3%;
+    top:270px;
     height:40px
 }
  #di >div>div>div:before,#di>div>div:nth-child(2):before{
@@ -185,14 +191,14 @@ header > img:first-child{
     left: 25%
 }
 #di>div>div:nth-child(2):before {
-    top:58.3%;
+    top:268px
 }
 #di >div>div>div:after{
      top: 81%
 }
 #di>div>div:nth-child(2)>div {
     width:50%;
-    height:100%;
+    height:100%
 }
 #di>div>div:nth-child(3) {
     height:100px;
@@ -209,18 +215,20 @@ header > img:first-child{
     position: absolute;
     width: 230px;
     height: 250px;
+    transform: translateY(-100%);
+    transition:1s;
     left: 45%;
     background: #eee
 }
 .whole>div:nth-child(2) >div {
     width:100%;
     height:100px;
+    color: white;
     background:#7E3C11;
     position:relative
 }
 .name {
     text-align: center;
-    color: white;
     font-family: 'Macondo Swash Caps', cursive;
     padding-top: 30px
 }
@@ -239,5 +247,87 @@ header > img:first-child{
     padding-top: 48px
 }
 tr th {
-    padding-top:0px
+    padding-top: 14px;
+    width: 38.3%;
+    color: #88400F
 }
+tr td 
+{
+    text-align: center;
+    font:bold 13px  cursive;
+    padding-top: 5px
+}
+.c {
+    position: absolute;
+    top: 1px;
+    right: 14px;
+    cursor:pointer;
+    font: bold 20px cursive
+}
+/*------------------------Responsive Part-----------------*/
+@media screen and (min-width:300px) and (max-width:810px){
+    .ctrdiv {
+        width:116px
+    }
+    .ctrdiv>p {
+        font-size:10px
+    }
+    .ctrdiv h1,.snddiv>div>p {
+        font-size:20px
+    }
+    .lstdiv {
+         width: 50px;
+         padding-left: 15px
+    }
+    .lstdiv p,.lstdiv h1 {
+        font-size:11px
+    }
+    .frstdiv,.snddiv,#di>div {
+        width:100%
+    }
+    .whole>div:nth-child(2) {
+        left:20%
+    }
+    .show {
+        display:inline-block
+    }
+    .snddiv>div>p {
+        width:63%
+    }
+    .snddiv>div>p+button {
+        width:70px;
+        height:22px;
+        font-size:14px
+    }
+    #di {
+        display:block
+    }
+    .whole > div:nth-child(1) {
+        width:100%;
+        height:auto
+    }
+    .snddiv {
+        display:none
+    }
+}
+@media screen and (min-width:810px) and (max-width: 1270px){ 
+   .snddiv>div,.snddiv>div>p, #di>div {
+       width:100%;
+       text-align:center
+   } 
+   .ctrdiv {
+       width:65%
+   }
+   .frstdiv {
+       display:block
+   }
+    #di {
+    display: block;
+    overflow: auto;
+    height:77.5%;
+    }
+   .lstdiv h1 {
+        font-size:15px
+    }
+     
+

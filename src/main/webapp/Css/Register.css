@@ -178,8 +178,7 @@ i {
 	-webkit-background-clip: text;
 	background-clip: text;
 	margin: 20px 0 0 0;
-	cursor: pointer;
-	top:0
+	cursor: pointer
 }
 .sgnin {
 	right: 50px
@@ -355,12 +354,9 @@ a {
 /*-----------------------------------------------Alert P tag----------------------------------------------------------*/
 .dv+p {
     padding-top: 10px;
-    font: 11px lato;
+    font: 12px lato;
     color: red;
-    text-transform: capitalize;
-
-    visibility:hidden
-
+    text-transform: capitalize
 } 
 /*------------------------------------------------Signout Option Div--------------------------------------------------*/
 .profilediv{
@@ -510,6 +506,67 @@ a {
     top: 50%;
     cursor: pointer;
     position: absolute;
-    font-size: 35px !important;
+    font-size: 35px;
     color: #EEBD84
+}
+/*-----------------------------------RESPONSIVE PART------------------------------------------------------------*/
+@media screen and (max-width:450px){
+.sign {
+	font: bold 16px'Cinzel Decorative', cursive;
+    right: 100px;
+    margin: 10px 0 0 0;
+}
+.sgnin {
+	right: 20px
+}
+#signup,#signin {
+    z-index:10
+}
+#signup, #signin, #menu{
+    left:10px;
+    top:35px;
+}
+#signin{
+    left:25px;
+    top:45px;
+}
+.profil{
+    top:5px;
+    right:25px;
+}
+#menu{
+    top:60px;
+}
+.change{
+    left:20%;
+}
+.profile{
+    margin-left:20px;
+}
+.feeds,.main-fee > div,.main-fee{
+    width:100%;
+}
+.feedvideo{
+    width:90%;
+}
+.who{
+    width:100%;
+    left:0;
+    height:550px;
+    background-size:100% 100%;
+}
+.who a h1{
+    margin-top:-18px;
+}
+.main>h1{
+    margin-left:40px;
+}
+.main>img{
+    margin-right:40px;
+}
+h4{
+    width: 80%;
+    margin:20px auto;
+    font-size: 15px
+}
 }

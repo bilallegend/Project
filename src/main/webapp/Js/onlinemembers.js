@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	
-	
+	    $("#d").css('display','none');
          $.post("ajax/load",function(data){
 		
 		var o=JSON.parse(data);
@@ -9,6 +9,7 @@ $(document).ready(function(){
 	});
 	$(document).on("click",".img",function(){
 
+		 $("#d").css('display','block');
 		var id=$(this).parent().attr('id');
 	
 		var name=$("#"+id+"name").text();
@@ -18,7 +19,7 @@ $(document).ready(function(){
 			console.log(object);
 			$("#win").text(object.win);
 			$("#score").text(object.score);
-			$("#loss").text(object.score);
+			$("#loss").text(object.loss);
 			$("#name").text(name);
 			if(object.photo==undefined){
 				document.getElementById("pro").style.background="url('../Images/pr.png')";
@@ -26,7 +27,7 @@ $(document).ready(function(){
 			else{
 			document.getElementById("pro").style.background="url('"+object.photo+"')";
 			}
-			document.getElementById("pro").style.backgroundSize="contain";
+			$("#pro").css('background-size','cover');
 			$(".tot").text(Number(object.win)+Number(object.loss));
 			
 		});

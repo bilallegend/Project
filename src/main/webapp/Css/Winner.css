@@ -24,7 +24,7 @@ ul,li,p {
 }
 .whole >div {
     width:800px;
-    height:603px;
+    height:100%;
     background: linear-gradient(135deg,#fff799, #80ECAA);
     position:relative
 }
@@ -53,7 +53,7 @@ ul,li,p {
     line-height: 50px
  }
  .scrdiv{
-    width: 100%;
+    width: 95%;
     height: 70px;
     background: #FBBC29;
     border-radius: 17px;
@@ -83,19 +83,15 @@ ul,li,p {
     border: 2px solid #FEE09A;
     border-radius: 50%;
     box-sizing: border-box;
-    background-size:cover
 } 
 #fir-ul li:nth-child(2) {
-	width: 135px;
-    font: 13px monospace;
-    line-height: 70px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap
+    width:135px;
+    font:13px monospace;
+    line-height: 70px
 }
 #fir-ul li:nth-child(3) >img {
     width: 45px;
-    padding: 12px 0 0 30px
+    padding: 12px 0 0 30px;
    
 }
 #fir-ul li:nth-child(4){
@@ -166,8 +162,7 @@ ul+p{
     height: 80px;
     border-radius:50%;
     border:2px solid #fff;
-    margin:auto;
-    background-size:cover
+    margin:auto
 }
 #scor>#sec>div:nth-child(3){
     width:90%;
