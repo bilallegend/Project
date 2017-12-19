@@ -30,17 +30,12 @@ public class LiveWatchAuth extends HttpServlet{
 			    Map<String, String> data = splitQuery(query);
 			    System.out.println("data Map "+data);
 			    String socketId = data.get("socket_id");
-			    String channelId = data.get("channel_name");
-//			    HashMap<String,String[]> GameIds = (HashMap<String,String[]>) context.getAttribute("GameIds");			    
+			    String channelId = data.get("channel_name");		    
 			    String CookieValue =Cooky.getCookieValue("gc_account",req.getCookies());
-//			    for(String key : GameIds.keySet()) {
-//			    	if(GameIds.get(key)[0].equals(CookieValue)||GameIds.get(key)[1].equals(CookieValue)) {
-//			    		throw new Exception();
-//			    	}
-//			    }
-			    
 			    Pusher pusher = PusherService.getDefaultInstance();
-			    String auth = pusher.authenticate(socketId, channelId, new PresenceUser(CookieValue,userInfo.put("name","name")));
+			    String auth = pusher.authenticate(socketId, channelId, new PresenceUser(
+			    		Cooky.getContextName("gc_account",req.getCookies(),"cookie", req),userInfo.put("name","name"))
+			    		);
 			    System.out.println(auth);
 			    resp.getWriter().append(auth);
 			}catch (Exception e) {

@@ -30,6 +30,7 @@ public class OnlineRemover extends HttpServlet{
 		  HashMap<String,String[]> DivMap = (HashMap<String, String[]>) context.getAttribute("DivMap");
 		  HashMap<String,String[]> newDM = new  HashMap<String,String[]>();
 		  String name="";
+		  System.out.println(DivMap+"  "+Id);
 		  for(String key : DivMap.keySet()) {
 			  if(DivMap.get(key)[0].equals(Id)){
 				  name=DivMap.get(key)[0];

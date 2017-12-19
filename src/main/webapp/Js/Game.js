@@ -170,6 +170,15 @@ $.post("/ajax/checkingplayers",{},function(data,status){
  			
 
  		});
+    	 
+    	 console.log(pusher.connection.state);
+    	 pusher.connection.bind('connecting_in', function(delay) {
+    		  alert("I haven't been able to establish a connection for this feature.  " +
+    		        "I will try again in " + delay + " seconds.")
+    	 });
+    	 pusher.connection.bind('connecting', function (){
+    		 console.log('connecting......');
+    	 })
     	 pusher.connection.bind('connected', function () {
          // subscribe to new messages in the chat application
     		 
@@ -179,28 +188,23 @@ $.post("/ajax/checkingplayers",{},function(data,status){
     		 
     		 watching_channel.bind('pusher:member_added',function(){
     			 console.log("member added");
-//    			 trigger({
-//    				 gameId:watching_channelname,
-//    				 Black:black,
-//    				 White:white,
-//    				 B_player:$('#black').html(),
-//    				 W_player:$('#white').html(),
-//    				 B_status:$('#bla').html(),
-//    				 W_status:$('#whi').html()});
     		 })
+    		 channel.bind('pusher:member_added',function(member){
+    			console.log('pusher:member_added'); 
+    		 });
+    		 channel.bind('pusher:member_removed',function(member){
+     			console.log('pusher:member_removed',member); 
+     			$('.ale').html('Sorry ! User exited the game ....!');
+     			$('.ale').css('visibility','visible');
+     			pusher.disconnect();
+     			setTimeout(function(){location.href='http://localhost:8080/home';},700)
+     			
+     		 });
     		 
-//    		 function trigger(data){
-//    			 // console.log('trigger');
-//    			 watching_channel.trigger('addNew',data);
-//    		 }
     		 
-         channel.bind('colorchange', function (data) {
-            
-        	 ////(data);
-        	 console.log("im colorchange");
-        	
-        	 // console.log(data.id);
-        	  console.log(data);
+    		 channel.bind('colorchange', function (data) {
+    			 console.log("im colorchange");
+    			 console.log(data.id);
         	 if((data.status)[0]=="ok"){
      
         		 if((data.color)[0]=="White"){
@@ -222,11 +226,7 @@ $.post("/ajax/checkingplayers",{},function(data,status){
         	    	$('#'+id2+'img').css('background-size','cover');
         	    	
         	    	time=30;
-        	    	}
-        		 
-        		
-        		
-        	 	
+        	    	}	
         	 }
         	 else{
         		 //("Invalid move");
@@ -379,17 +379,10 @@ $.post("/ajax/checkingplayers",{},function(data,status){
             }
 
         }
-       // onCoinMove(a)
-        // console.log("confirm  ",confirm);
-        // console.log(color,color1);
         var k1=Object.keys(confirm);
         if(k1.length>0){
     		onCoinMove(a);	
-    		//(a)
     	}
-    	
-       
-     //   colors(a);
     }
     
     
@@ -437,79 +430,6 @@ $.post("/ajax/checkingplayers",{},function(data,status){
     	black=forChangetype(Black);white=forChangetype(White);
     	forLoop(Black,'coin1');forLoop(White,'coin');
     	info();
-    }
-
-    function colors(a) {
-
-    	
-    	
-    	//addvalue(a);
-        let k = Object.keys(confirm);
-        let t = save;
-        i = 0;
-        let temp;
-        while (i < k.length) {
-
-         if(changecolor=="white"){
-            	var c=$("#box"+t+" > .one").attr('class');
-           
-            	$("#box"+t+" > .one").removeClass(c);
-            	     $("#box"+t+" > div").addClass("coin");
-                      $("#box"+t+" > div").addClass("gete one");
-            	
-           
-            }
-            else if(changecolor=="black"){
-            	let c=$("#box"+t+" > .one").attr('class');
-            	 
-                 	$("#box"+t+" > .one").removeClass(c)
-                 	  $("#box"+t+" > div").addClass("coin1");
-                      $("#box"+t+" > div").addClass("gete one");
-            	
-            }
- 
-            if (color1.indexOf(t) == -1) {
-                color1.push(t);
-            }
-
-            if (color.indexOf(t) !== -1) {
-                temp = color.indexOf(t);
-                color.splice(temp, 1);
-            }
-            if (t == confirm[k[i]]) {
-                i++;
-                t = save;
-            }
-            t = (t + Number(k[i]));
-        }
-
-        if (count == 0) {
-            white = color;
-            black = color1
-        } else {
-            white = color1;
-            black = color;
-        }
-//        if($('#black').text()=='You' && $('#bla').text()=='Playing'){
-//        	trigger({
-//        		gameId:watching_channelname,
-//            	Black:black,
-//          		 White:white});
-//        }else if($('#white').text()=='You' && $('#whi').text()=='Playing'){
-//        	trigger({
-//        		gameId:watching_channelname,
-//            	Black:black,
-//          		 White:white});
-//        }
-        
-        
-           
-        if(k.length!=0){
-        	 changestatus();
-        }
-        info();
-        // console.log("color  "+color);
-        // console.log("color1  "+color1);
     }
 
     function info() {

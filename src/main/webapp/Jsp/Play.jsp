@@ -64,7 +64,7 @@
 	</main>
 	
 	<script>
-	var privacy='<%=(String) request.getAttribute("privacy")%>';
+	var privacy;
 	console.log(privacy)
 	var name='<%= Cooky.getContextName("gc_account", request.getCookies(),"cookie",request)%>'
 	if(name=='null'|| name == null||name==""){

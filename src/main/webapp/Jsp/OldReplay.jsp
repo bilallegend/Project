@@ -17,20 +17,20 @@
 		    </div>
 	    </div>
 	    <h1 class="oth"></h1>
-         <div class="time"><time>00<time><span></span><span class="it"></span></div>
+         <div class="time"><time id='ti'>00</time><span id="sec"> sec</span><span class="it" id="re">remaining..</span></div>
          <div class="play-sta">
              <div>
-                 <div class="prf"></div>
+                 <div class="prf" id='B' style='background-size:cover;'></div>
                  <div>
-                     <p class="pla" id="black">Anulakshmi</p>
-                     <p class=" pla play" id="bla">Playing</p>
+                     <p class="pla" id="black"></p>
+                     <p class=" pla play" id="bla"></p>
                  </div>
              </div>
              <div class="top">
-                 <div class="prf"></div>
+                 <div class="prf" id='W' style='background-size:cover;'></div>
                  <div>
-                     <p class="pla" id="white">Anulakshmi</p>
-                     <p class=" pla play colo" id="whi">Playing</p>
+                     <p class="pla" id="white"></p>
+                     <p class=" pla play colo" id="whi"></p>
                  </div>
              </div>
          </div>
@@ -40,14 +40,14 @@
                 <div class="gete one coin1"></div>
                  <div>
                    <span class="int">X</span>  
-                    <span class="int pad" id='countBlack'>20</span>  
+                    <span class="int pad" id='countBlack'></span>  
                  </div>
              </div>
              <div class="top">
                  <div class="gete one coin"></div>
                  <div>
                    <span class="int colo">X</span>   
-                    <span class="int colo pad" id='countWhite'>20</span>  
+                    <span class="int colo pad" id='countWhite'></span>  
                  </div>
              </div>
          </div>
@@ -61,17 +61,11 @@
         </div>
     </div>
     <script>
-
-    var gameId= '<%=request.getParameter("LiveId")%>';
-    var MoveIdandTimeMap=<%=request.getParameter("MoveIdandTimeMap")%>;
-    var playerNames=<%=request.getParameter("playerNames")%>;
-    $('.oth').html(gameId);
+    var gameId= '<%=request.getAttribute("LiveId")%>';
+    var MoveIdandTimeMap=<%=request.getAttribute("MoveIdandTimeMap")%>;
+    var playerNames=<%=request.getAttribute("playerNames")%>;
     </script>
     <script src='../Js/OldReplay.js'>
-
-
-
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
     </script>
 </body>
 </html>

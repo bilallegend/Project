@@ -77,14 +77,13 @@ public class ReplaysMovesGiver  extends HttpServlet{
 					}else {
 						add=1;
 					}
-					playerNames.put(
-							"firstplayer",nameGiver(
-									MyDB.selectCondition(connection,"player_info","username","'"+usernameSet.getString(playersIDs[add])+"'" , "player_id")
-									));
-					playerNames.put(
-							"nextplayer",nameGiver(
-									MyDB.selectCondition(connection,"player_info","username","'"+usernameSet.getString(playersIDs[add+1])+"'" , "player_id")
-									));
+							nameAndPicSetter(
+									MyDB.selectCondition(connection,"player_info","username,photo","'"+usernameSet.getString(playersIDs[add])+"'" , "player_id")
+									,playerNames,"firstplayer");
+							nameAndPicSetter(
+									MyDB.selectCondition(connection,"player_info","username,photo","'"+usernameSet.getString(playersIDs[add+1])+"'" , "player_id")
+									,playerNames,"nextplayer");
+					
 				}
 			} catch (SQLException e) {
 				
@@ -94,14 +93,17 @@ public class ReplaysMovesGiver  extends HttpServlet{
 			req.setAttribute("playerNames", gson.toJson(playerNames));
 			req.setAttribute("LiveId", id);
 			System.out.println("Yes");
+			System.out.println(playerNames);
 			getServletContext().getRequestDispatcher("/Jsp/OldReplay.jsp").forward(req, resp);
 			
 	}
 	
-	private String nameGiver (ResultSet set) {
+	private String nameAndPicSetter (ResultSet set,HashMap<String,String> playernames,String key) {
 		try {
 			while(set.next()) {
-				return set.getString("username");
+				playernames.put(key,set.getString("username"));
+				playernames.put(set.getString("username"),set.getString("photo"));
+				System.out.println(set.getString("photo"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();			
