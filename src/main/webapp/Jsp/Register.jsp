@@ -150,7 +150,7 @@
 				<p>PLAY GUEST</p>
 			</div>
 			<div>
-				<p><a href="http://gamecenterdesign.zcodeusers.com/MMAB-PROJECT/Html/Instruction.html">INSTRUCTIONS</a>
+				<p><a>INSTRUCTIONS</a>
 				</p>
 			</div>
 			<div class="exit">
@@ -199,7 +199,7 @@
                 while at least one oponent piece is completely surrounded and becomes your piece.</h4>
                 <h4>You cannot move without Caputuring oponent pieces.</h4>
                 <h4>when both players cannot move, the ggame ends. the player with the most pieces turned to his corresponding color wins.</h4>
-                <a href="http://gamecenterdesign.zcodeusers.com/MMAB-PROJECT/Html/board.html"><h1>start</h1></a>
+                <a><h1>start</h1></a>
             </div>
         </div>
                                                     <!--EDIT PROFILE DIV-->
@@ -240,18 +240,10 @@
 				<input type="submit" value="Change" class="sub" id="editprofile" />
 			</div>
          </div>
-         
-         
-         
-         
-         
-                                   
-	
-	
 	<div class="profil" id="img"></div>
 		<div class="profilediv">
                     <div>
-                        <div><div id="img1"><a href="http://gamecenterdesign.zcodeusers.com/MMAB-PROJECT/Html/Profile.html"><p>change</p></a></div></div>
+                        <div><div id="img1"><a><p>change</p></a></div></div>
                         <h5 id="name">madhubalan.m</h5>
                         <p id="mail">madhubalan.m@zohouniv.com</p>
                     </div>

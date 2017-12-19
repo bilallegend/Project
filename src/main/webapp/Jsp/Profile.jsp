@@ -10,7 +10,7 @@
                 <div>
                     <div>
                         <h2>PROFILE INFO</h2>
-                        <div>
+                        <div class="pr">
                             <div style="background:url({{photo}});background-size: 100% 100%;">
 								
 							</div>
