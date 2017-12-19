@@ -228,6 +228,7 @@ $(document).ready(function(){
         
         $('body').on('click','button[name=accept]',function(){
         	let Reply = $(this).html();
+        	$(".noti-div").css('display','none');
 //        	alert(Reply);
         	if(Reply=="Yes" || Reply=="No"){
         		let data = JSON.stringify({

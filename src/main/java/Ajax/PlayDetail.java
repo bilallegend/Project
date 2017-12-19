@@ -37,7 +37,8 @@ public class PlayDetail extends HttpServlet{
 		  try {
 			  for(String i:gamedetail.keySet()) {
 				  System.out.println(Arrays.toString(gamedetail.get(i)));
-				  if( gamedetail.get(i)[0].equals(num) || gamedetail.get(i)[1].equals(num) ){
+				
+				  if( (gamedetail.get(i))[0].equals(num) || (gamedetail.get(i)[1]).equals(num) ){
 					  gameid=i;
 				  }
 			  }

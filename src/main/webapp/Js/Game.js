@@ -185,8 +185,8 @@ $.post("/ajax/checkingplayers",{},function(data,status){
      			console.log('pusher:member_removed',member); 
      			$('.ale').html('Sorry ! User exited the game ....!');
      			$('.ale').css('visibility','visible');
-     			pusher.disconnect();
-     			setTimeout(win,700)
+     	        win();
+     	      
      		 });
     		 
     		 
@@ -457,7 +457,7 @@ $.post("/ajax/checkingplayers",{},function(data,status){
     function win(){
     	
     	var data=JSON.stringify({white:white.length,black:black.length,channel_id: channel_name});
-       $.post("/ajax/removecontext",data,function(msg){
+        $.post("/ajax/removecontext",data,function(msg){
     		
     	    
     	   

@@ -143,6 +143,22 @@ public class ShowResult extends HttpServlet {
 			  
 			  
     		  playdetails.remove(cookievalue);
+    		  HashMap<String,String[]> gameid=(HashMap<String,String[]>) context.getAttribute("GameIds");
+    		  
+    		  String id="";
+    		  
+    		  for(String key:gameid.keySet()) {
+    			  
+    			  if(gameid.get(key)[0].equals(cookievalue)) {
+    				  
+    				  id=key;
+    				  
+    			  }
+	  
+    		  }
+    		  if(!id.equals("")) {
+    		  gameid.remove(id);
+    		  }
     		  
     		  String div="";
 //    		   ArrayList<Integer> scores=new ArrayList<Integer>();

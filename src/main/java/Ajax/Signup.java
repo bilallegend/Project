@@ -25,7 +25,9 @@ public class Signup extends HttpServlet{
 		 boolean pass=Pattern.compile("[A-Za-z0-9_-]{6,10}$").matcher(request.getParameter("pass")).matches();
 		 boolean conpass=request.getParameter("pass").equals(request.getParameter("confirm"));
 		 boolean check[]= {name,pass,conpass,phone};
-		 
+		 if(request.getParameter("name").contains(" ")) {
+			 name=false;
+		 }
 			      
 			      HashMap<String,String> result= new  HashMap<String,String>(); 
 			      Gson gson = new GsonBuilder().setPrettyPrinting()
