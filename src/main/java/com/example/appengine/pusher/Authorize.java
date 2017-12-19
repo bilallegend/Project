@@ -42,15 +42,18 @@ public class Authorize extends HttpServlet{
 		
 			 name = Cooky.getContextName("gc_account", request.getCookies(),"cookie",request) ;
 		 	System.out.println(name+ "  user name");
-		 	if(name.equals("")) {	 		
+		 	try {
+		 		if(name==null||name.equals("")) {	 		
+			 		return;
+			 	}
+		 	}catch(NullPointerException n) {
 		 		return;
-		 	}else {
+		 	}
+		 	
 		    Pusher pusher = PusherService.getDefaultInstance();
 
 		    String query = CharStreams.toString(request.getReader());
 		    System.out.println(" query "+query);
-		    // socket_id, channel_name parameters are automatically set in the POST body of the request
-		    // eg.socket_id=1232.12&channel_name=presence-my-channel
 		    Map<String, String> data = splitQuery(query);
 		    System.out.println("data Map "+data);
 		    String socketId = data.get("socket_id");
@@ -84,7 +87,7 @@ public class Authorize extends HttpServlet{
 			 HashMap<String,String[]> gamedetail= (HashMap<String,String[]>) context.getAttribute("GameIds");
 			 System.out.println(gamedetail);
 			 Map<String, String> userInfo = new HashMap<>();
-			 String currentUserId=num;
+			 String currentUserId=Cooky.getContextName("gc_account",request.getCookies(),"cookie", request);
 			 userInfo.put("displayName", Cooky.getContextName("gc_account", request.getCookies(),"cookie", request));
 			 
 				  if((gamedetail.get("game_"+(count)))!=null||!((gamedetail.get("game_"+(count))[0].equals(num)||(gamedetail.get("game "+(count))[1].equals(num)))) ){
@@ -117,7 +120,7 @@ public class Authorize extends HttpServlet{
 		    
 		    
 		 	}
-		  }
+		  
 
 		  private static Map<String, String> splitQuery(String query) throws UnsupportedEncodingException {
 		    Map<String, String> query_pairs = new HashMap<>();

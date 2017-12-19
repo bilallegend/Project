@@ -26,12 +26,15 @@ public class CheckingPlayerInGamePage extends HttpServlet{
 		
 		Cookie[] c=request.getCookies();
 		String num=Cooky.getCookieValue("gc_account",request.getCookies());
+		
+		System.out.println(num);
 		if(num.equals("") || num == null) {
 			result.put("ok","no");
 			result.put("url","http://localhost:8080/home");
 			json=gson.toJson(result);
 		      System.out.println(result);
 			  response.getWriter().write(json);
+			  return;
 			
 		}
 		
@@ -39,17 +42,29 @@ public class CheckingPlayerInGamePage extends HttpServlet{
 	   	 HashMap<String,String[]> gamedetail= (HashMap<String,String[]>) context.getAttribute("GameIds");
 	   	 
 		  String gameid="";
-		  for(String i:gamedetail.keySet()) {
-			  if( gamedetail.get(i)[0].equals(num) || gamedetail.get(i)[1].equals(num) ){
-				  gameid=i;
+		  try {
+			  for(String i:gamedetail.keySet()) {
+				  if( gamedetail.get(i)[0].equals(num) || gamedetail.get(i)[1].equals(num) ){
+					  gameid=i;
+				  }
 			  }
-		  }
-		  if(gameid.equals("") || gameid==null) {
+		  }catch(Exception e) {
 			  result.put("ok","no");
 			  result.put("url","http://localhost:8080/home");
 			  json=gson.toJson(result);
 		      System.out.println(result);
 			  response.getWriter().write(json);
+			  return;
+		  }
+		  
+		  if(gameid.equals("") || gameid==null) {
+			  
+			  result.put("ok","no");
+			  result.put("url","http://localhost:8080/home");
+			  json=gson.toJson(result);
+		      System.out.println(result);
+			  response.getWriter().write(json);
+			  return;
 		  }
 		  else {
 			  

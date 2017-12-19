@@ -26,7 +26,7 @@
 <filter-mapping>
     <filter-name>myFilter</filter-name>
     <url-pattern>/ajax/*</url-pattern>
-    <url-pattern>/home/onlineMemebers</url-pattern>
+    <url-pattern>/home/onlineMembers</url-pattern>
     <url-pattern>/home/play</url-pattern>
     <url-pattern>/home/winner</url-pattern>
 </filter-mapping>
@@ -215,7 +215,7 @@
   		<servlet-name>Fileupload_servlet</servlet-name>
   		<url-pattern>/upload</url-pattern>	
   	</servlet-mapping>
-	<servlet>
+	<servlet>F
 		<servlet-name>Fileupload_servlet</servlet-name>
 		<servlet-class>Ajax.upload</servlet-class>
 	</servlet>
@@ -495,7 +495,7 @@
 	<!--  Winner servlet -->
     <servlet-mapping>
   		<servlet-name>Winner_jsp</servlet-name>
-  		<url-pattern>/winner</url-pattern>	
+  		<url-pattern>/home/winner</url-pattern>	
   	</servlet-mapping>
 	<servlet>
 		<servlet-name>Winner_jsp</servlet-name>

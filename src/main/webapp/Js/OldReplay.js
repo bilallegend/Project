@@ -2,6 +2,8 @@ $(document).ready(function(){
 	$('.oth').html('game_'+gameId);
 	$('#white').html(""+playerNames.nextplayer);
 	$('#black').html(""+playerNames.firstplayer);
+	$("B").css('background','url('+playerNames[playerNames.firstplayer]+')');
+	$("B").css('background','url('+playerNames[playerNames.nextplayer]+')');
 	StatusChanger('Waiting','Playing',$('#whi').css('color'),$('#bla').css('color'));
 	var time=30;
 	var moveIds= MoveIdandTimeMap.moveIds;
@@ -16,7 +18,7 @@ $(document).ready(function(){
 			setTimeout(timeChange,1000);
 			
 	};
-	var delay =(30-Time[index%2])*1000;
+	var delay =(Time[index%2])*1000;
 	setTimeout(ColorChange,delay);
 	
 	function forLoop(array,css){
@@ -45,7 +47,7 @@ $(document).ready(function(){
 		$('#countBlack').html(black.length+"");
 		$('#countWhite').html(white.length+"");
 		index+=2;
-		delay = (30-Time[index%2])*1000;
+		delay = (Time[index%2])*1000;
 		setTimeout(ColorChange,delay);
 		
 	}

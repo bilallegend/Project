@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -31,7 +32,8 @@ public class AccountFilter implements Filter{
 		HttpServletRequest req = (HttpServletRequest)request;
 		HttpServletResponse resp = (HttpServletResponse)response;
 		String value =Cooky.getCookieValue("gc_account",req.getCookies());
-		if(value == null || value=="null"||value == "") {
+		String name = Cooky.getContextName("gc_account",req.getCookies(),"cookie", req);
+		if(value == null || value=="null"||value == "" || name==null) {
 			System.out.println("FIlter rediecting" );
 			resp.sendRedirect(Redirecter.giveUrlFor(req,"/home"));
 		}else {

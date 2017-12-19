@@ -1,5 +1,8 @@
 $(document).ready(function(){
 	
+	$('.blu').click(function(){
+		
+	});
 	
 	
 	var pusher = new Pusher('63f35f26a75b722e22cf', {
@@ -331,6 +334,8 @@ $(document).ready(function(){
 		
 		$('button[name=toWatch]').click(function(){
 			let html = $(this).html();
+			$('button[name=toWatch]').removeClass('hover');
+			$(this).addClass('hover');
 			var data = JSON.stringify({
             });
 			post(data,'/ajax/get'+html);
