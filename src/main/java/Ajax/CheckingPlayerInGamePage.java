@@ -18,6 +18,8 @@ public class CheckingPlayerInGamePage extends HttpServlet{
 	
     protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		
 		HashMap<String,String> result= new  HashMap<String,String>(); 
 	      Gson gson = new GsonBuilder().setPrettyPrinting()
                  .create();
@@ -39,17 +41,21 @@ public class CheckingPlayerInGamePage extends HttpServlet{
 			  return;
 			
 		}
-		
+			
+		HashMap<String,String[]> DivMap = Cooky.getContextValue("DivMap", request);
 	   	 ServletContext context  =   request.getSession().getServletContext();
 	   	 HashMap<String,String[]> gamedetail= (HashMap<String,String[]>) context.getAttribute("GameIds");
-	   	 
+	   	 System.out.println(gamedetail);
 		  String gameid="";
 		  try {
-			  for(String i:gamedetail.keySet()) {
-				  if( gamedetail.get(i)[0].equals(num) || gamedetail.get(i)[1].equals(num) ){
-					  gameid=i;
+			  for(String key:gamedetail.keySet()) {
+				  if( gamedetail.get(key)[0].equals(num) || gamedetail.get(key)[1].equals(num) ){
+					  gameid=key;
 				  }
 			  }
+			  String[] cookies = gamedetail.get(gameid); 
+			  onlineRemover(context,DivMap.get(cookies[0])[3]);
+			  onlineRemover(context,DivMap.get(cookies[1])[3]);
 		  }catch(Exception e) {
 
 			  System.out.println(gamedetail);
@@ -67,10 +73,8 @@ public class CheckingPlayerInGamePage extends HttpServlet{
 		  
 		  if(gameid.equals("") || gameid==null) {
 
-			  System.out.println("gaemId");
+			  System.out.println("gameId");
 			  response.sendRedirect("/home");
-
-			  
 			  result.put("ok","no");
 			  result.put("url","http://localhost:8080/home");
 			  json=gson.toJson(result);
@@ -85,5 +89,15 @@ public class CheckingPlayerInGamePage extends HttpServlet{
   
 		  }
 	}
-
+	
+	private void onlineRemover(ServletContext context,String name) {
+		if(name!=null||name.equals("")) {
+			  HashMap<String,String> NameIdMap = (HashMap<String, String>) context.getAttribute("NameIdMap");
+			  HashMap<String,ArrayList<String>> MultiTabs = (HashMap<String, ArrayList<String>>) context.getAttribute("MultiTabs");
+			  MultiTabs.remove(name);
+			  NameIdMap.remove(name);
+			  System.out.println("succes dleted onlin ememnre ");
+		  }
+	}
+	
 }	

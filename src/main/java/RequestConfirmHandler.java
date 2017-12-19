@@ -152,7 +152,6 @@ private Gson gson = new GsonBuilder().create();
 		 a[0]=cookies.get(0);
 		 a[1]=cookies.get(1);
 		 pd.put("game_"+(count+1), a);
-		 context.setAttribute("GameIds",pd);
 		 
 		 HashMap<String,HashMap<String,ArrayList<String>>> pd1=(HashMap<String,HashMap<String,ArrayList<String>>>) context.getAttribute("PlayDetails");
 		 HashMap<String,ArrayList<String>> White=new HashMap<String,ArrayList<String>>();
@@ -186,8 +185,6 @@ private Gson gson = new GsonBuilder().create();
 		 
 		 pd1.put(cookies.get(0), White);
 		 pd1.put(cookies.get(1), Black);
-		 
-		 context.setAttribute("PlayDetails",pd1);
 		 System.out.println((HashMap<String,HashMap<String,ArrayList<String>>>) context.getAttribute("PlayDetails"));
 		
 		System.out.println(pd);
