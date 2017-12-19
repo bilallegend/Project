@@ -28,24 +28,23 @@ public class OnlineRemover extends HttpServlet{
 		  String Id = data.get("id");
 		  ServletContext context= request.getSession().getServletContext();
 		  HashMap<String,String[]> DivMap = (HashMap<String, String[]>) context.getAttribute("DivMap");
-		  HashMap<String,String[]> newDM = new  HashMap<String,String[]>();
 		  String name="";
-		  System.out.println(DivMap+"  "+Id);
+		  System.out.println("entering");
 		  for(String key : DivMap.keySet()) {
+			  System.out.println(DivMap.get(key)[0]+"  "+Id);
 			  if(DivMap.get(key)[0].equals(Id)){
-				  name=DivMap.get(key)[0];
-				  return;
+				  name=DivMap.get(key)[3];
+				  break;
 			  }
-			  name=null;
 		  } 
-		  if(name!=null) {
+		  System.out.println(name);
+		  if(name!=null||name.equals("")) {
 			  HashMap<String,String> NameIdMap = (HashMap<String, String>) context.getAttribute("NameIdMap");
-			  HashMap<String,ArrayList<String>> MultiBrowser = (HashMap<String, ArrayList<String>>) context.getAttribute("MultiBrowser");
-			  ArrayList<String> cookies = MultiBrowser.get(name);
-			  MultiBrowser.remove(name);
+			  HashMap<String,ArrayList<String>> MultiTabs = (HashMap<String, ArrayList<String>>) context.getAttribute("MultiTabs");
+			  MultiTabs.remove(name);
 			  NameIdMap.remove(name);
 
-				  messageData.put("status","successfully");
+			  messageData.put("status","successfully");
 		  }
 		  response.getWriter().println(gson.toJson(messageData));
 	}

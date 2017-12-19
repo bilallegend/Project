@@ -6,7 +6,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="../Js/jquery.js"></script>
     <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
-    <title>Othello Board</title>
+    <title>Reversi|OldReplay</title>
 
 </head>
 <body>

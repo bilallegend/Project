@@ -6,10 +6,11 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Register Page</title>
+	<title>Reversi|Welcome</title>
 	<link rel="stylesheet" href="../Css/Register.css">
 	<link rel="stylesheet" href="../Css/feeds.css">
 	<link rel="stylesheet" href="../Css/Instruction.css">
+	<link rel='icon' href=http://cdn.marketplaceimages.windowsphone.com/v8/images/befe2370-568e-4a98-84e4-2a64deb3d771?imageType=ws_icon_large'>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="../Js/jquery.js"></script>
@@ -23,17 +24,17 @@
 	<script id="feeds-template" type="text/x-handlebars-template"> 
 			{{#data}}
 				<div id={{game_id}} name='feedsClick'>
-				    <div class=top-div>  
-				        <div class=profile></div>  
+				    <div class='top-div'>  
+				        <div class='profile'></div>  
 				        <p>{{player_1_name}} vs   {{player_2_name}}</p>  
 				    </div>  
-				    <div class=feedvideo></div>  
-				    <div class=likediv>  
+				    <div class='feedvideo'></div>  
+				    <div class='likediv'>  
 				        <i class=fa fa-heart like aria-hidden=true></i>  
 				        <span id='likes'>{{likes}}</span>  
 				        <span class=sec-spn>Likes</span>  
 				    </div>  
-				    <div class=viewdiv>  
+				    <div class='viewdiv'>  
 				         <span id='views'>{{views}}</span>  
 				         <i class=fa fa-eye aria-hidden=true></i>  
 				    </div>  
@@ -170,9 +171,11 @@
 			<i class="fa fa-caret-left" id="leftaro" aria-hidden="true"></i>
 		</div>
 		    <div class="feeds">
+		    	<button style="position:absolute;right: 5%;" id='quit'>Quit</button>
 		    	<button type="submit" class="feedbtn feedfrstbtn" name='toWatch'>Replays</button>
                 <button type="submit" class="feedbtn feedsndbtn hover" name='toWatch'>Live</button>
-        		<div class="main" id='feedsFlow'>
+        		<div class="main-fee" id='feedsFlow'>
+        		
         		</div>
     		</div>
 	</div>

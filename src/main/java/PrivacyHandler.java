@@ -105,12 +105,17 @@ public class PrivacyHandler extends HttpServlet{
 			    	System.out.println(Arrays.toString(DivMap.get(key)));
 			    	String memberName 	= DivMap.get(key)[3];
 			    	String memberDivId 	= DivMap.get(key)[0];
-			    	
-			    	if(!MultiTabs.get(name).contains(DivMap.get(key)[1]) && NameIdMap.get(memberName).equals(memberDivId) && !CookieValue.equals(key)) {
-			    		System.out.println(memberDivId+" "+memberName+" "+DivMap.get(key)[2]);
-			    		html+=getHtml( memberDivId,memberName,DivMap.get(key)[2]);
+			    	System.out.println(MultiTabs);
+			    	try {
+			    		if(!MultiTabs.get(name).contains(DivMap.get(key)[1]) && NameIdMap.get(memberName).equals(memberDivId) && !CookieValue.equals(key) && MultiTabs.containsKey(memberName)) {
+				    		System.out.println(memberDivId+" "+memberName+" "+DivMap.get(key)[2]);
+				    		html+=getHtml( memberDivId,memberName,DivMap.get(key)[2]);
+				    		
+				    	}
+			    	}catch(Exception e) {
 			    		
 			    	}
+			    	
 			    }
 			    messageData.put("html", html);
 			   

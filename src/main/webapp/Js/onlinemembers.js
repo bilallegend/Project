@@ -102,6 +102,7 @@ $(document).ready(function(){
         });
         channel.bind('pusher:member_removed', function (member) {
         	console.log(" pusher:member_removed ");
+        	alert('hi');
         	var data=JSON.stringify({
             	id:member.id,
             	channel_id: 'presence-online-room',
@@ -113,6 +114,7 @@ $(document).ready(function(){
         	},'json');
         	
         	console.log(member);
+        	onPrivacyChange()
         });
         
         
@@ -175,6 +177,7 @@ $(document).ready(function(){
         
         
         function onPrivacyChange(){
+        	$("#di").html("");
         	privacy = $('input:radio[name=vis]:checked').val();
         	var data = JSON.stringify({
             	privacy:privacy,

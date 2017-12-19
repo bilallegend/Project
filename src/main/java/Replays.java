@@ -40,6 +40,7 @@ public class Replays extends HttpServlet{
 				
 			}
 			data.put("data", OldReplaysList);
+			System.out.println(OldReplaysList);
 			resp.getWriter().println(gson.toJson(data));
 			
 		} catch (SQLException e) {

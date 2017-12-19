@@ -31,6 +31,11 @@ public class CheckingPlayerInGamePage extends HttpServlet{
 		if(num.equals("") || num == null) {
 			System.out.println("num");
 			response.sendRedirect("/home");
+			result.put("ok","no");
+			result.put("url","http://localhost:8080/home");
+			json=gson.toJson(result);
+		      System.out.println(result+"  "+num);
+			  response.getWriter().write(json);
 			  return;
 			
 		}
@@ -46,15 +51,31 @@ public class CheckingPlayerInGamePage extends HttpServlet{
 				  }
 			  }
 		  }catch(Exception e) {
+
 			  System.out.println(gamedetail);
 			  System.out.println("exception");
 			  response.sendRedirect("/home");
+
+			  result.put("ok","no");
+			  result.put("url","http://localhost:8080/home");
+			  json=gson.toJson(result);
+		      System.out.println(result+"Exception ");
+			  response.getWriter().write(json);
+
 			  return;
 		  }
 		  
 		  if(gameid.equals("") || gameid==null) {
+
 			  System.out.println("gaemId");
 			  response.sendRedirect("/home");
+
+			  
+			  result.put("ok","no");
+			  result.put("url","http://localhost:8080/home");
+			  json=gson.toJson(result);
+		      System.out.println(result+" no game id");
+			  response.getWriter().write(json);
 			  return;
 			  
 		  }
