@@ -494,14 +494,7 @@
 	
 	<!--  Winner servlet -->
 	
-	<servlet-mapping>
-  		<servlet-name>Score</servlet-name>
-  		<url-pattern>/ajax/addscore</url-pattern>	
-  	</servlet-mapping>
-	<servlet>
-		<servlet-name>Score</servlet-name>
-		<servlet-class>Ajax.AddScore</servlet-class>
-	</servlet>
+
 	
     <servlet-mapping>
   		<servlet-name>Winner_jsp</servlet-name>
