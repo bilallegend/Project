@@ -30,14 +30,17 @@ button {
     font:18px cursive
 }
  #ma >h2+div {
-     width:40%;
-     margin:auto;
+     text-align:center;
      background:transparent;
      border-radius:0px
  }
+ #pri {
+     margin-left:14px
+ }
 main{
-	width:60%;
-	height: 620px;
+	width:770px;
+	height: 617px;
+	overflow:hidden;
     background: url("../Images/playbac.jpg");
 	background-size: cover;
 	margin: auto 0;
@@ -73,17 +76,31 @@ header+div {
  }
 header+div>div {
  width:50%;
- height:100%
+}
+#di::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 20px;
+	background-color:#fff
+}
+#di::-webkit-scrollbar
+{
+	width: 8px
+}
+#di::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #E6C389
 }
 header+div>div:nth-child(1),header+div>div:nth-child(2) {
     background: rgba(63, 24, 7, 0.47);
-    height:95%;
-	border: 3px solid #1F0100;
+    border: 3px solid #1F0100;
 	border-radius: 6px 
 }
 header+div>div:nth-child(2) {
      background: rgba(63, 24, 7, 0.26);
-     border-left:none;
+     border-left:none
 }
 header+div>div:nth-child(1)>header{
     color: #fff;
@@ -93,18 +110,13 @@ header+div>div:nth-child(1)>header{
 }
 header+div>div:nth-child(1)>header+div {
     width:100%;
-    height:88.4%;
     margin:0px;
     overflow:auto;
     display:block
 }
-#di-scrollbar-y,#di-scrollbar-y-rail{
-    width:0px;
-}
 #di>div {
     width: 100%;
-    height: 74px;
-    padding-left: 25px;
+    padding:4px 0 11px  25px;
     display:flex;
     box-sizing: border-box;
     background: transparent;
@@ -116,15 +128,16 @@ header+div>div:nth-child(1)>header+div {
     height:60px;
     margin-top:5px;
     border-radius:50%;
-    background:#fff;
-    background-size:cover
+    background:#fff
 }
 #di>div>div:nth-child(2){
-    width:50%;
-    height:100%
+     height:100%
 }
 #di>div>div:nth-child(2)>p:first-child{
-    padding-top:10px
+    padding-top:10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap
 }
 #di>div>div:nth-child(2)>p{
     margin:0px;
@@ -139,12 +152,6 @@ header+div>div:nth-child(1)>header+div {
 {
     color: sandybrown
 }
- #di::-webkit-scrollbar{
-     width:0px
-}
-/* #di::-moz-scrollbar{*/
-/*     width:0px*/
-/*}*/
 header+div>div:nth-child(2)>h2 {
      font-family: cursive;
      color: moccasin
@@ -166,12 +173,12 @@ header+div>div:nth-child(2)>h2+div>div {
 }
 .req{
     background: #E6C389;
-    width: 100px;
-    height: 30px;
-    font-size: 17px;
+    width: 85px;
+    height: 28px;
+    font-size: 13px;
     color: #552B11;
     border-radius: 5px;
-    margin-top:20px;
+    margin: 20px 0 0 20px;
     letter-spacing: 1px
 }
 /*-----------------------------------------------------Notification Icon-------------------------------------------------------------------*/ 
@@ -243,3 +250,73 @@ header+div>div:nth-child(2)>h2+div>div {
  .no {
     background: #FF0000
  }
+ .d {
+     display:none;
+     margin-top: 5px
+ }
+ /*---------------------------------------Responsive Part---------------------------------------*/
+ @media screen and (max-width:825px){
+     #ma {
+         display:none
+     }
+ }
+ @media screen and (max-width:720px){
+     .d {
+         display:block
+     }
+     .bt {
+         display:none
+     }
+}
+@media screen and (max-width:640px){
+    .noti-div {
+        left:20%
+    }
+}
+@media screen and (max-width:550px){
+    main>header {
+        width:300px
+    }
+  header+div>div:nth-child(2)>h2 {
+       font-size:20px
+   }
+    .pr+p,#pro>div>div:nth-child(2)>p, .tot {
+        font:13px 'Arima Madurai', cursive
+    }
+    th {
+        font:bold 11px 'Arima Madurai', cursive
+    }
+    td>p {
+        line-height: 22px;
+        font-size: 11px
+    }
+ header+div>div:nth-child(2)>h2+div {
+      width:120px;
+      height:120px
+  }
+  header+div>div:nth-child(2)>h2+div>div {
+      width:85px;
+      height:85px
+  }
+  header+div>div:nth-child(1)>header,#di>div>div:nth-child(2)>p {
+      font-size:12px
+  }
+  
+}
+@media screen and (max-width:450px){
+    .noti-div {
+        width:355px;
+        left:10%
+    }
+    .d {
+        width: 65px;
+        height: 22px;
+        font-size:11px;
+    }
+    .insi {
+        width:83%
+    }
+   #di::-webkit-scrollbar{
+        width:0
+    }
+}

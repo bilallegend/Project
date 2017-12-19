@@ -31,6 +31,10 @@ public class Signup extends HttpServlet{
 			      Gson gson = new GsonBuilder().setPrettyPrinting()
 		                    .create();
 			      String json ="";
+			      String cookie=Cooky.getCookieValue("gc_account", request.getCookies());
+			      System.out.println(cookie);
+			      
+			      if(cookie==null) {
 			      
 			      if(name&&phone&&pass&&conpass) {
 						
@@ -107,7 +111,10 @@ public class Signup extends HttpServlet{
 			  			}
 						response.getWriter().write(json);
 			      }
-			      
+			}  
+			      else {
+			    	  result.put("status", "Invalid signup");
+			      }
 		}
 	}
 

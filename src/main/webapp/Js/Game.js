@@ -70,6 +70,7 @@ $.post("/ajax/checkingplayers",{},function(data,status){
     			$("#whi").css('color','white')
     		}
     		timeout();
+    		colorChange(obj.black,obj.white);
     		gameid=obj.gameid;
     		$(".oth").text(obj.gameid);
     		connection();

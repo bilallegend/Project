@@ -33,7 +33,7 @@
 	           	
 	            </div>
 	        </div>
-	        <div style=" text-align:center">
+	        <div id="d" style=" text-align:center">
 	             <h2>PROFILE INFO</h2>
 	              <div>
                     <div id="pro"></div>

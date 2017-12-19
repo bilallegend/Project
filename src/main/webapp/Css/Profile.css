@@ -18,20 +18,21 @@ p {
     background: url(https://www.stockvault.net/data/2017/02/03/222197/preview16.jpg);
     background-size: cover;
     display:flex;
+    overflow:auto;
   }
-h2+div ,#pro>div{
+.pr ,#pro>div{
     display:flex;
     margin:auto
 }
 #pro>div {
     width:650px;
-    height:500px;
+    height:640px;
     text-align: center;
     color: #fff;
   }
 #pro>div>div {
     width:50%;
-    height:500px;
+    height:640px;
     background: rgba(83, 43, 19, 0.79)
 }
 #pro>div>div:nth-child(2){
@@ -41,20 +42,20 @@ h2+div ,#pro>div{
     font-family: cursive;
     padding-top: 50px
 }
-h2+div {
+.pr {
     width: 200px;
     height: 200px;
     background: rgba(18, 148, 136, 0.53);
     border-radius: 50%;
    }
-  h2+div>div {
+  .pr>div {
     width: 130px;
     height: 130px;
     margin: auto;
     border-radius: 50%;
     border: 5px solid rgba(29, 181, 169, 0.99)
   }
-h2+div+p {
+.pr+p {
      font: 20px 'Arima Madurai', cursive;
     color: rgba(250, 235, 215, 0.84)
 }
@@ -77,4 +78,33 @@ td>p {
     height: 22px;
     padding-top: 5px;
     margin: 10px auto
+}
+td>p,.tot {
+    color:#fff
+}
+@media screen and (max-width:450px){
+   #pro>div>div:nth-child(1) >h2 {
+       font-size:20px
+   }
+    .pr+p,#pro>div>div:nth-child(2)>p, .tot {
+        font:13px 'Arima Madurai', cursive
+    }
+    th {
+        font:bold 11px 'Arima Madurai', cursive
+    }
+    td>p {
+        line-height: 22px;
+        font-size: 11px
+    }
+ .pr {
+      width:120px;
+      height:120px
+  }
+  .pr>div {
+      width:85px;
+      height:85px
+  }
+  #pro>div,#pro>div>div {
+      height:450px
+  }
 }
