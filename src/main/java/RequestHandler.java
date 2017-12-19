@@ -66,7 +66,7 @@ public class RequestHandler extends HttpServlet{
 		} catch (SQLException e) {
 
 		}
-		System.out.println("pic "+pic);
+		//println("pic "+pic);
 		HashMap<String,ArrayList<String>> MultiTabs = (HashMap<String, ArrayList<String>>) context.getAttribute("MultiTabs");
 		reqInfo.put(name, values);//setting reqInfo {requestername:[requestersocketId,recivername]}
 		Map<String,String> messageData = new HashMap<String, String>();
@@ -90,7 +90,7 @@ public class RequestHandler extends HttpServlet{
 				"   </div>"	);
 		String receivername =values[1];
 		ArrayList<String> receivingSockets= MultiTabs.get(receivername);
-		System.out.println(receivingSockets);
+		//println(receivingSockets);
 		for(String socketId : receivingSockets) {
 			Result result =
 			        PusherService.getDefaultInstance()
@@ -98,7 +98,7 @@ public class RequestHandler extends HttpServlet{
 			                "private-MyNotification-"+socketId,
 			                "GameReq", // name of event
 			                messageData);
-			System.out.println(result.getStatus()+"  for "+"private-MyNotification-"+socketId+"   ");
+			//println(result.getStatus()+"  for "+"private-MyNotification-"+socketId+"   ");
 			messageData.put("status", result.getStatus().name());
 			
 		}
