@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Reversi|Livetitle>
+    <link rel='icon' href=http://cdn.marketplaceimages.windowsphone.com/v8/images/befe2370-568e-4a98-84e4-2a64deb3d771?imageType=ws_icon_large'>
     <link rel="stylesheet" href="../Css/board.css" />
     <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,500" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

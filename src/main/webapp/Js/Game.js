@@ -97,7 +97,11 @@ $.post("/ajax/checkingplayers",{},function(data,status){
             if(a=="You"){ status=$("#whi").text(); }
             else{ status=$("#bla").text(); }
             
-            if(status=="Playing"&&time>0){ $("#ti").text(time+""); }
+            if(status=="Playing"&&time>0){ 
+            	$("#ti").text(time+"");
+            	$("#sec").text("Secs");
+            	$("#re").text("Remaining for your turn");
+            }
             else{
             	$("#ti").text("");
             	$("#sec").text("");
@@ -435,20 +439,17 @@ $.post("/ajax/checkingplayers",{},function(data,status){
             
             }
             win();
-//            location.href="http://localhost:8080/home/winner"; 
+
          
         }
 
         if(white.length==0){
         	 win();
-//        	 location.href="http://localhost:8080/home/winner";
+
       }        
         if(black.length==0){
-        	 //("White won the match");
-//        	 location.href="http://localhost:8080/winner";
-        	 win();
 
-//        	 location.href="http://localhost:8080/home/winner";
+        	 win();
         }
        
      }
@@ -464,6 +465,6 @@ $.post("/ajax/checkingplayers",{},function(data,status){
     	
     }
       
-    	 });
+ });
     
     

@@ -150,10 +150,10 @@ public class PrivacyHandler extends HttpServlet{
 		    }
 		  String img="";
 		  if(image==null) {
-			   img="style=\"background-image: url('../Images/pr.png')\">";
+			   img="style=\"background-image: url('../Images/pr.png');background-size:cover\">";
 		  }
 		  else {
-			  img="style=\"background-image: url('"+image+"')\">";
+			  img="style=\"background-image: url('"+image+"');background-size:cover\">";
 		  }
 		  
 		  return "<div id='"+id+"' name='req'>"

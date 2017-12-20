@@ -10,6 +10,18 @@
     	setTimeout(function () {
     		$("#gif-div").css("display", "block");
     	}, 4820);
+    	
+    	
+    	$("#instr").click(function(){
+            $(".who").css({"display":"inline-flex"}); 
+            $("#menu").css("display","none");
+            $(".whole").css("filter","blur(3px)");
+        });
+    	$("#thi-clo").click(function () {
+   	     $(".whole").css("filter","blur(0px)");
+   	    $(".who").css("display","none");
+   	});
+    	
     	// /------------------------------------------ like div --------------------------------------------------------------/
     	$(".like").click(function () {
     		alert("hi");

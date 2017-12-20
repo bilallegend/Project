@@ -151,7 +151,7 @@
 			</div>
 			<div>
 
-				<p><a>INSTRUCTIONS</a>
+				<p><a id="instr">INSTRUCTIONS</a>
 				</p>
 			</div>
 			<div class="exit">
@@ -200,7 +200,7 @@
                 while at least one oponent piece is completely surrounded and becomes your piece.</h4>
                 <h4>You cannot move without Caputuring oponent pieces.</h4>
                 <h4>when both players cannot move, the ggame ends. the player with the most pieces turned to his corresponding color wins.</h4>
-                <a><h1>start</h1></a>
+                
             </div>
         </div>
                                                     <!--EDIT PROFILE DIV-->

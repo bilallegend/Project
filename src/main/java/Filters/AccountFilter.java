@@ -34,14 +34,18 @@ public class AccountFilter implements Filter{
 		String value =Cooky.getCookieValue("gc_account",req.getCookies());
 		String name = Cooky.getContextName("gc_account",req.getCookies(),"cookie", req);
 		System.out.println(req.getRequestURI());
-			if(value == null || value=="null"||value == "" || name==null && !req.getRequestURI().equals("/ajax/getReplays")&&!req.getRequestURI().equals("/ajax/getLive")) {
+		
+		if( !req.getRequestURI().equals("/ajax/getReplays")&& !req.getRequestURI().equals("/ajax/getVideo")) {
+			if(value == null || value=="null"||value == "" || name==null) {
 				System.out.println("FIlter rediecting" );
 				resp.sendRedirect(Redirecter.giveUrlFor(req,"/home"));
 			}else {
 				chain.doFilter(request, response);
 			}
-		
-		
+		}else{
+			chain.doFilter(request, response);
+		}
+			
 	}
 
 	@Override

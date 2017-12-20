@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Othello</title>
+    <title>Landing page</title>
     <link rel="stylesheet" href="../Css/Firstpage.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="../Js/jquery.js" ></script>
+    <link rel='icon' href=http://cdn.marketplaceimages.windowsphone.com/v8/images/befe2370-568e-4a98-84e4-2a64deb3d771?imageType=ws_icon_large'>
     <link href="https://fonts.googleapis.com/css?family=UnifrakturCook:700|UnifrakturMaguntia" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 </head>
