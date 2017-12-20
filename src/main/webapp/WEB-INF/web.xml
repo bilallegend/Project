@@ -29,6 +29,8 @@
     <url-pattern>/home/onlineMembers</url-pattern>
     <url-pattern>/home/play</url-pattern>
     <url-pattern>/home/winner</url-pattern>
+    <url-pattern>/home/MyInfo</url-pattern>
+    
 </filter-mapping>
 
 

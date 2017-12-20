@@ -106,6 +106,7 @@ private Gson gson = new GsonBuilder().create();
 				 a[0]=cookies.get(0);
 				 a[1]=cookies.get(1);
 				 a[2]=d.get(Cooky.getCookieValue("gc_account",request.getCookies()))[2];
+				 System.out.println(a[2]+"  privacy");
 				 pd.put("game_"+(count+1), a);
 				 
 				 HashMap<String,HashMap<String,ArrayList<String>>> pd1=(HashMap<String,HashMap<String,ArrayList<String>>>) context.getAttribute("PlayDetails");

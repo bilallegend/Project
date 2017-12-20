@@ -12,7 +12,11 @@ $(document).ready(function(){
         authEndpoint: '/auth/live',
         encrypted: true
 	});
-	var channel =pusher.subscribe('presence-live');
+	
+	var channel ;
+	
+	
+	
 	var channelname= 'presence-live';
 		
 	
@@ -48,6 +52,7 @@ $(document).ready(function(){
 		
 		
 		if(data.indexOf("<!DOCTYPE")==-1){
+			con();
 		var obj=JSON.parse(data);
 	  
 		if(obj.mail!=""&&obj.name!=""){
@@ -164,25 +169,7 @@ $(document).ready(function(){
 			            }
 			            
 			            if(resultobj.status=="200"){
-			            $("#signin").css({
-			    			"transform": "scale(0,0)",
-			    			"transition": "1.5s"
-			    		});
-			    		setTimeout(function () {
-			    		    $(".whole").css("filter","blur(0px)");
-			    			$("#menu").css({
-			    				"transform": "scale(1,1)",
-			    				"transition": "1s"
-			    			});
-			    			$("#sgnup").css("display", "none");
-			    			$("#sig").css("display", "none");
-			    			$(".profil").css("display", "block");
-			    			$(".menu").css("display", "block");
-			    		}, 700);
-			    		$("#name").text(resultobj.name);
-		        		$("#mail").text(resultobj.mail);
-		        		document.getElementById("img").style.backgroundImage = "url('"+resultobj.photo+"')";
-		        		document.getElementById("img1").style.backgroundImage = "url('"+resultobj.photo+"')";
+			            	location.href="/home";
 			        }
 			        });
 	});
@@ -335,60 +322,74 @@ $(document).ready(function(){
 //	                    $('#feedsFlow').append(msg.html);
 	                }, "json");
 	});
-	
-	pusher.connection.bind('connected', function () {
-		socket_id = pusher.connection.socket_id;
-		
-		function post(data,url){
-			$.post(url, data,
-	                function (msg) {
-	            		console.log(msg)
-	            		view(msg)
-//	                    $('#feedsFlow').append(msg.html);
-	                }, "json");
+	var subscribe=false;
+
+	$('button[name=toWatch]').click(function(){
+		let html = $(this).html();
+		$("#feedsFlow").html("");
+		$('button[name=toWatch]').removeClass('hover');
+		$(this).addClass('hover');
+		var data = JSON.stringify({
+        });
+		if(html=='Live' && subscribe==false){
+			$('#di').html('Signup or signin to Watch live');
+			return;
 		}
-		
-		
-		$('button[name=toWatch]').click(function(){
-			let html = $(this).html();
-			$('button[name=toWatch]').removeClass('hover');
-			$(this).addClass('hover');
-			var data = JSON.stringify({
-            });
-			post(data,'/ajax/get'+html);
-			 
-	                console.log(data);
-	            // trigger a server-side endpoint to send the message via Pusher
-	            
-		});
-		 channel.bind('pusher:subscription_succeeded', function (t) {
-			 console.log('pusher:subscription_succeeded');	 
-		 });
-		
-		 function view(data){
-			 let source = $("#feeds-template").html(); 
-				let template = Handlebars.compile(source);
-				$('#feedsFlow').append(template(data));
-		            
-		 }
+		post(data,'/ajax/get'+html);
 		 
-		 channel.bind('pusher:member_added', function (member){
-			 
-		 });
-		 
-		 
-		 channel.bind('pusher:member_removed', function (member) {
-			 console.log("member");
-			 console.log(member);
-			 
-		 });
-		 
-		 channel.bind('PlayLive',function(data){
-			 view(data)
-			 
-		 });
-		 
+                console.log(data);
+            // trigger a server-side endpoint to send the message via Pusher
+            
 	});
+	function post(data,url){
+		$.post(url, data,
+                function (msg) {
+            		console.log(msg)
+            		view(msg)
+//                    $('#feedsFlow').append(msg.html);
+                }, "json");
+	}
+	 
+	 function view(data){
+		 let source = $("#feeds-template").html(); 
+			let template = Handlebars.compile(source);
+			$('#feedsFlow').append(template(data));
+	            
+	 }
+	var con=function(){
+		channel =pusher.subscribe('presence-live');
+		pusher.connection.bind('connected', function () {
+			socket_id = pusher.connection.socket_id;
+			
+			 channel.bind('pusher:subscription_succeeded', function (t) {
+				 console.log('pusher:subscription_succeeded');	 
+				 subscribe=true;
+			 });
+	
+			 channel.bind('pusher:subscription_error',function(member){
+				 console.log("pusher:subscription_error");
+				 subscribe=false;
+				
+			 });
+			 channel.bind('pusher:member_added', function (member){
+				 
+			 });
+			 
+			 
+			 channel.bind('pusher:member_removed', function (member) {
+				 console.log("member");
+				 console.log(member);
+				 
+			 });
+			 
+			 channel.bind('PlayLive',function(data){
+				 view(data)
+				 
+			 });
+			 
+		});
+	}
+
 	
 });
 

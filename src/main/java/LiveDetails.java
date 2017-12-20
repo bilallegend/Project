@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,26 +31,37 @@ public class LiveDetails extends HttpServlet {
 		    String json = body.replaceFirst("^\\[", "").replaceFirst("\\]$", "");
 		    Map<String, String> data = gson.fromJson(json, typeReference.getType());
 		    String gameid = data.get("game_id");
+		    System.out.println(gameid);
 		    ServletContext context = request.getSession().getServletContext();
 		    HashMap<String,String> feedsDivId = (HashMap<String, String>) context.getAttribute("feedsDivId");
 		    HashMap<String,String[]> GameIdCookies = (HashMap<String,String[]>) context.getAttribute("GameIds");
-		    Map<String, String> messageData = new HashMap<>();
+		    Map<String, Object> messageData = new HashMap<String, Object>();
+		    System.out.println(GameIdCookies.containsKey(gameid)); System.out.println(feedsDivId.containsValue(gameid));
 		    try {
 		    	if(GameIdCookies.containsKey(gameid) && feedsDivId.containsValue(gameid)) {
 			    	String[] cookies = GameIdCookies.get(gameid);
 			    	HashMap<String,HashMap<String,ArrayList<String>>>  play = (HashMap<String, HashMap<String, ArrayList<String>>>) context.getAttribute("PlayDetails"); 
 			    	HashMap<String,String[]> DivMap = Cooky.getContextValue("DivMap", request); 
+			    	System.out.println(play);
+			    	System.out.println(DivMap);
+			    	System.out.println(Arrays.toString(cookies));
 			    	for(String cookie : cookies) {
-			    		String color = play.get(cookie).get("color").get(0);
-			    		String name = DivMap.get(cookie)[3];
-			    		messageData.put(color, name);
-			    		messageData.put(name,play.get(cookie).get("status").get(0));
+			    		if(!cookie.contains("p")) {
+				    		System.out.println(cookie);
+				    		String color = play.get(cookie).get("color").get(0);
+				    		System.out.println(color);
+				    		String name = DivMap.get(cookie)[3];
+				    		messageData.put(color, name);
+				    		messageData.put(color+"coins",play.get(cookie).get("color"));
+				    		messageData.put(name,play.get(cookie).get("status").get(0));
+			    		}
 			    	}
 			    	//Exception if play details does not contains cookie	
 			    }else {
 			    	throw new Exception();
 			    }
 		    }catch(Exception e){
+		    	e.printStackTrace();
 		    	messageData.put("alert","No proper user");
 		    }
 	    	response.getWriter().println(gson.toJson(messageData));

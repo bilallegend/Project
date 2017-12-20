@@ -19,10 +19,12 @@ $(document).ready(function(){
 				if(data.alert!=undefined){
 					alert(data.alert);
 				}else{
+					ColorChange(data.Blackcoins,data.Whitecoins);
 					$('#black').html(''+data.Black);
 					$('#bla').html(''+data[data.Black]);
 					$('#whi').html(''+data[data.White]);
 					$('#white').html(''+data.White);
+					 
 				}				
 			},'json');
 		});
