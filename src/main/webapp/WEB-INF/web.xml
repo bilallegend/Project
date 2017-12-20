@@ -36,7 +36,7 @@
 
   <servlet>
     <servlet-name>chat</servlet-name>
-    <servlet-class>com.example.appengine.pusher.ChatServlet</servlet-class>
+     <jsp-file>/Jsp/Register.jsp</jsp-file>
   </servlet>
   <servlet>
     <servlet-name>authorize</servlet-name>
