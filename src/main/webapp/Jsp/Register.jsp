@@ -206,6 +206,7 @@
                                                     <!--EDIT PROFILE DIV-->
          <div class="edit1">
              <p class="cha-pas">PERSONAL INFORMATION</p>
+              <p id="off" style="float:right;cursor:pointer">close</p>
               <form  id='data1' action="<%=url %>" method="post" enctype="multipart/form-data">
              <div class="co wi" id="ephoto">
 					<label id="contanier" class="hi">
@@ -221,23 +222,23 @@
 							<img src="../Images/profile.png" class="ima" />
 						</div>
 					</div>
-					<input type="text" id="ename" class="in" />
+					<input type="text" id="ename" class="in" disabled />
 				</div>
-				<p id="na">username should have atleast 6 should not have special characters</p>
+				<p id="na" class="e">username should have atleast 6 should not have special characters</p>
 				<label class="pad-top pad-lef">Email</label>
 				<div class="dv mar-lef">
 					<div class="im"><i class="fa fa-envelope-o" aria-hidden="true"></i>
 					</div>
 					<input type="text" id="email" class="in" />
 				</div>
-				<p id="mai">Inavalid mail</p>
+				<p id="mai" class="e">Inavalid mail</p>
 				<label class="pad-top pad-lef">Mobile Number</label>
 				<div class="dv mar-lef">
 					<div class="im"> <i class="fa fa-mobile" aria-hidden="true" id="ph"></i>
 					</div>
 					<input type="text/number" id="enumber" class="in" maxlength="10" />
 				</div>
-				<p id="no">Invalid mobilenumber</p>
+				<p id="no" class="e">Invalid mobilenumber</p>
 				<input type="submit" value="Change" class="sub" id="editprofile" />
 			</div>
          </div>

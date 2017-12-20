@@ -25,9 +25,11 @@ public class Signup extends HttpServlet{
 		 boolean pass=Pattern.compile("[A-Za-z0-9_-]{6,10}$").matcher(request.getParameter("pass")).matches();
 		 boolean conpass=request.getParameter("pass").equals(request.getParameter("confirm"));
 		 boolean check[]= {name,pass,conpass,phone};
-		 if(request.getParameter("name").contains(" ")) {
-			 name=false;
-		 }
+		
+			      System.out.println(name);
+			      System.out.println(phone);
+			      System.out.println(pass);
+			      System.out.println(conpass);
 			      
 			      HashMap<String,String> result= new  HashMap<String,String>(); 
 			      Gson gson = new GsonBuilder().setPrettyPrinting()
@@ -36,7 +38,7 @@ public class Signup extends HttpServlet{
 			      String cookie=Cooky.getCookieValue("gc_account", request.getCookies());
 			      System.out.println(cookie);
 			      
-			      if(cookie==null) {
+			   
 			      
 			      if(name&&phone&&pass&&conpass) {
 						
@@ -45,6 +47,7 @@ public class Signup extends HttpServlet{
 					
 			      
 				  String res=psql.insert(conn, "player_info", "username,email_id,password,number", "'"+request.getParameter("name")+"','"+request.getParameter("email")+"','"+request.getParameter("pass")+"',"+request.getParameter("num"));
+				  System.out.println(res);
 				  if(res.equals("Signup Successfull")) {
 				  CookieCreator one = new CookieCreator();
                   one.createContext("gc_account", request.getParameter("name"),request,response);
@@ -113,10 +116,8 @@ public class Signup extends HttpServlet{
 			  			}
 						response.getWriter().write(json);
 			      }
-			}  
-			      else {
-			    	  result.put("status", "Invalid signup");
-			      }
+		  
+			   
 		}
 	}
 

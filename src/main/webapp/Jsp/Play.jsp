@@ -40,8 +40,8 @@
 	              <div>
                     <div id="pro"></div>
                  </div>
-                <p id="name">Muthumari</p>
-                <p class="tot">Total Match:</p>
+                <p id="name" style="color:white">Muthumari</p>
+                <p class="tot1" style="color:white" >Total Match:</p>
                         <p class="tot">5</p>
                         <table>
                             <tr>

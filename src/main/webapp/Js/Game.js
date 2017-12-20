@@ -25,9 +25,9 @@
 	var watching_channelname;
 
  $(document).ready(function () {
-    	
-    	//Onload Checking
-$.post("/ajax/checkingplayers",{},function(data,status){
+	 
+	
+       $.post("/ajax/checkingplayers",{},function(data,status){
     		
     		// console.log(data);
    		    var obj=JSON.parse(data);
@@ -71,6 +71,7 @@ $.post("/ajax/checkingplayers",{},function(data,status){
     		}
     		timeout();
     		colorChange(obj.black,obj.white);
+    	
     		gameid=obj.gameid;
     		$(".oth").text(obj.gameid);
     		connection();
@@ -189,7 +190,7 @@ $.post("/ajax/checkingplayers",{},function(data,status){
      			console.log('pusher:member_removed',member); 
      			$('.ale').html('Sorry ! User exited the game ....!');
      			$('.ale').css('visibility','visible');
-     			setTimeout(win(),700);
+     			setTimeout(win(),1000);
      		 });
     		 
     		 

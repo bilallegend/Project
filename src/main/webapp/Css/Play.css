@@ -280,8 +280,9 @@ header+div>div:nth-child(2)>h2+div>div {
   header+div>div:nth-child(2)>h2 {
        font-size:20px
    }
-    .pr+p,#pro>div>div:nth-child(2)>p, .tot {
-        font:13px 'Arima Madurai', cursive
+    .pr+p,#pro>div>div:nth-child(2)>p, .tot,.tot1 {
+        font:13px 'Arima Madurai', cursive;
+        color:white
     }
     th {
         font:bold 11px 'Arima Madurai', cursive

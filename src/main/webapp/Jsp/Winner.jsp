@@ -26,7 +26,7 @@
 							<li>
 								<div id="loser"></div>
 							</li>
-							<li id="losername">MANUAL ROBBINS</li>
+							<li id="losername"></li>
 							<li>
 								<img src="../Images/star1.png">
 								<div id="loserscore"></div>
@@ -38,10 +38,11 @@
 								</div>
 							</li>
 						</ul>
-						<p>Opponent's Result</p>
+						
 					</div>
 					<div>
 						<div id="winner"></div>
+						<p id="winnername"></p>
 					</div>
 					<div>
 						<li style="float:left">

@@ -21,11 +21,20 @@ public class SignOut extends HttpServlet {
 		 HashMap<String,String> c= (HashMap<String,String>)context.getAttribute("cookie");
 		 String name=c.get(cookie);
 		 HashMap<String,String[]> divmap= (HashMap<String,String[]>)context.getAttribute("DivMap");
-		 divmap.remove(cookie);
+
 		 HashMap<String, ArrayList<String>> multitab=(HashMap<String, ArrayList<String>>)context.getAttribute("MultiTabs");
 		 HashMap<String,String> NameIdMap = (HashMap<String, String>) context.getAttribute("NameIdMap");
+		 try {
+		 divmap.remove(cookie);
+		
 		 NameIdMap.remove(name);
+		
 		 multitab.remove(name);
+		 }
+		 catch(Exception e) {
+			 System.out.println(e);
+		 }
+	
 		 c.remove(cookie);
 		 context.setAttribute("cookie",c);
 		 for(Cookie cookie1 : request.getCookies()) {
