@@ -57,7 +57,8 @@ public class Feeds extends HttpServlet{
 	    	
 	    	ArrayList<HashMap<String,String>> LivePlayList = new ArrayList<HashMap<String,String>>();
 	    	for(String gameId : GameIds) {
-	    		if(GameIdCookies.get(gameId)[2].equals("Public")) {
+	    		System.out.println(GameIdCookies.get(gameId)[2]);
+	    		if(GameIdCookies.get(gameId)[2].equals("public")) {
 		    		if(!feedsDivId.values().contains(gameId)) {
 		    			HashMap<String,String> gamedetails=new HashMap<String,String>();
 			    		String randomNum = getRandomNumber(feedsDivId);

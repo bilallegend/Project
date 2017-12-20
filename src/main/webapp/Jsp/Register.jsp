@@ -31,11 +31,11 @@
 				    <div class='feedvideo'></div>  
 				    <div class='likediv'>  
 				        <i class=fa fa-heart like aria-hidden=true></i>  
-				        <span id='likes'>{{likes}}</span>  
-				        <span class=sec-spn>Likes</span>  
+				        <span id='likes'></span>  
+				        <span class=sec-spn></span>  
 				    </div>  
 				    <div class='viewdiv'>  
-				         <span id='views'>{{views}}</span>  
+				         <span id='views'></span>  
 				         <i class=fa fa-eye aria-hidden=true></i>  
 				    </div>  
 				</div>
