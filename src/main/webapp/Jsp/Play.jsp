@@ -11,6 +11,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
+<div class='ale'>
+</div>
     <div id="ma">
         <h2>Visibility</h2>
      <div>   

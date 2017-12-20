@@ -95,6 +95,12 @@ $(document).ready(function(){
             
         });
         
+        channel.bind('pusher:subscription_error', function (t) {
+        	$('.ale').css('visibility','visible');
+        	$('.ale').html('Connections list full .. please try again');
+        	setTimeout(function(){location.href='/home'},1000)
+        });
+        
         
      // presence channel receive events when members are added / removed
         channel.bind('pusher:member_added', function (member) {
@@ -103,7 +109,6 @@ $(document).ready(function(){
         });
         channel.bind('pusher:member_removed', function (member) {
         	console.log(" pusher:member_removed ");
-        	alert('hi');
         	var data=JSON.stringify({
             	id:member.id,
             	channel_id: 'presence-online-room',

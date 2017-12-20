@@ -21,7 +21,9 @@ public class RoomChecker extends HttpServlet{
 		ServletContext context = req.getSession().getServletContext();
 		HashMap<String,String[]> GameIds = (HashMap<String, String[]>) context.getAttribute("GameIds");
 		String cookievalue = Cooky.getCookieValue("gc_account",req.getCookies());
-		if(GameIds != null && GameIds.containsValue(cookievalue)) {
+		HashMap<String,Object> playdetails = (HashMap<String, Object>) context.getAttribute("PlayDetails");
+		
+		if(GameIds != null && playdetails.containsKey(cookievalue)) {
 			getServletContext().getRequestDispatcher("/home").forward(req, resp);
 			return;
 		}

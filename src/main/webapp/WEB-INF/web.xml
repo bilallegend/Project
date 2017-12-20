@@ -549,4 +549,13 @@
 		<servlet-class>OnlineRemover</servlet-class>
 	</servlet>
 	
+	<servlet-mapping>
+  		<servlet-name>MemberRemoveChecker</servlet-name>
+  		<url-pattern>/ajax/memberRemove</url-pattern>	
+  	</servlet-mapping>
+	<servlet>
+		<servlet-name>MemberRemoveChecker</servlet-name>
+		<servlet-class>MemberRemoveChecker</servlet-class>
+	</servlet>
+	
 </web-app>

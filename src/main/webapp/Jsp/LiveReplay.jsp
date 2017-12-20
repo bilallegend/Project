@@ -11,6 +11,7 @@
 </head>
 <body>
     <div class="whole-div">
+    <div class='ale'></div>
         <div class="boardback">
 		    <div class="boradinrdiv">
 			    <div class="inrdiv"></div>
@@ -22,15 +23,15 @@
              <div>
                  <div class="prf"></div>
                  <div>
-                     <p class="pla" id="black">Anulakshmi</p>
-                     <p class=" pla play" id="bla">Playing</p>
+                     <p class="pla" id="black"></p>
+                     <p class=" pla play" id="bla"></p>
                  </div>
              </div>
              <div class="top">
                  <div class="prf"></div>
                  <div>
-                     <p class="pla" id="white">Anulakshmi</p>
-                     <p class=" pla play colo" id="whi">Playing</p>
+                     <p class="pla" id="white"></p>
+                     <p class=" pla play colo" id="whi"></p>
                  </div>
              </div>
          </div>
@@ -40,14 +41,14 @@
                 <div class="gete one coin1"></div>
                  <div>
                    <span class="int">X</span>  
-                    <span class="int pad" id='countBlack'>20</span>  
+                    <span class="int pad" id='countBlack'></span>  
                  </div>
              </div>
              <div class="top">
                  <div class="gete one coin"></div>
                  <div>
                    <span class="int colo">X</span>   
-                    <span class="int colo pad" id='countWhite'>20</span>  
+                    <span class="int colo pad" id='countWhite'></span>  
                  </div>
              </div>
          </div>
