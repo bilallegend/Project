@@ -33,8 +33,37 @@ public class ReplaysMovesGiver  extends HttpServlet{
 			ResultSet MoveTimeResultSet = MyDB.selectCondition(connection,"game_info","whitearray,blackarray,time",id,"game_id");
 			ResultSet gamelistResultSet = MyDB.selectCondition(connection,"game_list","firstmove",id,"game_id");
 			String firstmove=null;
-	
+	        int view=0;
+		
+			try{
+			    Statement stmt = connection.createStatement();
+				String Query="select views from game_list where game_id="+Integer.parseInt(id)+";";
+				System.out.println(Query);
+				ResultSet data_table=stmt.executeQuery(Query);
+				
+				while(data_table.next()) {
+					
+					view+=data_table.getInt("views");
+					
+				}
+			 }	
+			    catch (SQLException e) {
+	                System.out.println(e+"");
+              }
+			System.out.println(view);
+			System.out.println(id);
 			
+			try{
+			    Statement stmt = connection.createStatement();
+			    String Query="update game_list set views="+(view+1)+" where game_id="+id+";";
+			    System.out.println(Query);
+			    System.out.println(Query);
+				stmt.executeUpdate(Query);
+		    } catch (SQLException e) {
+		    	
+		        System.out.println(e+"");
+		    }
+		
 			
 			try {
 				while(gamelistResultSet.next()) {

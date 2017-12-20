@@ -53,7 +53,11 @@ public class AuthorizeUser extends HttpServlet{
 				    if(context.getAttribute("DivMap")==null) {
 				    	context.setAttribute("DivMap", new HashMap<String,String[]>());
 				    }
+				    
 				    DivMap = (HashMap<String, String[]>) context.getAttribute("DivMap");
+				    if(DivMap.size()>50) {
+				    	return;
+				    }
 				    if(context.getAttribute("MultiTabs")==null) {
 				    	context.setAttribute("MultiTabs", new HashMap<String,ArrayList<String>>());
 				    }

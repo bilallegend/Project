@@ -27,6 +27,8 @@ public class ShowResult extends HttpServlet {
 		  ServletContext context  =   request.getSession().getServletContext();
 		  HashMap<String,HashMap<String,ArrayList<String>>> playdetails= (HashMap<String,HashMap<String,ArrayList<String>>>) context.getAttribute("PlayDetails");
 		  String cookievalue=Cooky.getCookieValue("gc_account", request.getCookies());
+		  System.out.println(cookievalue);
+		  System.out.println(cookievalue==null);
 		  if(cookievalue==null) {
 			  response.sendRedirect("http://localhost:8080/home");
 		  }
@@ -78,15 +80,16 @@ public class ShowResult extends HttpServlet {
 			  String status="";
 			  int oppplayer=0;
 			  String oppstatus="";
+			  int count1=0;
 			  try{
 				    Statement stmt = conn.createStatement();
 				    String Query="select game_id,winner_id,player1_id,player2_id from game_list where player1_id='"+playerid+"' or player2_id='"+playerid+"'";
 					ResultSet data_table=stmt.executeQuery(Query);
 					
+					
 					while(data_table.next()) {
-						System.out.println(data_table.getInt("winner_id"));
-						System.out.println(playerid);
-						System.out.println((data_table.getInt("winner_id")+"").equals(playerid));
+					
+						
 						if(playerid==data_table.getInt("player1_id")) {
 							
 							oppplayer=data_table.getInt("player2_id");
@@ -111,7 +114,10 @@ public class ShowResult extends HttpServlet {
 			    	
 			        System.out.println(e+"");
 			    }
+			  HashMap<String,String> result=new HashMap<String,String>();
+			  System.out.println("count  "+count1);
 			  
+			 
 			  if(status.equals("winner")) {
 				  oppstatus="loser";
 			  }
@@ -140,12 +146,28 @@ public class ShowResult extends HttpServlet {
 			        System.out.println(e+"");
 			    }
 			  
+//			  if(playdetails==null) {
+//				  result.put("status","notok");
+//				  response.getWriter().println(gson.toJson(result));
+//				  return;
+//			  }
 			  
-			  
+			  try {
     		  playdetails.remove(cookievalue);
+			  }
+			  catch(Exception e){
+				  System.out.println(e+"");
+			  }
     		  HashMap<String,String[]> gameid=(HashMap<String,String[]>) context.getAttribute("GameIds");
     		  
     		  String id="";
+    		  
+    		  if(gameid==null) {
+    			  result.put("status", "notok");
+    			  response.getWriter().println(gson.toJson(result));
+    			  return;
+    			  
+    		  }
     		  
     		  for(String key:gameid.keySet()) {
     			  
@@ -183,7 +205,7 @@ public class ShowResult extends HttpServlet {
 		    			  String s=data_table.getString("score")+"";
 
 						
-						div+="<div class='scrdiv'><ul id='fir-ul'><li><div style=\"background-image: url('"+p+"');\"></div></li><li>"+n+"</li><li><img src='../Images/star1.png'><div>"+s+"</div></li><li><div><img src='../Images/cup.png'><div>"+w+"</div></div></li></ul></div><div class='scrdiv'>";
+						div+="<div class='scrdiv'><ul id='fir-ul'><li><div style=\"background-image: url('"+p+"');background-size:cover\"></div></li><li>"+n+"</li><li><img src='../Images/star1.png'><div>"+s+"</div></li><li><div><img src='../Images/cup.png'><div>"+w+"</div></div></li></ul></div><div class='scrdiv'>";
 						
 						
 					}
@@ -200,36 +222,8 @@ public class ShowResult extends HttpServlet {
 					e.printStackTrace();
 				}
 				
-//    		  for(int i=0;i<scores.size();i++) {
-//    			  for(int j=0;j<scores.size();j++) {
-//    				  
-//    				  if(scores.get(i)<scores.get(j)) {
-//    					  
-//    					  int temp=scores.get(i);
-//    					  String tempname=names.get(i);
-//    					  scores.set(i,scores.get(j));
-//    					  scores.set(j,temp);
-//    					  names.set(i,names.get(j));
-//    					  names.set(j,tempname);
-//    					  
-//    				  }
-//    			  }
-//    		  }
-//    		 
-//    		  String div="";
-//              
-//    		  for(int k=0;k<names.size();k++) {
-//    			  String p=scoredetails.get(names.get(k))[2];
-//    			  if(p==null) {
-//    				  p="../Images/pr.png";
-//    			  }
-//    			  String n=names.get(k);
-//    			  String w=scoredetails.get(names.get(k))[1];
-//    			  String s=scoredetails.get(names.get(k))[0];
-//    			  div+="<div class='scrdiv'><ul id='fir-ul'><li><div style=\"background-image: url('"+p+"');\"></div></li><li>"+n+"</li><li><img src='../Images/star1.png'><div>"+s+"</div></li><li><div><img src='../Images/cup.png'><div>"+w+"</div></div></li></ul></div><div class='scrdiv'>";
-//    		  }
     		  
-			  HashMap<String,String> result=new HashMap<String,String>();
+    		  result.put("status","ok");
 			  result.put("name", name);
 			  result.put("status",status);
 			  result.put("oppname",oppname);

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+   <title>Reversi|Play</title>
 	<style id="stndz-style">
 	div[class*="item-container-obpd"], 
 	a[data-redirect*="paid.outbrain.com"],
@@ -8,6 +9,7 @@
 	 div[data-item-syndicated="true"] { display: none !important; } 
 	 .grv_is_sponsored { display: none !important; }
 	  .zergnet-widget-related { display: none !important; } </style>
+	  <link rel='icon' href=http://cdn.marketplaceimages.windowsphone.com/v8/images/befe2370-568e-4a98-84e4-2a64deb3d771?imageType=ws_icon_large'>
     <link rel="stylesheet" href="../Css/board.css" />
     <link rel='icon' href='http://image.rakuten.co.jp/wood-l/cabinet/sa01/toi/sa-syoku-02-03-4.jpg'>
     <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,500" rel="stylesheet">

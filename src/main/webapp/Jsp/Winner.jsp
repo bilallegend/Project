@@ -2,6 +2,8 @@
 <html>
 
 <head>
+   <title>Reversi|Winner</title>
+   <link rel='icon' href=http://cdn.marketplaceimages.windowsphone.com/v8/images/befe2370-568e-4a98-84e4-2a64deb3d771?imageType=ws_icon_large'>
 	<link rel="stylesheet" href="../Css/Winner.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="../Js/winner.js"></script>
@@ -24,7 +26,7 @@
 							<li>
 								<div id="loser"></div>
 							</li>
-							<li id="losername">MANUAL ROBBINS</li>
+							<li id="losername"></li>
 							<li>
 								<img src="../Images/star1.png">
 								<div id="loserscore"></div>
@@ -36,10 +38,11 @@
 								</div>
 							</li>
 						</ul>
-						<p>Opponent's Result</p>
+						
 					</div>
 					<div>
 						<div id="winner"></div>
+						<p id="winnername"></p>
 					</div>
 					<div>
 						<li style="float:left">

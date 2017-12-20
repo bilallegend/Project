@@ -1,6 +1,7 @@
 package Ajax;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.ServletContext;
@@ -18,9 +19,24 @@ public class SignOut extends HttpServlet {
 		 String cookie=Cooky.getCookieValue("gc_account", request.getCookies());
 		 ServletContext context=request.getSession().getServletContext();
 		 HashMap<String,String> c= (HashMap<String,String>)context.getAttribute("cookie");
+		 String name=c.get(cookie);
+		 HashMap<String,String[]> divmap= (HashMap<String,String[]>)context.getAttribute("DivMap");
+
+		 HashMap<String, ArrayList<String>> multitab=(HashMap<String, ArrayList<String>>)context.getAttribute("MultiTabs");
+		 HashMap<String,String> NameIdMap = (HashMap<String, String>) context.getAttribute("NameIdMap");
+		 try {
+		 divmap.remove(cookie);
+		
+		 NameIdMap.remove(name);
+		
+		 multitab.remove(name);
+		 }
+		 catch(Exception e) {
+			 System.out.println(e);
+		 }
+	
 		 c.remove(cookie);
 		 context.setAttribute("cookie",c);
-		 System.out.println(cookie);
 		 for(Cookie cookie1 : request.getCookies()) {
 			 cookie1.setMaxAge(0);
 			 cookie1.setPath("/");
