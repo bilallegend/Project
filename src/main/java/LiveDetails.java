@@ -35,7 +35,7 @@ public class LiveDetails extends HttpServlet {
 		    ServletContext context = request.getSession().getServletContext();
 		    HashMap<String,String> feedsDivId = (HashMap<String, String>) context.getAttribute("feedsDivId");
 		    HashMap<String,String[]> GameIdCookies = (HashMap<String,String[]>) context.getAttribute("GameIds");
-		    Map<String, String> messageData = new HashMap<String, String>();
+		    Map<String, Object> messageData = new HashMap<String, Object>();
 		    System.out.println(GameIdCookies.containsKey(gameid)); System.out.println(feedsDivId.containsValue(gameid));
 		    try {
 		    	if(GameIdCookies.containsKey(gameid) && feedsDivId.containsValue(gameid)) {
@@ -52,7 +52,7 @@ public class LiveDetails extends HttpServlet {
 				    		System.out.println(color);
 				    		String name = DivMap.get(cookie)[3];
 				    		messageData.put(color, name);
-				    		System.out.println(name);
+				    		messageData.put(color+"coins",play.get(cookie).get("color"));
 				    		messageData.put(name,play.get(cookie).get("status").get(0));
 			    		}
 			    	}
