@@ -27,6 +27,10 @@
     		$(".edit1").css("display","none");
     	});
     	
+         $("#cha-cl").click(function(){
+        	 $(".change").css("transform","translateY(-100%)"); 
+    	});
+    	
     	// /------------------------------------------ like div --------------------------------------------------------------/
     	$(".like").click(function () {
     		alert("hi");
@@ -130,6 +134,8 @@
     		$("#menu").css("display", "none");
     	});
     	$(".menu").click(function () {
+    		$(".edit1").css("display", "none");
+    		$(".change").css("display", "none");
     		$("#menu").css("display", "block");
     	})
     	// /----------------------------------------------Flipping Action------------------------------------------------------/ 

@@ -95,26 +95,23 @@ $(document).ready(function(){
 		var name=$("#usrname_up").val();
 		var email=$("#usrmail_up").val();
 		var pass=$("#usrpassword_up").val();
-		var num=$("#usrnum_up").val();
+		
 
 		var file=$("#file").val();	
 		
 
 		
-		
+		check();
 
-		//if($("#errname").css("visibility")=="hidden"&&$("#errmail").css("visibility")=="hidden"&&$("#errpass").css("visibility")=="hidden"&&$("#errnum").css("visibility")=="hidden"&&$("#errpassword").css("visibility")=="hidden"){
+	if($("#errname").css("visibility")=="hidden"&&$("#errmail").css("visibility")=="hidden"&&$("#errpass").css("visibility")=="hidden"&&$("#errpassword").css("visibility")=="hidden"){
 		 $.post("/signup",
 
 				 {
 			          name: name,
 			          email:email,
 			          pass:pass,
-			          confirm:$("#usrconfirm_up").val(),
-			          num:num,
-		              
-		              
-			        },
+			          confirm:$("#usrconfirm_up").val()
+			                 },
 		            			        
 			        
 			        function(data,status){
@@ -140,6 +137,7 @@ $(document).ready(function(){
 			            }
 			            
 			        });
+	}
 	});
 		
 
@@ -150,7 +148,6 @@ $(document).ready(function(){
 		 $.post("/signin",
 			        {
 			          name: $("#usrname_in").val(),
-			          email:$("#usrmail_in").val(),
 			          pass:$("#usrpassword_in").val()
 			          
 			        },
@@ -158,13 +155,13 @@ $(document).ready(function(){
 			           
 			           
 			            var resultobj=JSON.parse(data);
-			            var l=["errnamin","errpassin","errmailin"];
-			            var s=["50","150","100"];
+			            var l=["errnamin","errpassin"];
+			            var s=["50","150"];
 			            var i=s.indexOf(resultobj.status);
 			            if(i!=-1){
 			            	$("#"+l[0])[0].style.visibility="hidden";
 			            	$("#"+l[1])[0].style.visibility="hidden";
-			            	$("#"+l[2])[0].style.visibility="hidden";
+			            	
 			                $("#"+l[i])[0].style.visibility="visible";
 			            }
 			            
@@ -204,16 +201,15 @@ $(document).ready(function(){
 		
 		var namecheck=($("#ename").val()).match(/^[a-z0-9]{3,30}$/gi);
 	    var emailcheck=($("#email").val()).match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/gi);
-	   // var passcheck=pass.match(/[a-z0-9_-]{6,10}$/g);
-	    var numcheck=($("#enumber").val()).match(/^[0-9-()+]{10,15}/g);
+	    
 	    var im=$("#file").val();
 	   
 
-      var li=[$("#ename").val(),$("#email").val(),$("#enumber").val()];
+      var li=[$("#ename").val(),$("#email").val()];
 	    
-		var checklist=[namecheck,emailcheck,numcheck];
+		var checklist=[namecheck,emailcheck];
 		
-		var id=["#na","#mai","#no"];
+		var id=["#na","#mai"];
 		var c=0;
 		for(i=0;i<checklist.length;i++){
 			if(checklist[i]+""==li[i]){
@@ -226,8 +222,8 @@ $(document).ready(function(){
 			}
 			
 		}
-		if(c==3){
-			$.post("ajax/changeprofile",{name:$("#ename").val(),mail:$("#email").val(),number:$("#enumber").val()},function(data){
+		if(c==2){
+			$.post("ajax/changeprofile",{name:$("#ename").val(),mail:$("#email").val()},function(data){
 				
 				var result=JSON.parse(data);
 				console.log(result);
@@ -265,6 +261,7 @@ $(document).ready(function(){
 	
 	 $("#chan-pass").click(function(){
                 $("#menu").css('display','none');
+                $(".edit1").css('display','none')
  		$(".change").css("transform","translateY(35%)"); 
  	 });
 	
@@ -273,8 +270,9 @@ $(document).ready(function(){
 		 var passcheck=($("#curr").val()).match(/[a-z0-9_-]{6,10}$/g);
 		 var passcheck1=($("#new").val()).match(/[a-z0-9_-]{6,10}$/g);
 		 var passcheck2=($("#new1").val()).match(/[a-z0-9_-]{6,10}$/g);
-		 
-		 if(passcheck&&passcheck1&&passcheck2&& $("#new").val()==$("#new1").val()){
+		  
+		 if(passcheck!=null&&passcheck1!=null&&passcheck2!=null){
+		 if(passcheck[0]==($("#curr").val())&&passcheck1[0]==($("#new").val())&&passcheck2[0]==($("#new1").val())&& $("#new").val()==$("#new1").val()){
 		
 		$.post("ajax/changepass",{ curr:$("#curr").val(),newpass:$("#new").val(),newpass1:$("#new1").val()},function(data){
 			
@@ -291,19 +289,32 @@ $(document).ready(function(){
 		
 		 }
 		 else{
-			 if(passcheck==false){
+			 if((passcheck[0]==($("#curr").val()))==false){
 				 alert("Invalid current password")
 			 }
-			 else if(passcheck1==false){
+			 else if((passcheck1[0]==($("#new").val()))==false){
 				 
             	 alert("Invalid new password");
 			 }
-             else if(passcheck2==false){
+             else if((passcheck2[0]==($("#new1").val()))==false){
             	 alert("Invalid new password");
 			 }
              else if($("#new").val()!=$("#new1").val()){
             	 alert("Password didn't match");
              }
+		 }
+   }
+  else{
+			 if(passcheck==null){
+				 alert("Invalid current password")
+			 }
+			 else if(passcheck1==null){
+				 
+            	 alert("Invalid new password");
+			 }
+             else if(passcheck2[0]==null){
+            	 alert("Invalid new password");
+			 }
 		 }
 		
 	});
@@ -399,18 +410,18 @@ var check=function(){
 	var email=$("#usrmail_up").val();
 	var pass=$("#usrpassword_up").val();
 	var confirm=$("#usrconfirm_up").val();
-	var num=$("#usrnum_up").val();
+	
 	
 	var namecheck=name.match(/^[a-z0-9]{3,30}$/gi);
     var emailcheck=email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/gi);
     var passcheck=pass.match(/[a-z0-9_-]{6,10}$/g);
-    var numcheck=num.match(/^[0-9-()+]{10,15}/g);
+   
 
 
     
-	var checklist=[namecheck,emailcheck,passcheck,numcheck];
-	var check=[name,email,pass,num];
-	var id=["#errname","#errmail","#errpass","#errnum","#errpassword"];
+	var checklist=[namecheck,emailcheck,passcheck];
+	var check=[name,email,pass];
+	var id=["#errname","#errmail","#errpass","#errpassword"];
 	
 	for(i=0;i<checklist.length;i++){
 		
@@ -437,49 +448,15 @@ var check=function(){
 
 var check1=function(){
 	
-//	$.post("/ajax/signin",
-//	        {
-//	          name: $("#usrname_in").val(),
-//	          email:$("#usrmail_in").val(),
-//	          pass:$("#usrpassword_in").val()
-//	          
-//	        },
-//	        function(data,status){
-//	        	console.log(data +"vg");
-//	        	var resultobj=JSON.parse(data);
-//	        	
-//	        	if(resultobj.status=="200"){
-//	        		console.log("Login Successful");
-//	        		$("#errnamin")[0].style.visibility="hidden";
-//	        		$("#errmailin")[0].style.visibility="hidden";
-//	        		$("#errpassin")[0].style.visibility="hidden";
-//	        	}
-//	        	else if(resultobj.status=="150"){
-//	        		console.log("Invalid password");
-//	        		$("#errpassin")[0].style.visibility="visible";
-//	        	}
-//	        	else if(resultobj.status=="100"){
-//	        		console.log("Invalid mail");
-//	        		$("#errnamin")[0].style.visibility="hidden";
-//	        		$("#errpassin")[0].style.visibility="hidden";
-//	        		$("#errmailin")[0].style.visibility="visible";
-//	        	}
-//	        	else if(resultobj.status=="50"){
-//	        		console.log("Invalid username");
-//	        		
-//	        		$("#errnamin")[0].style.visibility="visible";
-//	        		$("#errmailin")[0].style.visibility="hidden";
-//	        		$("#errpassin")[0].style.visibility="hidden";
-//	        	}
-//	        	
-//	        });
-//	
-	
-	
-	
 }
 	
 	
+
+
+
+
+
+
 
 
 

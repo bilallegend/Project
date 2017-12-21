@@ -46,7 +46,7 @@ public class Signup extends HttpServlet{
 			    	  
 					
 			      
-				  String res=psql.insert(conn, "player_info", "username,email_id,password,number", "'"+request.getParameter("name")+"','"+request.getParameter("email")+"','"+request.getParameter("pass")+"',"+request.getParameter("num"));
+				  String res=psql.insert(conn, "player_info", "username,email_id,password", "'"+request.getParameter("name")+"','"+request.getParameter("email")+"','"+request.getParameter("pass"));
 				  System.out.println(res);
 				  if(res.equals("Signup Successfull")) {
 				  CookieCreator one = new CookieCreator();

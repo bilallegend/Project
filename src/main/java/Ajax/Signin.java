@@ -22,7 +22,7 @@ public class Signin extends HttpServlet{
 	
 	
 		
-		ResultSet data_table=psql.select(conn, "player_info", "username,email_id,password,photo", request.getParameter("name"));
+		ResultSet data_table=psql.select(conn, "player_info", "username,password,photo", request.getParameter("name"));
 		HashMap<String,String> result= new  HashMap<String,String>(); 
 	      Gson gson = new GsonBuilder().setPrettyPrinting()
                     .create();
@@ -32,7 +32,7 @@ public class Signin extends HttpServlet{
 		try {
 			while(data_table.next()) {
 				
-			    if(data_table.getString("email_id").equals(request.getParameter("email")) ){
+			   
 			        if(data_table.getString("password").equals(request.getParameter("pass"))){
 			        	
 			            CookieCreator one = new CookieCreator();
@@ -75,20 +75,7 @@ public class Signin extends HttpServlet{
 			            return;
 			        }
 			    }
-			    else {
-			    	result.put("status","100");
-			    	json=gson.toJson(result);
-			    	  System.out.println(result);
-			    	  try {
-						  conn.close();
-						} catch (SQLException e) {
-							
-							e.printStackTrace();
-						}
-	                  response.getWriter().write(json);
-			    	return;
-			    }
-			}
+			   
 			result.put("status","50");
             System.out.println(result);
             json=gson.toJson(result);

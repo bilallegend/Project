@@ -37,14 +37,14 @@ public class EditProfile extends HttpServlet {
 			 System.out.println(name);
 			 try{
 				    Statement stmt = conn.createStatement();
-				    String Query="select photo,email_id,username,number from player_info where username='"+name+"'";
+				    String Query="select photo,email_id,username from player_info where username='"+name+"'";
 					ResultSet data_table=stmt.executeQuery(Query);
 					
 					while(data_table.next()) {
 						
 						details.put("name", data_table.getString("username"));
 						details.put("mail", data_table.getString("email_id"));
-						details.put("number", data_table.getString("number"));
+						
 						details.put("photo", data_table.getString("photo"));
 
 					}

@@ -70,14 +70,14 @@
 							<img src="../Images/profile.png" />
 						</div>
 						
-						<input type="text" name="name" id="usrname_up" onkeyup="check()"/>
+						<input type="text" name="name" id="usrname_up" />
 					</div>
 					<p id="errname">username should have atleast 6 should not have special characters</p>
 					<label class="pad-top">Email Id</label>
 					<div class="dv">
 						<div class="im"> <i class="fa fa-envelope-o" aria-hidden="true"></i>
 						</div>
-						<input type="email" name="email" id="usrmail_up" onkeyup="check()"/>
+						<input type="email" name="email" id="usrmail_up"/>
 					</div>
 					<p id='errmail'>Inavalid mail</p>
 					
@@ -88,23 +88,17 @@
 				<div class="dv mar-lef">
 					<div class="im"> <i class="fa fa-key i" aria-hidden="true"></i>
 					</div>
-					<input type="password" name="pass" class="in" id="usrpassword_up" onkeyup="check()"/>
+					<input type="password" name="pass" class="in" id="usrpassword_up"/>
 				</div>
 				<p id='errpass'>Password should have atleast and lesser than 11 letters can contain . or _</p>
 				<label class="pad-top pad-lef">Confirm Password</label>
 				<div class="dv mar-lef">
 					<div class="im"> <i class="fa fa-key i" aria-hidden="true"></i>
 					</div>
-					<input type="password" class="in" id="usrconfirm_up" onkeyup="check()"/>
+					<input type="password" class="in" id="usrconfirm_up" />
 				</div>
 				<p id='errpassword'>Password didn't match</p>
-				<label class="pad-top pad-lef">Mobile Number</label>
-				<div class="dv mar-lef">
-					<div class="im"> <i class="fa fa-mobile" aria-hidden="true" id="ph"></i>
-					</div>
-					<input type="text/number" name="num" class="in" maxlength="10" id="usrnum_up" onkeyup="check()"/>
-				</div>
-				<p id='errnum'>Invalid mobilenumber</p>
+				
 				<input type="submit" value="Register" class="sub" id="reg" />
 				
 			</div>
@@ -124,13 +118,7 @@
 				<input type="text" class="inp" id="usrname_in" onkeyup="check1()"/>
 			</div>
 			<p id="errnamin" class="ale">Invalid username</p>
-			<label class="pad-lef pa">Email</label>
-			<div class="dv mar-lef" style="margin-top:0px">
-				<div class="im"><i class="fa fa-envelope-o" aria-hidden="true"></i>
-				</div>
-				<input type="Email" class="inp" id="usrmail_in" onkeyup="check1()" />
-			</div>
-			<p id="errmailin" class="ale">Invalid mail</p>
+			
 			<label class="pad-lef pa">Password</label>
 			<div class="dv mar-lef" style="margin-top:0px">
 				<div class="im"> <i class="fa fa-key i" aria-hidden="true"></i>
@@ -183,7 +171,9 @@
 	
 	
 	<div class="change">
+	        <p id="cha-cl" style="float:right;cursor:pointer">close</p>
             <p class="cha-pas">Change Password</p>
+            
           <div>
             <input type="password" id="curr" placeholder="Current Password"/><i class="fa fa-lock" aria-hidden="true"></i>
             <input type="password" id="new" placeholder="New Password"/><i class="fa fa-lock" aria-hidden="true"></i>
@@ -232,20 +222,14 @@
 					<input type="text" id="email" class="in" />
 				</div>
 				<p id="mai" class="e">Inavalid mail</p>
-				<label class="pad-top pad-lef">Mobile Number</label>
-				<div class="dv mar-lef">
-					<div class="im"> <i class="fa fa-mobile" aria-hidden="true" id="ph"></i>
-					</div>
-					<input type="text/number" id="enumber" class="in" maxlength="10" />
-				</div>
-				<p id="no" class="e">Invalid mobilenumber</p>
+				
 				<input type="submit" value="Change" class="sub" id="editprofile" />
 			</div>
          </div>
 	<div class="profil" id="img"></div>
 		<div class="profilediv">
                     <div>
-                        <div><div id="img1"><p>change</p></div></div>
+                        <div><div id="img1"></div></div>
                         <h5 id="name">madhubalan.m</h5>
                         <p id="mail">madhubalan.m@zohouniv.com</p>
                     </div>

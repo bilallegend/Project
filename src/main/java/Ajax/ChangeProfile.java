@@ -29,9 +29,9 @@ public class ChangeProfile extends HttpServlet{
 		 ConnectionDatabase psql = new ConnectionDatabase();
 		 Connection conn			=psql.createConnection("gamecenter");
 		 boolean name=Pattern.compile("^[A-Za-z0-9]{3,30}$").matcher(request.getParameter("name")).matches();
-		 boolean phone=Pattern.compile("^[0-9-()+]{10,15}").matcher(request.getParameter("number")).matches();
 		 
-		 boolean check[]= {name,phone};
+		 
+		 boolean check[]= {name};
 		 ServletContext context=request.getSession().getServletContext();
 		 HashMap<String,String> result= new  HashMap<String,String>(); 
 	      Gson gson = new GsonBuilder().setPrettyPrinting()
@@ -62,7 +62,7 @@ public class ChangeProfile extends HttpServlet{
 			        System.out.println(e+"");
 			    }
 	      
-	      if(name&&phone) {
+	      if(name) {
 	    	  
 	    	  try{
 	  		    Statement stmt = conn.createStatement();//Statement class creates a object that can execute our query in the connected database in connection object
@@ -82,7 +82,7 @@ public class ChangeProfile extends HttpServlet{
 	      else {
 	    	  
 	    	    String errors="";
-	    	    String a[]= {"#na","#no"};
+	    	    String a[]= {"#na"};
 	    	    
 				
 	    	    for(int i=0;i<check.length;i++) {
