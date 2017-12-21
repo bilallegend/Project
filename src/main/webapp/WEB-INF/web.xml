@@ -11,10 +11,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-  xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-  version="2.5">
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5" >
   
   <!-- Ajax filter-->
   
@@ -34,33 +31,6 @@
 </filter-mapping>
 
 
-  <servlet>
-    <servlet-name>chat</servlet-name>
-    <servlet-class>com.example.appengine.pusher.ChatServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>authorize</servlet-name>
-    <servlet-class>com.example.appengine.pusher.AuthorizeServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>sendMessage</servlet-name>
-    <servlet-class>com.example.appengine.pusher.SendMessageServlet</servlet-class>
-  </servlet>
-
-
-  <servlet-mapping>
-    <servlet-name>chat</servlet-name>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>authorize</servlet-name>
-    <url-pattern>/authorize</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>sendMessage</servlet-name>
-    <url-pattern>/message</url-pattern>
-  </servlet-mapping>
-  
 
   
   
@@ -70,22 +40,19 @@
     <servlet-name>uploadforexample</servlet-name>
     <servlet-class>HelperClasses.FIleUpload</servlet-class>
   </servlet>
+  
+  
   <servlet-mapping>
     <servlet-name>uploadforexample</servlet-name>
     <url-pattern>/uploadad</url-pattern>
-  </servlet-mapping> <servlet>
-    <servlet-name>uploadforexample1</servlet-name>
-   <jsp-file>/Jsp/wer.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>uploadforexample1</servlet-name>
-    <url-pattern>/uploadfile</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> 
+  
 
   <servlet-mapping>
   		<servlet-name>Fileupload_servlet</servlet-name>
   		<url-pattern>/upload</url-pattern>	
   	</servlet-mapping>
+  	
 	<servlet>
 		<servlet-name>Fileupload_servlet</servlet-name>
 		<servlet-class>Ajax.upload</servlet-class>
@@ -176,10 +143,6 @@
 	
 	<!--  Ajax image upload servlet -->
 	
-	<servlet>
-    <servlet-name>Upload</servlet-name>
-    <servlet-class>Ajax.upload</servlet-class>
-  </servlet>
   
   <servlet>
     <servlet-name>Serve</servlet-name>
@@ -187,11 +150,7 @@
   </servlet>
  
  
-  <servlet-mapping>
-    <servlet-name>Upload</servlet-name>
-    <url-pattern>/upload</url-pattern>
-  </servlet-mapping>
-
+  
   <servlet-mapping>
     <servlet-name>Serve</servlet-name>
     <url-pattern>/serve</url-pattern>
@@ -210,14 +169,6 @@
   
   
 
-  <servlet-mapping>
-  		<servlet-name>Fileupload_servlet</servlet-name>
-  		<url-pattern>/upload</url-pattern>	
-  	</servlet-mapping>
-	<servlet>F
-		<servlet-name>Fileupload_servlet</servlet-name>
-		<servlet-class>Ajax.upload</servlet-class>
-	</servlet>
 	
 	
 	 <servlet-mapping>
