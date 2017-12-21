@@ -188,9 +188,18 @@
     		 });
     		 channel.bind('pusher:member_removed',function(member){
      			console.log('pusher:member_removed',member); 
-     			$('.ale').html('Sorry ! User exited the game ....!');
-     			$('.ale').css('visibility','visible');
-     			setTimeout(win(),1000);
+
+     			let data = JSON.stringify({
+    				game_id:gameid,
+    				id:member.id
+    	        });
+    			$.post('/ajax/memberRemove',data,function(data){
+    				if(data.count==undefined){
+    					$('.ale').html(data.msg);
+             			$('.ale').css('visibility','visible');
+    				}	
+     			});
+     			setTimeout(win(),1500);
      		 });
     		 
     		 
@@ -458,10 +467,7 @@
     function win(){
     	
     	var data=JSON.stringify({white:white.length,black:black.length,channel_id: channel_name});
-        $.post("/ajax/removecontext",data,function(msg){
-    		
-    	    
-    	   
+        $.post("/ajax/removecontext",data,function(msg){  
     	});
     	
     }

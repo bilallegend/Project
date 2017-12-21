@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import HelperClasses.Cooky;
+import HelperClasses.Redirecter;
 
 /**
  * Servlet implementation class LiveDetails
@@ -63,6 +64,7 @@ public class LiveDetails extends HttpServlet {
 		    }catch(Exception e){
 		    	e.printStackTrace();
 		    	messageData.put("alert","No proper user");
+		    	messageData.put("redir", Redirecter.giveUrlFor(request, "/home"));
 		    }
 	    	response.getWriter().println(gson.toJson(messageData));
 		    

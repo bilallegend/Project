@@ -13,6 +13,8 @@
 	<link rel='icon' href=http://cdn.marketplaceimages.windowsphone.com/v8/images/befe2370-568e-4a98-84e4-2a64deb3d771?imageType=ws_icon_large'>
 </head>
 <body>
+<div class='ale'>
+</div>
     <div id="ma">
         <h2>Visibility</h2>
      <div>   

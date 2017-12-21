@@ -37,12 +37,28 @@ $(document).ready(function(){
 		$('#bla').css('color',W_color);
 		$('#whi').css('color',B_color);
 	}
+	
+	function home(){
+		$('.ale').css('visibility','visible');
+		$('.ale').html('Match finished');
+		setTimeout(function(){location.href='/home'},1000);
+		return;
+
+	}
 	function ColorChange(black,white){
+		
 		black=moveIds[index];
 		white=moveIds[index+1];
+		
 		time=30;
 		StatusChanger($('#bla').html(),$('#whi').html(),$('#bla').css('color'),$('#whi').css('color'));
-		forLoop(black,"coin1");
+		if(white==undefined){
+			 home()
+		}
+			forLoop(black,"coin1");
+		if(white==undefined){
+			 home()
+		}
 		forLoop(white,"coin");
 		$('#countBlack').html(black.length+"");
 		$('#countWhite').html(white.length+"");

@@ -13,6 +13,8 @@
 </head>
 <body>
     <div class="whole-div">
+    <div class='ale'>
+    </div>
         <div class="boardback">
 		    <div class="boradinrdiv">
 			    <div class="inrdiv"></div>
