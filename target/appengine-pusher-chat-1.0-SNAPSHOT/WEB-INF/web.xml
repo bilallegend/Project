@@ -31,36 +31,6 @@
 </filter-mapping>
 
 
-<<<<<<< HEAD
-=======
-  <servlet>
-    <servlet-name>chat</servlet-name>
-     <jsp-file>/Jsp/Register.jsp</jsp-file>
-  </servlet>
-  <servlet>
-    <servlet-name>authorize</servlet-name>
-    <servlet-class>com.example.appengine.pusher.AuthorizeServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>sendMessage</servlet-name>
-    <servlet-class>com.example.appengine.pusher.SendMessageServlet</servlet-class>
-  </servlet>
-
-
-  <servlet-mapping>
-    <servlet-name>chat</servlet-name>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>authorize</servlet-name>
-    <url-pattern>/authorize</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>sendMessage</servlet-name>
-    <url-pattern>/message</url-pattern>
-  </servlet-mapping>
-  
->>>>>>> branch 'master' of https://github.com/bilallegend/Project.git
 
   
   

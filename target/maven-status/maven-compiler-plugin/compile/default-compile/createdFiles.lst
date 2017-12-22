@@ -2,7 +2,6 @@ HelperClasses/ConnectionDatabase.class
 RequestHandler$1.class
 Ajax/CheckingPlayerInGamePage.class
 com/example/appengine/pusher/AuthorizeUser.class
-Ajax.class
 Ajax/TournamentMembers.class
 RequestHandler.class
 Filters/AccountFilter.class

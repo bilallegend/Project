@@ -14,8 +14,16 @@ public class ConnectionDatabase{
 		}
 		System.out.println("class loaded");
 		try {
-			  connection = DriverManager.getConnection(
-					"jdbc:postgresql://localhost:5432/"+database_name, "postgres", "postgres");
+
+String jdbcUrl = String.format(
+    "jdbc:postgresql://google/%s?socketFactory=com.google.cloud.sql.postgres.SocketFactory"
+        + "&socketFactoryArg=%s",
+        database_name,
+    "gamecenter");
+
+ connection = DriverManager.getConnection(jdbcUrl, "postgres", "postgres");
+//			  connection = DriverManager.getConnection(
+//					"jdbc:postgresql://localhost:5432/"+database_name, "postgres", "postgres");
 					
 		} catch (Exception e) {
 			System.out.println("conection failed");

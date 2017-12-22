@@ -3,7 +3,6 @@
 /home/zoho/GCP/PusherProj/src/main/java/OnlineRemover.java
 /home/zoho/GCP/PusherProj/src/main/java/ReplaysMovesGiver.java
 /home/zoho/GCP/PusherProj/src/main/java/HelperClasses/Redirecter.java
-/home/zoho/GCP/PusherProj/src/main/java/PlayChecker.java
 /home/zoho/GCP/PusherProj/src/main/java/Ajax/upload.java
 /home/zoho/GCP/PusherProj/src/main/java/Ajax/ChangeStatus.java
 /home/zoho/GCP/PusherProj/src/main/java/Ajax/ChangeProfile.java
@@ -16,7 +15,6 @@
 /home/zoho/GCP/PusherProj/src/main/java/ReplayHandler.java
 /home/zoho/GCP/PusherProj/src/main/java/Ajax/TournamentMembers.java
 /home/zoho/GCP/PusherProj/src/main/java/Ajax/RemoveContext.java
-/home/zoho/GCP/PusherProj/src/main/java/Register.java
 /home/zoho/GCP/PusherProj/src/main/java/Ajax/Signin.java
 /home/zoho/GCP/PusherProj/src/main/java/com/example/appengine/pusher/AuthorizeServlet.java
 /home/zoho/GCP/PusherProj/src/main/java/Ajax/AddGameId.java
@@ -31,7 +29,6 @@
 /home/zoho/GCP/PusherProj/src/main/java/Ajax/CheckingPlayerInGamePage.java
 /home/zoho/GCP/PusherProj/src/main/java/Replays.java
 /home/zoho/GCP/PusherProj/src/main/java/CoinSender.java
-/home/zoho/GCP/PusherProj/src/main/java/Ajax.java
 /home/zoho/GCP/PusherProj/src/main/java/Ajax/PlayDetail.java
 /home/zoho/GCP/PusherProj/src/main/java/LiveWatchAuth.java
 /home/zoho/GCP/PusherProj/src/main/java/Ajax/Profile.java
