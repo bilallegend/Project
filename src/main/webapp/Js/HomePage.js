@@ -435,11 +435,11 @@ var check=function(){
 	}
 	
 	if(pass==confirm){
-		$(id[4])[0].style.visibility="hidden";
+		$(id[3])[0].style.visibility="hidden";
 		
 	}
 	else{
-		$(id[4])[0].style.visibility="visible";
+		$(id[3])[0].style.visibility="visible";
 	}
 	
 	

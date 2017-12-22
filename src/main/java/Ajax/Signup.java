@@ -21,13 +21,13 @@ public class Signup extends HttpServlet{
 		 ConnectionDatabase psql = new ConnectionDatabase();
 		 Connection conn			=psql.createConnection("gamecenter");
 		 boolean name=Pattern.compile("^[A-Za-z0-9]{3,30}$").matcher(request.getParameter("name")).matches();
-		 boolean phone=Pattern.compile("^[0-9-()+]{10,15}").matcher(request.getParameter("num")).matches();
+		
 		 boolean pass=Pattern.compile("[A-Za-z0-9_-]{6,10}$").matcher(request.getParameter("pass")).matches();
 		 boolean conpass=request.getParameter("pass").equals(request.getParameter("confirm"));
-		 boolean check[]= {name,pass,conpass,phone};
+		 boolean check[]= {name,pass,conpass};
 		
 			      System.out.println(name);
-			      System.out.println(phone);
+			      
 			      System.out.println(pass);
 			      System.out.println(conpass);
 			      
@@ -40,13 +40,13 @@ public class Signup extends HttpServlet{
 			      
 			   
 			      
-			      if(name&&phone&&pass&&conpass) {
+			      if(name&&pass&&conpass) {
 						
 			    	 
 			    	  
 					
 			      
-				  String res=psql.insert(conn, "player_info", "username,email_id,password", "'"+request.getParameter("name")+"','"+request.getParameter("email")+"','"+request.getParameter("pass"));
+				  String res=psql.insert(conn, "player_info", "username,email_id,password", "'"+request.getParameter("name")+"','"+request.getParameter("email")+"','"+request.getParameter("pass")+"'");
 				  System.out.println(res);
 				  if(res.equals("Signup Successfull")) {
 				  CookieCreator one = new CookieCreator();
